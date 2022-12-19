@@ -1,4 +1,4 @@
-DROP DATABASE `p3-anthill-db`;
+DROP DATABASE IF EXISTS `p3-anthill-db`;
 
 CREATE DATABASE `p3-anthill-db`;
 
