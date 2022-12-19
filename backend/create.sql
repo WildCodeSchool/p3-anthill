@@ -8,24 +8,24 @@ DROP TABLE IF EXISTS `badge`, `mood`, `user`, `topic`, `mindmap_mode`, `bubble`,
 
 CREATE TABLE `badge` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `picture` varchar(80) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `picture` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ); 
 
 CREATE TABLE `mood` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  `emoji` varchar(80) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `emoji` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ); 
 
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `picture` varchar(80) NOT NULL,
-  `email` varchar(70) NOT NULL,
+  `picture` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `password` varchar(600) NOT NULL,
-  `fullname` varchar(50) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
   `mood_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
    CONSTRAINT `fk_user_mood` FOREIGN KEY (`mood_id`) REFERENCES `mood` (`id`)
@@ -37,7 +37,7 @@ CREATE TABLE `topic` (
   `description` varchar(500) NOT NULL,
   `is_private` tinyint(1) NOT NULL,
   `creator_id` int NOT NULL,
-  `title` varchar(45) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `is_closed` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_topic_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`)
@@ -52,7 +52,7 @@ CREATE TABLE `mindmap_mode` (
 
 CREATE TABLE `bubble` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `content` varchar(50) NOT NULL,
+  `content` varchar(255) NOT NULL,
   `mindmap_id` int NOT NULL,
   `creator_id` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -69,9 +69,9 @@ CREATE TABLE `comment_mode` (
 
 CREATE TABLE `idea` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(45) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
-  `like` int DEFAULT NULL,
+  `like` int DEFAULT 0,
   `comment_mode_id` int DEFAULT NULL,
   `creator_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -97,13 +97,15 @@ ALTER TABLE `comment` ADD CONSTRAINT `fk_comment_comment` FOREIGN KEY (`comment_
 CREATE TABLE `link` (
   `source_id` int NOT NULL,
   `target_id` int NOT NULL,
-    CONSTRAINT `fk_link_source` FOREIGN KEY (`source_id`) REFERENCES `bubble` (`id`) ,
+  PRIMARY KEY (`source_id`, `target_id`),
+  CONSTRAINT `fk_link_source` FOREIGN KEY (`source_id`) REFERENCES `bubble` (`id`) ,
   CONSTRAINT `fk_link_target` FOREIGN KEY (`target_id`) REFERENCES `bubble` (`id`)
 ); 
 
 CREATE TABLE `user_badge` (
   `user_id` int NOT NULL,
   `badge_id` int NOT NULL,
+  PRIMARY KEY (`user_id`, `badge_id`),
   CONSTRAINT `fk_user_badge_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
   CONSTRAINT `fk_user_badge_badge` FOREIGN KEY (`badge_id`) REFERENCES `badge` (`id`)
 );
@@ -111,6 +113,7 @@ CREATE TABLE `user_badge` (
 CREATE TABLE `user_topic` (
   `user_id` int NOT NULL,
   `topic_id` int NOT NULL,
+  PRIMARY KEY (`user_id`, `topic_id`),
   CONSTRAINT `fk_user_topic_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
   CONSTRAINT `fk_user_topic_topic` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id`)
 );
