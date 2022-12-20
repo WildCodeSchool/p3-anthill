@@ -1,9 +1,9 @@
-import LoginGoogle from "../components/Login/LoginGoogle";
+import ButtonLoginGoogle from "../components/Login/ButtonLoginGoogle";
 
 function Login() {
   return (
     <div className="login">
-      <LoginGoogle />
+      <ButtonLoginGoogle />
     </div>
   );
 }
