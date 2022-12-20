@@ -1,20 +1,22 @@
 import jwtDecode from "jwt-decode";
 
+const GOOGLE_CLIENT_ID =
+  "380173514511-nl7hpviphofn124ghjirsanfsq7b3ikd.apps.googleusercontent.com";
+
 const handleCallbackResponse = (response) => {
   const token = response.credential;
   const decodeToken = jwtDecode(token);
-  const { sub: password, name: fullname, email, picture } = decodeToken;
+  const { sub: googleUserId, name: fullname, email, picture } = decodeToken;
   localStorage.setItem(
     "currentUser",
-    JSON.stringify({ password, fullname, email, picture })
+    JSON.stringify({ googleUserId, fullname, email, picture })
   );
 };
 
 const handleLogin = () => {
   try {
     window.google.accounts.id.initialize({
-      client_id:
-        "380173514511-nl7hpviphofn124ghjirsanfsq7b3ikd.apps.googleusercontent.com",
+      client_id: GOOGLE_CLIENT_ID,
       callback: handleCallbackResponse,
     });
     window.google.accounts.id.prompt((notification) => {
