@@ -24,8 +24,9 @@ CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `picture` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(600) NOT NULL,
+  `password` varchar(600),
   `fullname` varchar(255) NOT NULL,
+  `googleUserId` varchar(255) NOT NULL,
   `mood_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
    CONSTRAINT `fk_user_mood` FOREIGN KEY (`mood_id`) REFERENCES `mood` (`id`)
@@ -71,9 +72,9 @@ CREATE TABLE `idea` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
-  `like` int DEFAULT 0,
+  `upVote` int DEFAULT 0,
   `comment_mode_id` int DEFAULT NULL,
-  `creator_id` int DEFAULT NULL,
+  `creator_id` int NOT NULL,
   PRIMARY KEY (`id`)
 ); 
 
