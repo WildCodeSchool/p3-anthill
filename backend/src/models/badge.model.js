@@ -24,7 +24,7 @@ async function getOne(id) {
 async function updateOne(id, badge) {
   const { name, picture } = badge;
   const [result] = await db.query(
-    "UPDATE badge SET name = ?, picture = ?, fullname = ?, password, googlebadgeId = ? WHERE id = ?",
+    "UPDATE badge SET name = ?, picture = ? WHERE id = ?",
     [name, picture, id]
   );
 

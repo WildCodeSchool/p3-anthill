@@ -28,7 +28,7 @@ CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `picture` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(600),
+  `password` varchar(600) DEFAULT NULL,
   `fullname` varchar(255) NOT NULL,
   `googleUserId` varchar(255) NOT NULL,
   `mood_id` int DEFAULT NULL,
@@ -86,25 +86,25 @@ CREATE TABLE `idea` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
-  `upVote` int DEFAULT 0,
+  `up_vote` int DEFAULT 0,
   `comment_mode_id` int DEFAULT NULL,
   `creator_id` int NOT NULL,
   PRIMARY KEY (`id`)
 ); 
 
-INSERT INTO idea (title, description, upVote, comment_mode_id, creator_id) VALUES ("idea_title_1", "idea_description_1", 1, 1, 1);
+INSERT INTO idea (title, description, up_vote, comment_mode_id, creator_id) VALUES ("idea_title_1", "idea_description_1", 1, 1, 1);
 
 CREATE TABLE `comment` (
   `id` int NOT NULL AUTO_INCREMENT,
   `content` varchar(500) NOT NULL,
-  `likes` int DEFAULT NULL,
+  `up_vote` int DEFAULT 0,
   `user_id` int NOT NULL,
   `idea_id` int NOT NULL,
   `comment_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
-INSERT INTO comment (content, likes, user_id, idea_id, comment_id) VALUES ("comment_content_1", 1, 1, 1, 1);
+INSERT INTO comment (content, up_vote, user_id, idea_id, comment_id) VALUES ("comment_content_1", 1, 1, 1, 1);
 
 ALTER TABLE `idea` ADD CONSTRAINT `fk_idea_comment_mode` FOREIGN KEY (`comment_mode_id`) REFERENCES `comment_mode` (`id`);
 ALTER TABLE `idea` ADD CONSTRAINT `fk_idea_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`);

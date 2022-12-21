@@ -24,7 +24,7 @@ async function getOne(id) {
 async function updateOne(id, mood) {
   const { name, emoji } = mood;
   const [result] = await db.query(
-    "UPDATE mood SET name = ?, email = ?, fullname = ?, password, googlemoodId = ? WHERE id = ?",
+    "UPDATE mood SET name = ?, emoji = ? WHERE id = ?",
     [name, emoji, id]
   );
 

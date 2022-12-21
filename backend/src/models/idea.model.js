@@ -9,7 +9,7 @@ async function getAll() {
 async function insertOne(idea) {
   const { title, description, upVote, commentModeId, creatorId } = idea;
   const [result] = await db.query(
-    "INSERT INTO idea (title, description, upVote, comment_mode_id, creator_id) VALUES (?, ?, ?, ?, ?)",
+    "INSERT INTO idea (title, description, up_vote, comment_mode_id, creator_id) VALUES (?, ?, ?, ?, ?)",
     [title, description, upVote, commentModeId, creatorId]
   );
 
@@ -24,7 +24,7 @@ async function getOne(id) {
 async function updateOne(id, idea) {
   const { title, description, upVote, commentModeId, creatorId } = idea;
   const [result] = await db.query(
-    "UPDATE idea SET title = ?, description = ?, upVote = ?, creator_id = ? WHERE id = ?",
+    "UPDATE idea SET title = ?, description = ?, up_vote = ?, comment_mode_id = ?, creator_id = ? WHERE id = ?",
     [title, description, upVote, commentModeId, creatorId, id]
   );
 

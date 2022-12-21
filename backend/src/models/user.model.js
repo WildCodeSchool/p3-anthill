@@ -22,10 +22,10 @@ async function getOne(id) {
 }
 
 async function updateOne(id, user) {
-  const { picture, email, fullname, password, googleUserId } = user;
+  const { picture, email, fullname, password, googleUserId, moodId } = user;
   const [result] = await db.query(
-    "UPDATE user SET picture = ?, email = ?, fullname = ?, password, googleUserId = ? WHERE id = ?",
-    [picture, email, fullname, password, googleUserId, id]
+    "UPDATE user SET picture = ?, email = ?, fullname = ?, password = ?, googleUserId = ?, mood_id= ? WHERE id = ?",
+    [picture, email, fullname, password, googleUserId, moodId, id]
   );
 
   return result.affectedRows;
