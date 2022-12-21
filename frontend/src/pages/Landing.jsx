@@ -7,7 +7,7 @@ function Landing() {
       <div>
         <img
           className="logoLanding"
-          src="../../public/logo/logoDoré.png"
+          src="/logo/logoDoré.png"
           alt="logo anthill"
         />
       </div>
