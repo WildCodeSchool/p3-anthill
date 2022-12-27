@@ -1,5 +1,11 @@
+import TopicCard from "./TopicCard";
+
 function Main() {
-  return <div>Main</div>;
+  return (
+    <div>
+      <TopicCard />
+    </div>
+  );
 }
 
 export default Main;
