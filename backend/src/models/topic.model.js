@@ -8,7 +8,13 @@ async function getAll() {
 
 async function getAllTopicCard() {
   const [rows] = await db.query(
-    "select t.title, min(u.fullname) as creator_name, min(t.description) as description, min(t.deadline) as deadline, count(i.id) as nb_idee from idea as i right join comment_mode as cm on cm.id = i.comment_mode_id right join topic as t on t.id = cm.topic_id left join user as u on u.id = t.creator_id group by t.title"
+    "SELECT t.title, MIN(u.fullname) AS creator_name, MIN(t.description) AS description, MIN(t.deadline) AS deadline, count(i.id) AS nb_idee, MIN(cm.topic_id) AS comment_mode_topic_id, MIN(mm.topic_id) AS mindmap_mode_topic_id " +
+      "FROM idea AS i " +
+      "RIGHT JOIN comment_mode AS cm ON cm.id = i.comment_mode_id " +
+      "RIGHT JOIN topic AS t ON t.id = cm.topic_id " +
+      "LEFT JOIN mindmap_mode AS mm ON mm.topic_id = t.id " +
+      "JOIN user AS u ON u.id = t.creator_id " +
+      "GROUP BY t.title"
   );
   return rows;
 }
