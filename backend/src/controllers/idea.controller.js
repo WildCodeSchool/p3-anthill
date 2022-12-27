@@ -23,14 +23,19 @@ async function get(req, res) {
     return;
   }
 
-  const idea = await ideaModel.getOne(req.params.id);
-
-  if (!idea) {
-    res.sendStatus(404);
-    return;
+  if ("detail" in req.query) {
+    const ideas = await ideaModel.getAllCommentMode(req.params.id);
+    res.json(ideas);
+    if (!ideas) {
+      res.sendStatus(404);
+    }
+  } else {
+    const idea = await ideaModel.getOne(req.params.id);
+    res.json(idea);
+    if (!idea) {
+      res.sendStatus(404);
+    }
   }
-
-  res.json(idea);
 }
 
 async function update(req, res) {

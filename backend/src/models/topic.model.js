@@ -24,6 +24,18 @@ async function getOne(id) {
   return rows[0];
 }
 
+async function getOneTopicDetail(id) {
+  const [rows] = await db.query(
+    "SELECT t.title, u.fullname AS creator_name, t.description, t.deadline, cm.topic_id AS comment_mode_topic_id " +
+      "FROM topic AS t " +
+      "LEFT JOIN comment_mode AS cm ON cm.topic_id = t.id " +
+      "LEFT JOIN user AS u ON u.id = t.creator_id " +
+      "WHERE t.id = ?",
+    [id]
+  );
+  return rows[0];
+}
+
 async function insertOne(topic) {
   const { deadline, description, isPrivate, creatorId, title, isClosed } =
     topic;
@@ -56,6 +68,7 @@ module.exports = {
   getAll,
   getAllTopicCard,
   getOne,
+  getOneTopicDetail,
   insertOne,
   updateOne,
   deleteOne,

@@ -17,14 +17,19 @@ async function get(req, res) {
     return;
   }
 
-  const topic = await topicModel.getOne(req.params.id);
-
-  if (!topic) {
-    res.sendStatus(404);
-    return;
+  if ("detail" in req.query) {
+    const topic = await topicModel.getOneTopicDetail(req.params.id);
+    res.json(topic);
+    if (!topic) {
+      res.sendStatus(404);
+    }
+  } else {
+    const topic = await topicModel.getOne(req.params.id);
+    res.json(topic);
+    if (!topic) {
+      res.sendStatus(404);
+    }
   }
-
-  res.json(topic);
 }
 
 async function create(req, res) {
