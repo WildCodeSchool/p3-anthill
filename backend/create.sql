@@ -104,7 +104,7 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`id`)
 );
 
-INSERT INTO comment (content, up_vote, user_id, idea_id, comment_id) VALUES ("comment_content_1", 1, 1, 1, 1), ("comment_content_2", 5, 2, 1, null), ("comment_content_3", 5, 3, 1, null), ("comment_content_4", 2, 10, 2, null);
+INSERT INTO comment (content, up_vote, user_id, idea_id, comment_id) VALUES ("comment_content_1", 1, 1, 1, 1), ("comment_content_2", 5, 2, 1, null), ("comment_content_3", 5, 3, 1, null), ("comment_content_4", 2, 3, 2, null);
 
 ALTER TABLE `idea` ADD CONSTRAINT `fk_idea_comment_mode` FOREIGN KEY (`comment_mode_id`) REFERENCES `comment_mode` (`id`);
 ALTER TABLE `idea` ADD CONSTRAINT `fk_idea_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`);
