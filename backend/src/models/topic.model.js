@@ -6,6 +6,18 @@ async function getAll() {
   return rows;
 }
 
+async function getAllTopicCard() {
+  const [rows] = await db.query(
+    "select t.title, min(u.fullname) as creator_name, min(t.description) as description, min(t.deadline) as deadline, count(i.id) as nb_idee from idea as i right join comment_mode as cm on cm.id = i.comment_mode_id right join topic as t on t.id = cm.topic_id left join user as u on u.id = t.creator_id group by t.title"
+  );
+  return rows;
+}
+
+async function getOne(id) {
+  const [rows] = await db.query("SELECT * FROM topic WHERE id = ?", [id]);
+  return rows[0];
+}
+
 async function insertOne(topic) {
   const { deadline, description, isPrivate, creatorId, title, isClosed } =
     topic;
@@ -15,11 +27,6 @@ async function insertOne(topic) {
   );
 
   return result.insertId;
-}
-
-async function getOne(id) {
-  const [rows] = await db.query("SELECT * FROM topic WHERE id = ?", [id]);
-  return rows[0];
 }
 
 async function updateOne(id, topic) {
@@ -39,4 +46,11 @@ async function deleteOne(id) {
   return result.affectedRows;
 }
 
-module.exports = { getAll, insertOne, getOne, updateOne, deleteOne };
+module.exports = {
+  getAll,
+  getAllTopicCard,
+  getOne,
+  insertOne,
+  updateOne,
+  deleteOne,
+};

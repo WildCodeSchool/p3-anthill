@@ -2,11 +2,13 @@ import "./TopicCard.css";
 
 function TopicCard() {
   return (
-    <div className="topicCard">
-      <h1 className="topicCardTilte">topicCardTilte</h1>
-      <h2 className="topicCreatorName">topicCreatorName</h2>
+    <article className="topicCard">
+      <h3 className="topicCardTilte">topicCardTilte</h3>
+      <div className="topicCreatorName">topicCreatorName</div>
       <p className="topicDescription">topicDescription</p>
-    </div>
+      <div className="topicDeadline">topicDeadline</div>
+      <div className="topicNbIdea">topicNbIdea</div>
+    </article>
   );
 }
 

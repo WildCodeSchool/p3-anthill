@@ -2,19 +2,13 @@ const topicModel = require("../models/topic.model");
 // const topicValidator = require("../validators/topic.validator");
 
 async function list(req, res) {
-  const topics = await topicModel.getAll();
-  res.json(topics);
-}
-
-async function create(req, res) {
-  if (!req.body) {
-    res.sendStatus(400);
-    return;
+  if ("card" in req.query) {
+    const topics = await topicModel.getAllTopicCard();
+    res.json(topics);
+  } else {
+    const topics = await topicModel.getAll();
+    res.json(topics);
   }
-
-  const insertId = await topicModel.insertOne(req.body);
-
-  res.status(201).json({ insertId });
 }
 
 async function get(req, res) {
@@ -31,6 +25,17 @@ async function get(req, res) {
   }
 
   res.json(topic);
+}
+
+async function create(req, res) {
+  if (!req.body) {
+    res.sendStatus(400);
+    return;
+  }
+
+  const insertId = await topicModel.insertOne(req.body);
+
+  res.status(201).json({ insertId });
 }
 
 async function update(req, res) {
@@ -65,4 +70,4 @@ async function remove(req, res) {
   res.sendStatus(204);
 }
 
-module.exports = { list, create, get, update, remove };
+module.exports = { list, get, create, update, remove };
