@@ -1,0 +1,56 @@
+.user-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin: 1rem;
+  padding: 0.5rem;
+  background-color: var(--medium-background);
+}
+
+.user-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+}
+
+.user-header {
+  display: flex;
+  flex-direction: row;
+  padding-top: 1rem;
+}
+
+.user-names {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  color: var(--golden-color);
+  font-size: var(--textL);
+}
+
+.user-pseudo {
+  color: var(--light-color);
+  font-size: var(--textS);
+}
+
+.user-greetings {
+  color: var(--light-color);
+  display: flex;
+  padding-top: 3.5rem;
+}
+
+.user-contact-grid {
+  display: flex;
+  flex-direction: row;
+  color: var(--light-color);
+}
+
+.user-contact-list {
+  color: var(--light-color);
+  padding: 1rem;
+}

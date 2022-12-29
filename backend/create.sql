@@ -28,15 +28,18 @@ CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `picture` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `pseudo` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL, 
   `password` varchar(600) DEFAULT NULL,
   `fullname` varchar(255) NOT NULL,
   `googleUserId` varchar(255) NOT NULL,
+  `badge_id` int DEFAULT NULL,
   `mood_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
    CONSTRAINT `fk_user_mood` FOREIGN KEY (`mood_id`) REFERENCES `mood` (`id`)
 );
 
-INSERT INTO user (picture, email, password, fullname, googleUserId, mood_id) VALUES ("picture_user_1", "email_1@gmail.com", "user_password_1", "user_fullname_1", "user_google_id_1", 1), ("picture_user_2", "email_2@gmail.com", "user_password_2", "user_fullname_2", "user_google_id_2", 2), ("picture_user_3", "email_3@gmail.com", "user_password_3", "user_fullname_3", "user_google_id_3", 3), ("picture_user_4", "email_4@gmail.com", "user_password_4", "user_fullname_4", "user_google_id_4", 4), ("picture_user_5", "email_5@gmail.com", "user_password_5", "user_fullname_5", "user_google_id_5", 1);
+INSERT INTO user (badge_id, description, pseudo, picture, email, password, fullname, googleUserId, mood_id) VALUES (1, "description_1", "pseudo_1", "picture_user_1", "email_1@gmail.com", "user_password_1", "user_fullname_1", "user_google_id_1", 1), (2, "description_2", "pseudo_2", "picture_user_2", "email_2@gmail.com", "user_password_2", "user_fullname_2", "user_google_id_2", 2), (3, "description_3", "pseudo_3", "picture_user_3", "email_3@gmail.com", "user_password_3", "user_fullname_3", "user_google_id_3", 3), (4, "description_4", "pseudo_4", "picture_user_4", "email_4@gmail.com", "user_password_4", "user_fullname_4", "user_google_id_4", 4), (5, "description_5", "pseudo_5", "picture_user_5", "email_5@gmail.com", "user_password_5", "user_fullname_5", "user_google_id_5", 1);
 
 CREATE TABLE `topic` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -104,7 +107,7 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`id`)
 );
 
-INSERT INTO comment (content, up_vote, user_id, idea_id, comment_id) VALUES ("comment_content_1", 1, 1, 1, 1), ("comment_content_2", 5, 2, 1, null), ("comment_content_3", 5, 3, 1, null), ("comment_content_4", 2, 10, 2, null);
+INSERT INTO comment (content, up_vote, user_id, idea_id, comment_id) VALUES ("comment_content_1", 1, 1, 1, 1), ("comment_content_2", 5, 2, 1, null), ("comment_content_3", 5, 3, 1, null), ("comment_content_4", 2, 3, 2, null);
 
 ALTER TABLE `idea` ADD CONSTRAINT `fk_idea_comment_mode` FOREIGN KEY (`comment_mode_id`) REFERENCES `comment_mode` (`id`);
 ALTER TABLE `idea` ADD CONSTRAINT `fk_idea_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`);

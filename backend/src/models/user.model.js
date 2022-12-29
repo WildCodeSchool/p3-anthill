@@ -1,7 +1,9 @@
 const { db } = require("./db");
 
 async function getAll() {
-  const [rows] = await db.query("SELECT * FROM user");
+  const [rows] = await db.query(
+    "SELECT * FROM user INNER JOIN (SELECT user_id, count(badge_id) AS nbr_badges FROM user_badge GROUP BY user_badge.user_id) AS ti ON ti.user_id = user.id"
+  );
 
   return rows;
 }
@@ -21,6 +23,14 @@ async function getOne(id) {
   return rows[0];
 }
 
+async function getBadgesForOneUser(id) {
+  const [rows] = await db.query(
+    "SELECT * FROM user_badge INNER JOIN badge ON badge.id = user_badge.badge_id WHERE user_id = ?",
+    [id]
+  );
+  return rows;
+}
+
 async function updateOne(id, user) {
   const { picture, email, fullname, password, googleUserId, moodId } = user;
   const [result] = await db.query(
@@ -37,4 +47,11 @@ async function deleteOne(id) {
   return result.affectedRows;
 }
 
-module.exports = { getAll, insertOne, getOne, updateOne, deleteOne };
+module.exports = {
+  getAll,
+  insertOne,
+  getOne,
+  updateOne,
+  deleteOne,
+  getBadgesForOneUser,
+};

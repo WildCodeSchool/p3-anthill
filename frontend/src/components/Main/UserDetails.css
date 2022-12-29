@@ -1,0 +1,38 @@
+.user-detail {
+  background-color: var(--medium-background);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.user-detail-header {
+  display: flex;
+}
+
+.user-detail-names > h3 {
+  color: var(--golden-color);
+}
+
+.user-detail-names > p {
+  color: var(--light-color);
+}
+
+.user-detail-description > p {
+  color: var(--light-color);
+  width: 100%;
+  text-align: justify;
+}
+
+.user-detail-contact {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.user-detail-contact > p {
+  color: var(--light-color);
+  text-decoration: underline;
+}
