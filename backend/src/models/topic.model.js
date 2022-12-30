@@ -8,13 +8,13 @@ async function getAll() {
 
 async function getAllTopicCard() {
   const [rows] = await db.query(
-    "SELECT t.title, MIN(u.fullname) AS creator_name, MIN(t.description) AS description, MIN(t.deadline) AS deadline, count(i.id) AS nb_idee, MIN(cm.topic_id) AS comment_mode_topic_id, MIN(mm.topic_id) AS mindmap_mode_topic_id " +
+    "SELECT t.id, MIN(t.title) AS title, MIN(u.fullname) AS creator_name, MIN(t.description) AS description, MIN(t.deadline) AS deadline, count(i.id) AS nb_idea, MIN(cm.topic_id) AS comment_mode_topic_id, MIN(mm.topic_id) AS mindmap_mode_topic_id " +
       "FROM idea AS i " +
       "RIGHT JOIN comment_mode AS cm ON cm.id = i.comment_mode_id " +
       "RIGHT JOIN topic AS t ON t.id = cm.topic_id " +
       "LEFT JOIN mindmap_mode AS mm ON mm.topic_id = t.id " +
       "JOIN user AS u ON u.id = t.creator_id " +
-      "GROUP BY t.title"
+      "GROUP BY t.id"
   );
   return rows;
 }
@@ -26,7 +26,7 @@ async function getOne(id) {
 
 async function getOneTopicDetail(id) {
   const [rows] = await db.query(
-    "SELECT t.title, u.fullname AS creator_name, t.description, t.deadline, cm.topic_id AS comment_mode_topic_id " +
+    "SELECT t.id, t.title, u.fullname AS creator_name, t.description, t.deadline, cm.topic_id AS comment_mode_topic_id " +
       "FROM topic AS t " +
       "LEFT JOIN comment_mode AS cm ON cm.topic_id = t.id " +
       "LEFT JOIN user AS u ON u.id = t.creator_id " +

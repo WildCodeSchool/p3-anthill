@@ -8,7 +8,13 @@ async function getAll() {
 
 async function getAllCommentMode(commentModeTopicId) {
   const [rows] = await db.query(
-    "SELECT i.title AS idea_title, MIN(i.description) AS idea_description, MIN(i.up_vote) AS nb_up_vote, MIN(u.fullname) AS idea_creator_name, count(c.id) AS nb_comment FROM idea AS i LEFT JOIN user AS u ON u.id = i.creator_id LEFT JOIN comment AS c ON c.idea_id = i.id LEFT JOIN comment_mode AS cm ON cm.id = i.comment_mode_id WHERE cm.topic_id = ? GROUP BY i.title",
+    "SELECT i.id, MIN(i.title) AS idea_title, MIN(i.description) AS idea_description, MIN(i.up_vote) AS nb_up_vote, MIN(u.fullname) AS idea_creator_name, count(c.id) AS nb_comment " +
+      "FROM idea AS i " +
+      "LEFT JOIN user AS u ON u.id = i.creator_id " +
+      "LEFT JOIN comment AS c ON c.idea_id = i.id " +
+      "LEFT JOIN comment_mode AS cm ON cm.id = i.comment_mode_id " +
+      "WHERE cm.topic_id = ? " +
+      "GROUP BY i.id",
     [commentModeTopicId]
   );
 
