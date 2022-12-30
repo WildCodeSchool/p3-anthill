@@ -1,1 +1,48 @@
+:root {
+  /* VARIABLES */
 
+  /* TEXT AND TITLE SIZE */
+  /* 14 px : footer, labels etc... */
+  --textXS: 0.875rem;
+  /* 16px : body text - minimal size for text */
+  --textS: 1rem;
+  /* 20px : normal text (ex: small description) */
+  --textM: 1.25rem;
+  /* 24px : small title (ex: topic title) */
+  --textL: 1.5rem;
+  /* 32px : big title */
+  --textXL: 2rem;
+
+  /* COLORS */
+  --dark-backgroung: #1f2029;
+  --medium-background: #2a2b38;
+  --light-color: #ececec;
+  --golden-color: #ffeba7;
+  --radius: 10px;
+}
+
+.topic__Card {
+  border-radius: var(--radius);
+  background-color: var(--medium-background);
+  width: 271px;
+  height: 210px;
+}
+
+.topicCard__Title {
+  text-align: start;
+  color: var(--golden-color);
+  margin: 5%;
+}
+
+.topic__CreatorName {
+  text-align: start;
+  color: var(--golden-color);
+  margin: 5%;
+}
+
+.topic__Description {
+  margin: 5%;
+  margin-top: 20%;
+  text-align: start;
+  color: var(--golden-color);
+}
