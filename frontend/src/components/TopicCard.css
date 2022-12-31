@@ -1,1 +1,25 @@
+.topicCard {
+  border-radius: var(--radius);
+  background-color: var(--medium-background);
+  width: 271px;
+  height: 210px;
+}
 
+.topicCard__Title {
+  text-align: start;
+  color: var(--golden-color);
+  margin: 5%;
+}
+
+.topicCard__CreatorName {
+  text-align: start;
+  color: var(--golden-color);
+  margin: 5%;
+}
+
+.topicCard__Description {
+  margin: 5%;
+  margin-top: 20%;
+  text-align: start;
+  color: var(--golden-color);
+}
