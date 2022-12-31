@@ -1,9 +1,9 @@
-import TopicCard from "./TopicCard";
+import TopicsPage from "./Main/TopicsPage";
 
 function Main() {
   return (
     <div>
-      <TopicCard />
+      <TopicsPage />
     </div>
   );
 }
