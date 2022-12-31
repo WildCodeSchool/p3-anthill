@@ -1,14 +1,14 @@
 import "./TopicCard.css";
 
-function TopicCard({ topicCardTitle, topicCreatorName, topicDescription }) {
+function TopicCard({ title, creatorName, description, deadline, nbIdea }) {
   return (
-    <div className="topic__Card">
-      <h1 className="topicCard__Title">{topicCardTitle}</h1>
-      <h2 className="topic__CreatorName">{topicCreatorName}</h2>
-      <p className="topic__Description">{topicDescription}</p>
-      <p>Date</p>
-      <p>Comments</p>
-    </div>
+    <article className="topicCard">
+      <h2 className="topicCard__Title">{title}</h2>
+      <div className="topicCard__CreatorName">{creatorName}</div>
+      <p className="topicCard__Description">{description}</p>
+      <div className="topicCard__Deadline">{deadline}</div>
+      <div className="topicCard__nbIdea">{nbIdea}</div>
+    </article>
   );
 }
 
