@@ -11,8 +11,11 @@
   justify-content: center;
 }
 
+.landing-page-button {
+  background-color: none;
+}
+
 .logoLogin {
-  margin: 20px;
   min-width: 10vw;
 }
 
