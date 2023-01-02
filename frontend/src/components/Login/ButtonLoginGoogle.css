@@ -1,0 +1,38 @@
+.googleBtn {
+  background: var(--golden-color);
+  border-radius: var(--radius);
+  border: none;
+  width: 120px;
+  height: 45px;
+  cursor: pointer;
+  transition: all 200ms linear;
+  color: #102770;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 200ms linear;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.googleBtn:active,
+.googleBtn:focus {
+  background-color: #102770;
+  color: var(--golden-color);
+  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+}
+
+.googleBtn:hover {
+  background-color: #102770;
+  color: var(--golden-color);
+  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+}
+
+.googleLogo {
+  height: 20px;
+  width: 20px;
+  margin-left: 5px;
+}
