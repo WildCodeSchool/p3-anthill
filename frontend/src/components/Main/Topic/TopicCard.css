@@ -25,7 +25,13 @@
 }
 
 .topicCard__Deadline {
+  display: flex;
+  align-items: center;
   color: var(--golden-color);
+}
+
+.topicCard__Deadline svg {
+  margin-right: 10px;
 }
 
 .topicCard__nbIdea {
