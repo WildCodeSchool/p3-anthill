@@ -23,3 +23,11 @@
   text-align: start;
   color: var(--golden-color);
 }
+
+.topicCard__Deadline {
+  color: var(--golden-color);
+}
+
+.topicCard__nbIdea {
+  color: var(--golden-color);
+}
