@@ -2,18 +2,13 @@ import { IoIosAt, IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
 /* import { CgArrowTopLeft } from "react-icons/cg"; */
 import ButtonLoginGoogle from "../components/Login/ButtonLoginGoogle";
+import Logo from "../components/Logo";
 import "./Login.css";
 
 function Login() {
   return (
     <div className="login">
-      <div className="logoContainer">
-        <img
-          src="/logo/logoDoré.png"
-          alt="logo anthill"
-          className="logoLogin"
-        />
-      </div>
+      <Logo />
 
       <div className="container">
         <div className="container2">
