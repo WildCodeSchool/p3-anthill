@@ -31,26 +31,19 @@
   color: var(--light-color);
 }
 
-a {
+.link {
   text-decoration: none;
   cursor: pointer;
   transition: all 200ms linear;
-  color: #102770;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-.link {
   color: #c4c3ca;
 }
 
 .link:hover {
+  text-decoration: none;
   color: var(--golden-color);
 }
 
-p {
+.forgot-text {
   font-weight: 500;
   font-size: 14px;
   line-height: 1.7;
@@ -171,7 +164,6 @@ p {
 .form-group {
   position: relative;
   display: block;
-  background-color: var(--dark-background);
 }
 
 .icons {
