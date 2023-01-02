@@ -1,9 +1,10 @@
 import "./TopicCard.css";
 import { FaCommentAlt } from "react-icons/fa";
 import { RxLapTimer } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
 function TopicCard(props) {
-  const { title, creatorName, description, nbIdea } = props;
+  const { id, title, creatorName, description, nbIdea } = props;
   let { deadline } = props;
   // Transform deadline initial format "2022-12-26T23:00:00.000Z" into split variables
   deadline = deadline.split("-");
@@ -17,7 +18,9 @@ function TopicCard(props) {
 
   return (
     <article className="topicCard">
-      <h2 className="topicCard__Title">{title}</h2>
+      <Link to={`/topic/${id}`}>
+        <h2 className="topicCard__Title">{title}</h2>
+      </Link>
       <div className="topicCard__CreatorName">{creatorName}</div>
       <p className="topicCard__Description">{description}</p>
       <div className="topicCard__Deadline">

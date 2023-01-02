@@ -11,6 +11,7 @@ function TopicsPage() {
         topics.map((topic) => (
           <TopicCard
             key={topic.id}
+            id={topic.id}
             title={topic.title}
             creatorName={topic.creator_name}
             description={topic.description}
