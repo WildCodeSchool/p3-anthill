@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const useFetch = (url) => {
+const URL = import.meta.env.VITE_BACKEND_URL;
+
+const useFetch = (path) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -9,7 +11,7 @@ const useFetch = (url) => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5000/api${url}`)
+      .get(`${URL}/api${path}`)
       .then((res) => {
         setLoading(false);
         setData(res.data);
@@ -18,7 +20,7 @@ const useFetch = (url) => {
         setLoading(false);
         setError(err);
       });
-  }, [url]);
+  }, [path]);
   return { data, loading, error };
 };
 

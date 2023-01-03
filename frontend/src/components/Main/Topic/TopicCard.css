@@ -6,7 +6,8 @@
   height: 210px;
 }
 
-.topicCard__Title {
+.topicCard__title {
+  text-align: start;
   color: var(--golden-color);
   text-align: start;
   margin: 2%;
@@ -14,14 +15,15 @@
   margin-bottom: 5px;
 }
 
-.topicCard__CreatorName {
+.topicCard__creatorName {
+  text-align: start;
   color: var(--golden-color);
   text-align: start;
   margin-left: 5px;
   margin: 2%;
 }
 
-.topicCard__Description {
+.topicCard__description {
   color: var(--golden-color);
   margin: 2%;
   margin-top: 5%;
@@ -35,7 +37,7 @@
   cursor: pointer;
 }
 
-.topicCard__Description:hover {
+.topicCard__description:hover {
   color: var(--golden-color);
   margin: 2%;
   margin-top: 5%;
@@ -45,12 +47,18 @@
   overflow: visible;
 }
 
-.topicCard__Deadline {
+.topicCard__deadline {
+  display: flex;
+  align-items: center;
   color: var(--golden-color);
   font-size: small;
   position: absolute;
   margin-left: 5px;
   margin-top: 50px;
+}
+
+.topicCard__deadline svg {
+  margin-right: 10px;
 }
 
 .topicCard__nbIdea {

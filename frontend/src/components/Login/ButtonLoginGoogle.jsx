@@ -1,10 +1,12 @@
-import { FcGoogle } from "react-icons/fc";
+import { IoLogoGoogle } from "react-icons/io";
 import handleLogin from "../../services/loginGoogle";
+import "./ButtonLoginGoogle.css";
 
 function ButtonLoginGoogle() {
   return (
-    <button type="button" onClick={handleLogin}>
-      <FcGoogle /> Login
+    <button type="button" className="googleBtn" onClick={handleLogin}>
+      With
+      <IoLogoGoogle className="googleLogo" />
     </button>
   );
 }

@@ -2,7 +2,7 @@ import TopicsPage from "./Main/TopicsPage";
 
 function Main() {
   return (
-    <div>
+    <div className="main">
       <TopicsPage />
     </div>
   );
