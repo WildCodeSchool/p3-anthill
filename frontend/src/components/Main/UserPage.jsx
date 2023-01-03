@@ -1,27 +1,12 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import useFetch from "../../services/useFetch";
 import UserCard from "./User/UserCard";
 
-const URL = import.meta.env.VITE_BACKEND_URL;
-
 export default function UserPage() {
-  const [users, setUsers] = useState([]);
-
-  async function getUser() {
-    await axios
-      .get(`${URL}/api/users`)
-      .then((res) => res.data)
-      .then((data) => {
-        setUsers(data);
-      });
-  }
-
-  useEffect(() => {
-    getUser();
-  }, []);
+  const { data: users, loading } = useFetch("/users");
 
   return (
     <div>
+      {loading && <div>LOADING...</div>}
       {users.length &&
         users.map((el) => {
           return <UserCard key={el.id} user={el} />;

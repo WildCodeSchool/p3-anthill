@@ -1,35 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import useFetch from "../../services/useFetch";
 import "./UserDetails.css";
 
-const URL = import.meta.env.VITE_BACKEND_URL;
-
 function UserDetails() {
-  const [user, setUser] = useState([]);
-  const [badges, setBadges] = useState([]);
   const { id } = useParams();
-
-  async function getBadgesFromOneUser() {
-    await axios
-      .get(`${URL}/api/badges/${id}/badges`)
-      .then((res) => res.data)
-      .then((data) => {
-        setBadges(data);
-      });
-  }
-  async function getOneUser() {
-    await axios
-      .get(`${URL}/api/users/${id}`)
-      .then((res) => res.data)
-      .then((data) => {
-        setUser(data);
-      });
-  }
-  useEffect(() => {
-    getOneUser();
-    getBadgesFromOneUser();
-  }, []);
+  const { data: userBadges, loadingBadges } = useFetch(`/badges/${id}/badges`);
+  const { data: user, loading } = useFetch(`/users/${id}`);
 
   return (
     <div className="user-detail">
@@ -42,16 +19,18 @@ function UserDetails() {
           </div>
           <div className="user-detail-greetings">
             <img className="user-detail-mood" alt={user.mood_id} />
-            {badges &&
-              badges.map((elt) => (
+            {userBadges &&
+              userBadges.map((elt) => (
                 <img className="user-detail-badge" alt={elt.picture} />
               ))}
+            {loadingBadges && <div>LOADING...</div>}
           </div>
         </div>
       </div>
       <div className="user-detail-description">
         <p>{user.description}</p>
       </div>
+      {loading && <div>LOADING...</div>}
       <div className="user-detail-contact">
         <p>Show Topics</p>
         <p>Slack</p>
