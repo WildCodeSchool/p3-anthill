@@ -6,7 +6,7 @@ async function getAll() {
   return rows;
 }
 
-async function getAllCommentMode(commentModeTopicId) {
+async function getAllOfOneTopic(commentModeTopicId) {
   const [rows] = await db.query(
     "SELECT i.id, MIN(i.title) AS idea_title, MIN(i.description) AS idea_description, MIN(i.up_vote) AS nb_up_vote, MIN(u.fullname) AS idea_creator_name, count(c.id) AS nb_comment " +
       "FROM idea AS i " +
@@ -17,7 +17,6 @@ async function getAllCommentMode(commentModeTopicId) {
       "GROUP BY i.id",
     [commentModeTopicId]
   );
-
   return rows;
 }
 
@@ -54,7 +53,7 @@ async function deleteOne(id) {
 
 module.exports = {
   getAll,
-  getAllCommentMode,
+  getAllOfOneTopic,
   getOne,
   insertOne,
   updateOne,

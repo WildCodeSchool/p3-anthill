@@ -6,6 +6,28 @@ async function list(req, res) {
   res.json(ideas);
 }
 
+async function allIdeasOfOneTopic(req, res) {
+  const ideas = await ideaModel.getAllOfOneTopic(req.params.id);
+  if (ideas.length === 0) {
+    res.sendStatus(404);
+    return;
+  }
+  res.json(ideas);
+}
+
+async function get(req, res) {
+  if (!req.params.id) {
+    res.sendStatus(400);
+    return;
+  }
+  const idea = await ideaModel.getOne(req.params.id);
+  if (!idea) {
+    res.sendStatus(404);
+    return;
+  }
+  res.json(idea);
+}
+
 async function create(req, res) {
   if (!req.body) {
     res.sendStatus(400);
@@ -15,27 +37,6 @@ async function create(req, res) {
   const insertId = await ideaModel.insertOne(req.body);
 
   res.status(201).json({ insertId });
-}
-
-async function get(req, res) {
-  if (!req.params.id) {
-    res.sendStatus(400);
-    return;
-  }
-
-  if ("detail" in req.query) {
-    const ideas = await ideaModel.getAllCommentMode(req.params.id);
-    res.json(ideas);
-    if (!ideas) {
-      res.sendStatus(404);
-    }
-  } else {
-    const idea = await ideaModel.getOne(req.params.id);
-    res.json(idea);
-    if (!idea) {
-      res.sendStatus(404);
-    }
-  }
 }
 
 async function update(req, res) {
@@ -70,4 +71,4 @@ async function remove(req, res) {
   res.sendStatus(204);
 }
 
-module.exports = { list, create, get, update, remove };
+module.exports = { list, allIdeasOfOneTopic, get, create, update, remove };
