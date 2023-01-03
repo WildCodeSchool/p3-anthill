@@ -7,7 +7,7 @@ import "./TopicCommentDetails.css";
 
 function TopicCommentDetails() {
   const { id } = useParams();
-  const { data: topic, loading } = useFetch(`/topics/${id}`);
+  const { data: topic, loading } = useFetch(`/topics/${id}?detail`);
 
   return (
     <div className="topicCommentDeatils_main">
@@ -16,7 +16,7 @@ function TopicCommentDetails() {
         <TopicInfo
           key={topic.id}
           title={topic.title}
-          creatorName={topic.creator_id}
+          creatorName={topic.creator_name}
           description={topic.description}
           deadline={topic.deadline}
         />
