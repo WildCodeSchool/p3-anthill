@@ -2,7 +2,7 @@ import useFetch from "../../services/useFetch";
 import TopicCard from "./Topic/TopicCard";
 
 function TopicsPage() {
-  const { data: topics, loading } = useFetch("/topics?card");
+  const { data: topics, loading } = useFetch("/topics/card");
 
   return (
     <div>

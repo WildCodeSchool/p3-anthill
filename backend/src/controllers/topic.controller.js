@@ -2,13 +2,13 @@ const topicModel = require("../models/topic.model");
 // const topicValidator = require("../validators/topic.validator");
 
 async function list(req, res) {
-  if ("card" in req.query) {
-    const topics = await topicModel.getAllTopicCard();
-    res.json(topics);
-  } else {
-    const topics = await topicModel.getAll();
-    res.json(topics);
-  }
+  const topics = await topicModel.getAll();
+  res.json(topics);
+}
+
+async function listCard(req, res) {
+  const topics = await topicModel.getAllTopicCard();
+  res.json(topics);
 }
 
 async function get(req, res) {
@@ -17,19 +17,26 @@ async function get(req, res) {
     return;
   }
 
-  if ("detail" in req.query) {
-    const topic = await topicModel.getOneTopicDetail(req.params.id);
-    res.json(topic);
-    if (!topic) {
-      res.sendStatus(404);
-    }
-  } else {
-    const topic = await topicModel.getOne(req.params.id);
-    res.json(topic);
-    if (!topic) {
-      res.sendStatus(404);
-    }
+  const topic = await topicModel.getOne(req.params.id);
+  if (!topic) {
+    res.sendStatus(404);
+    return;
   }
+  res.json(topic);
+}
+
+async function getTopicDetail(req, res) {
+  if (!req.params.id) {
+    res.sendStatus(400);
+    return;
+  }
+
+  const topic = await topicModel.getOneTopicDetail(req.params.id);
+  if (!topic) {
+    res.sendStatus(404);
+    return;
+  }
+  res.json(topic);
 }
 
 async function create(req, res) {
@@ -75,4 +82,12 @@ async function remove(req, res) {
   res.sendStatus(204);
 }
 
-module.exports = { list, get, create, update, remove };
+module.exports = {
+  list,
+  listCard,
+  get,
+  getTopicDetail,
+  create,
+  update,
+  remove,
+};

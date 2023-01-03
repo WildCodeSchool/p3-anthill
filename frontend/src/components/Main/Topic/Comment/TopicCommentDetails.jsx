@@ -8,7 +8,7 @@ import "./TopicCommentDetails.css";
 function TopicCommentDetails() {
   const { id } = useParams();
   const { data: topic, loading: loadingTopic } = useFetch(
-    `/topics/${id}?detail`
+    `/topics/${id}/details`
   );
   const { data: ideas, loading: loadingIdeas } = useFetch(
     `/topics/${id}/ideas`

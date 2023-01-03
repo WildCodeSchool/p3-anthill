@@ -6,7 +6,7 @@ async function list(req, res) {
   res.json(ideas);
 }
 
-async function allIdeasOfOneTopic(req, res) {
+async function listIdeasOfOneTopic(req, res) {
   const ideas = await ideaModel.getAllOfOneTopic(req.params.id);
   if (ideas.length === 0) {
     res.sendStatus(404);
@@ -71,4 +71,4 @@ async function remove(req, res) {
   res.sendStatus(204);
 }
 
-module.exports = { list, allIdeasOfOneTopic, get, create, update, remove };
+module.exports = { list, listIdeasOfOneTopic, get, create, update, remove };
