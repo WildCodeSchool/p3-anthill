@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import TopicInfo from "./TopicInfo";
+import IdeaCard from "./IdeaCard";
+import useFetch from "../../../../services/useFetch";
 
 import "./TopicCommentDetails.css";
-import useFetch from "../../../../services/useFetch";
 
 function TopicCommentDetails() {
   const { id } = useParams();
@@ -20,6 +21,12 @@ function TopicCommentDetails() {
           deadline={topic.deadline}
         />
       )}
+      <div className="ideaContainer">
+        <IdeaCard />
+        <IdeaCard />
+        <IdeaCard />
+        <IdeaCard />
+      </div>
     </div>
   );
 }
