@@ -1,33 +1,29 @@
 .topicCard {
-  margin-left: 10px;
+  color: var(--golden-color);
   border-radius: var(--radius);
   background-color: var(--medium-background);
-  max-width: 271px;
-  min-height: 210px;
+  width: 300px;
+  min-height: 250px;
+  margin-left: 2%;
+  margin-bottom: 5%;
 }
 
 .topicCard__title {
   text-align: start;
-  color: var(--golden-color);
-  text-align: start;
   margin: 2%;
-  margin-left: 5px;
-  margin-bottom: 5px;
+  margin-left: 2%;
+  margin-bottom: 5%;
 }
 
 .topicCard__creatorName {
-  text-align: start;
-  color: var(--golden-color);
   text-align: start;
   margin-left: 5px;
   margin: 2%;
 }
 
 .topicCard__description {
-  color: var(--golden-color);
-  margin: 2%;
   margin-top: 5%;
-  margin-left: 5px;
+  margin-left: 2%;
   text-align: start;
   font-size: small;
   overflow: hidden;
@@ -38,33 +34,33 @@
 }
 
 .topicCard__description:hover {
-  color: var(--golden-color);
-  margin: 2%;
-  margin-top: 5%;
-  margin-left: 5px;
+  display: flex;
+  align-items: center;
   text-align: start;
   font-size: small;
   overflow: visible;
 }
 
+.topicCard__bottom {
+  padding: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .topicCard__deadline {
   display: flex;
   align-items: center;
-  color: var(--golden-color);
+  justify-content: flex-start;
   font-size: small;
-  position: absolute;
-  margin-left: 5px;
-  margin-top: 50px;
-}
-
-.topicCard__deadline svg {
-  margin-right: 10px;
+  margin-top: 30%;
 }
 
 .topicCard__nbIdea {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   color: var(--golden-color);
   font-size: small;
-  position: absolute;
-  margin-left: 235px;
-  margin-top: 50px;
+  margin-top: 30%;
 }

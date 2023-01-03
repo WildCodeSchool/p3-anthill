@@ -3,21 +3,38 @@
   padding: 2%;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
-  background-color: var(--medium-background);
-  max-width: 989px;
-  min-height: 100px;
-  border-radius: var(--radius);
-}
-
-.topicInfo__description {
-  display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .topicInfo__deadline {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  font-size: small;
+  align-items: center;
+}
+
+.ideaCard {
+  color: var(--golden-color);
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--medium-background);
+  border-radius: var(--radius);
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 5%;
+}
+
+.ideaCard__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.ideaCard__description {
+  display: flex;
+  align-items: center;
+}
+
+.ideaCard__interactions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

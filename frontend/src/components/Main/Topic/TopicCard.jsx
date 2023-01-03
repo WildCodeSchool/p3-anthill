@@ -18,12 +18,14 @@ function TopicCard(props) {
       </Link>
       <div className="topicCard__creatorName">{creatorName}</div>
       <p className="topicCard__description">{description}</p>
-      <div className="topicCard__deadline">
-        <RxLapTimer />
-        <p>{`${day}/${month}/${year} à ${hour}h${minutes}`}</p>
-      </div>
-      <div className="topicCard__nbIdea">
-        {nbIdea} <FaCommentAlt />
+      <div className="topicCard__bottom">
+        <div className="topicCard__deadline">
+          <RxLapTimer />
+          <p>{`${day}/${month}/${year} à ${hour}h${minutes}`}</p>
+        </div>
+        <div className="topicCard__nbIdea">
+          {nbIdea} <FaCommentAlt />
+        </div>
       </div>
     </article>
   );
