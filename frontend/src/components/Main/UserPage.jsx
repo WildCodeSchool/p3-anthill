@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import UserCard from "./User/UserCard";
 
-export default function UserList() {
+const URL = import.meta.env.VITE_BACKEND_URL;
+
+export default function UserPage() {
   const [users, setUsers] = useState([]);
 
   async function getUser() {
     await axios
-      .get("http://localhost:5000/api/users")
+      .get(`${URL}/api/users`)
       .then((res) => res.data)
       .then((data) => {
         setUsers(data);
@@ -23,11 +24,7 @@ export default function UserList() {
     <div>
       {users.length &&
         users.map((el) => {
-          return (
-            <Link to={`/contact/${el.id}`}>
-              <UserCard key={el.id} user={el} />
-            </Link>
-          );
+          return <UserCard key={el.id} user={el} />;
         })}
     </div>
   );

@@ -1,4 +1,5 @@
 import "./UserCard.css";
+import { Link } from "react-router-dom";
 // import { useState } from "react";
 
 export default function UserCard({ user }) {
@@ -20,7 +21,9 @@ export default function UserCard({ user }) {
         <p>{user.nbr_badges} Badges</p>
       </div>
       <div className={!isClicked ? "user-contact-list" : "user-contact-grid"}>
-        <p>Profil</p>
+        <Link to={`/contact/${user.id}`}>
+          <p>Profil</p>
+        </Link>
         <p>Slack</p>
       </div>
     </div>

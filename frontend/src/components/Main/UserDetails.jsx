@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./UserDetails.css";
 
+const URL = import.meta.env.VITE_BACKEND_URL;
+
 function UserDetails() {
   const [user, setUser] = useState([]);
   const [badges, setBadges] = useState([]);
@@ -10,7 +12,7 @@ function UserDetails() {
 
   async function getBadgesFromOneUser() {
     await axios
-      .get(`http://localhost:5000/api/users/${id}/badges`)
+      .get(`${URL}/api/badges/${id}/badges`)
       .then((res) => res.data)
       .then((data) => {
         setBadges(data);
@@ -18,7 +20,7 @@ function UserDetails() {
   }
   async function getOneUser() {
     await axios
-      .get(`http://localhost:5000/api/users/${id}`)
+      .get(`${URL}/api/users/${id}`)
       .then((res) => res.data)
       .then((data) => {
         setUser(data);
