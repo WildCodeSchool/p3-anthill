@@ -5,32 +5,32 @@
   height: 210px;
 }
 
-.topicCard__Title {
+.topicCard__title {
   text-align: start;
   color: var(--golden-color);
   margin: 5%;
 }
 
-.topicCard__CreatorName {
+.topicCard__creatorName {
   text-align: start;
   color: var(--golden-color);
   margin: 5%;
 }
 
-.topicCard__Description {
+.topicCard__description {
   margin: 5%;
   margin-top: 20%;
   text-align: start;
   color: var(--golden-color);
 }
 
-.topicCard__Deadline {
+.topicCard__deadline {
   display: flex;
   align-items: center;
   color: var(--golden-color);
 }
 
-.topicCard__Deadline svg {
+.topicCard__deadline svg {
   margin-right: 10px;
 }
 

@@ -1,29 +1,24 @@
-import "./TopicCard.css";
 import { FaCommentAlt } from "react-icons/fa";
 import { RxLapTimer } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import formatDeadline from "../../../services/formatDeadline";
+
+import "./TopicCard.css";
 
 function TopicCard(props) {
-  const { id, title, creatorName, description, nbIdea } = props;
-  let { deadline } = props;
-  // Transform deadline initial format "2022-12-26T23:00:00.000Z" into split variables
-  deadline = deadline.split("-");
-  deadline[2] = deadline[2].replace("T", ".");
-  deadline[2] = deadline[2].split(".");
-  deadline[2][1] = deadline[2][1].split(":");
-  deadline = deadline.flat(2);
-  deadline.pop();
+  const { id, title, creatorName, description, deadline, nbIdea } = props;
 
-  const [year, month, day, hour, minutes] = [...deadline];
+  const formatedDeadLine = formatDeadline(deadline);
+  const [year, month, day, hour, minutes] = [...formatedDeadLine];
 
   return (
     <article className="topicCard">
       <Link to={`/topic/${id}`}>
-        <h2 className="topicCard__Title">{title}</h2>
+        <h2 className="topicCard__title">{title}</h2>
       </Link>
-      <div className="topicCard__CreatorName">{creatorName}</div>
-      <p className="topicCard__Description">{description}</p>
-      <div className="topicCard__Deadline">
+      <div className="topicCard__creatorName">{creatorName}</div>
+      <p className="topicCard__description">{description}</p>
+      <div className="topicCard__deadline">
         <RxLapTimer />
         <p>{`${day}/${month}/${year} à ${hour}h${minutes}`}</p>
       </div>
