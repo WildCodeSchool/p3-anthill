@@ -13,7 +13,7 @@ function TopicCard(props) {
 
   return (
     <article className="topicCard">
-      <Link to={`/topic/${id}`}>
+      <Link to={`/dashboard/topics/${id}`}>
         <h2 className="topicCard__title">{title}</h2>
       </Link>
       <div className="topicCard__creatorName">{creatorName}</div>
