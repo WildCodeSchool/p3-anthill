@@ -1,7 +1,7 @@
 import useFetch from "../../services/useFetch";
 import UserCard from "./User/UserCard";
 
-export default function UserPage() {
+export default function UserList() {
   const { data: users, loading } = useFetch("/users");
 
   return (
