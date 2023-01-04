@@ -1,5 +1,5 @@
 import { RxLapTimer } from "react-icons/rx";
-import formatDeadline from "../../../../services/formatDeadline";
+import formatDeadline from "../../../../../services/formatDeadline";
 
 function TopicInfo(props) {
   const { title, creatorName, description, deadline } = props;

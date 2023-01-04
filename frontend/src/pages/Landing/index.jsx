@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Landing.css";
+import "./index.css";
 
 function Landing() {
   return (
@@ -7,7 +7,7 @@ function Landing() {
       <div>
         <img
           className="logoLanding"
-          src="/logo/logoDoré.png"
+          src="/png/logoDoré.png"
           alt="logo anthill"
         />
       </div>
