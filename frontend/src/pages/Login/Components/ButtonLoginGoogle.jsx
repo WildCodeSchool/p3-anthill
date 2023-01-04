@@ -1,5 +1,5 @@
 import { IoLogoGoogle } from "react-icons/io";
-import handleLogin from "../../services/loginGoogle";
+import handleLogin from "../../../services/loginGoogle";
 import "./ButtonLoginGoogle.css";
 
 function ButtonLoginGoogle() {

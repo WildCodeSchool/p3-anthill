@@ -1,7 +1,7 @@
-import useFetch from "../../services/useFetch";
-import TopicCard from "./Topic/TopicCard";
+import useFetch from "../../../../services/useFetch";
+import TopicCard from "../../Components/TopicCard";
 
-function TopicsPage() {
+function TopicsList() {
   const { data: topics, loading } = useFetch("/topics/card");
 
   return (
@@ -23,4 +23,4 @@ function TopicsPage() {
   );
 }
 
-export default TopicsPage;
+export default TopicsList;
