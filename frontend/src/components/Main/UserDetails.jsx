@@ -21,7 +21,11 @@ function UserDetails() {
             <img className="user-detail-mood" alt={user.mood_id} />
             {userBadges &&
               userBadges.map((elt) => (
-                <img className="user-detail-badge" alt={elt.picture} />
+                <img
+                  className="user-detail-badge"
+                  alt={elt.picture}
+                  key={elt.id}
+                />
               ))}
             {loadingBadges && <div>LOADING...</div>}
           </div>
