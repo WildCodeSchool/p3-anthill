@@ -6,15 +6,9 @@ async function list(req, res) {
   res.json(topics);
 }
 
-async function create(req, res) {
-  if (!req.body) {
-    res.sendStatus(400);
-    return;
-  }
-
-  const insertId = await topicModel.insertOne(req.body);
-
-  res.status(201).json({ insertId });
+async function listCard(req, res) {
+  const topics = await topicModel.getAllTopicCard();
+  res.json(topics);
 }
 
 async function get(req, res) {
@@ -24,13 +18,36 @@ async function get(req, res) {
   }
 
   const topic = await topicModel.getOne(req.params.id);
-
   if (!topic) {
     res.sendStatus(404);
     return;
   }
-
   res.json(topic);
+}
+
+async function getTopicDetail(req, res) {
+  if (!req.params.id) {
+    res.sendStatus(400);
+    return;
+  }
+
+  const topic = await topicModel.getOneTopicDetail(req.params.id);
+  if (!topic) {
+    res.sendStatus(404);
+    return;
+  }
+  res.json(topic);
+}
+
+async function create(req, res) {
+  if (!req.body) {
+    res.sendStatus(400);
+    return;
+  }
+
+  const insertId = await topicModel.insertOne(req.body);
+
+  res.status(201).json({ insertId });
 }
 
 async function update(req, res) {
@@ -65,4 +82,12 @@ async function remove(req, res) {
   res.sendStatus(204);
 }
 
-module.exports = { list, create, get, update, remove };
+module.exports = {
+  list,
+  listCard,
+  get,
+  getTopicDetail,
+  create,
+  update,
+  remove,
+};

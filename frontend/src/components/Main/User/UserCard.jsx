@@ -25,7 +25,7 @@ export default function UserCard({ user }) {
           !isClicked ? "userCard__contactList" : "userCard__contactGrid"
         }
       >
-        <Link to={`/contact/${user.id}`}>
+        <Link to={`/dashboard/users/${user.id}`}>
           <p>Profil</p>
         </Link>
         <p>Slack</p>
