@@ -1,14 +1,13 @@
 import "./UserCard.css";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-// import { useState } from "react";
+import ToggleModeContext from "../../../contexts/ToggleModeContext";
 
 export default function UserCard({ user }) {
-  // il faudra changer ça en un useContext pour vérifier si le bouton Grid est cliqué
-  // const [isClicked, setIsClicked] = useState(false);
-  const isClicked = false;
+  const { toggleMode } = useContext(ToggleModeContext);
 
   return (
-    <div className={!isClicked ? "userCard__list" : "userCard__grid"}>
+    <div className={!toggleMode ? "userCard__list" : "userCard__grid"}>
       <div className="userCard__header">
         <img className="userCard__picture" alt={user.picture} />
         <div className="userCard__names">
@@ -22,7 +21,7 @@ export default function UserCard({ user }) {
       </div>
       <div
         className={
-          !isClicked ? "userCard__contactList" : "userCard__contactGrid"
+          !toggleMode ? "userCard__contactList" : "userCard__contactGrid"
         }
       >
         <Link to={`/dashboard/users/${user.id}`}>
