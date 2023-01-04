@@ -6,6 +6,25 @@ async function getAll() {
   return rows;
 }
 
+async function getAllOfOneTopic(commentModeTopicId) {
+  const [rows] = await db.query(
+    "SELECT i.id, MIN(i.title) AS idea_title, MIN(i.description) AS idea_description, MIN(i.up_vote) AS nb_up_vote, MIN(u.fullname) AS idea_creator_name, count(c.id) AS nb_comment " +
+      "FROM idea AS i " +
+      "LEFT JOIN user AS u ON u.id = i.creator_id " +
+      "LEFT JOIN comment AS c ON c.idea_id = i.id " +
+      "LEFT JOIN comment_mode AS cm ON cm.id = i.comment_mode_id " +
+      "WHERE cm.topic_id = ? " +
+      "GROUP BY i.id",
+    [commentModeTopicId]
+  );
+  return rows;
+}
+
+async function getOne(id) {
+  const [rows] = await db.query("SELECT * FROM idea WHERE id = ?", [id]);
+  return rows[0];
+}
+
 async function insertOne(idea) {
   const { title, description, upVote, commentModeId, creatorId } = idea;
   const [result] = await db.query(
@@ -14,11 +33,6 @@ async function insertOne(idea) {
   );
 
   return result.insertId;
-}
-
-async function getOne(id) {
-  const [rows] = await db.query("SELECT * FROM idea WHERE id = ?", [id]);
-  return rows[0];
 }
 
 async function updateOne(id, idea) {
@@ -37,4 +51,11 @@ async function deleteOne(id) {
   return result.affectedRows;
 }
 
-module.exports = { getAll, insertOne, getOne, updateOne, deleteOne };
+module.exports = {
+  getAll,
+  getAllOfOneTopic,
+  getOne,
+  insertOne,
+  updateOne,
+  deleteOne,
+};

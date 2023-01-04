@@ -1,0 +1,66 @@
+.topicCard {
+  color: var(--golden-color);
+  border-radius: var(--radius);
+  background-color: var(--medium-background);
+  width: 300px;
+  min-height: 250px;
+  margin-left: 2%;
+  margin-bottom: 5%;
+}
+
+.topicCard__title {
+  text-align: start;
+  margin: 2%;
+  margin-left: 2%;
+  margin-bottom: 5%;
+}
+
+.topicCard__creatorName {
+  text-align: start;
+  margin-left: 5px;
+  margin: 2%;
+}
+
+.topicCard__description {
+  margin-top: 5%;
+  margin-left: 2%;
+  text-align: start;
+  font-size: small;
+  overflow: hidden;
+  max-width: 15ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.topicCard__description:hover {
+  display: flex;
+  align-items: center;
+  text-align: start;
+  font-size: small;
+  overflow: visible;
+}
+
+.topicCard__bottom {
+  padding: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.topicCard__deadline {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: small;
+  margin-top: 30%;
+}
+
+.topicCard__nbIdea {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--golden-color);
+  font-size: small;
+  margin-top: 30%;
+}

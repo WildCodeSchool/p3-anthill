@@ -1,6 +1,7 @@
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Main from "../components/Main";
 import Sidebar from "../components/Sidebar";
+
 import "./Dashboard.css";
 
 function Dashboard() {
@@ -8,7 +9,7 @@ function Dashboard() {
     <div className="dashboard">
       <Navbar />
       <Sidebar />
-      <Main />
+      <Outlet />
     </div>
   );
 }
