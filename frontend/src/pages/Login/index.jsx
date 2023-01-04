@@ -1,9 +1,9 @@
 import { IoIosAt, IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
 /* import { CgArrowTopLeft } from "react-icons/cg"; */
-import ButtonLoginGoogle from "../components/Login/ButtonLoginGoogle";
-import Logo from "../components/Logo";
-import "./Login.css";
+import ButtonLoginGoogle from "./Components/ButtonLoginGoogle";
+import Logo from "../../assets/Logo/Logo";
+import "./index.css";
 
 function Login() {
   return (
