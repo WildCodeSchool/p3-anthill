@@ -1,15 +1,17 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
+import Navbar from "./Layout/Navbar";
+import Sidebar from "./Layout/Sidebar";
 
-import "./Dashboard.css";
+import "./index.css";
 
 function Dashboard() {
   return (
     <div className="dashboard">
       <Navbar />
       <Sidebar />
-      <Outlet />
+      <div className="outlet">
+        <Outlet />
+      </div>
     </div>
   );
 }

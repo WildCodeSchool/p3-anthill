@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import TopicInfo from "./TopicInfo";
-import IdeaCard from "./IdeaCard";
+import TopicInfo from "./Components/TopicInfo";
+import IdeaCard from "./Components/IdeaCard";
 import useFetch from "../../../../services/useFetch";
 
-import "./TopicCommentDetails.css";
+import "./index.css";
 
 function TopicCommentDetails() {
   const { id } = useParams();

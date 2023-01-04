@@ -3,11 +3,11 @@ import "./App.css";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import TopicCommentDetails from "./components/Main/Topic/Comment/TopicCommentDetails";
-import Main from "./components/Main";
-import TopicsPage from "./components/Main/TopicsPage";
-import UserList from "./components/Main/UserList";
-import UserDetails from "./components/Main/UserDetails";
+import Main from "./pages/Dashboard/Layout/Main";
+import TopicsPage from "./pages/Dashboard/Pages/TopicList";
+import TopicCommentDetails from "./pages/Dashboard/Pages/TopicCommentDetails";
+import UserList from "./pages/Dashboard/Pages/UserList";
+import UserDetails from "./pages/Dashboard/Pages/UserDetails";
 
 function App() {
   return (

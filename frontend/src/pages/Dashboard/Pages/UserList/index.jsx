@@ -1,5 +1,5 @@
-import useFetch from "../../services/useFetch";
-import UserCard from "./User/UserCard";
+import useFetch from "../../../../services/useFetch";
+import UserCard from "../../Components/UserCard";
 
 export default function UserList() {
   const { data: users, loading } = useFetch("/users");

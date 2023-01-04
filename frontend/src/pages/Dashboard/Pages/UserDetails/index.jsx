@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import useFetch from "../../services/useFetch";
-import "./UserDetails.css";
+import useFetch from "../../../../services/useFetch";
+import "./index.css";
 
 function UserDetails() {
   const { id } = useParams();
