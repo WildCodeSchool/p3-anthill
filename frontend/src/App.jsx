@@ -3,9 +3,9 @@ import "./App.css";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import TopicCommentDetails from "./pages/Dashboard/Pages/TopicCommentDetails";
 import Main from "./pages/Dashboard/Layout/Main";
 import TopicsPage from "./pages/Dashboard/Pages/TopicList";
+import TopicCommentDetails from "./pages/Dashboard/Pages/TopicCommentDetails";
 
 function App() {
   return (
