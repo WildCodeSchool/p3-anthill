@@ -8,19 +8,23 @@ export default function UserCard({ user }) {
   const isClicked = false;
 
   return (
-    <div className={!isClicked ? "user-list" : "user-grid"}>
-      <div className="user-header">
-        <img className="user-picture" alt={user.picture} />
-        <div className="user-names">
-          <p className="user-name">{user.fullname}</p>
-          <p className="user-pseudo">{user.pseudo}</p>
+    <div className={!isClicked ? "userCard__list" : "userCard__grid"}>
+      <div className="userCard__header">
+        <img className="userCard__picture" alt={user.picture} />
+        <div className="userCard__names">
+          <p className="userCard__name">{user.fullname}</p>
+          <p className="userCard__pseudo">{user.pseudo}</p>
         </div>
       </div>
-      <div className="user-greetings">
-        <img className="user-mood" alt={user.mood_id} />
+      <div className="userCard__greetings">
+        <img className="userCard__mood" alt={user.mood_id} />
         <p>{user.nbr_badges} Badges</p>
       </div>
-      <div className={!isClicked ? "user-contact-list" : "user-contact-grid"}>
+      <div
+        className={
+          !isClicked ? "userCard__contactList" : "userCard__contactGrid"
+        }
+      >
         <Link to={`/contact/${user.id}`}>
           <p>Profil</p>
         </Link>

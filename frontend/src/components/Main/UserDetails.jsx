@@ -9,20 +9,20 @@ function UserDetails() {
   const { data: user, loading } = useFetch(`/users/${id}`);
 
   return (
-    <div className="user-detail">
-      <div className="user-detail-header">
-        <img className="user-detail-picture" alt={user.picture} />
-        <div className="user-detail-infos">
-          <div className="user-detail-names">
-            <h3 className="user-detail-name">{user.fullname}</h3>
-            <p className="user-detail-pseudo">{user.pseudo}</p>
+    <div className="userDetail">
+      <div className="userDetail__header">
+        <img className="userDetail__picture" alt={user.picture} />
+        <div className="userDetail__infos">
+          <div className="userDetail__names">
+            <h3 className="userDetail__name">{user.fullname}</h3>
+            <p className="userDetail__pseudo">{user.pseudo}</p>
           </div>
-          <div className="user-detail-greetings">
-            <img className="user-detail-mood" alt={user.mood_id} />
+          <div className="userDetail__greetings">
+            <img className="userDetail__mood" alt={user.mood_id} />
             {userBadges &&
               userBadges.map((elt) => (
                 <img
-                  className="user-detail-badge"
+                  className="userDetail__badge"
                   alt={elt.picture}
                   key={elt.id}
                 />
@@ -31,11 +31,11 @@ function UserDetails() {
           </div>
         </div>
       </div>
-      <div className="user-detail-description">
+      <div className="userDetail__description">
         <p>{user.description}</p>
       </div>
       {loading && <div>LOADING...</div>}
-      <div className="user-detail-contact">
+      <div className="userDetail__contact">
         <p>Show Topics</p>
         <p>Slack</p>
       </div>
