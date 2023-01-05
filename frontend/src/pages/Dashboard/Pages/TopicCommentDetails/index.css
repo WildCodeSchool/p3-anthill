@@ -38,3 +38,43 @@
   justify-content: space-around;
   align-items: center;
 }
+
+/******************** IdeaCreationCard CSS ********************/
+
+.ideaCreationCard {
+  color: var(--golden-color);
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--medium-background);
+  border-radius: var(--radius);
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 5%;
+}
+
+.ideaCreationCard__form {
+  width: 80%;
+}
+
+.ideaCreationCard__form > input {
+  margin: 0 3%;
+}
+
+.ideaCreationCard__form > #descriptionInput {
+  width: 30%;
+}
+
+.ideaCreationCard__interactions {
+  width: 10%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#ideaCreationCard__button {
+  height: 100%;
+  width: 10%;
+  border-radius: var(--radius);
+  border: 2px solid var(--dark-background);
+  background-color: var(--golden-color);
+  font-weight: bold;
+}

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import TopicInfo from "./Components/TopicInfo";
 import IdeaCard from "./Components/IdeaCard";
+import IdeaCreationCard from "./Components/IdeaCreationCard";
 import useFetch from "../../../../services/useFetch";
 
 import "./index.css";
@@ -24,6 +25,9 @@ function TopicCommentDetails() {
           deadline={topic.deadline}
         />
       )}
+      <div>
+        <IdeaCreationCard />
+      </div>
       <div className="ideaContainer">
         {ideas &&
           ideas.map((idea) => (
