@@ -22,7 +22,7 @@ function TopicCard(props) {
         <div className="topicCard__deadline">
           {" "}
           <RxLapTimer />
-          <p>{`${day}/${month}/${year} à ${hour}h${minutes}`}</p>
+          <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>
         </div>
         <div className="topicCard__nbIdea">
           {nbIdea} <FaCommentAlt />
