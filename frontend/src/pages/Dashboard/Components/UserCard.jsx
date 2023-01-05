@@ -1,10 +1,7 @@
 import "./UserCard.css";
 import { Link } from "react-router-dom";
-// import { useState } from "react";
 
 export default function UserCard({ user }) {
-  // il faudra changer ça en un useContext pour vérifier si le bouton Grid est cliqué
-  // const [isClicked, setIsClicked] = useState(false);
   const isClicked = false;
 
   return (

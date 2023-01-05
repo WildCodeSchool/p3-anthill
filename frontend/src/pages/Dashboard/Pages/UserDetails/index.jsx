@@ -5,8 +5,10 @@ import "./index.css";
 
 function UserDetails() {
   const { id } = useParams();
-  const { data: userBadges, loadingBadges } = useFetch(`/badges/${id}/badges`);
-  const { data: user, loading } = useFetch(`/users/${id}`);
+  const { data: userBadges, loading: loadingBadges } = useFetch(
+    `/badges/${id}/badges`
+  );
+  const { data: user, loading: loadingUser } = useFetch(`/users/${id}`);
 
   return (
     <div className="userDetail">
@@ -34,7 +36,7 @@ function UserDetails() {
       <div className="userDetail__description">
         <p>{user.description}</p>
       </div>
-      {loading && <div>LOADING...</div>}
+      {loadingUser && <div>LOADING...</div>}
       <div className="userDetail__contact">
         <p>Show Topics</p>
         <p>Slack</p>
