@@ -183,7 +183,7 @@
 }
 
 .form-style {
-  margin: 5px;
+  margin: 0.7rem;
   padding: 13px 20px;
   padding-left: 55px;
   height: 25px;
@@ -307,4 +307,72 @@
   height: 26px;
   width: auto;
   display: block;
+}
+
+.form-group__input {
+  position: relative;
+}
+
+/*** Check email valid?                      ***/
+
+.form-group__error {
+  display: none;
+  white-space: nowrap;
+  position: absolute;
+  top: calc(var(--textXS) + 100%);
+  left: 50%;
+  color: var(-golden-color);
+  transform: translate(-50%, 0) scale(1);
+  font-size: var(--font-size-0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .form-group:has(:valid) label span {
+    animation: wave 0.25s calc(var(--index) * 0.05s);
+  }
+
+  .form-group:has(:invalid:not(:focus)) {
+    animation: shake 0.2s;
+  }
+
+  .form-group__error {
+    animation: show-error 0.1s 0.2s both;
+  }
+
+  .form-group:has(:placeholder-shown:not(:focus)),
+  .form-group:has(:placeholder-shown:not(:focus)) label span {
+    animation: none;
+  }
+
+  @keyframes show-error {
+    0% {
+      transform: translate(-50%, -100%) scale(0);
+    }
+  }
+
+  @keyframes wave {
+    50% {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translateX(-2%);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translateX(2%);
+    }
+  }
 }
