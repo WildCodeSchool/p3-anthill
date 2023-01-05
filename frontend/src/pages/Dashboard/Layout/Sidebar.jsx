@@ -6,8 +6,6 @@ import { TbCrown } from "react-icons/tb";
 import { GiAnt } from "react-icons/gi";
 import { RiContactsLine } from "react-icons/ri";
 
-import Logo from "../../../assets/Logo/Logo";
-
 import "./Sidebar.css";
 
 function Sidebar({ name, photo }) {
@@ -41,10 +39,7 @@ function Sidebar({ name, photo }) {
   };
 
   return (
-    <div className="side-bar">
-      <div className="nav-logo">
-        <Logo />
-      </div>
+    <aside className="side-bar">
       <div className="user-profile-area">
         <div className="topic-manager">Welcome back</div>
         <div className="side-wrapper">
@@ -56,38 +51,46 @@ function Sidebar({ name, photo }) {
         </div>
         <ul className="sidebar-list">
           <li ref={ref1} className="sidebar-listItem">
-            <button type="button" onClick={handleIsActive}>
-              <TbCrown className="icon" />
-              <span className="sidebar-listItemText">My Topics</span>
-            </button>
+            <Link to="/dashboard?">
+              <button type="button" onClick={handleIsActive}>
+                <TbCrown className="icon" />
+                <span className="sidebar-listItemText">My Topics</span>
+              </button>
+            </Link>
           </li>
           <li ref={ref2} className="sidebar-listItem">
-            <button type="button" onClick={handleIsActive}>
-              <MdAllInclusive className="icon" />
-              <span className="sidebar-listItemText">All Topics</span>
-            </button>
+            <Link to="topics">
+              <button type="button" onClick={handleIsActive}>
+                <MdAllInclusive className="icon" />
+                <span className="sidebar-listItemText">All Topics</span>
+              </button>
+            </Link>
           </li>
           <li ref={ref3} className="sidebar-listItem">
-            <button type="button" onClick={handleIsActive}>
-              <GiAnt className="icon" />
-              <span className="sidebar-listItemText">Co. Topics</span>
-            </button>
+            <Link to="/dashboard?">
+              <button type="button" onClick={handleIsActive}>
+                <GiAnt className="icon" />
+                <span className="sidebar-listItemText">Co. Topics</span>
+              </button>
+            </Link>
           </li>
           <li ref={ref4} className="sidebar-listItem">
-            <button type="button" onClick={handleIsActive}>
-              <RiContactsLine className="icon" />
-              <span className="sidebar-listItemText">Contacts</span>
-            </button>
+            <Link to="users">
+              <button type="button" onClick={handleIsActive}>
+                <RiContactsLine className="icon" />
+                <span className="sidebar-listItemText">Contacts</span>
+              </button>
+            </Link>
           </li>
         </ul>
 
         <button type="button" className="signOut-btn">
           <Link to="/login" className="signOut-btn">
-            Disconnection
+            Log Out
           </Link>
         </button>
       </div>
-    </div>
+    </aside>
   );
 }
 

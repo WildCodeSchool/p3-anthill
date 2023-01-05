@@ -15,15 +15,6 @@
   transition: width 0.3s ease-in-out;
 }
 
-.nav-logo {
-  padding-bottom: 1rem;
-}
-
-.nav-logo .logoLogin {
-  padding-left: 3.3rem;
-  width: 60%;
-}
-
 .topic-manager {
   font-size: var(--textL);
   font-weight: 700;
@@ -70,11 +61,15 @@
   margin: 12px 0 0;
 }
 
+.sidebar-list a {
+  width: 80%;
+}
+
 .sidebar-list button {
   background-color: transparent;
   margin-left: 2rem;
   font-size: var(--textM);
-  width: 80%;
+  width: 100%;
   padding: 0.3rem;
   border-radius: 4px;
   display: flex;

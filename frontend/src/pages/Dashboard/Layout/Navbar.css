@@ -1,3 +1,8 @@
+.nav-bar .logoContainer {
+  width: 138px;
+  margin: 10px 0 10px 92px;
+}
+
 .nav-right {
   display: flex;
   align-items: center;
@@ -88,4 +93,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  display: none;
 }

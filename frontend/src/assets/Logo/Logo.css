@@ -1,10 +1,9 @@
 .logoContainer {
-  width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .logoLogin {
-  width: 13rem;
-  margin-top: 15px;
+  height: 100%;
+  width: 100%;
 }

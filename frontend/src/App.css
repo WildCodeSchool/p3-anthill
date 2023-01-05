@@ -9,4 +9,5 @@ body {
   background-color: var(--dark-background);
   font-size: var(--textM);
   background-color: var(--dark-background);
+  overscroll-behavior: none;
 }

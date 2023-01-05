@@ -2,12 +2,15 @@ import useFetch from "../../../../services/useFetch";
 import TopicCard from "../../Components/TopicCard";
 import ToggleModeButtons from "../../Components/ToggleModeButtons";
 
+import "./index.css";
+
 function TopicsList() {
   const { data: topics, loading } = useFetch("/topics/card");
 
   return (
     <div>
       <ToggleModeButtons />
+    <div className="topicsList">
       {loading && <div>LOADING...</div>}
       {topics &&
         topics.map((topic) => (
@@ -21,6 +24,7 @@ function TopicsList() {
             nbIdea={topic.nb_idea}
           />
         ))}
+    </div>
     </div>
   );
 }
