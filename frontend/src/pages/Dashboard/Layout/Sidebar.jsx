@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { useRef } from "react";
 import { MdAllInclusive } from "react-icons/md";
 import { TbCrown } from "react-icons/tb";
@@ -78,8 +80,11 @@ function Sidebar({ name, photo }) {
             </button>
           </li>
         </ul>
+
         <button type="button" className="signOut-btn">
-          Disconnection
+          <Link to="/login" className="signOut-btn">
+            Disconnection
+          </Link>
         </button>
       </div>
     </div>

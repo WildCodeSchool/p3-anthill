@@ -1,15 +1,9 @@
-/* .side-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
 .user-profile-area {
   background-color: var(--medium-background);
   border-radius: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(15px);
-  margin-left: 1.2rem;
   width: 290px;
   height: 90vh;
   display: flex;
@@ -144,6 +138,7 @@
   color: var(--light-color);
   font-size: var(--textS);
   padding: 0.6rem;
+  text-decoration: none;
 }
 
 .signOut-btn:hover {
