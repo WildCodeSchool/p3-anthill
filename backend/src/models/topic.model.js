@@ -20,11 +20,6 @@ async function getAllTopicCard() {
 }
 
 async function getOne(id) {
-  const [rows] = await db.query("SELECT * FROM topic WHERE id = ?", [id]);
-  return rows[0];
-}
-
-async function getOneTopicDetail(id) {
   const [rows] = await db.query(
     "SELECT t.id, t.title, u.fullname AS creator_name, t.description, t.deadline, cm.topic_id AS comment_mode_topic_id " +
       "FROM topic AS t " +
@@ -33,6 +28,11 @@ async function getOneTopicDetail(id) {
       "WHERE t.id = ?",
     [id]
   );
+
+  if (rows.length === 0) {
+    return null;
+  }
+
   return rows[0];
 }
 
@@ -42,6 +42,10 @@ async function insertOne(topic) {
     "INSERT INTO topic (deadline, description, title) VALUES (?, ?, ?)",
     [deadline, description, title]
   );
+
+  if (result.length === 0) {
+    return null;
+  }
 
   return result.insertId;
 }
@@ -54,11 +58,19 @@ async function updateOne(id, topic) {
     [deadline, description, isPrivate, creatorId, title, isClosed, id]
   );
 
+  if (result.length === 0) {
+    return null;
+  }
+
   return result.affectedRows;
 }
 
 async function deleteOne(id) {
   const [result] = await db.query("DELETE FROM topic WHERE id = ?", [id]);
+
+  if (result.length === 0) {
+    return null;
+  }
 
   return result.affectedRows;
 }
@@ -67,7 +79,6 @@ module.exports = {
   getAll,
   getAllTopicCard,
   getOne,
-  getOneTopicDetail,
   insertOne,
   updateOne,
   deleteOne,
