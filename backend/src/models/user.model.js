@@ -2,11 +2,10 @@ const { db } = require("./db");
 
 async function getAll() {
   const [rows] = await db.query(
-    "SELECT * " +
-      "FROM user " +
-      "INNER JOIN " +
-      "(SELECT user_id, count(badge_id) AS nbr_badges FROM user_badge GROUP BY user_badge.user_id) AS ub " +
-      "ON ub.user_id = user.id"
+    "SELECT u.id, u.picture, u.pseudo, u.fullname, u.mood_id, COUNT(ub.badge_id) AS nbr_badges " +
+      "FROM user AS u " +
+      "INNER JOIN user_badge AS ub ON ub.user_id = u.id " +
+      "GROUP BY u.id "
   );
 
   return rows;

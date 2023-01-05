@@ -37,7 +37,7 @@ async function deleteOne(id) {
   return result.affectedRows;
 }
 
-async function getBadgesForOneUser(id) {
+async function getUserBadges(id) {
   const [rows] = await db.query(
     "SELECT * FROM badge INNER JOIN user_badge ON user_badge.badge_id = badge.id WHERE user_id = ?",
     [id]
@@ -51,5 +51,5 @@ module.exports = {
   getOne,
   updateOne,
   deleteOne,
-  getBadgesForOneUser,
+  getUserBadges,
 };
