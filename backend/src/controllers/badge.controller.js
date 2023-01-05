@@ -65,20 +65,20 @@ async function remove(req, res) {
   res.sendStatus(204);
 }
 
-async function getBadgesForOneUser(req, res) {
+async function getUserBadges(req, res) {
   if (!req.params.id) {
     res.sendStatus(400);
     return;
   }
 
-  const badgesByUser = await badgeModel.getBadgesForOneUser(req.params.id);
+  const userBadges = await badgeModel.getUserBadges(req.params.id);
 
-  if (!badgesByUser) {
+  if (!userBadges) {
     res.sendStatus(404);
     return;
   }
 
-  res.json(badgesByUser);
+  res.json(userBadges);
 }
 
-module.exports = { list, create, get, update, remove, getBadgesForOneUser };
+module.exports = { list, create, get, update, remove, getUserBadges };
