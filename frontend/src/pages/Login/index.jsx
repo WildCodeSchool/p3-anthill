@@ -1,3 +1,5 @@
+import { useState } from "react";
+import axios from "axios";
 import { IoIosAt, IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
 /* import { CgArrowTopLeft } from "react-icons/cg"; */
@@ -6,6 +8,36 @@ import Logo from "../../assets/Logo/Logo";
 import "./index.css";
 
 function Login() {
+  const [usernameReg, setUsernameReg] = useState("");
+  const [emailReg, setEmailReg] = useState("");
+  const [passwordReg, setPasswordReg] = useState("");
+
+  const register = () => {
+    axios
+      .post("http://localhost:5000/api/users", {
+        email: emailReg,
+        fullname: usernameReg,
+        password: passwordReg,
+      })
+      .then((res) => {
+        setEmailReg(res);
+        setUsernameReg(res);
+        setPasswordReg(res);
+      });
+  };
+
+  const handleName = (e) => {
+    setUsernameReg(e.target.value);
+  };
+
+  const handleMail = (e) => {
+    setEmailReg(e.target.value);
+  };
+
+  const handlePassword = (e) => {
+    setPasswordReg(e.target.value);
+  };
+
   return (
     <div className="login">
       <Logo />
@@ -78,6 +110,7 @@ function Login() {
                         placeholder="Your Full Name"
                         id="logname"
                         autoComplete="off"
+                        onChange={handleName}
                       />
                     </div>
                     <div className="form-group">
@@ -89,6 +122,7 @@ function Login() {
                         placeholder="Your Email"
                         id="logemail"
                         autoComplete="off"
+                        onChange={handleMail}
                       />
                     </div>
                     <div className="form-group">
@@ -100,10 +134,11 @@ function Login() {
                         placeholder="Your Password"
                         id="logpass"
                         autoComplete="off"
+                        onChange={handlePassword}
                       />
                     </div>
                     <div className="buttons">
-                      <button type="button" className="btn">
+                      <button onClick={register} type="button" className="btn">
                         submit
                       </button>
                       <ButtonLoginGoogle />

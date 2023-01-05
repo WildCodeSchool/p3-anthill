@@ -26,11 +26,11 @@ INSERT INTO mood (name, emoji) VALUES ("mood_name_1", "mood_emoji_1"), ("mood_na
 
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `picture` varchar(255) NOT NULL,
+  `picture` varchar(255) NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(600) DEFAULT NULL,
   `fullname` varchar(255) NOT NULL,
-  `googleUserId` varchar(255) NOT NULL,
+  `googleUserId` varchar(255) NULL,
   `mood_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
    CONSTRAINT `fk_user_mood` FOREIGN KEY (`mood_id`) REFERENCES `mood` (`id`)
