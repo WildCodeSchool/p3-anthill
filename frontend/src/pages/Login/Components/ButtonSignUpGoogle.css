@@ -4,15 +4,19 @@
   border: none;
   width: 120px;
   height: 45px;
+  transition: all 200ms linear;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
+}
+
+.googleBtn > * {
   cursor: pointer;
   transition: all 200ms linear;
   color: #102770;
   font-size: 13px;
   font-weight: 600;
+  text-decoration: none;
   text-transform: uppercase;
-  transition: all 200ms linear;
-  letter-spacing: 1px;
-  box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,6 +31,9 @@
 
 .googleBtn:hover {
   background-color: #102770;
+}
+
+.googleBtn:hover > * {
   color: var(--golden-color);
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }

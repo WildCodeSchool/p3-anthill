@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { IoLogoGoogle } from "react-icons/io";
+import "./ButtonSignUpGoogle.css";
 import handleLogin from "../../../services/loginGoogle";
 
-function ButtonLoginGoogle() {
+function ButtonSignUpGoogle() {
   return (
     <button type="button" className="googleBtn" onClick={handleLogin}>
       <Link to="/dashboard">
@@ -13,4 +14,4 @@ function ButtonLoginGoogle() {
   );
 }
 
-export default ButtonLoginGoogle;
+export default ButtonSignUpGoogle;

@@ -3,7 +3,7 @@ import axios from "axios";
 import { IoIosAt, IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
 /* import { CgArrowTopLeft } from "react-icons/cg"; */
-import ButtonLoginGoogle from "./Components/ButtonLoginGoogle";
+import ButtonSignUpGoogle from "./Components/ButtonSignUpGoogle";
 import Logo from "../../assets/Logo/Logo";
 import "./index.css";
 
@@ -30,7 +30,7 @@ function Login() {
     setUsernameReg(e.target.value);
   };
 
-  const handleMail = (e) => {
+  const handleEmail = (e) => {
     setEmailReg(e.target.value);
   };
 
@@ -87,7 +87,6 @@ function Login() {
                       <button type="button" className="btn">
                         submit
                       </button>
-                      <ButtonLoginGoogle />
                     </div>
                     <p className="forgot-text">
                       <a href="#0" className="link">
@@ -122,7 +121,7 @@ function Login() {
                         placeholder="Your Email"
                         id="logemail"
                         autoComplete="off"
-                        onChange={handleMail}
+                        onChange={handleEmail}
                       />
                     </div>
                     <div className="form-group">
@@ -141,7 +140,7 @@ function Login() {
                       <button onClick={register} type="button" className="btn">
                         submit
                       </button>
-                      <ButtonLoginGoogle />
+                      <ButtonSignUpGoogle />
                     </div>
                   </div>
                 </div>
