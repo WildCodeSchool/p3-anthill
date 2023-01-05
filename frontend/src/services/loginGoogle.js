@@ -14,7 +14,7 @@ const handleCallbackResponse = (response) => {
     JSON.stringify({ googleUserId, fullname, email, picture })
   );
   const data = JSON.parse(localStorage.getItem("currentUser"));
-  console.log(data);
+
   axios.post("http://localhost:5000/api/users", {
     email: data.email,
     fullname: data.fullname,
