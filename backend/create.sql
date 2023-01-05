@@ -42,10 +42,10 @@ CREATE TABLE `topic` (
   `id` int NOT NULL AUTO_INCREMENT,
   `deadline` datetime DEFAULT NULL,
   `description` varchar(500) NOT NULL,
-  `is_private` tinyint(1) NOT NULL,
-  `creator_id` int NOT NULL,
+  `is_private` tinyint(1) NOT NULL DEFAULT 0,
+  `creator_id` int NOT NULL DEFAULT 0,
   `title` varchar(255) NOT NULL,
-  `is_closed` tinyint(1) NOT NULL,
+  `is_closed` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_topic_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`)
 ); 
