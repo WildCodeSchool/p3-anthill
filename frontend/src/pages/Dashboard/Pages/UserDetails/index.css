@@ -1,0 +1,38 @@
+.userDetail {
+  background-color: var(--medium-background);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.userDetail__header {
+  display: flex;
+}
+
+.userDetail__names > h3 {
+  color: var(--golden-color);
+}
+
+.userDetail__names > p {
+  color: var(--light-color);
+}
+
+.userDetail__description > p {
+  color: var(--light-color);
+  width: 100%;
+  text-align: justify;
+}
+
+.userDetail__contact {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.userDetail__contact > p {
+  color: var(--light-color);
+  text-decoration: underline;
+}
