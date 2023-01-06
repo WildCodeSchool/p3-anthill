@@ -3,7 +3,10 @@ import TopicCard from "../../Components/TopicCard";
 import ToggleModeButtons from "../../Components/ToggleModeButtons";
 
 function TopicsList() {
-  const { data: topics, loading } = useFetch("/topics/card");
+  const { data: topics, loading } = useFetch({
+    path: "/topics/card",
+    method: "get",
+  });
 
   return (
     <div>

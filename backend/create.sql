@@ -90,7 +90,7 @@ CREATE TABLE `idea` (
   `description` varchar(200) DEFAULT NULL,
   `up_vote` int DEFAULT 0,
   `comment_mode_id` int DEFAULT NULL,
-  `creator_id` int NOT NULL,
+  `creator_id` int NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 ); 
 
