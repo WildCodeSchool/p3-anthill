@@ -25,20 +25,6 @@ async function get(req, res) {
   res.json(topic);
 }
 
-async function getTopicDetail(req, res) {
-  if (!req.params.id) {
-    res.sendStatus(400);
-    return;
-  }
-
-  const topic = await topicModel.getOneTopicDetail(req.params.id);
-  if (!topic) {
-    res.sendStatus(404);
-    return;
-  }
-  res.json(topic);
-}
-
 async function create(req, res) {
   if (!req.body) {
     res.sendStatus(400);
@@ -86,7 +72,6 @@ module.exports = {
   list,
   listCard,
   get,
-  getTopicDetail,
   create,
   update,
   remove,

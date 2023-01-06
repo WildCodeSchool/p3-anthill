@@ -8,4 +8,5 @@ body {
   font-weight: 300;
   background-color: var(--dark-background);
   font-size: var(--textM);
+  background-color: var(--dark-background);
 }
