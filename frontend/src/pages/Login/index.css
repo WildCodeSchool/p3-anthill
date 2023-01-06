@@ -242,10 +242,23 @@
   box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
 }
 
+.btn > * {
+  color: #102770;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
 .btn:hover {
   background-color: #102770;
   color: var(--golden-color);
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+  transition: all 200ms linear;
+}
+
+.btn:hover > * {
+  color: var(--golden-color);
+  transition: all 200ms linear;
 }
 
 .googleBtn {

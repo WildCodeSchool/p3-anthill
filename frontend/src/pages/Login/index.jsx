@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { IoIosAt, IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
@@ -29,11 +30,9 @@ function Login() {
   const handleName = (e) => {
     setUsernameReg(e.target.value);
   };
-
   const handleEmail = (e) => {
     setEmailReg(e.target.value);
   };
-
   const handlePassword = (e) => {
     setPasswordReg(e.target.value);
   };
@@ -41,7 +40,6 @@ function Login() {
   return (
     <div className="login">
       <Logo />
-
       <div className="container">
         <div className="container2">
           <div className="container-checkbox">
@@ -138,7 +136,7 @@ function Login() {
                     </div>
                     <div className="buttons">
                       <button onClick={register} type="button" className="btn">
-                        submit
+                        <Link to="/dashboard">submit</Link>
                       </button>
                       <ButtonSignUpGoogle />
                     </div>

@@ -6,7 +6,7 @@ import handleLogin from "../../../services/loginGoogle";
 function ButtonSignUpGoogle() {
   return (
     <button type="button" className="googleBtn" onClick={handleLogin}>
-      <Link to="/dashboard">
+      <Link to="/dashboard" onClick={handleLogin}>
         With
         <IoLogoGoogle className="googleLogo" />
       </Link>

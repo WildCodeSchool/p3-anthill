@@ -4,6 +4,17 @@ import axios from "axios";
 const GOOGLE_CLIENT_ID =
   "380173514511-nl7hpviphofn124ghjirsanfsq7b3ikd.apps.googleusercontent.com";
 
+const handleCallbackGetResponse = () => {
+  const data = JSON.parse(localStorage.getItem("currentUser"));
+
+  axios.post("http://localhost:5000/api/users", {
+    email: data.email,
+    fullname: data.fullname,
+    picture: data.picture,
+    googleId: data.googleUserId,
+  });
+};
+
 const handleCallbackResponse = (response) => {
   const token = response.credential;
   const decodeToken = jwtDecode(token);
@@ -13,14 +24,7 @@ const handleCallbackResponse = (response) => {
     "currentUser",
     JSON.stringify({ googleUserId, fullname, email, picture })
   );
-  const data = JSON.parse(localStorage.getItem("currentUser"));
-
-  axios.post("http://localhost:5000/api/users", {
-    email: data.email,
-    fullname: data.fullname,
-    picture: data.picture,
-    googleId: data.googleUserId,
-  });
+  handleCallbackGetResponse();
 };
 
 const handleLogin = () => {

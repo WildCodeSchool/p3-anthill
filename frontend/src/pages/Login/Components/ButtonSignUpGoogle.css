@@ -10,12 +10,15 @@
 }
 
 .googleBtn > * {
+  width: 120px;
+  height: 45px;
   cursor: pointer;
   transition: all 200ms linear;
   color: #102770;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
+  transition: all 200ms linear;
   text-transform: uppercase;
   display: flex;
   align-items: center;
