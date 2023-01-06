@@ -2,7 +2,9 @@ const commentModel = require("../models/comment.model");
 // const commentValidator = require("../validators/comment.validator");
 
 async function list(req, res) {
-  const comments = await commentModel.getAll();
+  const comments = await commentModel.getAllCommentsOfOneIdea(
+    req.params.ideaId
+  );
   res.json(comments);
 }
 

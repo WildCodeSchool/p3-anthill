@@ -1,0 +1,6 @@
+.topicIdeasDetails__main{
+    position: absolute;
+    background-color: var(--medium-background);
+    color: var(--light-color);
+    left: 80%;
+}

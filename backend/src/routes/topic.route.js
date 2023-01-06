@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const topicController = require("../controllers/topic.controller");
 const ideaController = require("../controllers/idea.controller");
+const commentController = require("../controllers/comment.controller");
 const topicValidator = require("../validators/topic.validator");
 
 const topicRouter = new Router();
@@ -21,5 +22,6 @@ topicRouter.post("/:topicId/ideas", ideaController.create);
 topicRouter.put("/:id", topicController.update);
 
 topicRouter.delete("/:id", topicController.remove);
+topicRouter.get("/:id/ideas/:ideaId/comments", commentController.list);
 
 module.exports = { topicRouter };

@@ -1,7 +1,21 @@
 import { BiUpvote } from "react-icons/bi";
 import { FaCommentAlt } from "react-icons/fa";
+import { useState } from "react";
+import TopicIdeasDetails from "../../TopicIdeasDetails";
 
-function IdeaCard({ title, creatorName, description, nbUpVote, nbComment }) {
+function IdeaCard({
+  id,
+  title,
+  creatorName,
+  description,
+  nbUpVote,
+  nbComment,
+}) {
+  const [isClicked, setIsClicked] = useState(false);
+  function handleClick() {
+    setIsClicked(!isClicked);
+  }
+
   return (
     <div className="ideaCard">
       <div className="ideaCard__main">
@@ -14,7 +28,8 @@ function IdeaCard({ title, creatorName, description, nbUpVote, nbComment }) {
           {nbUpVote} <BiUpvote />
         </div>
         <div className="ideaCard__nbComment">
-          {nbComment} <FaCommentAlt />
+          {nbComment} <FaCommentAlt onClick={() => handleClick()} />
+          {isClicked ? <TopicIdeasDetails key={id} ideaId={id} /> : ""}
         </div>
       </div>
     </div>
