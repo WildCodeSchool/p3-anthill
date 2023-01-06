@@ -1,9 +1,9 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { IoIosAt, IoMdKey } from "react-icons/io";
 import { BsFillPersonFill } from "react-icons/bs";
 import { GiAnt } from "react-icons/gi";
-/* import { CgArrowTopLeft } from "react-icons/cg"; */
 import ButtonSignUpGoogle from "./Components/ButtonSignUpGoogle";
 import Logo from "../../assets/Logo/Logo";
 import "./index.css";
@@ -13,7 +13,7 @@ function Login() {
   const pseudoRef = useRef("");
   const emailRef = useRef("");
   const passwordRef = useRef("");
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -25,17 +25,14 @@ function Login() {
         pseudo: pseudoRef.current?.value,
         password: passwordRef.current?.value,
       })
-      .then((res) => {
-        emailRef(res);
-        usernameRef(res);
-        pseudoRef(res);
-        passwordRef(res);
+      .catch((err) => {
+        console.error(err);
       });
   };
 
-  // const handleSubmit = () => {
-  //   navigate("/contacts");
-  // };
+  const handleSubmit = () => {
+    navigate("/dashboard");
+  };
 
   return (
     <div className="login">
@@ -110,7 +107,7 @@ function Login() {
                 <div className="center-wrap">
                   <div className="all-container">
                     <h4 className="title-container">Sign Up</h4>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                       <div className="form-group">
                         <BsFillPersonFill className="icons" />
                         <input
