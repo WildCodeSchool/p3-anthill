@@ -1,35 +1,28 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { BiUpvote } from "react-icons/bi";
 import { FaCommentAlt } from "react-icons/fa";
 
 function IdeaCreationCard({ commentModeId }) {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const titleRef = useRef();
+  const descriptionRef = useRef();
+  const [isCreated, setIsCreated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
-  };
-
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
-  };
+  const URL = import.meta.env.VITE_BACKEND_URL;
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
     setError(null);
     axios
-      .post("http://localhost:5000/api/ideas", {
-        title,
-        description,
+      .post(`${URL}/api/topics/${commentModeId}/ideas/`, {
+        title: titleRef.current.value,
+        description: descriptionRef.current.value,
         commentModeId,
       })
-      .then((res) => {
-        setTitle(res.data);
-        setDescription(res.data);
+      .then(() => {
+        setIsCreated(true);
       })
       .catch((err) => {
         setError(err);
@@ -43,23 +36,14 @@ function IdeaCreationCard({ commentModeId }) {
     <div className="ideaCreationCard">
       <form className="ideaCreationCard__form" onSubmit={handleSubmit}>
         <label htmlFor="idea-input">Idea :</label>
-        <input
-          type="text"
-          id="ideaInput"
-          value={title}
-          onChange={handleTitleChange}
-        />
+        <input type="text" id="ideaInput" ref={titleRef} />
         <label htmlFor="description-input">Description :</label>
-        <input
-          type="text"
-          id="descriptionInput"
-          value={description}
-          onChange={handleDescriptionChange}
-        />
+        <input type="text" id="descriptionInput" ref={descriptionRef} />
         {error && <p>{error.message}</p>}
         <button type="submit" id="ideaCreationCard__button">
           {isLoading ? "Loading..." : "Add"}
         </button>
+        {isCreated ? <div>Idea created !</div> : <div> </div>}
       </form>
 
       <div className="ideaCreationCard__interactions">
