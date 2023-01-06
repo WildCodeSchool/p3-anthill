@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useRef } from "react";
 import axios from "axios";
 import { IoIosAt, IoMdKey } from "react-icons/io";
 import { BsFillPersonFill } from "react-icons/bs";
@@ -10,41 +9,33 @@ import Logo from "../../assets/Logo/Logo";
 import "./index.css";
 
 function Login() {
-  const [usernameReg, setUsernameReg] = useState("");
-  const [pseudoReg, setPseudoReg] = useState("");
-  const [emailReg, setEmailReg] = useState("");
-  const [passwordReg, setPasswordReg] = useState("");
+  const usernameRef = useRef("");
+  const pseudoRef = useRef("");
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+  // const navigate = useNavigate();
 
   const URL = import.meta.env.VITE_BACKEND_URL;
 
   const register = () => {
     axios
       .post(`${URL}/api/users`, {
-        email: emailReg,
-        fullname: usernameReg,
-        pseudo: pseudoReg,
-        password: passwordReg,
+        email: emailRef.current?.value,
+        fullname: usernameRef.current?.value,
+        pseudo: pseudoRef.current?.value,
+        password: passwordRef.current?.value,
       })
       .then((res) => {
-        setEmailReg(res);
-        setUsernameReg(res);
-        setPseudoReg(res);
-        setPasswordReg(res);
+        emailRef(res);
+        usernameRef(res);
+        pseudoRef(res);
+        passwordRef(res);
       });
   };
 
-  const handleName = (e) => {
-    setUsernameReg(e.target.value);
-  };
-  const handlePseudo = (e) => {
-    setPseudoReg(e.target.value);
-  };
-  const handleEmail = (e) => {
-    setEmailReg(e.target.value);
-  };
-  const handlePassword = (e) => {
-    setPasswordReg(e.target.value);
-  };
+  // const handleSubmit = () => {
+  //   navigate("/contacts");
+  // };
 
   return (
     <div className="login">
@@ -68,6 +59,7 @@ function Login() {
                 <div className="center-wrap">
                   <div className="all-container">
                     <h4 className="title-container">Log In</h4>
+
                     <div className="form-group">
                       <GiAnt className="ant-icon" />
                       <input
@@ -77,7 +69,6 @@ function Login() {
                         placeholder="Your Pseudo"
                         id="logpseudo"
                         autoComplete="off"
-                        onChange={handlePseudo}
                       />
                     </div>
                     <div className="form-group">
@@ -119,60 +110,66 @@ function Login() {
                 <div className="center-wrap">
                   <div className="all-container">
                     <h4 className="title-container">Sign Up</h4>
-                    <div className="form-group">
-                      <BsFillPersonFill className="icons" />
-                      <input
-                        type="text"
-                        name="logname"
-                        className="form-style"
-                        placeholder="Your Full Name"
-                        id="logname"
-                        autoComplete="off"
-                        onChange={handleName}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <GiAnt className="ant-icon" />
-                      <input
-                        type="text"
-                        name="logpseud0"
-                        className="form-style"
-                        placeholder="Your Pseudo"
-                        id="logpseudo"
-                        autoComplete="off"
-                        onChange={handlePseudo}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <IoIosAt className="icons" />
-                      <input
-                        type="email"
-                        name="logemail"
-                        className="form-style"
-                        placeholder="Your Email"
-                        id="logemail"
-                        autoComplete="off"
-                        onChange={handleEmail}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <IoMdKey className="icons" />
-                      <input
-                        type="password"
-                        name="logpass"
-                        className="form-style"
-                        placeholder="Your Password"
-                        id="logpass"
-                        autoComplete="off"
-                        onChange={handlePassword}
-                      />
-                    </div>
-                    <div className="buttons">
-                      <button onClick={register} type="button" className="btn">
-                        <Link to="/dashboard">submit</Link>
-                      </button>
-                      <ButtonSignUpGoogle />
-                    </div>
+                    <form>
+                      <div className="form-group">
+                        <BsFillPersonFill className="icons" />
+                        <input
+                          type="text"
+                          name="logname"
+                          className="form-style"
+                          placeholder="Your Full Name"
+                          id="logname"
+                          autoComplete="off"
+                          ref={usernameRef}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <GiAnt className="ant-icon" />
+                        <input
+                          type="text"
+                          name="logpseud0"
+                          className="form-style"
+                          placeholder="Your Pseudo"
+                          id="logpseudo"
+                          autoComplete="off"
+                          ref={pseudoRef}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <IoIosAt className="icons" />
+                        <input
+                          type="email"
+                          name="logemail"
+                          className="form-style"
+                          placeholder="Your Email"
+                          id="logemail"
+                          autoComplete="off"
+                          ref={emailRef}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <IoMdKey className="icons" />
+                        <input
+                          type="password"
+                          name="logpass"
+                          className="form-style"
+                          placeholder="Your Password"
+                          id="logpass"
+                          autoComplete="off"
+                          ref={passwordRef}
+                        />
+                      </div>
+                      <div className="buttons">
+                        <button
+                          onClick={register}
+                          type="submit"
+                          className="btn"
+                        >
+                          submit
+                        </button>
+                        <ButtonSignUpGoogle />
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
