@@ -76,5 +76,4 @@
   border-radius: var(--radius);
   border: 2px solid var(--dark-background);
   background-color: var(--golden-color);
-  font-weight: bold;
 }

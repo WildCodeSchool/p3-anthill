@@ -7,10 +7,12 @@ import useFetch from "../../../../services/useFetch";
 import "./index.css";
 
 function TopicCommentDetails() {
-  const { id } = useParams();
-  const { data: topic, loading: loadingTopic } = useFetch(`/topics/${id}`);
+  const commentModeId = useParams().id;
+  const { data: topic, loading: loadingTopic } = useFetch(
+    `/topics/${commentModeId}`
+  );
   const { data: ideas, loading: loadingIdeas } = useFetch(
-    `/topics/${id}/ideas`
+    `/topics/${commentModeId}/ideas`
   );
 
   return (
@@ -26,7 +28,7 @@ function TopicCommentDetails() {
         />
       )}
       <div>
-        <IdeaCreationCard />
+        <IdeaCreationCard commentModeId={commentModeId} />
       </div>
       <div className="ideaContainer">
         {ideas &&

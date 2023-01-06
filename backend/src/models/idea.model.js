@@ -26,10 +26,10 @@ async function getOne(id) {
 }
 
 async function insertOne(idea) {
-  const { title, description, upVote, commentModeId, creatorId } = idea;
+  const { title, description, commentModeId } = idea;
   const [result] = await db.query(
-    "INSERT INTO idea (title, description, up_vote, comment_mode_id, creator_id) VALUES (?, ?, ?, ?, ?)",
-    [title, description, upVote, commentModeId, creatorId]
+    "INSERT INTO idea (title, description, comment_mode_id) VALUES (?, ?, ?)",
+    [title, description, commentModeId]
   );
 
   return result.insertId;
