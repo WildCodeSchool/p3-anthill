@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import useFetch from "../../../../services/useFetch";
 import UserCard from "../../Components/UserCard";
-import ToggleMode from "../../Components/ToggleMode";
+import ToggleModeButtons from "../../Components/ToggleModeButtons";
 import ToggleModeContext from "../../../../contexts/ToggleModeContext";
 import "./UserList.css";
 
@@ -10,7 +10,7 @@ export default function UserList() {
   const { toggleMode } = useContext(ToggleModeContext);
   return (
     <div>
-      <ToggleMode />
+      <ToggleModeButtons />
       {loading && <div>LOADING...</div>}
       <div
         className={!toggleMode ? "userList__list__main" : "userList_grid__main"}

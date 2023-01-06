@@ -1,13 +1,13 @@
 import useFetch from "../../../../services/useFetch";
 import TopicCard from "../../Components/TopicCard";
-import ToggleMode from "../../Components/ToggleMode";
+import ToggleModeButtons from "../../Components/ToggleModeButtons";
 
 function TopicsList() {
   const { data: topics, loading } = useFetch("/topics/card");
 
   return (
     <div>
-      <ToggleMode />
+      <ToggleModeButtons />
       {loading && <div>LOADING...</div>}
       {topics &&
         topics.map((topic) => (

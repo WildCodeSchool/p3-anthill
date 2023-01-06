@@ -4,7 +4,7 @@ import { FaThList } from "react-icons/fa";
 import ToggleModeContext from "../../../contexts/ToggleModeContext";
 import "./ToggleMode.css";
 
-function ToggleMode() {
+function ToggleModeButtons() {
   const { toggleMode, setToggleMode } = useContext(ToggleModeContext);
 
   function changeModeToGrid() {
@@ -20,11 +20,10 @@ function ToggleMode() {
         <BsFillGridFill color={toggleMode ? "blue" : "var(--light-color)"} />
       </button>
       <button type="button" onClick={changeModeToList}>
-        {" "}
         <FaThList color={!toggleMode ? "blue" : "var(--light-color)"} />
       </button>
     </div>
   );
 }
 
-export default ToggleMode;
+export default ToggleModeButtons;
