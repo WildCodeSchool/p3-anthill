@@ -1,43 +1,52 @@
+import { useState } from "react";
+
 import { Link } from "react-router-dom";
 
-import { useRef } from "react";
 import { MdAllInclusive } from "react-icons/md";
 import { TbCrown } from "react-icons/tb";
 import { GiAnt } from "react-icons/gi";
 import { RiContactsLine } from "react-icons/ri";
 
+import SideBarListItems from "../Components/SideBarListItems";
+
 import "./Sidebar.css";
 
 function Sidebar({ name, photo }) {
-  const ref1 = useRef(null);
-  const ref2 = useRef(null);
-  const ref3 = useRef(null);
-  const ref4 = useRef(null);
+  const [activeButton, setActiveButton] = useState(null);
+  const sideBarList = [
+    {
+      id: 1,
+      text: "My Topics",
+      icon: <TbCrown className="icon" />,
+      active: activeButton === 1,
+      path: "/dashboard",
+    },
+    {
+      id: 2,
+      text: "All Topics",
+      icon: <MdAllInclusive className="icon" />,
+      active: activeButton === 2,
+      path: "/dashboard/topics",
+    },
+    {
+      id: 3,
+      text: "Co Topics",
+      icon: <GiAnt className="icon" />,
+      active: activeButton === 3,
+      path: "/dashboard",
+    },
+    {
+      id: 4,
+      text: "Contacts",
+      icon: <RiContactsLine className="icon" />,
+      active: activeButton === 4,
+      path: "/dashboard/users",
+    },
+  ];
 
-  const handleIsActive = (e) => {
-    const check = e.target.innerText;
-    if (check === "My Topics") {
-      ref1.current.className = "sidebar-listItem active";
-    } else {
-      ref1.current.className = "sidebar-listItem";
-    }
-    if (check === "All Topics") {
-      ref2.current.className = "sidebar-listItem active";
-    } else {
-      ref2.current.className = "sidebar-listItem";
-    }
-    if (check === "Co. Topics") {
-      ref3.current.className = "sidebar-listItem active";
-    } else {
-      ref3.current.className = "sidebar-listItem";
-    }
-    if (check === "Contacts") {
-      ref4.current.className = "sidebar-listItem active";
-    } else {
-      ref4.current.className = "sidebar-listItem";
-    }
+  const handleButtonClick = (button) => {
+    setActiveButton(button);
   };
-
   return (
     <aside className="side-bar">
       <div className="user-profile-area">
@@ -50,40 +59,17 @@ function Sidebar({ name, photo }) {
           </div>
         </div>
         <ul className="sidebar-list">
-          <li ref={ref1} className="sidebar-listItem">
-            <Link to="/dashboard?">
-              <button type="button" onClick={handleIsActive}>
-                <TbCrown className="icon" />
-                <span className="sidebar-listItemText">My Topics</span>
-              </button>
-            </Link>
-          </li>
-          <li ref={ref2} className="sidebar-listItem">
-            <Link to="topics">
-              <button type="button" onClick={handleIsActive}>
-                <MdAllInclusive className="icon" />
-                <span className="sidebar-listItemText">All Topics</span>
-              </button>
-            </Link>
-          </li>
-          <li ref={ref3} className="sidebar-listItem">
-            <Link to="/dashboard?">
-              <button type="button" onClick={handleIsActive}>
-                <GiAnt className="icon" />
-                <span className="sidebar-listItemText">Co. Topics</span>
-              </button>
-            </Link>
-          </li>
-          <li ref={ref4} className="sidebar-listItem">
-            <Link to="users">
-              <button type="button" onClick={handleIsActive}>
-                <RiContactsLine className="icon" />
-                <span className="sidebar-listItemText">Contacts</span>
-              </button>
-            </Link>
-          </li>
+          {sideBarList.map((e) => (
+            <SideBarListItems
+              key={e.id}
+              icon={e.icon}
+              text={e.text}
+              onClick={() => handleButtonClick(e.id)}
+              active={e.active}
+              path={e.path}
+            />
+          ))}
         </ul>
-
         <button type="button" className="signOut-btn">
           <Link to="/login" className="signOut-btn">
             Log Out
