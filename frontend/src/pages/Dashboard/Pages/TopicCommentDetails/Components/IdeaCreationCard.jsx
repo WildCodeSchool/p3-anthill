@@ -1,35 +1,24 @@
-import axios from "axios";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { BiUpvote } from "react-icons/bi";
 import { FaCommentAlt } from "react-icons/fa";
+import useFetchLazy from "../../../../../services/useFetchLazy";
 
 function IdeaCreationCard({ commentModeId }) {
   const titleRef = useRef();
   const descriptionRef = useRef();
-  const [isCreated, setIsCreated] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const URL = import.meta.env.VITE_BACKEND_URL;
+
+  const { trigger, loading, error } = useFetchLazy({
+    path: `/topics/${commentModeId}/ideas/`,
+    method: "post",
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsLoading(true);
-    setError(null);
-    axios
-      .post(`${URL}/api/topics/${commentModeId}/ideas/`, {
-        title: titleRef.current.value,
-        description: descriptionRef.current.value,
-        commentModeId,
-      })
-      .then(() => {
-        setIsCreated(true);
-      })
-      .catch((err) => {
-        setError(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    trigger({
+      title: titleRef.current?.value,
+      description: descriptionRef.current?.value,
+      commentModeId,
+    });
   };
 
   return (
@@ -41,9 +30,8 @@ function IdeaCreationCard({ commentModeId }) {
         <input type="text" id="descriptionInput" ref={descriptionRef} />
         {error && <p>{error.message}</p>}
         <button type="submit" id="ideaCreationCard__button">
-          {isLoading ? "Loading..." : "Add"}
+          {loading ? "Loading..." : "Add"}
         </button>
-        {isCreated ? <div>Idea created !</div> : <div> </div>}
       </form>
 
       <div className="ideaCreationCard__interactions">

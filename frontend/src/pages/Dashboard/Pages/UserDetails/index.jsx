@@ -5,10 +5,14 @@ import "./index.css";
 
 function UserDetails() {
   const { id } = useParams();
-  const { data: userBadges, loading: loadingBadges } = useFetch(
-    `/badges/${id}/badges`
-  );
-  const { data: user, loading: loadingUser } = useFetch(`/users/${id}`);
+  const { data: userBadges, loading: loadingBadges } = useFetch({
+    path: `/badges/${id}/badges`,
+    method: "get",
+  });
+  const { data: user, loading: loadingUser } = useFetch({
+    path: `/users/${id}`,
+    method: "get",
+  });
 
   return (
     <div className="userDetail">

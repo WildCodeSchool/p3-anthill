@@ -8,12 +8,14 @@ import "./index.css";
 
 function TopicCommentDetails() {
   const commentModeId = useParams().id;
-  const { data: topic, loading: loadingTopic } = useFetch(
-    `/topics/${commentModeId}`
-  );
-  const { data: ideas, loading: loadingIdeas } = useFetch(
-    `/topics/${commentModeId}/ideas`
-  );
+  const { data: topic, loading: loadingTopic } = useFetch({
+    path: `/topics/${commentModeId}`,
+    method: "get",
+  });
+  const { data: ideas, loading: loadingIdeas } = useFetch({
+    path: `/topics/${commentModeId}/ideas`,
+    method: "get",
+  });
 
   return (
     <div className="topicCommentDeatils_main">

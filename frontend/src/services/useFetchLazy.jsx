@@ -1,15 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const URL = import.meta.env.VITE_BACKEND_URL;
 
-function useFetch({ path, method, body = null }) {
+function useFetchLazy({ path, method }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setLoading(true);
+  const trigger = (body) => {
     axios[method](`${URL}/api${path}`, body)
       .then((res) => {
         setData(res.data);
@@ -20,8 +18,8 @@ function useFetch({ path, method, body = null }) {
       .finally(() => {
         setLoading(false);
       });
-  }, [path]);
-  return { data, loading, error };
+  };
+  return { trigger, data, loading, error };
 }
 
-export default useFetch;
+export default useFetchLazy;
