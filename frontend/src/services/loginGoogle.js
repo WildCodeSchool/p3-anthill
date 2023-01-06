@@ -3,11 +3,11 @@ import axios from "axios";
 
 const GOOGLE_CLIENT_ID =
   "380173514511-nl7hpviphofn124ghjirsanfsq7b3ikd.apps.googleusercontent.com";
-
+const URL = import.meta.env.VITE_BACKEND_URL;
 const handleCallbackGetResponse = () => {
   const data = JSON.parse(localStorage.getItem("currentUser"));
 
-  axios.post("http://localhost:5000/api/users", {
+  axios.post(`${URL}/api/users`, {
     email: data.email,
     fullname: data.fullname,
     picture: data.picture,

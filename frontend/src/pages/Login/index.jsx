@@ -13,9 +13,11 @@ function Login() {
   const [emailReg, setEmailReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
 
+  const URL = import.meta.env.VITE_BACKEND_URL;
+
   const register = () => {
     axios
-      .post("http://localhost:5000/api/users", {
+      .post(`${URL}/api/users`, {
         email: emailReg,
         fullname: usernameReg,
         password: passwordReg,
