@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 function TopicCreation() {
+  const navigate = useNavigate();
   const newData = {
     title: "",
     description: "",
@@ -21,7 +23,7 @@ function TopicCreation() {
 
     axios
       .post("http://localhost:5000/api/topics", newData)
-      .then((res) => res.newData)
+      .then((res) => navigate(`dashboard/topics/${res.data.insertId}`))
       .catch((err, res) => {
         console.error(err);
         res.status(500).send("Error retrieving data from database");
