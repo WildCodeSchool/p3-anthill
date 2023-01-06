@@ -49,10 +49,8 @@ function SignUpForm() {
         <GiAnt className="ant-icon" />
         <input
           type="text"
-          name="logpseud0"
           className="form-style"
           placeholder="Your Pseudo"
-          id="logpseudo"
           autoComplete="off"
           ref={pseudoRef}
         />
@@ -61,10 +59,8 @@ function SignUpForm() {
         <IoIosAt className="icons" />
         <input
           type="email"
-          name="logemail"
           className="form-style"
           placeholder="Your Email"
-          id="logemail"
           autoComplete="off"
           ref={emailRef}
         />
@@ -73,10 +69,8 @@ function SignUpForm() {
         <IoMdKey className="icons" />
         <input
           type="password"
-          name="logpass"
           className="form-style"
           placeholder="Your Password"
-          id="logpass"
           autoComplete="off"
           ref={passwordRef}
         />

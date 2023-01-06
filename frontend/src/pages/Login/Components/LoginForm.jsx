@@ -9,10 +9,8 @@ function LoginForm() {
         <GiAnt className="ant-icon" />
         <input
           type="text"
-          name="logpseudp"
           className="form-style"
           placeholder="Your Pseudo"
-          id="logpseudo"
           autoComplete="off"
         />
       </div>
@@ -20,10 +18,8 @@ function LoginForm() {
         <IoIosAt className="icons" />
         <input
           type="email"
-          name="logemail"
           className="form-style"
           placeholder="Your Email"
-          id="logemail"
           autoComplete="off"
         />
       </div>
@@ -31,10 +27,8 @@ function LoginForm() {
         <IoMdKey className="icons" />
         <input
           type="password"
-          name="logpass"
           className="form-style"
           placeholder="Your Password"
-          id="logpass"
           autoComplete="off"
         />
       </div>
