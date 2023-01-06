@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const topicController = require("../controllers/topic.controller");
 const ideaController = require("../controllers/idea.controller");
+const topicValidator = require("../validators/topic.validator");
 
 const topicRouter = new Router();
 
@@ -8,9 +9,12 @@ topicRouter.get("/", topicController.list);
 topicRouter.get("/card", topicController.listCard);
 topicRouter.get("/:id/ideas", ideaController.listIdeasOfOneTopic);
 topicRouter.get("/:id", topicController.get);
-topicRouter.get("/:id/details", topicController.getTopicDetail);
 
-topicRouter.post("/", topicController.create);
+topicRouter.post(
+  "/",
+  topicValidator.validateCreateTopic,
+  topicController.create
+);
 
 topicRouter.put("/:id", topicController.update);
 

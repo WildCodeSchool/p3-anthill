@@ -28,24 +28,26 @@ CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `picture` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `pseudo` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL, 
   `password` varchar(600) DEFAULT NULL,
   `fullname` varchar(255) NOT NULL,
   `googleUserId` varchar(255) NOT NULL,
   `mood_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-   CONSTRAINT `fk_user_mood` FOREIGN KEY (`mood_id`) REFERENCES `mood` (`id`)
+  CONSTRAINT `fk_user_mood` FOREIGN KEY (`mood_id`) REFERENCES `mood` (`id`)
 );
 
-INSERT INTO user (picture, email, password, fullname, googleUserId, mood_id) VALUES ("picture_user_1", "email_1@gmail.com", "user_password_1", "user_fullname_1", "user_google_id_1", 1), ("picture_user_2", "email_2@gmail.com", "user_password_2", "user_fullname_2", "user_google_id_2", 2), ("picture_user_3", "email_3@gmail.com", "user_password_3", "user_fullname_3", "user_google_id_3", 3), ("picture_user_4", "email_4@gmail.com", "user_password_4", "user_fullname_4", "user_google_id_4", 4), ("picture_user_5", "email_5@gmail.com", "user_password_5", "user_fullname_5", "user_google_id_5", 1);
+INSERT INTO user (description, pseudo, picture, email, password, fullname, googleUserId, mood_id) VALUES ("description_1", "pseudo_1", "picture_user_1", "email_1@gmail.com", "user_password_1", "user_fullname_1", "user_google_id_1", 1), ("description_2", "pseudo_2", "picture_user_2", "email_2@gmail.com", "user_password_2", "user_fullname_2", "user_google_id_2", 2), ("description_3", "pseudo_3", "picture_user_3", "email_3@gmail.com", "user_password_3", "user_fullname_3", "user_google_id_3", 3), ("description_4", "pseudo_4", "picture_user_4", "email_4@gmail.com", "user_password_4", "user_fullname_4", "user_google_id_4", 4), ("description_5", "pseudo_5", "picture_user_5", "email_5@gmail.com", "user_password_5", "user_fullname_5", "user_google_id_5", 1);
 
 CREATE TABLE `topic` (
   `id` int NOT NULL AUTO_INCREMENT,
   `deadline` datetime DEFAULT NULL,
   `description` varchar(500) NOT NULL,
-  `is_private` tinyint(1) NOT NULL,
-  `creator_id` int NOT NULL,
+  `is_private` tinyint(1) NOT NULL DEFAULT 0,
+  `creator_id` int NOT NULL DEFAULT 0,
   `title` varchar(255) NOT NULL,
-  `is_closed` tinyint(1) NOT NULL,
+  `is_closed` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_topic_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`)
 ); 
@@ -142,8 +144,3 @@ CREATE TABLE `user_topic` (
 );
 
 INSERT INTO user_topic (user_id, topic_id) VALUES (1, 1), (1, 4), (1, 5), (1, 2), (1, 3), (2, 1), (2, 6), (2, 11), (3, 4), (4, 6), (5, 7), (1, 8), (2, 9), (3, 10);
-
-
-
-
-
