@@ -1,0 +1,20 @@
+.commentCreate{
+    width: 100%;
+    min-height: 200px;
+}
+
+.commentCreate__main{
+    width: 100%;
+}
+
+.commentCreate__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.commentCreate__form > input{
+    width: 80%;
+    min-height: 100px;
+    margin-bottom: 10px;
+}

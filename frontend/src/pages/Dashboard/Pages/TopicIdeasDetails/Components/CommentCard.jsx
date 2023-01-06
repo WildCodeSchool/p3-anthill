@@ -1,4 +1,5 @@
 import { BiUpvote } from "react-icons/bi";
+import "./CommentCard.css";
 
 function CommentCard({ comment }) {
   return (

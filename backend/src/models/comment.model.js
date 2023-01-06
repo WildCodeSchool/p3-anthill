@@ -2,7 +2,7 @@ const { db } = require("./db");
 
 async function getAllCommentsOfOneIdea(ideaId) {
   const [rows] = await db.query(
-    "SELECT c.id, c.content, c.up_vote, c.user_id, u.pseudo, u.picture FROM comment AS c INNER JOIN idea AS i ON i.id = c.idea_id INNER JOIN user AS u ON u.id = c.user_id WHERE c.idea_id = ?",
+    "SELECT c.id, c.content, c.up_vote, c.user_id, u.pseudo, u.picture FROM comment AS c INNER JOIN idea AS i ON i.id = c.idea_id INNER JOIN user AS u ON u.id = c.user_id WHERE c.idea_id = ? ORDER BY c.id",
     [ideaId]
   );
 
