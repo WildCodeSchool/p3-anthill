@@ -1,7 +1,12 @@
 const { db } = require("./db");
 
 async function getAll() {
-  const [rows] = await db.query("SELECT * FROM user");
+  const [rows] = await db.query(
+    "SELECT u.id, u.picture, u.pseudo, u.fullname, u.mood_id, COUNT(ub.badge_id) AS nbr_badges " +
+      "FROM user AS u " +
+      "INNER JOIN user_badge AS ub ON ub.user_id = u.id " +
+      "GROUP BY u.id "
+  );
 
   return rows;
 }
@@ -37,4 +42,10 @@ async function deleteOne(id) {
   return result.affectedRows;
 }
 
-module.exports = { getAll, insertOne, getOne, updateOne, deleteOne };
+module.exports = {
+  getAll,
+  insertOne,
+  getOne,
+  updateOne,
+  deleteOne,
+};

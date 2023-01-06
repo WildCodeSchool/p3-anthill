@@ -1,0 +1,59 @@
+.userCard__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin: 1rem;
+  padding: 0.5rem;
+  background-color: var(--medium-background);
+}
+
+.userCard__grid {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--medium-background);
+  border-radius: var(--radius);
+  height: 300px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.userCard__header {
+  display: flex;
+  flex-direction: row;
+  padding-top: 1rem;
+}
+
+.userCard__names {
+  display: flex;
+  flex-direction: column;
+}
+
+.userCard__name {
+  color: var(--golden-color);
+  font-size: var(--textL);
+}
+
+.userCard__pseudo {
+  color: var(--light-color);
+  font-size: var(--textS);
+}
+
+.userCard__greetings {
+  color: var(--light-color);
+  display: flex;
+  padding-top: 3.5rem;
+}
+
+.userCard__contactGrid {
+  display: flex;
+  flex-direction: row;
+  color: var(--light-color);
+}
+
+.userCard__contactList {
+  color: var(--light-color);
+  padding: 1rem;
+}
