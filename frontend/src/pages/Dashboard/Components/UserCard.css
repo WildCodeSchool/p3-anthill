@@ -11,6 +11,9 @@
 .userCard__grid {
   display: flex;
   flex-direction: column;
+  background-color: var(--medium-background);
+  border-radius: var(--radius);
+  height: 300px;
 }
 
 a {

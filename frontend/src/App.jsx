@@ -8,23 +8,26 @@ import TopicsPage from "./pages/Dashboard/Pages/TopicList";
 import TopicCommentDetails from "./pages/Dashboard/Pages/TopicCommentDetails";
 import UserList from "./pages/Dashboard/Pages/UserList";
 import UserDetails from "./pages/Dashboard/Pages/UserDetails";
+import { ToggleModeProvider } from "./contexts/ToggleModeContext";
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route index element={<Main />} />
-            <Route path="topics" element={<TopicsPage />} />
-            <Route path="topics/:id" element={<TopicCommentDetails />} />
-            <Route path="users" element={<UserList />} />
-            <Route path="users/:id" element={<UserDetails />} />
-          </Route>
-        </Routes>
-      </Router>
+      <ToggleModeProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route index element={<Main />} />
+              <Route path="topics" element={<TopicsPage />} />
+              <Route path="topics/:id" element={<TopicCommentDetails />} />
+              <Route path="users" element={<UserList />} />
+              <Route path="users/:id" element={<UserDetails />} />
+            </Route>
+          </Routes>
+        </Router>
+      </ToggleModeProvider>
     </div>
   );
 }
