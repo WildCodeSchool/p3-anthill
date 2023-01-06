@@ -1,13 +1,13 @@
-.userList__list__main{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.userList__list__main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.userList_grid__main{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    padding: 10px;
-    overflow-y: scroll;
+.userList_grid__main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  overflow-y: scroll;
 }

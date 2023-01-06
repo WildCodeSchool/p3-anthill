@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { IoIosAt, IoMdKey } from "react-icons/io";
+import { BsFillPersonFill } from "react-icons/bs";
 import { GiAnt } from "react-icons/gi";
 /* import { CgArrowTopLeft } from "react-icons/cg"; */
 import ButtonSignUpGoogle from "./Components/ButtonSignUpGoogle";
@@ -10,6 +11,7 @@ import "./index.css";
 
 function Login() {
   const [usernameReg, setUsernameReg] = useState("");
+  const [pseudoReg, setPseudoReg] = useState("");
   const [emailReg, setEmailReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
 
@@ -20,17 +22,22 @@ function Login() {
       .post(`${URL}/api/users`, {
         email: emailReg,
         fullname: usernameReg,
+        pseudo: pseudoReg,
         password: passwordReg,
       })
       .then((res) => {
         setEmailReg(res);
         setUsernameReg(res);
+        setPseudoReg(res);
         setPasswordReg(res);
       });
   };
 
   const handleName = (e) => {
     setUsernameReg(e.target.value);
+  };
+  const handlePseudo = (e) => {
+    setPseudoReg(e.target.value);
   };
   const handleEmail = (e) => {
     setEmailReg(e.target.value);
@@ -61,6 +68,18 @@ function Login() {
                 <div className="center-wrap">
                   <div className="all-container">
                     <h4 className="title-container">Log In</h4>
+                    <div className="form-group">
+                      <GiAnt className="ant-icon" />
+                      <input
+                        type="text"
+                        name="logpseudp"
+                        className="form-style"
+                        placeholder="Your Pseudo"
+                        id="logpseudo"
+                        autoComplete="off"
+                        onChange={handlePseudo}
+                      />
+                    </div>
                     <div className="form-group">
                       <IoIosAt className="icons" />
                       <input
@@ -101,7 +120,7 @@ function Login() {
                   <div className="all-container">
                     <h4 className="title-container">Sign Up</h4>
                     <div className="form-group">
-                      <GiAnt className="ant-icon" />
+                      <BsFillPersonFill className="icons" />
                       <input
                         type="text"
                         name="logname"
@@ -110,6 +129,18 @@ function Login() {
                         id="logname"
                         autoComplete="off"
                         onChange={handleName}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <GiAnt className="ant-icon" />
+                      <input
+                        type="text"
+                        name="logpseud0"
+                        className="form-style"
+                        placeholder="Your Pseudo"
+                        id="logpseudo"
+                        autoComplete="off"
+                        onChange={handlePseudo}
                       />
                     </div>
                     <div className="form-group">
