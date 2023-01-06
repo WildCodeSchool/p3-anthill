@@ -37,10 +37,10 @@ async function getOneTopicDetail(id) {
 }
 
 async function insertOne(topic) {
-  const { deadline, description, title } = topic;
+  const { deadline, description, title, creatorId } = topic;
   const [result] = await db.query(
-    "INSERT INTO topic (deadline, description, title) VALUES (?, ?, ?)",
-    [deadline, description, title]
+    "INSERT INTO topic (deadline, description, title, creator_id) VALUES (?, ?, ?, ?)",
+    [deadline, description, title, creatorId]
   );
 
   return result.insertId;
