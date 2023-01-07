@@ -17,7 +17,8 @@
     "react-dom": "^18.0.0",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.4.5",
-    "template-fullstack": "file:.."
+    "template-fullstack": "file:..",
+    "react-popper": "^2.3.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",
@@ -32,6 +33,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^7.0.0",
     "prettier": "^2.5.1",
-    "vite": "^2.8.0"
+    "vite": "^2.8.0",
+    "react-popper": "^2.3.0"
   }
 }

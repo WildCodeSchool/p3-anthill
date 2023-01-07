@@ -1,0 +1,7 @@
+.tooltip-hidden {
+  display: none;
+}
+
+.tooltip-visible {
+  color: var(--light-color);
+}
