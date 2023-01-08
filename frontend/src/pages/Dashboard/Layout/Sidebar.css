@@ -1,0 +1,141 @@
+.user-profile-area {
+  background-color: var(--medium-background);
+  border-radius: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px);
+  width: 290px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: auto;
+  position: relative;
+  transition: width 0.3s ease-in-out;
+}
+
+.topic-manager {
+  font-size: var(--textL);
+  font-weight: 700;
+  text-align: center;
+  height: 70px;
+  letter-spacing: 0.7px;
+  position: sticky;
+  top: 2rem;
+  z-index: 3;
+  text-transform: uppercase;
+}
+.user-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.user-name {
+  top: 0;
+  font-weight: 600;
+  padding-bottom: 1.5rem;
+}
+.user-mood {
+  margin-top: 0.5rem;
+  font-size: var(--textS);
+  font-weight: 600;
+}
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.side-wrapper {
+  padding: 20px 40px;
+}
+
+.sidebar-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.sidebar-list a {
+  width: 80%;
+}
+
+.sidebar-list button {
+  background-color: transparent;
+  margin-left: 2rem;
+  font-size: var(--textM);
+  width: 100%;
+  padding: 0.3rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sidebar-listItem {
+  color: var(--light-color);
+  display: flex;
+  align-items: center;
+  animation: fadeInItem 0.6s forwards;
+  transition: background 0.2s ease-in;
+  transform: translateX(-16px);
+  opacity: 0;
+  padding: 8px 0;
+  position: relative;
+}
+
+.sidebar-listItemText {
+  color: var(--light-color);
+}
+
+.sidebar-list button .icon {
+  font-size: var(--textL);
+  color: var(--golden-color);
+  margin-right: 1rem;
+}
+
+.sidebar-listItem.active button {
+  background-color: var(--light-background);
+}
+.sidebar-listItem:not(.active) button:hover {
+  background-color: var(--dark-background);
+}
+
+.sidebar-listItem:nth-child(n + 0) {
+  animation-delay: 0s;
+}
+.sidebar-listItem:nth-child(n + 1) {
+  animation-delay: 0.2s;
+}
+.sidebar-listItem:nth-child(n + 2) {
+  animation-delay: 0.4s;
+}
+.sidebar-listItem:nth-child(n + 3) {
+  animation-delay: 0.6s;
+}
+.sidebar-listItem:nth-child(n + 4) {
+  animation-delay: 0.8s;
+}
+@keyframes fadeInItem {
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.signOut-btn {
+  background-color: transparent;
+  color: var(--light-color);
+  font-size: var(--textS);
+  padding: 0.6rem;
+  text-decoration: none;
+}
+
+.signOut-btn:hover {
+  color: var(--golden-color);
+}
