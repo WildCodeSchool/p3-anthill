@@ -22,7 +22,7 @@ function TopicCreation() {
     newData.deadline = refDeadline.current.value;
 
     axios
-      .post("http://localhost:5000/api/topics", newData)
+      .post("http://localhost:5500/api/topics", newData)
       .then((res) => navigate(`dashboard/topics/${res.data.insertId}`))
       .catch((err, res) => {
         console.error(err);

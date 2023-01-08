@@ -12,7 +12,7 @@ async function getAllOfOneTopic(commentModeTopicId) {
       "FROM idea AS i " +
       "LEFT JOIN user AS u ON u.id = i.creator_id " +
       "LEFT JOIN comment AS c ON c.idea_id = i.id " +
-      "LEFT JOIN comment_mode AS cm ON cm.id = i.comment_mode_id " +
+      "LEFT JOIN comment_mode AS cm ON cm.topic_id = i.comment_mode_id " +
       "WHERE cm.topic_id = ? " +
       "GROUP BY i.id",
     [commentModeTopicId]
