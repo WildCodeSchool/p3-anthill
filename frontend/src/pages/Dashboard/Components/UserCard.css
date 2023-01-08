@@ -6,6 +6,7 @@
   margin: 1rem;
   padding: 0.5rem;
   background-color: var(--medium-background);
+  box-shadow: var(--box-shadow);
 }
 
 .userCard__grid {
@@ -14,6 +15,7 @@
   background-color: var(--medium-background);
   border-radius: var(--radius);
   height: 300px;
+  box-shadow: var(--box-shadow);
 }
 
 a {

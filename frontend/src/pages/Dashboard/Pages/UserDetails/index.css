@@ -1,10 +1,11 @@
 .userDetail {
-  background-color: var(--medium-background);
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 20px;
-  border-radius: 10px;
+}
+
+.userDetail__card {
+  box-shadow: var(--box-shadow);
+  margin: 20px;
 }
 
 .userDetail__header {

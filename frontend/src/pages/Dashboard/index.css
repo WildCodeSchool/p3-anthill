@@ -9,7 +9,7 @@
   top: 0;
   height: 8vh;
   width: 100%;
-  background-color: var(--dark-background);
+  background-color: var(--medium-background);
 }
 
 .side-bar {
@@ -20,5 +20,8 @@
 }
 
 .outlet {
-  padding-left: 300px;
+  margin: 0 20px 0px 330px;
+  min-height: 90vh;
+  background-color: var(--dark-background);
+  border-radius: var(--radius);
 }
