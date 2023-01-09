@@ -5,3 +5,8 @@
 .tooltip-visible {
   color: var(--light-color);
 }
+
+.commentButton{
+  color: var(--golden-color);
+  background-color: var( --medium-background);
+}

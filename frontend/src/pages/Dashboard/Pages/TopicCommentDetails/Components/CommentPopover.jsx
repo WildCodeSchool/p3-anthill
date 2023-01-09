@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
+import { FaCommentAlt } from "react-icons/fa";
 import { usePopper } from "react-popper";
 import CommentCard from "../../TopicIdeasDetails/Components/CommentCard";
 import "./CommentPopover.css";
@@ -13,9 +14,10 @@ function CommentPopover({ ideaId }) {
 
   const { id } = useParams();
 
-  const { data: comments, loading } = useFetch(
-    `/topics/${id}/ideas/${ideaId}/comments`
-  );
+  const { data: comments, loading } = useFetch({
+    path: `/topics/${id}/ideas/${ideaId}/comments`,
+    method: "get",
+  });
 
   const { styles } = usePopper(boxRef.current, tooltipRef.current, {
     placement: "bottom",
@@ -34,8 +36,13 @@ function CommentPopover({ ideaId }) {
 
   return (
     <div>
-      <button ref={boxRef} type="button" onClick={handleClick}>
-        Click
+      <button
+        ref={boxRef}
+        className="commentButton"
+        type="button"
+        onClick={handleClick}
+      >
+        <FaCommentAlt />
       </button>
       <div
         ref={tooltipRef}

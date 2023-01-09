@@ -1,5 +1,4 @@
 import { BiUpvote } from "react-icons/bi";
-import { FaCommentAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CommentPopover from "./CommentPopover";
 
@@ -25,8 +24,10 @@ function IdeaCard({
           {nbUpVote} <BiUpvote />
         </div>
         <div className="ideaCard__nbComment">
-          {nbComment} <CommentPopover ideaId={id} />
-          <FaCommentAlt />
+          <div>{nbComment}</div>
+          <div>
+            <CommentPopover ideaId={id} />
+          </div>
         </div>
       </div>
     </div>
