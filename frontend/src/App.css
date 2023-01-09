@@ -6,8 +6,7 @@ body {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
-  background-color: var(--dark-background);
+  background-color: var(--medium-background);
   font-size: var(--textM);
-  background-color: var(--dark-background);
   overscroll-behavior: none;
 }
