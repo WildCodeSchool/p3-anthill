@@ -8,6 +8,7 @@ function useFetchLazy({ path, method }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const trigger = async (body) => {
+    setLoading(true);
     await axios[method](`${URL}/api${path}`, body)
       .then((res) => {
         setData(res.data);
