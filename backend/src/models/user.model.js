@@ -17,7 +17,14 @@ async function insertOne(user) {
     "INSERT INTO user (picture, email, fullname, pseudo, password, googleUserId) VALUES (?, ?, ?, ?, ?, ?)",
     [picture, email, fullname, pseudo, password, googleUserId]
   );
+  const [result2] = await db.query(
+    "INSERT INTO user_badge (user_id, badge_id) VALUES (?, 1)",
+    [result.insertId]
+  );
 
+  if (result2.length === 0) {
+    return null;
+  }
   return result.insertId;
 }
 
