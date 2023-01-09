@@ -34,29 +34,35 @@ function TopicCreation() {
 
   return (
     <form className="form" onSubmit={submit}>
-      <label>
-        <input
-          className="topic__name"
-          placeholder="TOPIC NAME"
-          name="Topic name"
-          type="text"
-          ref={refTitle}
-          required
-        />
-        <label>
-          <input className="deadline" type="datetime-local" ref={refDeadline} />
-        </label>
+      <label htmlFor="topic__name">Topic name</label>
+      <input
+        id="topic__name"
+        className="topic__name"
+        placeholder="TOPIC NAME"
+        name="Topic name"
+        type="text"
+        ref={refTitle}
+        required
+      />
+      <label htmlFor="deadline" className="srOnly">
+        Date
       </label>
-      <label>
-        <input
-          className="description"
-          placeholder="DESCRIPTION"
-          name="description"
-          type="text"
-          ref={refDescription}
-          required
-        />
-      </label>
+      <input
+        id="deadline"
+        className="deadline"
+        type="datetime-local"
+        ref={refDeadline}
+      />
+      <label htmlFor="description">Description</label>
+      <input
+        id="description"
+        className="description"
+        placeholder="DESCRIPTION"
+        name="description"
+        type="text"
+        ref={refDescription}
+        required
+      />
       <button className="button" type="submit">
         START
       </button>
