@@ -1,7 +1,5 @@
-import { IoIosAt, IoMdKey } from "react-icons/io";
-import { GiAnt } from "react-icons/gi";
-/* import { CgArrowTopLeft } from "react-icons/cg"; */
-import ButtonLoginGoogle from "./Components/ButtonLoginGoogle";
+import LoginForm from "./Components/LoginForm";
+import SignUpForm from "./Components/SignUpForm";
 import Logo from "../../assets/Logo/Logo";
 import "./index.css";
 
@@ -9,7 +7,6 @@ function Login() {
   return (
     <div className="login">
       <Logo />
-
       <div className="container">
         <div className="container2">
           <div className="container-checkbox">
@@ -29,34 +26,8 @@ function Login() {
                 <div className="center-wrap">
                   <div className="all-container">
                     <h4 className="title-container">Log In</h4>
-                    <div className="form-group">
-                      <IoIosAt className="icons" />
-                      <input
-                        type="email"
-                        name="logemail"
-                        className="form-style"
-                        placeholder="Your Email"
-                        id="logemail"
-                        autoComplete="off"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <IoMdKey className="icons" />
-                      <input
-                        type="password"
-                        name="logpass"
-                        className="form-style"
-                        placeholder="Your Password"
-                        id="logpass"
-                        autoComplete="off"
-                      />
-                    </div>
-                    <div className="buttons">
-                      <button type="button" className="btn">
-                        submit
-                      </button>
-                      <ButtonLoginGoogle />
-                    </div>
+                    <LoginForm />
+
                     <p className="forgot-text">
                       <a href="#0" className="link">
                         Forgot your password?
@@ -69,45 +40,7 @@ function Login() {
                 <div className="center-wrap">
                   <div className="all-container">
                     <h4 className="title-container">Sign Up</h4>
-                    <div className="form-group">
-                      <GiAnt className="ant-icon" />
-                      <input
-                        type="text"
-                        name="logname"
-                        className="form-style"
-                        placeholder="Your Full Name"
-                        id="logname"
-                        autoComplete="off"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <IoIosAt className="icons" />
-                      <input
-                        type="email"
-                        name="logemail"
-                        className="form-style"
-                        placeholder="Your Email"
-                        id="logemail"
-                        autoComplete="off"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <IoMdKey className="icons" />
-                      <input
-                        type="password"
-                        name="logpass"
-                        className="form-style"
-                        placeholder="Your Password"
-                        id="logpass"
-                        autoComplete="off"
-                      />
-                    </div>
-                    <div className="buttons">
-                      <button type="button" className="btn">
-                        submit
-                      </button>
-                      <ButtonLoginGoogle />
-                    </div>
+                    <SignUpForm />
                   </div>
                 </div>
               </div>

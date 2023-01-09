@@ -1,16 +1,21 @@
 import { useParams } from "react-router-dom";
 import TopicInfo from "./Components/TopicInfo";
 import IdeaCard from "./Components/IdeaCard";
+import IdeaCreationCard from "./Components/IdeaCreationCard";
 import useFetch from "../../../../services/useFetch";
 
 import "./index.css";
 
 function TopicCommentDetails() {
-  const { id } = useParams();
-  const { data: topic, loading: loadingTopic } = useFetch(`/topics/${id}`);
-  const { data: ideas, loading: loadingIdeas } = useFetch(
-    `/topics/${id}/ideas`
-  );
+  const commentModeId = useParams().id;
+  const { data: topic, loading: loadingTopic } = useFetch({
+    path: `/topics/${commentModeId}`,
+    method: "get",
+  });
+  const { data: ideas, loading: loadingIdeas } = useFetch({
+    path: `/topics/${commentModeId}/ideas`,
+    method: "get",
+  });
 
   return (
     <div className="topicCommentDeatils_main">
@@ -24,6 +29,9 @@ function TopicCommentDetails() {
           deadline={topic.deadline}
         />
       )}
+      <div>
+        <IdeaCreationCard commentModeId={commentModeId} />
+      </div>
       <div className="ideaContainer">
         {ideas &&
           ideas.map((idea) => (

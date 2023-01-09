@@ -6,6 +6,7 @@
   min-height: 250px;
   margin-left: 2%;
   margin-bottom: 5%;
+  box-shadow: var(--box-shadow);
 }
 
 .topicCard__title {

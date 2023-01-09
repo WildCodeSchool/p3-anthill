@@ -16,6 +16,8 @@ topicRouter.post(
   topicController.create
 );
 
+topicRouter.post("/:topicId/ideas", ideaController.create);
+
 topicRouter.put("/:id", topicController.update);
 
 topicRouter.delete("/:id", topicController.remove);
