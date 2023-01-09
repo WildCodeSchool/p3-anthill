@@ -13,12 +13,18 @@
   /* 32px : big title */
   --textXL: 2rem;
 
+  /* Transition */
+  --transition: 0.2s;
+
   /* COLORS */
   --dark-background: #1f2029;
   --medium-background: #2a2b38;
+  --light-background: #3b4554;
   --light-color: #ececec;
   --golden-color: #ffeba7;
+
   --radius: 10px;
+  --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 /* ==========================================================================
@@ -50,7 +56,8 @@ legend {
   padding: 0;
 }
 
-button {
+button,
+a {
   border: none;
   cursor: pointer;
 }

@@ -35,8 +35,10 @@ async function create(req, res) {
   }
 
   const insertId = await ideaModel.insertOne(req.body);
-
-  res.status(201).json({ insertId });
+  if (!insertId) {
+    res.sendStatus(404);
+  }
+  res.sendStatus(201);
 }
 
 async function update(req, res) {
