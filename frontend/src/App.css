@@ -10,13 +10,3 @@ body {
   font-size: var(--textM);
   overscroll-behavior: none;
 }
-
-.no-found {
-  color: red;
-  background-color: green;
-}
-
-.loading {
-  color: red;
-  background-color: green;
-}

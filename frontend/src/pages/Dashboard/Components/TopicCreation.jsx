@@ -1,36 +1,50 @@
-import axios from "axios";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import useFetchLazy from "../../../services/useFetchLazy";
 
 import "./TopicCreation.css";
 
-function TopicCreation() {
+function TopicCreation({ closePopUp }) {
   const navigate = useNavigate();
-  const newData = {
-    title: "",
-    description: "",
-    deadline: "",
-    creatorId: 1, // ne pas oublier que la valeur peut changer, pouvoir récuperer l'utilisateur courant pour la version definitive //
-  };
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const refTitle = useRef();
   const refDescription = useRef();
   const refDeadline = useRef();
 
+  const { trigger: triggerPostTopic, data } = useFetchLazy({
+    path: "/topics",
+    method: "post",
+  });
+
   const submit = (e) => {
     e.preventDefault();
-    newData.title = refTitle.current.value;
-    newData.description = refDescription.current.value;
-    newData.deadline = refDeadline.current.value;
-
-    axios
-      .post("http://localhost:5000/api/topics", newData)
-      .then((res) => navigate(`/dashboard/topics/${res.data.insertId}`))
-      .catch((err, res) => {
-        console.error(err);
-        res.status(500).send("Error retrieving data from database");
-      });
+    setIsSubmitting(true);
   };
+
+  useEffect(() => {
+    if (isSubmitting) {
+      triggerPostTopic({
+        title: refTitle.current.value,
+        description: refDescription.current.value,
+        deadline: refDeadline.current.value,
+        creatorId: 1,
+      });
+      setIsSubmitting(false);
+      refTitle.current.value = "";
+      refDescription.current.value = "";
+      refDeadline.current.value = "";
+    }
+
+    if (data) {
+      navigate(`/dashboard/topics/${data.insertId}`);
+      closePopUp();
+    }
+
+    return () => {};
+  }, [isSubmitting, data, navigate]);
 
   return (
     <form className="topicCreation_container" onSubmit={submit}>

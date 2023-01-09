@@ -20,7 +20,7 @@ function useFetch({ path, method, body = null }) {
       .finally(() => {
         setLoading(false);
       });
-  }, [path]);
+  }, [path, method, body]);
   return { data, loading, error };
 }
 
