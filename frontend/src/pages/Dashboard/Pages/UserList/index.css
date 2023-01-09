@@ -1,3 +1,7 @@
+.userList {
+  width: 100%;
+}
+
 .userList__list__main {
   display: flex;
   flex-direction: column;
@@ -5,9 +9,8 @@
 }
 
 .userList_grid__main {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   padding: 10px;
-  overflow-y: scroll;
 }

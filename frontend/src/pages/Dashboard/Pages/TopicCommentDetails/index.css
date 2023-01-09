@@ -1,3 +1,8 @@
+.topicCommentDeatils_main {
+  width: 100%;
+  padding: 20px;
+}
+
 .topicInfo {
   color: var(--golden-color);
   padding: 2%;
@@ -5,41 +10,15 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--radius);
+  background-color: var(--medium-background);
 }
 
 .topicInfo__deadline {
   display: flex;
   align-items: center;
 }
-
-.ideaCard {
-  color: var(--golden-color);
-  display: flex;
-  justify-content: space-around;
-  background-color: var(--medium-background);
-  border-radius: var(--radius);
-  margin-top: 5%;
-  margin-bottom: 5%;
-  padding: 5%;
-}
-
-.ideaCard__main {
-  display: flex;
-  flex-direction: column;
-}
-
-.ideaCard__description {
-  display: flex;
-  align-items: center;
-}
-
-.ideaCard__interactions {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-/******************** IdeaCreationCard CSS ********************/
 
 .ideaCreationCard {
   color: var(--golden-color);
@@ -50,6 +29,7 @@
   margin-top: 5%;
   margin-bottom: 5%;
   padding: 5%;
+  box-shadow: var(--box-shadow);
 }
 
 .ideaCreationCard__form {
@@ -76,4 +56,31 @@
   border-radius: var(--radius);
   border: 2px solid var(--dark-background);
   background-color: var(--golden-color);
+}
+
+.ideaCard {
+  color: var(--golden-color);
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--medium-background);
+  border-radius: var(--radius);
+  margin: 5% 0;
+  padding: 5%;
+  box-shadow: var(--box-shadow);
+}
+
+.ideaCard__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.ideaCard__description {
+  display: flex;
+  align-items: center;
+}
+
+.ideaCard__interactions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
