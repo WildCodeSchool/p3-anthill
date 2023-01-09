@@ -24,9 +24,9 @@ function IdeaCreationCard({ commentModeId }) {
   return (
     <div className="ideaCreationCard">
       <form className="ideaCreationCard__form" onSubmit={handleSubmit}>
-        <label htmlFor="idea-input">Idea :</label>
+        <label htmlFor="ideaInput">Idea :</label>
         <input type="text" id="ideaInput" ref={titleRef} />
-        <label htmlFor="description-input">Description :</label>
+        <label htmlFor="descriptionInput">Description :</label>
         <input type="text" id="descriptionInput" ref={descriptionRef} />
         {error && <p>{error.message}</p>}
         <button type="submit" id="ideaCreationCard__button">
