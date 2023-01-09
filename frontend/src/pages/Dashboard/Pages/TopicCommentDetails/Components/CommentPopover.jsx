@@ -12,10 +12,10 @@ function CommentPopover({ ideaId }) {
   const boxRef = useRef();
   const tooltipRef = useRef();
 
-  const { id } = useParams();
+  const { topicId } = useParams();
 
-  const { data: comments, loading } = useFetch({
-    path: `/topics/${id}/ideas/${ideaId}/comments`,
+  const { data: comments } = useFetch({
+    path: `/topics/${topicId}/ideas/${ideaId}/comments`,
     method: "get",
   });
 
@@ -49,9 +49,10 @@ function CommentPopover({ ideaId }) {
         style={styles.popper}
         className={isOpen ? "tooltip-visible" : "tooltip-hidden"}
       >
-        {loading || ""}
         {comments &&
-          comments.map((elt) => <CommentCard key={elt.id} comment={elt} />)}
+          comments.map((comment) => (
+            <CommentCard key={comment.id} comment={comment} />
+          ))}
       </div>
     </div>
   );

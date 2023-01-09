@@ -6,10 +6,10 @@ import CommentCreate from "./Components/CommentCreate";
 import "./index.css";
 
 function TopicIdeasDetails() {
-  const { id, ideaId } = useParams();
+  const { topicId, ideaId } = useParams();
   const [isClicked, setIsClicked] = useState(false);
-  const { data: comments, loading } = useFetch({
-    path: `/topics/${id}/ideas/${ideaId}/comments`,
+  const { data: comments, loadingComments } = useFetch({
+    path: `/topics/${topicId}/ideas/${ideaId}/comments`,
     method: "get",
   });
   const { data: idea, loadingIdea } = useFetch({
@@ -23,13 +23,15 @@ function TopicIdeasDetails() {
 
   return (
     <div className="topicIdeasDetails__main">
-      {(loading || loadingIdea) && <h2>LOADING ...</h2>}
+      {(loadingComments || loadingIdea) && <h2>LOADING ...</h2>}
       <div>
         <div className="topicIdeasDetails__title">{idea && idea.title}</div>
         <div className="topicIdeaDetails__comments">
           <div className="topicIdeaDetails__commentsList">
             {comments &&
-              comments.map((elt) => <CommentCard key={elt.id} comment={elt} />)}
+              comments.map((comment) => (
+                <CommentCard key={comment.id} comment={comment} />
+              ))}
           </div>
           <div
             className="topicIdeaDetails__create__comment"

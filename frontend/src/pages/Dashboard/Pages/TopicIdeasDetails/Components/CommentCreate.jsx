@@ -5,7 +5,7 @@ import "./CommentCreate.css";
 
 function CommentCreate() {
   const refContent = useRef();
-  const { id, ideaId } = useParams();
+  const { topicId, ideaId } = useParams();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,7 +21,7 @@ function CommentCreate() {
       method: "post",
       url: `${
         import.meta.env.VITE_BACKEND_URL
-      }/api/topics/${id}/ideas/${ideaId}/comments`,
+      }/api/topics/${topicId}/ideas/${ideaId}/comments`,
       headers: {
         "Content-Type": "application/json",
       },
