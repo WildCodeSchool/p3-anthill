@@ -28,8 +28,8 @@ function TopicCommentDetails() {
   }, []);
 
   return (
-    <div className="topicCommentDeatils_main">
-      {(loadingTopic || loadingIdeas) && <h2>LOADING ...</h2>}
+    <div className="ideaCard__title">
+      {loadingTopic && <h2 className="loading">LOADING ...</h2>}
       {topic && (
         <TopicInfo
           key={topic.id}
@@ -46,7 +46,8 @@ function TopicCommentDetails() {
         />
       </div>
       <div className="ideaContainer">
-        {ideas &&
+        {loadingIdeas && <h2 className="ideaCard__title">LOADING ...</h2>}
+        {ideas?.length > 1 ? (
           ideas.map((idea) => (
             <IdeaCard
               key={idea.id}
@@ -56,7 +57,10 @@ function TopicCommentDetails() {
               nbUpVote={idea.nb_up_vote}
               nbComment={idea.nb_comment}
             />
-          ))}
+          ))
+        ) : (
+          <h2 className="no-found">There is no idea yet</h2>
+        )}
       </div>
     </div>
   );
