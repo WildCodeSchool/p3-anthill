@@ -23,7 +23,7 @@ topicRouter.put("/:id", topicController.update);
 
 topicRouter.delete("/:id", topicController.remove);
 
-topicRouter.get("/:id/ideas/:ideaId/comments", commentController.list);
-topicRouter.post("/:id/ideas/:ideaId/comments", commentController.create);
+topicRouter.get("/:topicId/ideas/:ideaId/comments", commentController.list);
+topicRouter.post("/:topicId/ideas/:ideaId/comments", commentController.create);
 
 module.exports = { topicRouter };

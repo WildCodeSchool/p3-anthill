@@ -14,7 +14,7 @@ async function create(req, res) {
     return;
   }
 
-  const insertId = await commentModel.insertOne(req.body);
+  const insertId = await commentModel.insertOne(req.params.ideaId, 1, req.body);
 
   res.status(201).json({ insertId });
 }

@@ -11,10 +11,6 @@ function CommentCreate() {
     e.preventDefault();
     const data = JSON.stringify({
       content: refContent.current.value,
-      upVote: 0,
-      userId: 1, // getCurrentUser
-      ideaId,
-      commentId: null,
     });
 
     const config = {
