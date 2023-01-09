@@ -24,4 +24,5 @@
   min-height: 90vh;
   background-color: var(--dark-background);
   border-radius: var(--radius);
+  display: flex;
 }

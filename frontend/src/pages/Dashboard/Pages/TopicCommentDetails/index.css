@@ -1,5 +1,6 @@
 .topicCommentDeatils_main {
-  position: relative;
+  width: 100%;
+  padding: 20px;
 }
 
 .topicInfo {
@@ -12,10 +13,6 @@
   box-shadow: var(--box-shadow);
   border-radius: var(--radius);
   background-color: var(--medium-background);
-  position: relative;
-  top: 20px;
-  margin: 0 auto;
-  width: 80%;
 }
 
 .topicInfo__deadline {
@@ -33,9 +30,6 @@
   margin-bottom: 5%;
   padding: 5%;
   box-shadow: var(--box-shadow);
-  margin: 5% auto;
-
-  width: 87%;
 }
 
 .ideaCreationCard__form {
@@ -70,10 +64,9 @@
   justify-content: space-around;
   background-color: var(--medium-background);
   border-radius: var(--radius);
-  margin: 5% auto;
+  margin: 5% 0;
   padding: 5%;
   box-shadow: var(--box-shadow);
-  width: 85%;
 }
 
 .ideaCard__main {

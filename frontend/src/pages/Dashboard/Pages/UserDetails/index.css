@@ -1,11 +1,16 @@
 .userDetail {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .userDetail__card {
+  background-color: var(--medium-background);
   box-shadow: var(--box-shadow);
   margin: 20px;
+  width: 80%;
 }
 
 .userDetail__header {
