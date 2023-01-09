@@ -20,5 +20,10 @@
   border-radius: 15px;
   color: var(--golden-color);
   background-color: var(--medium-background);
-  box-shadow: var(--dark-background) 0px 5px 15px;
+  box-shadow: var(--medium-background) 0px 5px 15px;
+}
+
+.title {
+  margin-top: 3%;
+  font-size: 30px;
 }
