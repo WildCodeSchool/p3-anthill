@@ -2,17 +2,17 @@ import { GiAnt } from "react-icons/gi";
 import "./PopUpTopic.css";
 import TopicCreation from "./TopicCreation";
 
-function PopUpTopic({ closePopup }) {
+function PopUpTopic() {
   return (
     <div className="popup-container">
       <div className="popup-body">
-        <h1>TOPIC CREATED SUCCEFULLY!</h1>
-        <p>
-          <GiAnt size={70} />
-        </p>
-        <button type="button" onClick={closePopup}>
-          X
-        </button>
+        <div className="title">
+          <span>CREATE </span>
+          <span>
+            <GiAnt size={50} />
+          </span>
+          <span> TOPIC</span>
+        </div>
         <TopicCreation />
       </div>
     </div>
