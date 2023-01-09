@@ -1,33 +1,38 @@
+.topicCreation_container {
+  display: grid;
+  grid-column: auto;
+}
+
 .topic__name {
-  display: flex;
-  align-items: flex-start;
   border-radius: 8px;
   border-style: none;
-  margin: 5px;
+  margin-top: 5%;
   width: 30%;
   height: 2rem;
 }
 
 .description {
-  display: flex;
+  padding: 2%;
   border-radius: 8px;
   border-style: none;
-  align-items: flex-start;
-  margin: 5px;
-  width: 90%;
-  height: 10rem;
+  margin-top: 5%;
+  width: 80%;
+  height: 8rem;
 }
 
 .deadline {
+  padding: 2%;
+  width: 20%;
   border-radius: 8px;
   border-style: none;
-  margin: 5px;
+  margin-top: 5%;
 }
 
 .button {
   border-radius: 8px;
   border-style: none;
-  width: 80px;
+  width: 60px;
   height: 30px;
-  margin: 5px;
+  margin-top: 5%;
+  margin-left: 80%;
 }

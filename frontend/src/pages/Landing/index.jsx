@@ -1,4 +1,3 @@
-import PopUpTopic from "@pages/Dashboard/Components/PopUpTopic";
 import { Link } from "react-router-dom";
 import "./index.css";
 
@@ -16,7 +15,6 @@ function Landing() {
         <button type="button" className="buttonLanding">
           <Link to="/login">Log in / Sign in</Link>
         </button>
-        <PopUpTopic />
       </div>
     </div>
   );

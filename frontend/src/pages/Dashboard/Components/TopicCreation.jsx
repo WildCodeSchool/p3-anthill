@@ -24,8 +24,8 @@ function TopicCreation() {
     newData.deadline = refDeadline.current.value;
 
     axios
-      .post("http://localhost:5500/api/topics", newData)
-      .then((res) => navigate(`dashboard/topics/${res.data.insertId}`))
+      .post("http://localhost:5000/api/topics", newData)
+      .then((res) => navigate(`/dashboard/topics/${res.data.insertId}`))
       .catch((err, res) => {
         console.error(err);
         res.status(500).send("Error retrieving data from database");
@@ -33,31 +33,29 @@ function TopicCreation() {
   };
 
   return (
-    <form className="form" onSubmit={submit}>
-      <label htmlFor="topic__name">Topic name</label>
+    <form className="topicCreation_container" onSubmit={submit}>
+      <label htmlFor="topic__nameTitle">TOPIC NAME</label>
       <input
-        id="topic__name"
+        id="topic__nameTitle"
         className="topic__name"
-        placeholder="TOPIC NAME"
+        placeholder="NAME"
         name="Topic name"
         type="text"
         ref={refTitle}
         required
       />
-      <label htmlFor="deadline" className="srOnly">
-        Date
-      </label>
+      <label htmlFor="deadline">DATE</label>
       <input
         id="deadline"
         className="deadline"
         type="datetime-local"
         ref={refDeadline}
       />
-      <label htmlFor="description">Description</label>
+      <label htmlFor="description__title">DESCRIPTION</label>
       <input
-        id="description"
+        id="description__title"
         className="description"
-        placeholder="DESCRIPTION"
+        placeholder="Write here a short description of your topic..."
         name="description"
         type="text"
         ref={refDescription}
