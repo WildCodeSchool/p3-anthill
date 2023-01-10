@@ -6,7 +6,7 @@
   color: var(--light-color);
 }
 
-.commentButton{
+.commentButton {
   color: var(--golden-color);
-  background-color: var( --medium-background);
+  background-color: var(--medium-background);
 }
