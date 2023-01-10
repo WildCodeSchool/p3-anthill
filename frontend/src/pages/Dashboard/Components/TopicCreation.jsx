@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useFetchLazy from "../../../services/useFetchLazy";
@@ -7,8 +7,6 @@ import "./TopicCreation.css";
 
 function TopicCreation({ closePopUp }) {
   const navigate = useNavigate();
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const refTitle = useRef();
   const refDescription = useRef();
@@ -21,30 +19,23 @@ function TopicCreation({ closePopUp }) {
 
   const submit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    triggerPostTopic({
+      title: refTitle.current.value,
+      description: refDescription.current.value,
+      deadline: refDeadline.current.value,
+      creatorId: 1, // pour l'instant c'est une fixture en attendant la bonne valeur venant de local storage
+    });
+    refTitle.current.value = "";
+    refDescription.current.value = "";
+    refDeadline.current.value = "";
   };
 
   useEffect(() => {
-    if (isSubmitting) {
-      triggerPostTopic({
-        title: refTitle.current.value,
-        description: refDescription.current.value,
-        deadline: refDeadline.current.value,
-        creatorId: 1, // pour l'instant c'est une fixture en attendant la bonne valeur venant de local storage
-      });
-      setIsSubmitting(false);
-      refTitle.current.value = "";
-      refDescription.current.value = "";
-      refDeadline.current.value = "";
-    }
-
-    if (data) {
+    if (data?.insertId) {
       navigate(`/dashboard/topics/${data.insertId}`);
       closePopUp();
     }
-
-    return () => {};
-  }, [isSubmitting, data, navigate]);
+  }, [data]);
 
   return (
     <form className="topicCreation_container" onSubmit={submit}>
