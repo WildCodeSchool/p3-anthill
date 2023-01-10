@@ -2,13 +2,29 @@ const { db } = require("./db");
 
 async function getAll() {
   const [rows] = await db.query(
-    "SELECT u.id, u.picture, u.pseudo, u.fullname, u.mood_id, COUNT(ub.badge_id) AS nbr_badges " +
+    "SELECT u.id, u.picture, u.email, u.pseudo, u.fullname, u.mood_id, COUNT(ub.badge_id) AS nbr_badges " +
       "FROM user AS u " +
       "INNER JOIN user_badge AS ub ON ub.user_id = u.id " +
       "GROUP BY u.id "
   );
 
   return rows;
+}
+
+async function getOne(id) {
+  const [rows] = await db.query(
+    "SELECT picture, email, fullname, pseudo, googleUserId FROM user WHERE id = ?",
+    [id]
+  );
+  return rows[0];
+}
+
+async function getConnexion(pseudo) {
+  const [rows] = await db.query(
+    "SELECT picture, email, fullname, pseudo, googleUserId FROM user WHERE pseudo = ?",
+    [pseudo]
+  );
+  return rows[0];
 }
 
 async function insertOne(user) {
@@ -19,18 +35,6 @@ async function insertOne(user) {
   );
 
   return result.insertId;
-}
-
-async function getOne(id) {
-  const [rows] = await db.query("SELECT * FROM user WHERE id = ?", [id]);
-  return rows[0];
-}
-
-async function getConnexion(pseudo) {
-  const [rows] = await db.query("SELECT * FROM user WHERE pseudo = ?", [
-    pseudo,
-  ]);
-  return rows[0];
 }
 
 async function updateOne(id, user) {
@@ -51,9 +55,9 @@ async function deleteOne(id) {
 
 module.exports = {
   getAll,
-  insertOne,
   getOne,
   getConnexion,
+  insertOne,
   updateOne,
   deleteOne,
 };
