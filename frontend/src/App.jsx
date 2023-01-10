@@ -9,6 +9,7 @@ import TopicCommentDetails from "./pages/Dashboard/Pages/TopicCommentDetails";
 import UserList from "./pages/Dashboard/Pages/UserList";
 import UserDetails from "./pages/Dashboard/Pages/UserDetails";
 import { ToggleModeProvider } from "./contexts/ToggleModeContext";
+import TopicIdeasDetails from "./pages/Dashboard/Pages/TopicIdeasDetails";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
               <Route index element={<Main />} />
               <Route path="topics" element={<TopicsPage />} />
               <Route path="topics/:id" element={<TopicCommentDetails />} />
+              <Route
+                path="topics/:id/ideas/:ideaId"
+                element={<TopicIdeasDetails />}
+              />
               <Route path="users" element={<UserList />} />
               <Route path="users/:id" element={<UserDetails />} />
             </Route>

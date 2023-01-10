@@ -50,6 +50,7 @@ function TopicCommentDetails() {
           ideas.map((idea) => (
             <IdeaCard
               key={idea.id}
+              id={idea.id}
               title={idea.idea_title}
               creatorName={idea.idea_creator_name}
               description={idea.idea_description}

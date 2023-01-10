@@ -1,0 +1,31 @@
+.commentCard {
+  width: calc(100% - 20px);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--medium-background);
+  margin-bottom: 10px;
+  border-radius: var(--radius);
+  padding: 10px;
+}
+
+.commentCard__main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.commentCard__main > img {
+  font-size: var(--textXS);
+}
+
+.commentCard__creatorName {
+  font-size: var(--textS);
+}
+
+.commentCard__description {
+  font-size: var(--textXS);
+}
+
+.commentCard__interactions {
+  font-size: var(--textXS);
+}

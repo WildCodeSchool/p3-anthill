@@ -84,3 +84,7 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.ideaCard__nbComment{
+  display: flex;
+}
