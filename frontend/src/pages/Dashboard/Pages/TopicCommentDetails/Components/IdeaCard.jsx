@@ -1,11 +1,21 @@
 import { BiUpvote } from "react-icons/bi";
-import { FaCommentAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import CommentPopover from "./CommentPopover";
 
-function IdeaCard({ title, creatorName, description, nbUpVote, nbComment }) {
+function IdeaCard({
+  id,
+  title,
+  creatorName,
+  description,
+  nbUpVote,
+  nbComment,
+}) {
   return (
     <div className="ideaCard">
       <div className="ideaCard__main">
-        <h3 className="ideaCard__title">{title}</h3>
+        <Link to={`ideas/${id}`}>
+          <h3 className="ideaCard__title">{title}</h3>
+        </Link>
         <div className="ideaCard__creatorName">{creatorName}</div>
       </div>
       <p className="ideaCard__description">{description}</p>
@@ -14,7 +24,10 @@ function IdeaCard({ title, creatorName, description, nbUpVote, nbComment }) {
           {nbUpVote} <BiUpvote />
         </div>
         <div className="ideaCard__nbComment">
-          {nbComment} <FaCommentAlt />
+          <div>{nbComment}</div>
+          <div>
+            <CommentPopover ideaId={id} />
+          </div>
         </div>
       </div>
     </div>

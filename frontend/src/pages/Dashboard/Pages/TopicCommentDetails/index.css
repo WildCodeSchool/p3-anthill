@@ -33,11 +33,11 @@
 }
 
 .ideaCreationCard__form {
-  width: 80%;
+  width: 100%;
 }
 
 .ideaCreationCard__form > input {
-  margin: 0 3%;
+  margin: 0 5%;
 }
 
 .ideaCreationCard__form > #descriptionInput {
@@ -83,4 +83,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.ideaCard__nbComment{
+  display: flex;
 }

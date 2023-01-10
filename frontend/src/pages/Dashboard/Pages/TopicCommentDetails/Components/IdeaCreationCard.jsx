@@ -1,24 +1,28 @@
 import { useRef } from "react";
-import { BiUpvote } from "react-icons/bi";
-import { FaCommentAlt } from "react-icons/fa";
 import useFetchLazy from "../../../../../services/useFetchLazy";
 
-function IdeaCreationCard({ commentModeId }) {
+function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
   const titleRef = useRef();
   const descriptionRef = useRef();
 
-  const { trigger, loading, error } = useFetchLazy({
+  const {
+    trigger: triggerPostIdea,
+    isSuccess,
+    loading,
+    error,
+  } = useFetchLazy({
     path: `/topics/${commentModeId}/ideas/`,
     method: "post",
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    trigger({
+    await triggerPostIdea({
       title: titleRef.current?.value,
       description: descriptionRef.current?.value,
       commentModeId,
     });
+    triggerGetIdeas();
   };
 
   return (
@@ -32,16 +36,8 @@ function IdeaCreationCard({ commentModeId }) {
         <button type="submit" id="ideaCreationCard__button">
           {loading ? "Loading..." : "Add"}
         </button>
+        {isSuccess && <p>New idea created !</p>}
       </form>
-
-      <div className="ideaCreationCard__interactions">
-        <div className="ideaCreationCard__nbUpVote">
-          <BiUpvote />
-        </div>
-        <div className="ideaCreationCard__nbComment">
-          <FaCommentAlt />
-        </div>
-      </div>
     </div>
   );
 }

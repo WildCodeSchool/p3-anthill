@@ -99,6 +99,7 @@ INSERT INTO idea (title, description, up_vote, comment_mode_id, creator_id) VALU
 CREATE TABLE `comment` (
   `id` int NOT NULL AUTO_INCREMENT,
   `content` varchar(500) NOT NULL,
+  `creation_date` datetime NOT NULL,
   `up_vote` int DEFAULT 0,
   `user_id` int NOT NULL,
   `idea_id` int NOT NULL,
@@ -106,7 +107,7 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`id`)
 );
 
-INSERT INTO comment (content, up_vote, user_id, idea_id, comment_id) VALUES ("comment_content_1", 1, 1, 1, 1), ("comment_content_2", 5, 2, 1, null), ("comment_content_3", 5, 3, 1, null), ("comment_content_4", 2, 3, 2, null);
+INSERT INTO comment (creation_date, content, up_vote, user_id, idea_id, comment_id) VALUES (NOW(),"comment_content_1", 1, 1, 1, 1), (NOW(), "comment_content_2", 5, 2, 1, null), (NOW(), "comment_content_3", 5, 3, 1, null), (NOW(), "comment_content_4", 2, 3, 2, null);
 
 ALTER TABLE `idea` ADD CONSTRAINT `fk_idea_comment_mode` FOREIGN KEY (`comment_mode_id`) REFERENCES `comment_mode` (`id`);
 ALTER TABLE `idea` ADD CONSTRAINT `fk_idea_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`);
