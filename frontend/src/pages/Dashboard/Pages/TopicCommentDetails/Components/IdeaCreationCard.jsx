@@ -1,13 +1,13 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import useFetchLazy from "../../../../../services/useFetchLazy";
 
 function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
-  const [ideaCreate, setIdeaCreate] = useState(false);
   const titleRef = useRef();
   const descriptionRef = useRef();
 
   const {
     trigger: triggerPostIdea,
+    isSuccess,
     loading,
     error,
   } = useFetchLazy({
@@ -22,7 +22,6 @@ function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
       description: descriptionRef.current?.value,
       commentModeId,
     });
-    setIdeaCreate(true);
     triggerGetIdeas();
   };
 
@@ -37,7 +36,7 @@ function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
         <button type="submit" id="ideaCreationCard__button">
           {loading ? "Loading..." : "Add"}
         </button>
-        {ideaCreate && <p>New idea created !</p>}
+        {isSuccess && <p>New idea created !</p>}
       </form>
     </div>
   );
