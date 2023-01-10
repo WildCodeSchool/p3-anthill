@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import useFetch from "../../../../services/useFetch";
 import "./index.css";
 
@@ -44,7 +44,9 @@ function UserDetails() {
         </div>
         {loadingUser && <div>LOADING...</div>}
         <div className="userDetail__contact">
-          <p>Show Topics</p>
+          <Link to="topics">
+            <p>Show Topics</p>
+          </Link>
           <p>Slack</p>
         </div>
       </div>
