@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+// import bcrypt from "bcryptjs";
 import { IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
 import ButtonSignUpGoogle from "./ButtonSignUpGoogle";
@@ -11,6 +12,7 @@ function LoginForm() {
   const [isLogin, setIsLogin] = useState(false);
 
   const userRef = useRef("");
+  const passwordRef = useRef("");
 
   const { trigger: triggerGetUser, data: user } = useFetchLazy({
     method: "get",
@@ -35,6 +37,7 @@ function LoginForm() {
           pseudo: user.pseudo,
           email: user.email,
           fullname: user.fullname,
+          password: user.password,
         })
       );
       navigate("/dashboard");
@@ -61,6 +64,7 @@ function LoginForm() {
           className="form-style"
           placeholder="Your Password"
           autoComplete="off"
+          ref={passwordRef}
         />
       </div>
       <div className="buttons">
