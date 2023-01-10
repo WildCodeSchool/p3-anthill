@@ -99,7 +99,7 @@ INSERT INTO idea (title, description, up_vote, comment_mode_id, creator_id) VALU
 CREATE TABLE `comment` (
   `id` int NOT NULL AUTO_INCREMENT,
   `content` varchar(500) NOT NULL,
-  `creation_date` datetime NOT NULL CHECK (creation_date > 0),
+  `creation_date` datetime NOT NULL,
   `up_vote` int DEFAULT 0,
   `user_id` int NOT NULL,
   `idea_id` int NOT NULL,
@@ -145,3 +145,6 @@ CREATE TABLE `user_topic` (
 );
 
 INSERT INTO user_topic (user_id, topic_id) VALUES (1, 1), (1, 4), (1, 5), (1, 2), (1, 3), (2, 1), (2, 6), (2, 11), (3, 4), (4, 6), (5, 7), (1, 8), (2, 9), (3, 10);
+
+CREATE VIEW TopicData (id, title, creator_id, fullname, description, deadline, comment_mode_topic_id, mindmap_mode_topic_id, nb_idea) AS (SELECT t.id, t.title, u.id, u.fullname, t.description, t.deadline, cm.topic_id, mm.topic_id, count(i.id) FROM idea AS i RIGHT JOIN comment_mode AS cm ON cm.id = i.comment_mode_id RIGHT JOIN topic AS t ON t.id = cm.topic_id LEFT JOIN mindmap_mode AS mm ON mm.topic_id = t.id JOIN user AS u ON u.id = t.creator_id GROUP BY t.id);
+
