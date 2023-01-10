@@ -153,4 +153,3 @@ LEFT JOIN idea AS i ON i.comment_mode_id = cm.id
 LEFT JOIN mindmap_mode AS mm ON mm.topic_id = t.id 
 LEFT JOIN bubble as b ON b.mindmap_id = mm. id 
 LEFT JOIN user AS u ON u.id = t.creator_id GROUP BY t.id);
-
