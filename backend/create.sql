@@ -99,7 +99,7 @@ INSERT INTO idea (title, description, up_vote, comment_mode_id, creator_id) VALU
 CREATE TABLE `comment` (
   `id` int NOT NULL AUTO_INCREMENT,
   `content` varchar(500) NOT NULL,
-  `creation_date` datetime NOT NULL CHECK (creation_date > 0),
+  `creation_date` datetime NOT NULL,
   `up_vote` int DEFAULT 0,
   `user_id` int NOT NULL,
   `idea_id` int NOT NULL,
