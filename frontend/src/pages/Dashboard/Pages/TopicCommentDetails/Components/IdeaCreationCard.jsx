@@ -1,6 +1,4 @@
 import { useRef } from "react";
-import { BiUpvote } from "react-icons/bi";
-import { FaCommentAlt } from "react-icons/fa";
 import useFetchLazy from "../../../../../services/useFetchLazy";
 
 function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
@@ -9,6 +7,7 @@ function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
 
   const {
     trigger: triggerPostIdea,
+    isSuccess,
     loading,
     error,
   } = useFetchLazy({
@@ -37,16 +36,8 @@ function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
         <button type="submit" id="ideaCreationCard__button">
           {loading ? "Loading..." : "Add"}
         </button>
+        {isSuccess && <p>New idea created !</p>}
       </form>
-
-      <div className="ideaCreationCard__interactions">
-        <div className="ideaCreationCard__nbUpVote">
-          <BiUpvote />
-        </div>
-        <div className="ideaCreationCard__nbComment">
-          <FaCommentAlt />
-        </div>
-      </div>
     </div>
   );
 }
