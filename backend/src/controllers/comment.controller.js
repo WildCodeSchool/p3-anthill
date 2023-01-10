@@ -2,7 +2,9 @@ const commentModel = require("../models/comment.model");
 // const commentValidator = require("../validators/comment.validator");
 
 async function list(req, res) {
-  const comments = await commentModel.getAll();
+  const comments = await commentModel.getAllCommentsOfOneIdea(
+    req.params.ideaId
+  );
   res.json(comments);
 }
 
@@ -12,7 +14,11 @@ async function create(req, res) {
     return;
   }
 
-  const insertId = await commentModel.insertOne(req.body);
+  const insertId = await commentModel.insertOne({
+    ideaId: req.params.ideaId,
+    userId: 1,
+    content: req.body,
+  });
 
   res.status(201).json({ insertId });
 }
