@@ -4,7 +4,7 @@ import { useState } from "react";
 const URL = import.meta.env.VITE_BACKEND_URL;
 
 function useFetchLazy({ path, method }) {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(undefined);
   const [isSuccess, setIsSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

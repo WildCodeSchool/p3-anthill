@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 import { BsFillPersonFill } from "react-icons/bs";
 import { IoIosAt, IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
@@ -19,15 +19,15 @@ function SignUpForm() {
   const URL = import.meta.env.VITE_BACKEND_URL;
 
   const register = () => {
-    const password = passwordRef.current?.value;
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    // const password = passwordRef.current?.value;
+    // const hashedPassword = bcrypt.hashSync(password, 10);
 
     axios
       .post(`${URL}/api/users`, {
         email: emailRef.current?.value,
         fullname: usernameRef.current?.value,
         pseudo: pseudoRef.current?.value,
-        password: hashedPassword,
+        password: passwordRef.current?.value,
       })
       .catch((err) => {
         console.error(err);
@@ -38,7 +38,7 @@ function SignUpForm() {
         email: emailRef.current?.value,
         fullname: usernameRef.current?.value,
         pseudo: pseudoRef.current?.value,
-        password: hashedPassword,
+        password: passwordRef.current?.value,
       })
     );
   };
