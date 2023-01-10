@@ -5,6 +5,7 @@ const URL = import.meta.env.VITE_BACKEND_URL;
 
 function useFetch({ path, method, body = null }) {
   const [data, setData] = useState([]);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -13,6 +14,7 @@ function useFetch({ path, method, body = null }) {
     axios[method](`${URL}/api${path}`, body)
       .then((res) => {
         setData(res.data);
+        setIsSuccess(true);
       })
       .catch((err) => {
         setError(err);
@@ -21,7 +23,7 @@ function useFetch({ path, method, body = null }) {
         setLoading(false);
       });
   }, [path]);
-  return { data, loading, error };
+  return { data, isSuccess, loading, error };
 }
 
 export default useFetch;
