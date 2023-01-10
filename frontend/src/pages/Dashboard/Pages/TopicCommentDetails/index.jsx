@@ -44,7 +44,7 @@ function TopicCommentDetails() {
       </div>
       <div className="ideaContainer">
         {loadingIdeas && <h2 className="ideaCard__title">LOADING ...</h2>}
-        {ideas?.length > 1 ? (
+        {ideas?.length > 0 ? (
           ideas.map((idea) => (
             <IdeaCard
               key={idea.id}

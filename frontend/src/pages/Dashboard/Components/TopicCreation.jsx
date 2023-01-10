@@ -30,7 +30,7 @@ function TopicCreation({ closePopUp }) {
         title: refTitle.current.value,
         description: refDescription.current.value,
         deadline: refDeadline.current.value,
-        creatorId: 1,
+        creatorId: 1, // pour l'instant c'est une fixture en attendant la bonne valeur venant de local storage
       });
       setIsSubmitting(false);
       refTitle.current.value = "";
