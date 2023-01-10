@@ -8,10 +8,7 @@ async function list(req, res) {
 
 async function listIdeasOfOneTopic(req, res) {
   const ideas = await ideaModel.getAllOfOneTopic(req.params.id);
-  if (ideas.length === 0) {
-    res.sendStatus(404);
-    return;
-  }
+
   res.json(ideas);
 }
 
