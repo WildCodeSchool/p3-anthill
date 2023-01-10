@@ -1,16 +1,18 @@
 const { db } = require("./db");
 
-async function getAll() {
-  const [rows] = await db.query("SELECT * FROM comment");
+async function getAllCommentsOfOneIdea(ideaId) {
+  const [rows] = await db.query(
+    "SELECT c.id, c.content, c.up_vote, c.user_id, c.creation_date, u.pseudo, u.picture FROM comment AS c INNER JOIN idea AS i ON i.id = c.idea_id INNER JOIN user AS u ON u.id = c.user_id WHERE c.idea_id = ? ORDER BY c.creation_date DESC",
+    [ideaId]
+  );
 
   return rows;
 }
 
-async function insertOne(user) {
-  const { content, upVote, userId, ideaId, commentId } = user;
+async function insertOne({ ideaId, userId, content }) {
   const [result] = await db.query(
-    "INSERT INTO comment (content, up_vote, user_id, idea_id, comment_id) VALUES (?, ?, ?, ?, ?)",
-    [content, upVote, userId, ideaId, commentId]
+    "INSERT INTO comment (creation_date, content, user_id, idea_id) VALUES (NOW(), ?, ?, ?)",
+    [content, userId, ideaId]
   );
 
   return result.insertId;
@@ -37,4 +39,10 @@ async function deleteOne(id) {
   return result.affectedRows;
 }
 
-module.exports = { getAll, insertOne, getOne, updateOne, deleteOne };
+module.exports = {
+  getAllCommentsOfOneIdea,
+  insertOne,
+  getOne,
+  updateOne,
+  deleteOne,
+};
