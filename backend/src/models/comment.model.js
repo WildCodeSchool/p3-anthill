@@ -9,8 +9,7 @@ async function getAllCommentsOfOneIdea(ideaId) {
   return rows;
 }
 
-async function insertOne(ideaId, userId, user) {
-  const { content } = user;
+async function insertOne({ ideaId, userId, content }) {
   const [result] = await db.query(
     "INSERT INTO comment (creation_date, content, user_id, idea_id) VALUES (NOW(), ?, ?, ?)",
     [content, userId, ideaId]
