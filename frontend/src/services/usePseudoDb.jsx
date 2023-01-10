@@ -1,14 +1,17 @@
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useState } from "react";
 
 const URL = import.meta.env.VITE_BACKEND_URL;
 
-function useFetchLazy({ path, method }) {
-  const [data, setData] = useState(undefined);
+function useUserDb({ path, body = null }) {
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const trigger = async (body) => {
-    await axios[method](`${URL}/api${path}`, body)
+
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(`${URL}/api${path}`, body)
       .then((res) => {
         setData(res.data);
       })
@@ -18,8 +21,8 @@ function useFetchLazy({ path, method }) {
       .finally(() => {
         setLoading(false);
       });
-  };
-  return { trigger, data, loading, error };
+  }, [path]);
+  return { data, loading, error };
 }
 
-export default useFetchLazy;
+export default useUserDb;

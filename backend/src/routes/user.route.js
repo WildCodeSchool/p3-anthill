@@ -5,10 +5,14 @@ const badgeController = require("../controllers/badge.controller");
 const userRouter = new Router();
 
 userRouter.get("/", userController.list);
-userRouter.post("/", userController.create);
 userRouter.get("/:id", userController.get);
-userRouter.put("/:id", userController.update);
-userRouter.delete("/:id", userController.remove);
+userRouter.get("/pseudo/:pseudo", userController.getOnePseudo);
 userRouter.get("/:id/badges", badgeController.getUserBadges);
+
+userRouter.post("/", userController.create);
+
+userRouter.put("/:id", userController.update);
+
+userRouter.delete("/:id", userController.remove);
 
 module.exports = { userRouter };

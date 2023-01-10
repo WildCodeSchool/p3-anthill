@@ -26,6 +26,13 @@ async function getOne(id) {
   return rows[0];
 }
 
+async function getConnexion(pseudo) {
+  const [rows] = await db.query("SELECT * FROM user WHERE pseudo = ?", [
+    pseudo,
+  ]);
+  return rows[0];
+}
+
 async function updateOne(id, user) {
   const { picture, email, fullname, password, googleUserId, moodId } = user;
   const [result] = await db.query(
@@ -46,6 +53,7 @@ module.exports = {
   getAll,
   insertOne,
   getOne,
+  getConnexion,
   updateOne,
   deleteOne,
 };

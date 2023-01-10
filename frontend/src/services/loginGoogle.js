@@ -12,7 +12,6 @@ const handleCallbackResponse = (response) => {
     "currentUser",
     JSON.stringify({ googleUserId, fullname, email, picture })
   );
-  console.log(fullname);
 };
 
 const handleLogin = () => {

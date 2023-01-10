@@ -1,14 +1,45 @@
 import { useNavigate } from "react-router-dom";
-import { IoIosAt, IoMdKey } from "react-icons/io";
+import { useEffect, useRef, useState } from "react";
+import { IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
 import ButtonSignUpGoogle from "./ButtonSignUpGoogle";
+import useFetchLazy from "../../../services/useFetchLazy";
 
 function LoginForm() {
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    navigate("/dashboard");
+  const [isLogin, setIsLogin] = useState(false);
+
+  const userRef = useRef("");
+
+  const { trigger: triggerGetUser, data: user } = useFetchLazy({
+    method: "get",
+    path: `/users/pseudo/${userRef.current?.value}`,
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLogin(true);
   };
+
+  useEffect(() => {
+    if (isLogin) {
+      triggerGetUser();
+      setIsLogin(false);
+    }
+    if (user) {
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({
+          id: user.id,
+          pseudo: user.pseudo,
+          email: user.email,
+          fullname: user.fullname,
+        })
+      );
+      navigate("/dashboard");
+    }
+  }, [user, isLogin]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -19,17 +50,10 @@ function LoginForm() {
           className="form-style"
           placeholder="Your Pseudo"
           autoComplete="off"
+          ref={userRef}
         />
       </div>
-      <div className="form-group">
-        <IoIosAt className="icons" />
-        <input
-          type="email"
-          className="form-style"
-          placeholder="Your Email"
-          autoComplete="off"
-        />
-      </div>
+
       <div className="form-group">
         <IoMdKey className="icons" />
         <input
@@ -40,7 +64,7 @@ function LoginForm() {
         />
       </div>
       <div className="buttons">
-        <button type="button" className="btn">
+        <button type="submit" className="btn">
           submit
         </button>
         <ButtonSignUpGoogle />

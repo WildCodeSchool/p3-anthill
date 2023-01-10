@@ -29,8 +29,22 @@ async function get(req, res) {
     res.sendStatus(404);
     return;
   }
-
   res.json(user);
+}
+
+async function getOnePseudo(req, res) {
+  if (!req.params.pseudo) {
+    res.sendStatus(400);
+    return;
+  }
+
+  const userConnexion = await userModel.getConnexion(req.params.pseudo);
+
+  if (!userConnexion) {
+    res.sendStatus(404);
+    return;
+  }
+  res.json(userConnexion);
 }
 
 async function update(req, res) {
@@ -65,4 +79,4 @@ async function remove(req, res) {
   res.sendStatus(204);
 }
 
-module.exports = { list, create, get, update, remove };
+module.exports = { list, create, get, getOnePseudo, update, remove };
