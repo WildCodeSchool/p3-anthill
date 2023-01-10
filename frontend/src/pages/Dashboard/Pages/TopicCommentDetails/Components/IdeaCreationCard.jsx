@@ -22,6 +22,8 @@ function IdeaCreationCard({ topicId, triggerGetIdeas }) {
       title: titleRef.current?.value,
       description: descriptionRef.current?.value,
     });
+    titleRef.current.value = "";
+    descriptionRef.current.value = "";
     triggerGetIdeas();
   };
 
