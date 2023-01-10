@@ -1,10 +1,10 @@
 import { IoLogoGoogle } from "react-icons/io";
-import "./ButtonSignUpGoogle.css";
-import handleLogin from "../../../services/loginGoogle";
+import "./ButtonGoogle.css";
+import handleSignUp from "../../../services/signUpGoogle";
 
 function ButtonSignUpGoogle() {
   return (
-    <button type="submit" className="googleBtn" onClick={handleLogin}>
+    <button type="submit" className="googleBtn" onClick={handleSignUp}>
       With
       <IoLogoGoogle className="googleLogo" />
     </button>

@@ -1,7 +1,19 @@
 import jwtDecode from "jwt-decode";
+import axios from "axios";
 
 const GOOGLE_CLIENT_ID =
   "380173514511-nl7hpviphofn124ghjirsanfsq7b3ikd.apps.googleusercontent.com";
+const URL = import.meta.env.VITE_BACKEND_URL;
+const handleCallbackGetResponse = () => {
+  const data = JSON.parse(localStorage.getItem("currentUser"));
+
+  axios.post(`${URL}/api/users`, {
+    email: data.email,
+    fullname: data.fullname,
+    picture: data.picture,
+    googleId: data.googleUserId,
+  });
+};
 
 const handleCallbackResponse = (response) => {
   const token = response.credential;
@@ -12,10 +24,10 @@ const handleCallbackResponse = (response) => {
     "currentUser",
     JSON.stringify({ googleUserId, fullname, email, picture })
   );
-  console.log(fullname);
+  handleCallbackGetResponse();
 };
 
-const handleLogin = () => {
+const handleSignUp = () => {
   try {
     window.google.accounts.id.initialize({
       client_id: GOOGLE_CLIENT_ID,
@@ -31,4 +43,4 @@ const handleLogin = () => {
   }
 };
 
-export default handleLogin;
+export default handleSignUp;

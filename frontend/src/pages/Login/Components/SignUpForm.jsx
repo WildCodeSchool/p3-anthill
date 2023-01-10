@@ -5,6 +5,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { IoIosAt, IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
 import ButtonSignUpGoogle from "./ButtonSignUpGoogle";
+import useCurrentUser from "../../../services/useCurrentUser";
 
 function SignUpForm() {
   const usernameRef = useRef("");
@@ -12,6 +13,7 @@ function SignUpForm() {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const navigate = useNavigate();
+  const isLoggedIn = useCurrentUser();
 
   const URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -26,10 +28,21 @@ function SignUpForm() {
       .catch((err) => {
         console.error(err);
       });
+    localStorage.setItem(
+      "currentUser",
+      JSON.stringify({
+        email: emailRef.current?.value,
+        fullname: usernameRef.current?.value,
+        pseudo: pseudoRef.current?.value,
+      })
+    );
   };
 
   const handleSubmit = () => {
-    navigate("/dashboard");
+    if (isLoggedIn) {
+      return navigate("/dashboard");
+    }
+    return null;
   };
   return (
     <form onSubmit={handleSubmit}>

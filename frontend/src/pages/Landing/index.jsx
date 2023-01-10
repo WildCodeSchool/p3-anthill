@@ -1,7 +1,17 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useCurrentUser from "../../services/useCurrentUser";
 import "./index.css";
 
 function Landing() {
+  const navigate = useNavigate();
+  const isLoggedIn = useCurrentUser();
+
+  const handleConnexion = () => {
+    if (isLoggedIn) {
+      return navigate("/dashboard");
+    }
+    return navigate("/login");
+  };
   return (
     <div id="landing">
       <div>
@@ -12,8 +22,12 @@ function Landing() {
         />
       </div>
       <div>
-        <button type="button" className="buttonLanding">
-          <Link to="/login">Log in / Sign in</Link>
+        <button
+          onClick={handleConnexion}
+          type="button"
+          className="buttonLanding"
+        >
+          Go to the site
         </button>
       </div>
     </div>

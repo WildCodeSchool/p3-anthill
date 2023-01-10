@@ -1,10 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { IoIosAt, IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
 import ButtonSignUpGoogle from "./ButtonSignUpGoogle";
 
 function LoginForm() {
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    navigate("/dashboard");
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="form-group">
         <GiAnt className="ant-icon" />
         <input
