@@ -22,9 +22,9 @@ function IdeaCreationCard({ topicId, triggerGetIdeas }) {
       title: titleRef.current?.value,
       description: descriptionRef.current?.value,
     });
+    triggerGetIdeas();
     titleRef.current.value = "";
     descriptionRef.current.value = "";
-    triggerGetIdeas();
   };
 
   return (
