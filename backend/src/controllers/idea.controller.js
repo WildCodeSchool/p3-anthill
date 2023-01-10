@@ -38,7 +38,7 @@ async function create(req, res) {
   if (!insertId) {
     res.sendStatus(404);
   }
-  res.sendStatus(201);
+  res.status(201).json({ insertId });
 }
 
 async function update(req, res) {
