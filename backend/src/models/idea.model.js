@@ -12,7 +12,7 @@ async function getAllOfOneTopic(commentModeTopicId) {
       "FROM idea AS i " +
       "LEFT JOIN user AS u ON u.id = i.creator_id " +
       "LEFT JOIN comment AS c ON c.idea_id = i.id " +
-      "LEFT JOIN comment_mode AS cm ON cm.topic_id = i.comment_mode_id " +
+      "LEFT JOIN comment_mode AS cm ON cm.id = i.comment_mode_id " +
       "WHERE cm.topic_id = ? " +
       "GROUP BY i.id",
     [commentModeTopicId]
@@ -25,12 +25,22 @@ async function getOne(id) {
   return rows[0];
 }
 
-async function insertOne(idea) {
-  const { title, description, commentModeId } = idea;
+async function insertOne(body, params) {
+  const { title, description } = body;
+  const topicId = params;
   const [result] = await db.query(
-    "INSERT INTO idea (title, description, comment_mode_id) VALUES (?, ?, ?)",
-    [title, description, commentModeId]
+    "INSERT INTO comment_mode (topic_id) VALUES (?)",
+    [topicId]
   );
+
+  const [result2] = await db.query(
+    "INSERT INTO idea (title, description, comment_mode_id) VALUES (?, ?, ?)",
+    [title, description, result.insertId]
+  );
+
+  if (!result2.insertId) {
+    return null;
+  }
 
   return result.insertId;
 }

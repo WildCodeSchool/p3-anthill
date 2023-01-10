@@ -3,7 +3,7 @@ import { BiUpvote } from "react-icons/bi";
 import { FaCommentAlt } from "react-icons/fa";
 import useFetchLazy from "../../../../../services/useFetchLazy";
 
-function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
+function IdeaCreationCard({ topicId, triggerGetIdeas }) {
   const titleRef = useRef();
   const descriptionRef = useRef();
 
@@ -12,7 +12,7 @@ function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
     loading,
     error,
   } = useFetchLazy({
-    path: `/topics/${commentModeId}/ideas/`,
+    path: `/ideas/${topicId}`,
     method: "post",
   });
 
@@ -21,7 +21,6 @@ function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
     await triggerPostIdea({
       title: titleRef.current?.value,
       description: descriptionRef.current?.value,
-      commentModeId,
     });
     triggerGetIdeas();
   };

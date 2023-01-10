@@ -34,7 +34,7 @@ async function create(req, res) {
     return;
   }
 
-  const insertId = await ideaModel.insertOne(req.body);
+  const insertId = await ideaModel.insertOne(req.body, req.params.topicId);
   if (!insertId) {
     res.sendStatus(404);
   }

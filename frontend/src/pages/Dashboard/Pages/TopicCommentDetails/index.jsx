@@ -9,9 +9,9 @@ import useFetchLazy from "../../../../services/useFetchLazy";
 import "./index.css";
 
 function TopicCommentDetails() {
-  const commentModeId = useParams().id;
+  const topicId = useParams().id;
   const { data: topic, loading: loadingTopic } = useFetch({
-    path: `/topics/${commentModeId}`,
+    path: `/topics/${topicId}`,
     method: "get",
   });
   const {
@@ -19,7 +19,7 @@ function TopicCommentDetails() {
     data: ideas,
     loading: loadingIdeas,
   } = useFetchLazy({
-    path: `/topics/${commentModeId}/ideas`,
+    path: `/topics/${topicId}/ideas`,
     method: "get",
   });
 
@@ -40,10 +40,7 @@ function TopicCommentDetails() {
         />
       )}
       <div>
-        <IdeaCreationCard
-          commentModeId={commentModeId}
-          triggerGetIdeas={triggerGetIdeas}
-        />
+        <IdeaCreationCard topicId={topicId} triggerGetIdeas={triggerGetIdeas} />
       </div>
       <div className="ideaContainer">
         {loadingIdeas && <h2 className="ideaCard__title">LOADING ...</h2>}
