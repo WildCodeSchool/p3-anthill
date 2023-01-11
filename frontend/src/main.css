@@ -1,0 +1,76 @@
+:root {
+  /* VARIABLES */
+
+  /* TEXT AND TITLE SIZE */
+  /* 14 px : footer, labels etc... */
+  --textXS: 0.875rem;
+  /* 16px : body text - minimal size for text */
+  --textS: 1rem;
+  /* 20px : normal text (ex: small description) */
+  --textM: 1.25rem;
+  /* 24px : small title (ex: topic title) */
+  --textL: 1.5rem;
+  /* 32px : big title */
+  --textXL: 2rem;
+
+  /* Transition */
+  --transition: 0.2s;
+
+  /* COLORS */
+  --dark-background: #1f2029;
+  --medium-background: #2a2b38;
+  --light-background: #3b4554;
+  --light-color: #ececec;
+  --golden-color: #ffeba7;
+
+  --radius: 10px;
+  --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* ==========================================================================
+   #RESET
+   ========================================================================== */
+
+/*
+    A very simple reset that sits on top of css.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+p,
+pre,
+dl,
+dd,
+ol,
+ul,
+figure,
+hr,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+a {
+  border: none;
+  cursor: pointer;
+}
+
+/* Masquage d'element restant accessible aux lecteurs d'écran */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

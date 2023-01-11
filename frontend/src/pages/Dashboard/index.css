@@ -1,0 +1,28 @@
+.dashboard {
+  width: 100vw;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  height: 8vh;
+  width: 100%;
+  background-color: var(--medium-background);
+}
+
+.side-bar {
+  color: var(--light-color);
+  position: fixed;
+  left: 15px;
+  width: 300px;
+}
+
+.outlet {
+  margin: 0 20px 0px 330px;
+  min-height: 90vh;
+  background-color: var(--dark-background);
+  border-radius: var(--radius);
+  display: flex;
+}
