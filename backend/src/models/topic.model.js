@@ -7,25 +7,7 @@ async function getAll() {
 }
 
 async function getAllTopicCard() {
-  const [rows] = await db.query(
-    "SELECT " +
-      "t.id AS id, " +
-      "t.title AS title, " +
-      "u.fullname AS creator_name, " +
-      "t.description AS description, " +
-      "t.deadline AS deadline, " +
-      "count(i.id) AS nb_idea, " +
-      "count(b.id) AS nb_bubble, " +
-      "cm.topic_id AS comment_mode_topic_id, " +
-      "mm.topic_id AS mindmap_mode_topic_id " +
-      "FROM topic AS t " +
-      "LEFT JOIN comment_mode AS cm ON cm.topic_id = t.id " +
-      "LEFT JOIN idea AS i ON i.comment_mode_id = cm.id " +
-      "LEFT JOIN mindmap_mode AS mm ON mm.topic_id = t.id " +
-      "LEFT JOIN bubble AS b ON b.mindmap_id = mm.id " +
-      "LEFT JOIN user AS u ON u.id = t.creator_id " +
-      "GROUP BY t.id"
-  );
+  const [rows] = await db.query("SELECT * FROM TopicData");
   return rows;
 }
 
@@ -44,6 +26,14 @@ async function getOne(id) {
   }
 
   return rows[0];
+}
+
+async function getAllTopicsOfOneUser(userId) {
+  const [rows] = await db.query(
+    "SELECT * FROM TopicData WHERE creator_id = ?",
+    [userId]
+  );
+  return rows;
 }
 
 async function insertOne(topic) {
@@ -92,4 +82,5 @@ module.exports = {
   insertOne,
   updateOne,
   deleteOne,
+  getAllTopicsOfOneUser,
 };

@@ -11,6 +11,11 @@ async function listCard(req, res) {
   res.json(topics);
 }
 
+async function getUserTopics(req, res) {
+  const topics = await topicModel.getAllTopicsOfOneUser(req.params.id);
+  res.json(topics);
+}
+
 async function get(req, res) {
   if (!req.params.id) {
     res.sendStatus(400);
@@ -75,4 +80,5 @@ module.exports = {
   create,
   update,
   remove,
+  getUserTopics,
 };
