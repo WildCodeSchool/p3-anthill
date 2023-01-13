@@ -27,18 +27,13 @@ async function getOne(id) {
 
 async function insertOne(body, params) {
   const { title, description } = body;
-  const topicId = params;
+  const { topicId } = params;
   const [result] = await db.query(
-    "INSERT INTO comment_mode (topic_id) VALUES (?)",
-    [topicId]
-  );
-
-  const [result2] = await db.query(
     "INSERT INTO idea (title, description, comment_mode_id) VALUES (?, ?, ?)",
-    [title, description, result.insertId]
+    [title, description, topicId]
   );
 
-  if (!result2.insertId) {
+  if (!result.insertId) {
     return null;
   }
 

@@ -26,7 +26,7 @@ async function get(req, res) {
 }
 
 async function create(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.params.topicId) {
     res.sendStatus(400);
     return;
   }
