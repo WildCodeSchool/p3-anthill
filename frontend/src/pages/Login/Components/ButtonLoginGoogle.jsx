@@ -4,7 +4,7 @@ import handleLogin from "../../../services/loginGoogle";
 
 function ButtonLoginGoogle() {
   return (
-    <button type="submit" className="googleBtn" onClick={handleLogin}>
+    <button type="button" className="googleBtn" onClick={handleLogin}>
       With
       <IoLogoGoogle className="googleLogo" />
     </button>

@@ -19,10 +19,10 @@ async function getOne(id) {
   return rows[0];
 }
 
-async function getConnexion(pseudo) {
+async function getConnexion(email) {
   const [rows] = await db.query(
-    "SELECT picture, email, fullname, pseudo, googleUserId FROM user WHERE pseudo = ?",
-    [pseudo]
+    "SELECT picture, email, fullname, pseudo, googleUserId FROM user WHERE email = ?",
+    [email]
   );
   return rows[0];
 }

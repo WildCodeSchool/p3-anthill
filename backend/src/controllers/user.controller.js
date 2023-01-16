@@ -33,12 +33,12 @@ async function get(req, res) {
 }
 
 async function getOnePseudo(req, res) {
-  if (!req.params.pseudo) {
+  if (!req.params.email) {
     res.sendStatus(400);
     return;
   }
 
-  const userConnexion = await userModel.getConnexion(req.params.pseudo);
+  const userConnexion = await userModel.getConnexion(req.params.email);
 
   if (!userConnexion) {
     res.sendStatus(404);

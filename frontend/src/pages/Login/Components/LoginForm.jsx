@@ -42,14 +42,6 @@ function LoginForm() {
     }
   }, [user, isLogin]);
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("currentUser") === null) {
-  //     console.log("no user");
-  //   } else {
-  //     navigate("/dashboard");
-  //   }
-  // }, [handleSubmit]);
-
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-group">

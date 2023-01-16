@@ -44,6 +44,10 @@ function Sidebar({ name, photo }) {
     },
   ];
 
+  const handleClick = () => {
+    window.localStorage.clear();
+  };
+
   const handleButtonClick = (button) => {
     setActiveButton(button);
   };
@@ -70,7 +74,7 @@ function Sidebar({ name, photo }) {
             />
           ))}
         </ul>
-        <button type="button" className="signOut-btn">
+        <button type="button" className="signOut-btn" onClick={handleClick}>
           <Link to="/login" className="signOut-btn">
             Log Out
           </Link>
