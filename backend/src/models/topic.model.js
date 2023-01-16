@@ -12,15 +12,7 @@ async function getAllTopicCard() {
 }
 
 async function getOne(id) {
-  const [rows] = await db.query(
-    "SELECT t.id, t.is_comment_mode, t.title, u.fullname AS creator_name, t.description, t.deadline, count(i.id) AS nb_idea, count(b.id) AS nb_bubble " +
-      "FROM topic AS t " +
-      "LEFT JOIN user AS u ON u.id = t.creator_id " +
-      "LEFT JOIN idea AS i ON i.comment_mode_id = t.id " +
-      "LEFT JOIN bubble AS b ON b.mindmap_id = t.id " +
-      "WHERE t.id = ?",
-    [id]
-  );
+  const [rows] = await db.query("SELECT * FROM TopicData WHERE id = ?", [id]);
 
   if (rows.length === 0) {
     return null;
