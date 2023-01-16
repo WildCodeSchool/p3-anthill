@@ -1,55 +1,64 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-// import bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs";
 import { IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
 import ButtonLoginGoogle from "./ButtonLoginGoogle";
 import useFetchLazy from "../../../services/useFetchLazy";
 
 function LoginForm() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const userRef = useRef("");
   const passwordRef = useRef("");
 
   const { trigger: triggerGetUser, data: user } = useFetchLazy({
     method: "get",
-    path: `/users/pseudo/${userRef.current?.value}`,
+    path: `/users/email/${userRef.current?.value}`,
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLogin(true);
-  };
-  useEffect(() => {
+
     if (isLogin) {
       triggerGetUser();
       setIsLogin(false);
     }
     if (user) {
-      localStorage.setItem(
-        "currentUser",
-        JSON.stringify({
-          id: user.id,
-          pseudo: user.pseudo,
-          email: user.email,
-          fullname: user.fullname,
-          password: user.password,
-        })
+      const validPass = await bcrypt.compare(
+        passwordRef.current?.value,
+        user.password
       );
+      if (validPass) {
+        localStorage.setItem(
+          "currentUser",
+          JSON.stringify({
+            id: user.id,
+            pseudo: user.pseudo,
+            email: user.email,
+            fullname: user.fullname,
+          })
+        );
+        navigate("/dashboard");
+      } else {
+        setIsError(true);
+      }
     }
-  }, [user, isLogin]);
+  };
 
   return (
     <form onSubmit={handleSubmit}>
+      {isError && <div className="error-login">Invalid email or password</div>}
       <div className="form-group">
         <GiAnt className="ant-icon" />
         <input
-          type="text"
+          type="email"
           className="form-style"
-          placeholder="Your Pseudo"
+          placeholder="Your Email"
           autoComplete="off"
           ref={userRef}
         />

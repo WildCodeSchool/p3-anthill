@@ -21,7 +21,7 @@ async function getOne(id) {
 
 async function getConnexion(email) {
   const [rows] = await db.query(
-    "SELECT picture, email, fullname, pseudo, googleUserId FROM user WHERE email = ?",
+    "SELECT picture, email, fullname, pseudo, googleUserId, password FROM user WHERE email = ?",
     [email]
   );
   return rows[0];
