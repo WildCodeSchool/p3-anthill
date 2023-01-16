@@ -133,8 +133,8 @@ CREATE TABLE `comment` (
 
 INSERT INTO comment (creation_date, content, up_vote, user_id, idea_id, comment_id) 
 VALUES 
-  (NOW(),"comment_content_1", 1, 1, 1, 1), 
-  (NOW(), "comment_content_2", 5, 2, 1, null), 
+  (NOW(),"comment_content_1", 1, 1, 1, null), 
+  (NOW(), "comment_content_2", 5, 2, 1, 1), 
   (NOW(), "comment_content_3", 5, 3, 1, null), 
   (NOW(), "comment_content_4", 2, 3, 2, null)
 ;
@@ -176,3 +176,15 @@ AS (SELECT t.id, t.is_comment_mode, t.title, u.id, u.fullname, t.description, t.
   LEFT JOIN bubble as b ON b.mindmap_id = t.id 
   LEFT JOIN user AS u ON u.id = t.creator_id GROUP BY t.id)
 ;
+
+CREATE VIEW AllFromOneTopic 
+  (comment_id, comment_content, comment_creator, idea_id, idea_title, idea_description, idea_creator, topic_id, topic_creator, topic_title, topic_description, topic_is_comment_mode)
+  AS (SELECT c.id, c.content, u.fullname, i.id, i.title, i.description, u2.fullname, t.id, u3.fullname, t.title, t.description, t.is_comment_mode
+  FROM comment AS c
+  LEFT JOIN idea AS i ON i.id = c.idea_id
+  LEFT JOIN topic AS t ON t.id = i.comment_mode_id
+  LEFT JOIN user AS u ON u.id = c.user_id
+  LEFT JOIN user AS u2 ON u2.id = i.creator_id
+  LEFT JOIN user AS u3 ON u3.id = t.creator_id
+  ORDER BY c.creation_date DESC
+  );
