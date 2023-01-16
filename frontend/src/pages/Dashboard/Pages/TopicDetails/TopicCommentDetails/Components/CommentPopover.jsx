@@ -2,9 +2,9 @@ import React, { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { FaCommentAlt } from "react-icons/fa";
 import { usePopper } from "react-popper";
-import CommentCard from "../../TopicIdeasDetails/Components/CommentCard";
+import CommentCard from "../../../TopicIdeasDetails/Components/CommentCard";
 import "./CommentPopover.css";
-import useFetch from "../../../../../services/useFetch";
+import useFetch from "../../../../../../services/useFetch";
 
 function CommentPopover({ ideaId }) {
   const [isOpen, setIsOpen] = useState(false);
