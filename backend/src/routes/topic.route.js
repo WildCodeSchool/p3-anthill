@@ -8,8 +8,8 @@ const topicRouter = new Router();
 
 topicRouter.get("/", topicController.list);
 topicRouter.get("/card", topicController.listCard);
-topicRouter.get("/:id/ideas", ideaController.listIdeasOfOneTopic);
 topicRouter.get("/:id", topicController.get);
+topicRouter.get("/:id/ideas", ideaController.listIdeasOfOneTopic);
 topicRouter.get("/:topicId/ideas/:ideaId/comments", commentController.list);
 
 topicRouter.post(

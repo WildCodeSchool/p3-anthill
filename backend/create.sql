@@ -38,7 +38,14 @@ CREATE TABLE `user` (
   CONSTRAINT `fk_user_mood` FOREIGN KEY (`mood_id`) REFERENCES `mood` (`id`)
 );
 
-INSERT INTO user (description, pseudo, picture, email, password, fullname, googleUserId, mood_id) VALUES ("description_1", "pseudo_1", "picture_user_1", "email_1@gmail.com", "user_password_1", "user_fullname_1", "user_google_id_1", 1), ("description_2", "pseudo_2", "picture_user_2", "email_2@gmail.com", "user_password_2", "user_fullname_2", "user_google_id_2", 2), ("description_3", "pseudo_3", "picture_user_3", "email_3@gmail.com", "user_password_3", "user_fullname_3", "user_google_id_3", 3), ("description_4", "pseudo_4", "picture_user_4", "email_4@gmail.com", "user_password_4", "user_fullname_4", "user_google_id_4", 4), ("description_5", "pseudo_5", "picture_user_5", "email_5@gmail.com", "user_password_5", "user_fullname_5", "user_google_id_5", 1);
+INSERT INTO user (description, pseudo, picture, email, password, fullname, googleUserId, mood_id) 
+VALUES 
+  ("description_1", "pseudo_1", "picture_user_1", "email_1@gmail.com", "user_password_1", "user_fullname_1", "user_google_id_1", 1), 
+  ("description_2", "pseudo_2", "picture_user_2", "email_2@gmail.com", "user_password_2", "user_fullname_2", "user_google_id_2", 2), 
+  ("description_3", "pseudo_3", "picture_user_3", "email_3@gmail.com", "user_password_3", "user_fullname_3", "user_google_id_3", 3), 
+  ("description_4", "pseudo_4", "picture_user_4", "email_4@gmail.com", "user_password_4", "user_fullname_4", "user_google_id_4", 4), 
+  ("description_5", "pseudo_5", "picture_user_5", "email_5@gmail.com", "user_password_5", "user_fullname_5", "user_google_id_5", 1)
+;
 
 CREATE TABLE `topic` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -53,7 +60,20 @@ CREATE TABLE `topic` (
   CONSTRAINT `fk_topic_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`)
 ); 
 
-INSERT INTO topic (deadline, description, is_private, creator_id, title, is_closed) VALUES (curdate(), "topic_description_1", 0, 1, "topic_title_1", 0), (curdate(), "topic_description_2", 0, 2, "topic_title_2", 0), (curdate(), "topic_description_3", 0, 3, "topic_title_3", 0), (curdate(), "topic_description_4", 0, 4, "topic_title_4", 0), (curdate(), "topic_description_5", 0, 1, "topic_title_5", 0), (curdate(), "topic_description_6", 0, 1, "topic_title_6", 0), (curdate(), "topic_description_7", 0, 1, "topic_title_7", 0), (curdate(), "topic_description_8", 0, 1, "topic_title_8", 0), (curdate(), "topic_description_9", 0, 1, "topic_title_9", 1), (curdate(), "topic_description_10", 0, 2, "topic_title_10", 0), (curdate(), "topic_description_11", 0, 2, "topic_title_11", 1);
+INSERT INTO topic (deadline, description, is_private, creator_id, title, is_closed, is_comment_mode) 
+VALUES 
+  (curdate(), "topic_description_1", 0, 1, "topic_title_1", 0, 1), 
+  (curdate(), "topic_description_2", 0, 2, "topic_title_2", 0, 1), 
+  (curdate(), "topic_description_3", 0, 3, "topic_title_3", 0, 1), 
+  (curdate(), "topic_description_4", 0, 4, "topic_title_4", 0, 1), 
+  (curdate(), "topic_description_5", 0, 1, "topic_title_5", 0, 1), 
+  (curdate(), "topic_description_6", 0, 1, "topic_title_6", 0, 1), 
+  (curdate(), "topic_description_7", 0, 1, "topic_title_7", 0, 0), 
+  (curdate(), "topic_description_8", 0, 1, "topic_title_8", 0, 0), 
+  (curdate(), "topic_description_9", 0, 1, "topic_title_9", 1, 0), 
+  (curdate(), "topic_description_10", 0, 2, "topic_title_10", 0, 0), 
+  (curdate(), "topic_description_11", 0, 2, "topic_title_11", 1, 0)
+;
 
 CREATE TABLE `bubble` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -61,10 +81,19 @@ CREATE TABLE `bubble` (
   `mindmap_id` int NOT NULL,
   `creator_id` int NOT NULL,
   PRIMARY KEY (`id`),
+  CONSTRAINT `fk_bubble_mindmap` FOREIGN KEY (`mindmap_id`) REFERENCES `topic` (`id`),
   CONSTRAINT `fk_bubble_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`)
 ); 
 
-INSERT INTO bubble (content, mindmap_id, creator_id) VALUES ("bubble_content_1", 1, 1);
+INSERT INTO bubble (content, mindmap_id, creator_id) 
+VALUES 
+  ("bubble_content_1", 8, 1),
+  ("bubble_content_2", 8, 1),
+  ("bubble_content_3", 8, 1),
+  ("bubble_content_4", 9, 3),
+  ("bubble_content_5", 10, 4),
+  ("bubble_content_6", 11, 2)
+;
 
 CREATE TABLE `idea` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -73,10 +102,20 @@ CREATE TABLE `idea` (
   `up_vote` int DEFAULT 0 CHECK(up_vote >= 0),
   `comment_mode_id` int DEFAULT NULL,
   `creator_id` int NOT NULL DEFAULT 1,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_idea_topic` FOREIGN KEY (`comment_mode_id`) REFERENCES `topic` (`id`),
+  CONSTRAINT `fk_idea_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`)
 ); 
 
-INSERT INTO idea (title, description, up_vote, comment_mode_id, creator_id) VALUES ("idea_title_1", "idea_description_1", 1, 2, 1), ("idea_title_2", "idea_description_2", 11, 2, 2), ("idea_title_3", "idea_description_3", 31, 3, 5), ("idea_title_4", "idea_description_4", 1, 2, 4),  ("idea_title_5", "idea_description_5", 1, 2, 4),  ("idea_title_6", "idea_description_6", 1, 2, 4);
+INSERT INTO idea (title, description, up_vote, comment_mode_id, creator_id) 
+VALUES 
+  ("idea_title_1", "idea_description_1", 1, 1, 1), 
+  ("idea_title_2", "idea_description_2", 11, 1, 2), 
+  ("idea_title_3", "idea_description_3", 31, 1, 5), 
+  ("idea_title_4", "idea_description_4", 1, 2, 4),  
+  ("idea_title_5", "idea_description_5", 1, 3, 4),  
+  ("idea_title_6", "idea_description_6", 1, 4, 4)
+;
 
 CREATE TABLE `comment` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -86,16 +125,19 @@ CREATE TABLE `comment` (
   `user_id` int NOT NULL,
   `idea_id` int NOT NULL,
   `comment_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_comment_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `fk_comment_idea` FOREIGN KEY (`idea_id`) REFERENCES `idea` (`id`),
+  CONSTRAINT `fk_comment_comment` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`id`)
 );
 
-INSERT INTO comment (creation_date, content, up_vote, user_id, idea_id, comment_id) VALUES (NOW(),"comment_content_1", 1, 1, 1, 1), (NOW(), "comment_content_2", 5, 2, 1, null), (NOW(), "comment_content_3", 5, 3, 1, null), (NOW(), "comment_content_4", 2, 3, 2, null);
-
-ALTER TABLE `idea` ADD CONSTRAINT `fk_idea_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`);
-
-ALTER TABLE `comment` ADD CONSTRAINT `fk_comment_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
-ALTER TABLE `comment` ADD CONSTRAINT `fk_comment_idea` FOREIGN KEY (`idea_id`) REFERENCES `idea` (`id`);
-ALTER TABLE `comment` ADD CONSTRAINT `fk_comment_comment` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`id`);
+INSERT INTO comment (creation_date, content, up_vote, user_id, idea_id, comment_id) 
+VALUES 
+  (NOW(),"comment_content_1", 1, 1, 1, 1), 
+  (NOW(), "comment_content_2", 5, 2, 1, null), 
+  (NOW(), "comment_content_3", 5, 3, 1, null), 
+  (NOW(), "comment_content_4", 2, 3, 2, null)
+;
 
 CREATE TABLE `link` (
   `source_id` int NOT NULL,
@@ -127,9 +169,10 @@ CREATE TABLE `user_topic` (
 
 INSERT INTO user_topic (user_id, topic_id) VALUES (1, 1), (1, 4), (1, 5), (1, 2), (1, 3), (2, 1), (2, 6), (2, 11), (3, 4), (4, 6), (5, 7), (1, 8), (2, 9), (3, 10);
 
-CREATE VIEW TopicData (id, title, creator_id, fullname, description, deadline, nb_idea, nb_bubble) 
-AS (SELECT t.id, t.title, u.id, u.fullname, t.description, t.deadline, count(i.id), count(b.id) 
-FROM topic AS t 
-LEFT JOIN idea AS i ON i.comment_mode_id = t.id
-LEFT JOIN bubble as b ON b.mindmap_id = t.id 
-LEFT JOIN user AS u ON u.id = t.creator_id GROUP BY t.id);
+CREATE VIEW TopicData (id, is_comment_mode, title, creator_id, fullname, description, deadline, nb_idea, nb_bubble) 
+AS (SELECT t.id, t.is_comment_mode, t.title, u.id, u.fullname, t.description, t.deadline, count(i.id), count(b.id) 
+  FROM topic AS t 
+  LEFT JOIN idea AS i ON i.comment_mode_id = t.id
+  LEFT JOIN bubble as b ON b.mindmap_id = t.id 
+  LEFT JOIN user AS u ON u.id = t.creator_id GROUP BY t.id)
+;

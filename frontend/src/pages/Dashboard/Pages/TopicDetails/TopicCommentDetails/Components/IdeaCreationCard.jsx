@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import useFetchLazy from "../../../../../services/useFetchLazy";
+import useFetchLazy from "../../../../../../services/useFetchLazy";
 
 function IdeaCreationCard({ topicId, triggerGetIdeas }) {
   const titleRef = useRef();
@@ -11,7 +11,7 @@ function IdeaCreationCard({ topicId, triggerGetIdeas }) {
     loading,
     error,
   } = useFetchLazy({
-    path: `/ideas/${topicId}`,
+    path: `/topics/${topicId}/ideas`,
     method: "post",
   });
 
