@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Footer from "./Components/footer/Footer";
+
 import "./index.css";
 
 function Landing() {
@@ -16,6 +18,7 @@ function Landing() {
           <Link to="/login">Log in / Sign in</Link>
         </button>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -44,6 +44,8 @@ function Sidebar({ name, photo }) {
     },
   ];
 
+  console.warn(photo);
+
   const handleButtonClick = (button) => {
     setActiveButton(button);
   };
