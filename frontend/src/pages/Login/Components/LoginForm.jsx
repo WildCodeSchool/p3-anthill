@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import bcrypt from "bcryptjs";
 import { IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
