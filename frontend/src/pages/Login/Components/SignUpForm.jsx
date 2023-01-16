@@ -29,23 +29,27 @@ function SignUpForm() {
         pseudo: pseudoRef.current?.value,
         password: passwordRef.current?.value,
       })
+      .then(() => {
+        localStorage.setItem(
+          "currentUser",
+          JSON.stringify({
+            email: emailRef.current?.value,
+            fullname: usernameRef.current?.value,
+            pseudo: pseudoRef.current?.value,
+            password: passwordRef.current?.value,
+          })
+        );
+        navigate("/dashboard");
+      })
       .catch((err) => {
         console.error(err);
       });
-    localStorage.setItem(
-      "currentUser",
-      JSON.stringify({
-        email: emailRef.current?.value,
-        fullname: usernameRef.current?.value,
-        pseudo: pseudoRef.current?.value,
-        password: passwordRef.current?.value,
-      })
-    );
   };
 
-  const handleSubmit = () => {
-    if (isLoggedIn) {
-      return navigate("/dashboard");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!isLoggedIn) {
+      register();
     }
     return null;
   };
@@ -94,7 +98,7 @@ function SignUpForm() {
         />
       </div>
       <div className="buttons">
-        <button onClick={register} type="submit" className="btn">
+        <button type="submit" className="btn">
           submit
         </button>
         <ButtonSignUpGoogle />

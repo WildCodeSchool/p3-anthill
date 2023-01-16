@@ -1,13 +1,13 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 // import bcrypt from "bcryptjs";
 import { IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
-import ButtonSignUpGoogle from "./ButtonSignUpGoogle";
+import ButtonLoginGoogle from "./ButtonLoginGoogle";
 import useFetchLazy from "../../../services/useFetchLazy";
 
 function LoginForm() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState(false);
 
@@ -23,7 +23,6 @@ function LoginForm() {
     e.preventDefault();
     setIsLogin(true);
   };
-
   useEffect(() => {
     if (isLogin) {
       triggerGetUser();
@@ -40,9 +39,16 @@ function LoginForm() {
           password: user.password,
         })
       );
-      navigate("/dashboard");
     }
   }, [user, isLogin]);
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("currentUser") === null) {
+  //     console.log("no user");
+  //   } else {
+  //     navigate("/dashboard");
+  //   }
+  // }, [handleSubmit]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -71,7 +77,7 @@ function LoginForm() {
         <button type="submit" className="btn">
           submit
         </button>
-        <ButtonSignUpGoogle />
+        <ButtonLoginGoogle />
       </div>
     </form>
   );

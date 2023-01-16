@@ -20,6 +20,7 @@ const handleLogin = () => {
       client_id: GOOGLE_CLIENT_ID,
       callback: handleCallbackResponse,
     });
+
     window.google.accounts.id.prompt((notification) => {
       if (notification.isNotDisplayed()) {
         throw new Error("Try to clear the cookies or try again later!");

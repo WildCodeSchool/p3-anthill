@@ -34,6 +34,7 @@ CREATE TABLE `user` (
   `fullname` varchar(255) NOT NULL,
   `googleUserId` varchar(255) NULL,
   `mood_id` int NULL,
+  UNIQUE(`pseudo`, `email`),
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_user_mood` FOREIGN KEY (`mood_id`) REFERENCES `mood` (`id`)
 );

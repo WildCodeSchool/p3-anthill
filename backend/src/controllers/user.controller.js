@@ -79,4 +79,4 @@ async function remove(req, res) {
   res.sendStatus(204);
 }
 
-module.exports = { list, create, get, getOnePseudo, update, remove };
+module.exports = { list, create, getOnePseudo, get, update, remove };

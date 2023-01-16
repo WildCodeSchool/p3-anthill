@@ -27,7 +27,7 @@ const handleCallbackResponse = (response) => {
   handleCallbackGetResponse();
 };
 
-const handleSignUp = () => {
+const handleSignUp = async () => {
   try {
     window.google.accounts.id.initialize({
       client_id: GOOGLE_CLIENT_ID,
@@ -36,6 +36,9 @@ const handleSignUp = () => {
     window.google.accounts.id.prompt((notification) => {
       if (notification.isNotDisplayed()) {
         throw new Error("Try to clear the cookies or try again later!");
+      }
+      if (notification.j) {
+        window.location.href = "/dashboard";
       }
     });
   } catch (err) {
