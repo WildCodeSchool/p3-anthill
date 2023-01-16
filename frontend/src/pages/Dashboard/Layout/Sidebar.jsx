@@ -19,7 +19,7 @@ function Sidebar({ name, photo }) {
       text: "My Topics",
       icon: <TbCrown className="icon" />,
       active: activeButton === 1,
-      path: "/dashboard",
+      path: `/dashboard/users/1/topics`, // getCurrentUser
     },
     {
       id: 2,

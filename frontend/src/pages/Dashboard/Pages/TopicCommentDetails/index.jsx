@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import TopicInfo from "./Components/TopicInfo";
 import IdeaCard from "./Components/IdeaCard";
 import IdeaCreationCard from "./Components/IdeaCreationCard";
 import useFetch from "../../../../services/useFetch";
+import useFetchLazy from "../../../../services/useFetchLazy";
 
 import "./index.css";
 
@@ -12,10 +14,18 @@ function TopicCommentDetails() {
     path: `/topics/${commentModeId}`,
     method: "get",
   });
-  const { data: ideas, loading: loadingIdeas } = useFetch({
+  const {
+    trigger: triggerGetIdeas,
+    data: ideas,
+    loading: loadingIdeas,
+  } = useFetchLazy({
     path: `/topics/${commentModeId}/ideas`,
     method: "get",
   });
+
+  useEffect(() => {
+    triggerGetIdeas();
+  }, []);
 
   return (
     <div className="topicCommentDeatils_main">
@@ -30,13 +40,17 @@ function TopicCommentDetails() {
         />
       )}
       <div>
-        <IdeaCreationCard commentModeId={commentModeId} />
+        <IdeaCreationCard
+          commentModeId={commentModeId}
+          triggerGetIdeas={triggerGetIdeas}
+        />
       </div>
       <div className="ideaContainer">
         {ideas &&
           ideas.map((idea) => (
             <IdeaCard
               key={idea.id}
+              id={idea.id}
               title={idea.idea_title}
               creatorName={idea.idea_creator_name}
               description={idea.idea_description}
