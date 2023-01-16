@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import useFetchLazy from "../../../../../services/useFetchLazy";
+import useFetchLazy from "../../../../../../services/useFetchLazy";
 
-function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
+function IdeaCreationCard({ topicId, triggerGetIdeas }) {
   const titleRef = useRef();
   const descriptionRef = useRef();
 
@@ -11,7 +11,7 @@ function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
     loading,
     error,
   } = useFetchLazy({
-    path: `/topics/${commentModeId}/ideas/`,
+    path: `/topics/${topicId}/ideas`,
     method: "post",
   });
 
@@ -20,9 +20,10 @@ function IdeaCreationCard({ commentModeId, triggerGetIdeas }) {
     await triggerPostIdea({
       title: titleRef.current?.value,
       description: descriptionRef.current?.value,
-      commentModeId,
     });
     triggerGetIdeas();
+    titleRef.current.value = "";
+    descriptionRef.current.value = "";
   };
 
   return (

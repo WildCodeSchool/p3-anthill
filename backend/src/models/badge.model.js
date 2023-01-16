@@ -39,7 +39,9 @@ async function deleteOne(id) {
 
 async function getUserBadges(id) {
   const [rows] = await db.query(
-    "SELECT * FROM badge INNER JOIN user_badge ON user_badge.badge_id = badge.id WHERE user_id = ?",
+    "SELECT * FROM badge AS b " +
+      "INNER JOIN user_badge AS us ON user_badge.badge_id = badge.id " +
+      "WHERE user_id = ?",
     [id]
   );
   return rows;

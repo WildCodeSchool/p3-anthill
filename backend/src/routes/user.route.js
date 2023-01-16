@@ -6,9 +6,13 @@ const topicController = require("../controllers/topic.controller");
 const userRouter = new Router();
 
 userRouter.get("/", userController.list);
-userRouter.post("/", userController.create);
 userRouter.get("/:id", userController.get);
+userRouter.get("/:id/badges", badgeController.getUserBadges);
+
+userRouter.post("/", userController.create);
+
 userRouter.put("/:id", userController.update);
+
 userRouter.delete("/:id", userController.remove);
 
 userRouter.get("/:id/badges", badgeController.getUserBadges);

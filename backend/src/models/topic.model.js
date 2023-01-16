@@ -12,14 +12,7 @@ async function getAllTopicCard() {
 }
 
 async function getOne(id) {
-  const [rows] = await db.query(
-    "SELECT t.id, t.title, u.fullname AS creator_name, t.description, t.deadline, cm.topic_id AS comment_mode_topic_id " +
-      "FROM topic AS t " +
-      "LEFT JOIN comment_mode AS cm ON cm.topic_id = t.id " +
-      "LEFT JOIN user AS u ON u.id = t.creator_id " +
-      "WHERE t.id = ?",
-    [id]
-  );
+  const [rows] = await db.query("SELECT * FROM TopicData WHERE id = ?", [id]);
 
   if (rows.length === 0) {
     return null;
@@ -37,10 +30,10 @@ async function getAllTopicsOfOneUser(userId) {
 }
 
 async function insertOne(topic) {
-  const { deadline, description, title } = topic;
+  const { deadline, description, title, creatorId, isCommentMode } = topic;
   const [result] = await db.query(
-    "INSERT INTO topic (deadline, description, title) VALUES (?, ?, ?)",
-    [deadline, description, title]
+    "INSERT INTO topic (deadline, description, title, creator_id, is_comment_mode) VALUES (?, ?, ?, ?, ?)",
+    [deadline, description, title, creatorId, isCommentMode]
   );
 
   if (result.length === 0) {
