@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const userController = require("../controllers/user.controller");
 const badgeController = require("../controllers/badge.controller");
+const topicController = require("../controllers/topic.controller");
 
 const userRouter = new Router();
 
@@ -8,6 +9,7 @@ userRouter.get("/", userController.list);
 userRouter.get("/:id", userController.get);
 userRouter.get("/pseudo/:pseudo", userController.getOnePseudo);
 userRouter.get("/:id/badges", badgeController.getUserBadges);
+userRouter.get("/:id/topics", topicController.getUserTopics);
 
 userRouter.post("/", userController.create);
 
