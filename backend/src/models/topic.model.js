@@ -38,10 +38,10 @@ async function getAllTopicsOfOneUser(userId) {
 }
 
 async function insertOne(topic) {
-  const { deadline, description, title, creatorId } = topic;
+  const { deadline, description, title, creatorId, isCommentMode } = topic;
   const [result] = await db.query(
-    "INSERT INTO topic (deadline, description, title, creator_id) VALUES (?, ?, ?, ?)",
-    [deadline, description, title, creatorId]
+    "INSERT INTO topic (deadline, description, title, creator_id, is_comment_mode) VALUES (?, ?, ?, ?, ?)",
+    [deadline, description, title, creatorId, isCommentMode]
   );
 
   if (result.length === 0) {
