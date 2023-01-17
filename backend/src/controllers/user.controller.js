@@ -32,7 +32,7 @@ async function get(req, res) {
   res.json(user);
 }
 
-async function getOnePseudo(req, res) {
+async function getOneByEmail(req, res) {
   if (!req.params.email) {
     res.sendStatus(400);
     return;
@@ -79,4 +79,4 @@ async function remove(req, res) {
   res.sendStatus(204);
 }
 
-module.exports = { list, create, getOnePseudo, get, update, remove };
+module.exports = { list, create, getOneByEmail, get, update, remove };
