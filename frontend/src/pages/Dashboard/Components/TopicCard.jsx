@@ -41,7 +41,7 @@ function TopicCard(props) {
           </div>
         ) : (
           <div className="topicCard__nbIdea notification">
-            <div className="notification-number">{nbBubble}</div>
+            <div className="notification-bubble-number">{nbBubble}</div>
             <TbMessageCircle2 />
           </div>
         )}

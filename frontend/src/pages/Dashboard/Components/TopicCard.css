@@ -28,7 +28,7 @@
   text-align: start;
   font-size: small;
   overflow: hidden;
-  max-width: 15ch;
+  max-width: 30ch;
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
@@ -41,6 +41,7 @@
   text-align: start;
   font-size: small;
   overflow: visible;
+  box-sizing: border-box;
 }
 
 .topicCard__bottom {
@@ -86,14 +87,29 @@
 .notification-number {
   position: absolute;
   background-color: #3a6df0;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   font-size: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  right: -9px;
+  right: -12px;
   top: 1px;
+}
+
+.notification-bubble-number {
+  position: absolute;
+  background-color: #3a6df0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  right: -10px;
+  top: 2px;
 }
