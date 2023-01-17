@@ -16,7 +16,6 @@ function TopicIdeasDetails() {
     path: `/ideas/${ideaId}`,
     method: "get",
   });
-
   function handleClick() {
     setIsClicked(true);
   }
