@@ -4,27 +4,27 @@
   background-color: var(--medium-background);
   width: 300px;
   min-height: 250px;
-  margin-left: 2%;
-  margin-bottom: 5%;
+  margin: 0 0 5% 2%;
   box-shadow: var(--box-shadow);
+}
+
+.topicCard:hover {
+  box-shadow: var(--golden-color) 0px 5px 15px;
 }
 
 .topicCard__title {
   text-align: start;
-  margin: 2%;
-  margin-left: 2%;
-  margin-bottom: 5%;
+  margin: 5% 5% 5% 6%;
+  color: var(--golden-color);
 }
 
 .topicCard__creatorName {
   text-align: start;
-  margin-left: 5px;
-  margin: 2%;
+  margin: 5% 5% 5% 6%;
 }
 
 .topicCard__description {
-  margin-top: 5%;
-  margin-left: 2%;
+  margin: 5% 5% 5% 6%;
   text-align: start;
   font-size: small;
   overflow: hidden;
@@ -32,6 +32,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
+  color: var(--light-color);
 }
 
 .topicCard__description:hover {
@@ -43,10 +44,10 @@
 }
 
 .topicCard__bottom {
-  padding: 3%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 5% 5% 5% 6%;
 }
 
 .topicCard__deadline {
@@ -55,6 +56,7 @@
   justify-content: flex-start;
   font-size: small;
   margin-top: 30%;
+  color: var(--light-color);
 }
 
 .topicCard__nbIdea {
@@ -64,4 +66,5 @@
   color: var(--golden-color);
   font-size: small;
   margin-top: 30%;
+  color: var(--light-color);
 }
