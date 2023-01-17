@@ -1,3 +1,7 @@
+.nav-bar {
+  z-index: 100;
+}
+
 .nav-bar .logoContainer {
   width: 138px;
   margin: 10px 0 10px 92px;

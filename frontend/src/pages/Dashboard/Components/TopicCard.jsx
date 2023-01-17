@@ -1,12 +1,22 @@
-import { FaCommentAlt } from "react-icons/fa";
+import { BiMessageDetail } from "react-icons/bi";
 import { RxLapTimer } from "react-icons/rx";
+import { TbMessageCircle2 } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import formatDeadline from "../../../services/formatDeadline";
 
 import "./TopicCard.css";
 
 function TopicCard(props) {
-  const { id, title, creatorName, description, deadline, nbIdea } = props;
+  const {
+    id,
+    title,
+    creatorName,
+    description,
+    deadline,
+    nbIdea,
+    nbBubble,
+    isCommentMode,
+  } = props;
 
   const formatedDeadLine = formatDeadline(deadline);
   const [year, month, day, hour, minutes] = [...formatedDeadLine];
@@ -24,9 +34,17 @@ function TopicCard(props) {
           <RxLapTimer />
           <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>
         </div>
-        <div className="topicCard__nbIdea">
-          {nbIdea} <FaCommentAlt />
-        </div>
+        {isCommentMode ? (
+          <div className="topicCard__nbIdea notification">
+            <div className="notification-number">{nbIdea}</div>
+            <BiMessageDetail />
+          </div>
+        ) : (
+          <div className="topicCard__nbIdea notification">
+            <div className="notification-number">{nbBubble}</div>
+            <TbMessageCircle2 />
+          </div>
+        )}
       </div>
     </article>
   );

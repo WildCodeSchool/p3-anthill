@@ -65,3 +65,32 @@
   font-size: small;
   margin-top: 30%;
 }
+
+.notification {
+  position: relative;
+  color: var(--light-color);
+  font-size: var(--textL);
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.notification-number {
+  position: absolute;
+  background-color: #3a6df0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  right: -9px;
+  top: 1px;
+}
