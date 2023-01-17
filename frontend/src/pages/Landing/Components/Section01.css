@@ -1,5 +1,5 @@
 .section01 {
-    height: 20vh;
+  height: 20vh;
 }
 .section01:not(.blob) {
   box-sizing: border-box;

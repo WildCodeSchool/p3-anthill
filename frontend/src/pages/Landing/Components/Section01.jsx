@@ -48,8 +48,6 @@ function Section01() {
         />
       ))}
       <p>Thank you</p>
-      <h1>800</h1>
-      <p>followers</p>
     </div>
   );
 }
