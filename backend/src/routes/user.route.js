@@ -7,7 +7,7 @@ const userRouter = new Router();
 
 userRouter.get("/", userController.list);
 userRouter.get("/:id", userController.get);
-userRouter.get("/email/:email", userController.getOnePseudo);
+userRouter.get("/email/:email", userController.getOneByEmail);
 userRouter.get("/:id/badges", badgeController.getUserBadges);
 userRouter.get("/:id/topics", topicController.getUserTopics);
 
