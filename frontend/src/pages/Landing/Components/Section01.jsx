@@ -20,14 +20,14 @@ function Section01() {
     return () => clearInterval(interval);
   }, []);
 
-  function moveText(e) {
-    const x = e.clientX;
-    const y = e.clientY;
-    document.querySelector("div").style.position = "absolute";
-    document.querySelector("div").style.transform = "translate(-50%, -25%)";
-    document.querySelector("div").style.left = `${x}px`;
-    document.querySelector("div").style.top = `${y}px`;
-  }
+  // function moveText(e) {
+  //   const x = e.clientX;
+  //   const y = e.clientY;
+  //   document.querySelector("div").style.position = "absolute";
+  //   document.querySelector("div").style.transform = "translate(-50%, -25%)";
+  //   document.querySelector("div").style.left = `${x}px`;
+  //   document.querySelector("div").style.top = `${y}px`;
+  // }
   return (
     <div className="section01">
       {blobs.map((blob) => (
