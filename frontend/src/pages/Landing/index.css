@@ -1,3 +1,7 @@
+.landing {
+  background-color: var(--dark-background);
+}
+
 .logoLanding {
   margin: 20px;
   width: clamp(2rem 20vw 15rem);

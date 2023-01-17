@@ -5,7 +5,7 @@ import "./index.css";
 
 function Landing() {
   return (
-    <div id="landing">
+    <div className="landing">
       <div>
         <img
           className="logoLanding"

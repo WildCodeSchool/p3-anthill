@@ -1,11 +1,10 @@
 .us-container {
   width: 25rem;
   padding: 20px;
-  border-radius: 20px;
+  background-color: var(--medium-background);
+  border-radius: var(--radius);
   border: 8px solid var(--medium-background);
-  box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
-    5px 5px 15px rgba(0, 0, 0, 0.35),
-    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
@@ -116,7 +115,7 @@
   padding: 7px 35px;
   cursor: pointer;
   font-size: var(--textM);
-  border-radius: 2px;
+  border-radius: var(--radius);
 }
 
 .btn-01 {
@@ -143,4 +142,17 @@
   box-shadow: 0 0 9e9Q inset #0009;
   background-color: var(--c);
   /* color: var(--light-color); */
+}
+
+.col {
+  position: relative;
+}
+
+.col .btn-ant {
+  position: absolute;
+  rotate: 45deg;
+  top: 8px;
+  left: 95px;
+  font-size: 25px;
+  color: #102770;
 }

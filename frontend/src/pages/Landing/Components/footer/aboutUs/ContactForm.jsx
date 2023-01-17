@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { GiAnt } from "react-icons/gi";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -102,7 +103,10 @@ function ContactForm() {
         </div>
         <div className="row100">
           <div className="col">
-            <input className="btn-01" type="submit" value="Send 🐜" />
+            <button className="btn" type="submit">
+              Send
+            </button>
+            <GiAnt className="btn-ant" />
           </div>
         </div>
       </form>
