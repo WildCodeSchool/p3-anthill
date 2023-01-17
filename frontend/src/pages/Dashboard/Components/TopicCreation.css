@@ -1,0 +1,38 @@
+.topicCreation_container {
+  display: grid;
+  grid-column: auto;
+}
+
+.topic__name {
+  border-radius: 8px;
+  border-style: none;
+  margin-top: 5%;
+  width: 30%;
+  height: 2rem;
+}
+
+.description {
+  padding: 2%;
+  border-radius: 8px;
+  border-style: none;
+  margin-top: 5%;
+  width: 80%;
+  height: 8rem;
+}
+
+.deadline {
+  padding: 2%;
+  width: 20%;
+  border-radius: 8px;
+  border-style: none;
+  margin-top: 5%;
+}
+
+.button {
+  border-radius: 8px;
+  border-style: none;
+  width: 60px;
+  height: 30px;
+  margin-top: 5%;
+  margin-left: 80%;
+}
