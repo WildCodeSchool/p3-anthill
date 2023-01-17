@@ -25,6 +25,8 @@ function TopicsList() {
               description={topic.description}
               deadline={topic.deadline}
               nbIdea={topic.nb_idea}
+              nbBubble={topic.nb_bubble}
+              isCommentMode={topic.is_comment_mode}
             />
           ))}
       </div>
