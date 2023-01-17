@@ -122,16 +122,16 @@ CREATE TABLE `comment` (
   `content` varchar(500) NOT NULL,
   `creation_date` datetime NOT NULL,
   `up_vote` int DEFAULT 0 CHECK(up_vote >= 0),
-  `user_id` int NOT NULL,
+  `creator_id` int NOT NULL,
   `idea_id` int NOT NULL,
   `comment_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_comment_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `fk_comment_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`),
   CONSTRAINT `fk_comment_idea` FOREIGN KEY (`idea_id`) REFERENCES `idea` (`id`),
   CONSTRAINT `fk_comment_comment` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`id`)
 );
 
-INSERT INTO comment (creation_date, content, up_vote, user_id, idea_id, comment_id) 
+INSERT INTO comment (creation_date, content, up_vote, creator_id, idea_id, comment_id) 
 VALUES 
   (NOW(),"comment_content_1", 1, 1, 1, null), 
   (NOW(), "comment_content_2", 5, 2, 1, 1), 
@@ -183,7 +183,7 @@ CREATE VIEW AllFromOneTopic
   FROM comment AS c
   LEFT JOIN idea AS i ON i.id = c.idea_id
   LEFT JOIN topic AS t ON t.id = i.comment_mode_id
-  LEFT JOIN user AS u ON u.id = c.user_id
+  LEFT JOIN user AS u ON u.id = c.creator_id
   LEFT JOIN user AS u2 ON u2.id = i.creator_id
   LEFT JOIN user AS u3 ON u3.id = t.creator_id
   ORDER BY c.creation_date DESC
