@@ -1,7 +1,7 @@
 import { FaCommentAlt } from "react-icons/fa";
 import { RxLapTimer } from "react-icons/rx";
 import { Link } from "react-router-dom";
-import formatDeadline from "../../../services/formatDeadline";
+import formatDeadline from "../../../../services/formatDeadline";
 
 import "./TopicCard.css";
 

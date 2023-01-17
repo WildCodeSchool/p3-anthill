@@ -1,6 +1,6 @@
 import { GiAnt } from "react-icons/gi";
 import "./PopUpTopic.css";
-import TopicCreation from "./TopicCreation";
+import TopicCreation from "../TopicCreation/TopicCreation";
 
 function PopUpTopic({ closePopUp }) {
   return (

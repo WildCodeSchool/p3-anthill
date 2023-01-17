@@ -7,7 +7,7 @@ import { TbCrown } from "react-icons/tb";
 import { GiAnt } from "react-icons/gi";
 import { RiContactsLine } from "react-icons/ri";
 
-import SideBarListItems from "../Components/SideBarListItems";
+import SideBarListItems from "../Components/SideBarListItems/SideBarListItems";
 
 import "./Sidebar.css";
 
