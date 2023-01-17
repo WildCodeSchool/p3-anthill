@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import Section01 from "./Components/Section01";
 import "./index.css";
 
 function Landing() {
   return (
-    <div id="landing">
+    <div className="landing">
+      <Section01 />
       <div>
         <img
           className="logoLanding"
