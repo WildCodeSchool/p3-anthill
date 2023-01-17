@@ -1,4 +1,4 @@
-import { createRef, useRef, useState } from "react";
+import { useState } from "react";
 import CardMember from "./CardMember";
 import "./AboutUs.css";
 
@@ -77,26 +77,9 @@ function AboutUs() {
   ];
   const [activeUser, setActiveUser] = useState("Johanna Stoïcanescu");
 
-  const refs = useRef([
-    createRef(),
-    createRef(),
-    createRef(),
-    createRef(),
-    createRef(),
-    createRef(),
-    createRef(),
-    createRef(),
-  ]);
-
   const handleActive = (e) => {
     const user = aboutUs.find((ele) => ele.name === e.target.alt);
-    const idActive = user.id - 1;
-    const userInActive = aboutUs.filter((ele) => ele.id !== user.id);
-    userInActive.forEach((ele) => {
-      refs.current[ele.id - 1].current.className = "imgBx";
-    });
-    refs.current[idActive].current.className = "imgBx active";
-    setActiveUser(e.target.alt);
+    setActiveUser(user.name);
   };
   return (
     <div className="aboutUs">
@@ -104,9 +87,8 @@ function AboutUs() {
         {aboutUs.map((ele) => (
           <button
             type="button"
-            ref={refs.current[ele.id - 1]}
             key={ele.id}
-            className="imgBx"
+            className={ele.name === activeUser ? "imgBx active" : "imgBx"}
             style={{ "--i": ele.id }}
             onClick={(e) => handleActive(e)}
           >
@@ -115,16 +97,16 @@ function AboutUs() {
         ))}
       </div>
       <div className="content">
-        {aboutUs.map((ele) =>
-          ele.name === activeUser ? (
+        {aboutUs.map((member) =>
+          member.name === activeUser ? (
             <CardMember
-              key={ele.id}
-              name={ele.name}
-              photo={ele.photo}
-              mood={ele.mood}
-              mail={ele.mail}
-              linkedIn={ele.linkedIn}
-              gitHub={ele.gitHub}
+              key={member.id}
+              name={member.name}
+              photo={member.photo}
+              mood={member.mood}
+              mail={member.mail}
+              linkedIn={member.linkedIn}
+              gitHub={member.gitHub}
             />
           ) : null
         )}
