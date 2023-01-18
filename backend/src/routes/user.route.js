@@ -11,7 +11,7 @@ userRouter.get("/:id/badges", badgeController.getUserBadges);
 
 userRouter.post("/", userController.create);
 
-userRouter.put("/:id", userController.update);
+userRouter.patch("/:id", userController.update);
 
 userRouter.delete("/:id", userController.remove);
 
