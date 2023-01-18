@@ -1,10 +1,11 @@
 .user-profile-area {
   background-color: var(--dark-background);
   border-radius: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  border: 10px solid var(--dark-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(15px);
-  width: 290px;
+  width: 280px;
   height: 90vh;
   display: flex;
   flex-direction: column;
