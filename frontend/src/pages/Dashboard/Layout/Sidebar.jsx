@@ -73,12 +73,12 @@ function Sidebar({ name, photo }) {
               path={e.path}
             />
           ))}
-        </ul>
-        <button type="button" className="signOut-btn" onClick={handleClick}>
-          <Link to="/login" className="signOut-btn">
+        </ul>{" "}
+        <Link to="/login" className="signOut-btn">
+          <button type="button" className="signOut-btn" onClick={handleClick}>
             Log Out
-          </Link>
-        </button>
+          </button>{" "}
+        </Link>
       </div>
     </aside>
   );

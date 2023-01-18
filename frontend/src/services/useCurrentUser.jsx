@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 
 function useCurrentUser() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isUser, setIsUser] = useState(false);
 
   useEffect(() => {
-    const loggedIn = localStorage.getItem("currentUser");
-    if (loggedIn) {
-      setIsLoggedIn(true);
+    const user = localStorage.getItem("currentUser");
+    if (user) {
+      setIsUser(true);
     }
   }, []);
 
-  return isLoggedIn;
+  return isUser;
 }
 
 export default useCurrentUser;

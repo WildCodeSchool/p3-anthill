@@ -1,56 +1,46 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import bcrypt from "bcryptjs";
 import { BsFillPersonFill } from "react-icons/bs";
 import { IoIosAt, IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
 import useCurrentUser from "../../../services/useCurrentUser";
+import useFetchLazy from "../../../services/useFetchLazy";
 
 function SignUpForm() {
-  const usernameRef = useRef("");
-  const pseudoRef = useRef("");
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
+  const usernameRef = useRef();
+  const pseudoRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
   const navigate = useNavigate();
   const isLoggedIn = useCurrentUser();
 
-  const URL = import.meta.env.VITE_BACKEND_URL;
-
-  const register = () => {
-    const password = passwordRef.current?.value;
-    const hashedPassword = bcrypt.hashSync(password, 10);
-
-    axios
-      .post(`${URL}/api/users`, {
-        email: emailRef.current?.value,
-        fullname: usernameRef.current?.value,
-        pseudo: pseudoRef.current?.value,
-        password: hashedPassword,
-      })
-      .then(() => {
-        localStorage.setItem(
-          "currentUser",
-          JSON.stringify({
-            email: emailRef.current?.value,
-            fullname: usernameRef.current?.value,
-            pseudo: pseudoRef.current?.value,
-          })
-        );
-        navigate("/dashboard");
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+  const { trigger: triggerGetUser, data: user } = useFetchLazy({
+    method: "post",
+    path: "/users",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isLoggedIn) {
-      register();
+    triggerGetUser({
+      email: emailRef.current?.value,
+      fullname: usernameRef.current?.value,
+      pseudo: pseudoRef.current?.value,
+      hashedPassword: passwordRef.current?.value,
+    });
+    if (!isLoggedIn || user) {
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({
+          email: emailRef.current?.value,
+          fullname: usernameRef.current?.value,
+          pseudo: pseudoRef.current?.value,
+        })
+      );
+      navigate("/dashboard");
     }
     return null;
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-group">

@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
-import bcrypt from "bcryptjs";
+import { useEffect, useState } from "react";
 import { IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
 import ButtonLoginGoogle from "./ButtonLoginGoogle";
@@ -9,50 +8,43 @@ import useFetchLazy from "../../../services/useFetchLazy";
 function LoginForm() {
   const navigate = useNavigate();
 
-  const [isLogin, setIsLogin] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-  const userRef = useRef("");
-  const passwordRef = useRef("");
-
-  const { trigger: triggerGetUser, data: user } = useFetchLazy({
-    method: "get",
-    path: `/users/email/${userRef.current?.value}`,
+  const {
+    trigger: triggerPostUser,
+    data: user,
+    error,
+  } = useFetchLazy({
+    method: "post",
+    path: `/users/login`,
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLogin(true);
-
-    if (isLogin) {
-      triggerGetUser();
-      setIsLogin(false);
-    }
-    if (user) {
-      const validPass = await bcrypt.compare(
-        passwordRef.current?.value,
-        user.password
-      );
-      if (validPass) {
-        localStorage.setItem(
-          "currentUser",
-          JSON.stringify({
-            id: user.id,
-            pseudo: user.pseudo,
-            email: user.email,
-            fullname: user.fullname,
-          })
-        );
-        navigate("/dashboard");
-      } else {
-        setIsError(true);
-      }
-    }
+    triggerPostUser({ email, password });
   };
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({
+          token: user.token,
+        })
+      );
+      navigate("/dashboard");
+    }
+  }, [user]);
 
   return (
     <form onSubmit={handleSubmit}>
-      {isError && <div className="error-login">Invalid email or password</div>}
+      {error?.response.status === 400 && (
+        <div className="error-login">Invalid email</div>
+      )}
+      {error?.response.status === 401 && (
+        <div className="error-login">Invalid password</div>
+      )}
       <div className="form-group">
         <GiAnt className="ant-icon" />
         <input
@@ -60,7 +52,7 @@ function LoginForm() {
           className="form-style"
           placeholder="Your Email"
           autoComplete="off"
-          ref={userRef}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
 
@@ -71,7 +63,7 @@ function LoginForm() {
           className="form-style"
           placeholder="Your Password"
           autoComplete="off"
-          ref={passwordRef}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <div className="buttons">
