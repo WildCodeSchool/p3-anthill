@@ -1,6 +1,6 @@
 import useFetch from "../../../../services/useFetch";
-import TopicCard from "../../Components/TopicCard";
-import ToggleModeButtons from "../../Components/ToggleModeButtons";
+import TopicCard from "../../Components/TopicCard/TopicCard";
+import ToggleModeButtons from "../../Components/ToggleModeButtons/ToggleModeButtons";
 
 import "./index.css";
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useFetchLazy from "../../../services/useFetchLazy";
+import useFetchLazy from "../../../../services/useFetchLazy";
 
 import "./TopicCreation.css";
 

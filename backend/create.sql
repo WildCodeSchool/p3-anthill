@@ -9,11 +9,11 @@ DROP TABLE IF EXISTS `badge`, `mood`, `user`, `topic`, `bubble`, `idea`, `commen
 CREATE TABLE `badge` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `picture` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ); 
 
-INSERT INTO badge (name, picture) VALUES ("badge_name_1", "badge_picture_1"), ("badge_name_2", "badge_picture_2"), ("badge_name_3", "badge_picture_3"), ("badge_name_4", "badge_picture_4");
+INSERT INTO badge (name, path) VALUES ("creator", "/creator.png"), ("likesGiver", "/likesGiver.png"), ("thinker", "/thinker.png"), ("visitor", "/visitor.png");
 
 CREATE TABLE `mood` (
   `id` int NOT NULL AUTO_INCREMENT,
