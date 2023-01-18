@@ -16,10 +16,6 @@ function BackgrdParticles() {
           fpsLimit: 120,
           interactivity: {
             events: {
-              onClick: {
-                enable: true,
-                mode: "push",
-              },
               onHover: {
                 enable: true,
                 mode: "repulse",
@@ -27,9 +23,6 @@ function BackgrdParticles() {
               resize: true,
             },
             modes: {
-              push: {
-                quantity: 4,
-              },
               repulse: {
                 distance: 200,
                 duration: 1.4,
@@ -63,9 +56,9 @@ function BackgrdParticles() {
             number: {
               density: {
                 enable: true,
-                area: 800,
+                area: 600,
               },
-              value: 120,
+              value: 100,
             },
             shape: {
               type: "circle",

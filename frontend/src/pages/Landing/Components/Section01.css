@@ -1,5 +1,7 @@
 .section01 {
+  margin: auto;
   height: 70vh;
+  width: 80%;
 }
 .section01:not(.blob) {
   box-sizing: border-box;
@@ -29,3 +31,4 @@ p {
     opacity: 0;
   }
 }
+
