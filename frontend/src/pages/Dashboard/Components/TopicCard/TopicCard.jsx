@@ -2,7 +2,7 @@ import { BiMessageDetail } from "react-icons/bi";
 import { RxLapTimer } from "react-icons/rx";
 import { TbMessageCircle2 } from "react-icons/tb";
 import { Link } from "react-router-dom";
-import formatDeadline from "../../../services/formatDeadline";
+import formatDeadline from "../../../../services/formatDeadline";
 
 import "./TopicCard.css";
 

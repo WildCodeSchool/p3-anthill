@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { BsFillGridFill } from "react-icons/bs";
 import { FaThList } from "react-icons/fa";
-import ToggleModeContext from "../../../contexts/ToggleModeContext";
-import "./ToggleMode.css";
+import ToggleModeContext from "../../../../contexts/ToggleModeContext";
+import "./ToggleModeButtons.css";
 
 function ToggleModeButtons() {
   const { toggleMode, setToggleMode } = useContext(ToggleModeContext);

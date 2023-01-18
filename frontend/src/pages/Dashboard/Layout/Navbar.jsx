@@ -1,7 +1,7 @@
 import { FiSettings } from "react-icons/fi";
 import { TiPlus } from "react-icons/ti";
 import { useState } from "react";
-import PopUpTopic from "../Components/PopUpTopic";
+import PopUpTopic from "../Components/PopUpTopic/PopUpTopic";
 import Logo from "../../../assets/Logo/Logo";
 import "./Navbar.css";
 

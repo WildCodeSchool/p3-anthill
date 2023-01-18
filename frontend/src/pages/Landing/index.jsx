@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import Section01 from "./Components/Section01";
+import Footer from "./Components/footer/Footer";
+
 import "./index.css";
 
 function Landing() {
   return (
-    <div id="landing">
+    <div className="landing">
+      <Section01 />
       <div>
         <img
           className="logoLanding"
@@ -16,6 +20,7 @@ function Landing() {
           <Link to="/login">Log in / Sign in</Link>
         </button>
       </div>
+      <Footer />
     </div>
   );
 }

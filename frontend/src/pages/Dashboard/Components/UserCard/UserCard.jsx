@@ -1,7 +1,7 @@
 import "./UserCard.css";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import ToggleModeContext from "../../../contexts/ToggleModeContext";
+import ToggleModeContext from "../../../../contexts/ToggleModeContext";
 
 export default function UserCard({ user }) {
   const { toggleMode } = useContext(ToggleModeContext);

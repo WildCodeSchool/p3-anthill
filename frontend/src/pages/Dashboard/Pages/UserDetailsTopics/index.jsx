@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import useFetch from "../../../../../services/useFetch";
-import TopicCard from "../../../Components/TopicCard";
+import useFetch from "../../../../services/useFetch";
+import TopicCard from "../../Components/TopicCard/TopicCard";
 
 function UserDetailsTopics() {
   const { userId } = useParams();
