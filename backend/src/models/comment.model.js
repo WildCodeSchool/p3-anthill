@@ -34,8 +34,6 @@ async function updateOne(id, user) {
 }
 
 async function deleteOne(id) {
-  await db.query("DELETE FROM comment where comment_id = ?", [id]);
-  await db.query("UPDATE comment SET comment_id = NULL where id = ?", [id]);
   const [result] = await db.query("DELETE FROM comment WHERE id = ?", [id]);
 
   if (result.length === 0) {

@@ -59,22 +59,6 @@ async function updateOne(id, topic) {
 }
 
 async function deleteOne(id) {
-  await db.query("DELETE FROM user_topic WHERE topic_id = ?", [id]);
-
-  const [ideaId] = await db.query(
-    "SELECT id FROM idea WHERE comment_mode_id = ?",
-    [id]
-  );
-
-  ideaId.forEach(async (idea) => {
-    await db.query("UPDATE comment set comment_id = NULL where idea_id = ?", [
-      idea.id,
-    ]);
-    await db.query("DELETE FROM comment WHERE idea_id = ?", [idea.id]);
-  });
-
-  await db.query("DELETE FROM bubble WHERE mindmap_id = ?", [id]);
-  await db.query("DELETE FROM idea WHERE comment_mode_id = ?", [id]);
   const [result1] = await db.query("DELETE FROM topic WHERE id = ?", [id]);
 
   if (result1.length === 0) {

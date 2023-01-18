@@ -57,7 +57,7 @@ CREATE TABLE `topic` (
   `is_closed` tinyint(1) NOT NULL DEFAULT 0,
   `is_comment_mode` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_topic_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`)
+  CONSTRAINT `fk_topic_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ); 
 
 INSERT INTO topic (deadline, description, is_private, creator_id, title, is_closed, is_comment_mode) 
@@ -81,8 +81,8 @@ CREATE TABLE `bubble` (
   `mindmap_id` int NOT NULL,
   `creator_id` int NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_bubble_mindmap` FOREIGN KEY (`mindmap_id`) REFERENCES `topic` (`id`),
-  CONSTRAINT `fk_bubble_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`)
+  CONSTRAINT `fk_bubble_mindmap` FOREIGN KEY (`mindmap_id`) REFERENCES `topic` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_bubble_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ); 
 
 INSERT INTO bubble (content, mindmap_id, creator_id) 
@@ -103,8 +103,8 @@ CREATE TABLE `idea` (
   `comment_mode_id` int DEFAULT NULL,
   `creator_id` int NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_idea_topic` FOREIGN KEY (`comment_mode_id`) REFERENCES `topic` (`id`),
-  CONSTRAINT `fk_idea_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`)
+  CONSTRAINT `fk_idea_topic` FOREIGN KEY (`comment_mode_id`) REFERENCES `topic` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_idea_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ); 
 
 INSERT INTO idea (title, description, up_vote, comment_mode_id, creator_id) 
@@ -126,9 +126,9 @@ CREATE TABLE `comment` (
   `idea_id` int NOT NULL,
   `comment_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_comment_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`),
-  CONSTRAINT `fk_comment_idea` FOREIGN KEY (`idea_id`) REFERENCES `idea` (`id`),
-  CONSTRAINT `fk_comment_comment` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`id`)
+  CONSTRAINT `fk_comment_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_comment_idea` FOREIGN KEY (`idea_id`) REFERENCES `idea` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_comment_comment` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`id`) ON DELETE CASCADE
 );
 
 INSERT INTO comment (creation_date, content, up_vote, creator_id, idea_id, comment_id) 
@@ -143,8 +143,8 @@ CREATE TABLE `link` (
   `source_id` int NOT NULL,
   `target_id` int NOT NULL,
   PRIMARY KEY (`source_id`, `target_id`),
-  CONSTRAINT `fk_link_source` FOREIGN KEY (`source_id`) REFERENCES `bubble` (`id`) ,
-  CONSTRAINT `fk_link_target` FOREIGN KEY (`target_id`) REFERENCES `bubble` (`id`)
+  CONSTRAINT `fk_link_source` FOREIGN KEY (`source_id`) REFERENCES `bubble` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_link_target` FOREIGN KEY (`target_id`) REFERENCES `bubble` (`id`) ON DELETE CASCADE
 ); 
 
 INSERT INTO link (source_id, target_id) VALUES (1, 1);
@@ -153,8 +153,8 @@ CREATE TABLE `user_badge` (
   `user_id` int NOT NULL,
   `badge_id` int NOT NULL,
   PRIMARY KEY (`user_id`, `badge_id`),
-  CONSTRAINT `fk_user_badge_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  CONSTRAINT `fk_user_badge_badge` FOREIGN KEY (`badge_id`) REFERENCES `badge` (`id`)
+  CONSTRAINT `fk_user_badge_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_user_badge_badge` FOREIGN KEY (`badge_id`) REFERENCES `badge` (`id`) ON DELETE CASCADE
 );
 
 INSERT INTO user_badge (user_id, badge_id) VALUES (1, 1), (1, 2), (1, 3), (1, 4), (2, 2), (3, 3), (4, 4);
@@ -163,8 +163,8 @@ CREATE TABLE `user_topic` (
   `user_id` int NOT NULL,
   `topic_id` int NOT NULL,
   PRIMARY KEY (`user_id`, `topic_id`),
-  CONSTRAINT `fk_user_topic_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  CONSTRAINT `fk_user_topic_topic` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id`)
+  CONSTRAINT `fk_user_topic_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_user_topic_topic` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id`) ON DELETE CASCADE
 );
 
 INSERT INTO user_topic (user_id, topic_id) VALUES (1, 1), (1, 4), (1, 5), (1, 2), (1, 3), (2, 1), (2, 6), (2, 11), (3, 4), (4, 6), (5, 7), (1, 8), (2, 9), (3, 10);
