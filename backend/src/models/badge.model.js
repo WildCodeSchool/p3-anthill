@@ -7,10 +7,10 @@ async function getAll() {
 }
 
 async function insertOne(badge) {
-  const { name, picture } = badge;
+  const { name, path } = badge;
   const [result] = await db.query(
-    "INSERT INTO badge (name, picture) VALUES (?, ?)",
-    [name, picture]
+    "INSERT INTO badge (name, path) VALUES (?, ?)",
+    [name, path]
   );
 
   return result.insertId;
@@ -22,10 +22,10 @@ async function getOne(id) {
 }
 
 async function updateOne(id, badge) {
-  const { name, picture } = badge;
+  const { name, path } = badge;
   const [result] = await db.query(
-    "UPDATE badge SET name = ?, picture = ? WHERE id = ?",
-    [name, picture, id]
+    "UPDATE badge SET name = ?, path = ? WHERE id = ?",
+    [name, path, id]
   );
 
   return result.affectedRows;
@@ -39,9 +39,10 @@ async function deleteOne(id) {
 
 async function getUserBadges(id) {
   const [rows] = await db.query(
-    "SELECT * FROM badge AS b " +
-      "INNER JOIN user_badge AS us ON user_badge.badge_id = badge.id " +
-      "WHERE user_id = ?",
+    "SELECT user_id, badge_id, name, path " +
+      "FROM user_badge as ub " +
+      "INNER JOIN badge as b on ub.badge_id=b.id " +
+      "WHERE ub.user_id = ?",
     [id]
   );
   return rows;

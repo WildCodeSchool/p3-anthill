@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import useFetch from "../../../../services/useFetch";
-import UserCard from "../../Components/UserCard";
-import ToggleModeButtons from "../../Components/ToggleModeButtons";
+import UserCard from "../../Components/UserCard/UserCard";
+import ToggleModeButtons from "../../Components/ToggleModeButtons/ToggleModeButtons";
 import ToggleModeContext from "../../../../contexts/ToggleModeContext";
 import "./index.css";
 

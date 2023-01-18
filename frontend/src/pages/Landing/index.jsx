@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import useCurrentUser from "../../services/useCurrentUser";
+import Section01 from "./Components/Section01";
+import Footer from "./Components/footer/Footer";
 import "./index.css";
 
 function Landing() {
@@ -13,7 +15,8 @@ function Landing() {
     return navigate("/login");
   };
   return (
-    <div id="landing">
+    <div className="landing">
+      <Section01 />
       <div>
         <img
           className="logoLanding"
@@ -30,6 +33,7 @@ function Landing() {
           Go to the site
         </button>
       </div>
+      <Footer />
     </div>
   );
 }
