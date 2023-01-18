@@ -2,6 +2,7 @@ const { Router } = require("express");
 const userController = require("../controllers/user.controller");
 const badgeController = require("../controllers/badge.controller");
 const topicController = require("../controllers/topic.controller");
+const { hashPassword, verifyPassword } = require("../../services/auth");
 
 const userRouter = new Router();
 
@@ -11,7 +12,12 @@ userRouter.get("/email/:email", userController.getOneByEmail);
 userRouter.get("/:id/badges", badgeController.getUserBadges);
 userRouter.get("/:id/topics", topicController.getUserTopics);
 
-userRouter.post("/", userController.create);
+userRouter.post("/", hashPassword, userController.create);
+userRouter.post(
+  "/login",
+  userController.getUserByEmailWithPassword,
+  verifyPassword
+);
 
 userRouter.put("/:id", userController.update);
 

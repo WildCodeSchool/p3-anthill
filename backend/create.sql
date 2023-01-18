@@ -30,22 +30,23 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `pseudo` varchar(255) NULL,
   `description` varchar(255) NULL, 
-  `password` varchar(600) NULL,
+  `hashedPassword` varchar(600) NULL,
   `fullname` varchar(255) NOT NULL,
   `googleUserId` varchar(255) NULL,
   `mood_id` int NULL,
-  UNIQUE(`pseudo`, `email`),
+  UNIQUE(`pseudo`),
+  UNIQUE(`email`),
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_user_mood` FOREIGN KEY (`mood_id`) REFERENCES `mood` (`id`)
 );
 
-INSERT INTO user (description, pseudo, picture, email, password, fullname, googleUserId, mood_id) 
+INSERT INTO user (description, pseudo, picture, email, hashedPassword, fullname, googleUserId, mood_id) 
 VALUES 
-  ("description_1", "pseudo_1", "picture_user_1", "email_1@gmail.com", "user_password_1", "user_fullname_1", "user_google_id_1", 1), 
-  ("description_2", "pseudo_2", "picture_user_2", "email_2@gmail.com", "user_password_2", "user_fullname_2", "user_google_id_2", 2), 
-  ("description_3", "pseudo_3", "picture_user_3", "email_3@gmail.com", "user_password_3", "user_fullname_3", "user_google_id_3", 3), 
-  ("description_4", "pseudo_4", "picture_user_4", "email_4@gmail.com", "user_password_4", "user_fullname_4", "user_google_id_4", 4), 
-  ("description_5", "pseudo_5", "picture_user_5", "email_5@gmail.com", "user_password_5", "user_fullname_5", "user_google_id_5", 1)
+  ("description_1", "pseudo_1", "picture_user_1", "email_1@gmail.com", "user_hashedPassword_1", "user_fullname_1", "user_google_id_1", 1), 
+  ("description_2", "pseudo_2", "picture_user_2", "email_2@gmail.com", "user_hashedPassword_2", "user_fullname_2", "user_google_id_2", 2), 
+  ("description_3", "pseudo_3", "picture_user_3", "email_3@gmail.com", "user_hashedPassword_3", "user_fullname_3", "user_google_id_3", 3), 
+  ("description_4", "pseudo_4", "picture_user_4", "email_4@gmail.com", "user_hashedPassword_4", "user_fullname_4", "user_google_id_4", 4), 
+  ("description_5", "pseudo_5", "picture_user_5", "email_5@gmail.com", "user_hashedPassword_5", "user_fullname_5", "user_google_id_5", 1)
 ;
 
 CREATE TABLE `topic` (

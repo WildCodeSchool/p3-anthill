@@ -21,27 +21,42 @@ async function getOne(id) {
 
 async function getConnexion(email) {
   const [rows] = await db.query(
-    "SELECT picture, email, fullname, pseudo, googleUserId, password FROM user WHERE email = ?",
+    "SELECT picture, email, fullname, pseudo, googleUserId FROM user WHERE email = ?",
     [email]
   );
+
+  if (rows[0].length === 0) {
+    return null;
+  }
+  return rows[0];
+}
+
+async function getUserByEmailWithPassword(email) {
+  const [rows] = await db.query("SELECT * FROM user WHERE email = ?", [email]);
+
+  if (!rows[0]) {
+    return null;
+  }
   return rows[0];
 }
 
 async function insertOne(user) {
-  const { picture, email, fullname, pseudo, password, googleUserId } = user;
+  const { picture, email, fullname, pseudo, hashedPassword, googleUserId } =
+    user;
   const [result] = await db.query(
-    "INSERT INTO user (picture, email, fullname, pseudo, password, googleUserId) VALUES (?, ?, ?, ?, ?, ?)",
-    [picture, email, fullname, pseudo, password, googleUserId]
+    "INSERT INTO user (picture, email, fullname, pseudo, hashedPassword, googleUserId) VALUES (?, ?, ?, ?, ?, ?)",
+    [picture, email, fullname, pseudo, hashedPassword, googleUserId]
   );
 
   return result.insertId;
 }
 
 async function updateOne(id, user) {
-  const { picture, email, fullname, password, googleUserId, moodId } = user;
+  const { picture, email, fullname, hashedPassword, googleUserId, moodId } =
+    user;
   const [result] = await db.query(
-    "UPDATE user SET picture = ?, email = ?, fullname = ?, password = ?, googleUserId = ?, mood_id= ? WHERE id = ?",
-    [picture, email, fullname, password, googleUserId, moodId, id]
+    "UPDATE user SET picture = ?, email = ?, fullname = ?, hashedPassword = ?, googleUserId = ?, mood_id= ? WHERE id = ?",
+    [picture, email, fullname, hashedPassword, googleUserId, moodId, id]
   );
 
   return result.affectedRows;
@@ -57,6 +72,7 @@ module.exports = {
   getAll,
   getOne,
   getConnexion,
+  getUserByEmailWithPassword,
   insertOne,
   updateOne,
   deleteOne,

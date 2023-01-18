@@ -17,6 +17,16 @@ async function create(req, res) {
   res.status(201).json({ insertId });
 }
 
+async function getUserByEmailWithPassword(req, res, next) {
+  const user = await userModel.getUserByEmailWithPassword(req.body.email);
+  if (user) {
+    req.user = user;
+    next();
+  } else {
+    res.sendStatus(400);
+  }
+}
+
 async function get(req, res) {
   if (!req.params.id) {
     res.sendStatus(400);
@@ -79,4 +89,12 @@ async function remove(req, res) {
   res.sendStatus(204);
 }
 
-module.exports = { list, create, getOneByEmail, get, update, remove };
+module.exports = {
+  list,
+  create,
+  getOneByEmail,
+  get,
+  update,
+  remove,
+  getUserByEmailWithPassword,
+};
