@@ -4,21 +4,14 @@ import { loadFull } from "tsparticles";
 
 function BackgrdParticles() {
   const particlesInit = useCallback(async (engine) => {
-    console.error(engine);
     await loadFull(engine);
   }, []);
-
-  const particlesLoaded = useCallback(async (container) => {
-    await console.error(container);
-  }, []);
-
   return (
     <div className="particles">
       <Particles
         id="tsparticles"
-        className="background"
+        className="bgr-particles"
         init={particlesInit}
-        loaded={particlesLoaded}
         options={{
           fpsLimit: 120,
           interactivity: {
