@@ -6,7 +6,7 @@ async function getAll() {
   return rows;
 }
 
-async function getAllOfOneBubble(topicId) {
+async function getAllBubblesByTopicId(topicId) {
   const [rows] = await db.query(
     "SELECT * FROM BubbleData WHERE mindmap_id = ? ",
     [topicId]
@@ -14,11 +14,10 @@ async function getAllOfOneBubble(topicId) {
   return rows;
 }
 
-async function getOneBubbleOfTopic({ bubbleId, mindmapId }) {
-  const [rows] = await db.query(
-    "SELECT * FROM BubbleData WHERE id = ? AND mindmap_id = ?",
-    [bubbleId, mindmapId]
-  );
+async function getOneBubbleById({ bubbleId }) {
+  const [rows] = await db.query("SELECT * FROM BubbleData WHERE id = ?", [
+    bubbleId,
+  ]);
   return rows[0];
 }
 
@@ -55,8 +54,8 @@ async function deleteOne({ bubbleId, userId }) {
 
 module.exports = {
   getAll,
-  getAllOfOneBubble,
-  getOneBubbleOfTopic,
+  getAllBubblesByTopicId,
+  getOneBubbleById,
   insertOne,
   updateOne,
   deleteOne,

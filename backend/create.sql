@@ -254,7 +254,7 @@ INSERT IGNORE INTO upvote_bubble_user (user_id, bubble_id) VALUES (1, 4), (2, 4)
 CREATE VIEW BubbleUpvotes (bubble_id, nbr_upvotes) 
 AS (SELECT b.id, count(ubu.bubble_id) AS nbr_upvotes
   FROM bubble AS b 
-  INNER JOIN upvote_bubble_user AS ubu ON b.id = ubu.bubble_id GROUP by b.id)
+  LEFT JOIN upvote_bubble_user AS ubu ON b.id = ubu.bubble_id GROUP by b.id)
 ;
 
 CREATE VIEW BubbleData (id, mindmap_id, bubble_creator_name, bubble_content, bubble_nbr_upvotes)
