@@ -6,7 +6,7 @@ import "./index.css";
 function UserDetails() {
   const { id } = useParams();
   const { data: userBadges, loading: loadingBadges } = useFetch({
-    path: `/badges/${id}/badges`,
+    path: `/users/${id}/badges`,
     method: "get",
   });
   const { data: user, loading: loadingUser } = useFetch({
@@ -27,11 +27,12 @@ function UserDetails() {
             <div className="userDetail__greetings">
               <img className="userDetail__mood" alt={user.mood_id} />
               {userBadges &&
-                userBadges.map((elt) => (
+                userBadges.map((badge) => (
                   <img
                     className="userDetail__badge"
-                    alt={elt.picture}
-                    key={elt.id}
+                    alt={badge.name}
+                    key={badge.id}
+                    src={`/png/${badge.path}`}
                   />
                 ))}
               {loadingBadges && <div>LOADING...</div>}
