@@ -1,5 +1,4 @@
 const bubbleModel = require("../models/bubble.model");
-// const ideaValidator = require("../validators/idea.validator");
 
 async function list(req, res) {
   const bubbles = await bubbleModel.getAll();
@@ -7,18 +6,21 @@ async function list(req, res) {
 }
 
 async function listBubblesOfOneTopic(req, res) {
-  const bubbles = await bubbleModel.getAllOfOneBubble(req.params.topicId);
+  if (!req.params.topicId) {
+    res.sendStatus(400);
+    return;
+  }
+  const bubbles = await bubbleModel.getAllBubblesByTopicId(req.params.topicId);
 
   res.json(bubbles);
 }
 
 async function get(req, res) {
-  if (!req.params.bubbleId || !req.params.topicId) {
+  if (!req.params.topicId) {
     res.sendStatus(400);
     return;
   }
-  const bubble = await bubbleModel.getOneBubbleOfTopic({
-    mindmapId: req.params.topicId,
+  const bubble = await bubbleModel.getOneBubbleById({
     bubbleId: req.params.bubbleId,
   });
   if (!bubble) {
@@ -58,7 +60,7 @@ async function update(req, res) {
   });
 
   if (affectedRows === 0) {
-    res.sendStatus(404);
+    res.sendStatus(403);
     return;
   }
 
@@ -77,7 +79,7 @@ async function remove(req, res) {
   });
 
   if (affectedRows === 0) {
-    res.sendStatus(404);
+    res.sendStatus(403);
     return;
   }
 

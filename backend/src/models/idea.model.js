@@ -8,7 +8,7 @@ async function getAll() {
 
 async function getAllOfOneTopic(commentModeTopicId) {
   const [rows] = await db.query(
-    "SELECT i.id, MIN(i.title) AS idea_title, MIN(i.description) AS idea_description, MIN(i.up_vote) AS nb_up_vote, MIN(u.fullname) AS idea_creator_name, count(c.id) AS nb_comment " +
+    "SELECT i.id, MIN(i.title) AS idea_title, MIN(i.description) AS idea_description, MIN(u.fullname) AS idea_creator_name, count(c.id) AS nb_comment " +
       "FROM idea AS i " +
       "LEFT JOIN topic AS t ON t.id = i.comment_mode_id " +
       "LEFT JOIN user AS u ON u.id = i.creator_id " +

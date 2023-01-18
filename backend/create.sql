@@ -123,16 +123,16 @@ CREATE TABLE `comment` (
   `content` varchar(500) NOT NULL,
   `creation_date` datetime NOT NULL,
   `up_vote` int DEFAULT 0 CHECK(up_vote >= 0),
-  `user_id` int NOT NULL,
+  `creator_id` int NOT NULL,
   `idea_id` int NOT NULL,
   `comment_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_comment_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `fk_comment_user` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`),
   CONSTRAINT `fk_comment_idea` FOREIGN KEY (`idea_id`) REFERENCES `idea` (`id`),
   CONSTRAINT `fk_comment_comment` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`id`)
 );
 
-INSERT INTO comment (creation_date, content, up_vote, user_id, idea_id, comment_id) 
+INSERT INTO comment (creation_date, content, up_vote, creator_id, idea_id, comment_id) 
 VALUES 
   (NOW(),"comment_content_1", 1, 1, 1, 1), 
   (NOW(), "comment_content_2", 5, 2, 1, null), 
@@ -191,7 +191,7 @@ INSERT IGNORE INTO upvote_bubble_user (user_id, bubble_id) VALUES (1, 4), (2, 4)
 CREATE VIEW BubbleUpvotes (bubble_id, nbr_upvotes) 
 AS (SELECT b.id, count(ubu.bubble_id) AS nbr_upvotes
   FROM bubble AS b 
-  INNER JOIN upvote_bubble_user AS ubu ON b.id = ubu.bubble_id GROUP by b.id)
+  LEFT JOIN upvote_bubble_user AS ubu ON b.id = ubu.bubble_id GROUP by b.id)
 ;
 
 CREATE VIEW BubbleData (id, mindmap_id, bubble_creator_name, bubble_content, bubble_nbr_upvotes)
