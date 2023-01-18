@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Section01 from "./Components/Section01";
 import Footer from "./Components/footer/Footer";
 
 import "./index.css";
@@ -6,6 +7,7 @@ import "./index.css";
 function Landing() {
   return (
     <div className="landing">
+      <Section01 />
       <div>
         <img
           className="logoLanding"
