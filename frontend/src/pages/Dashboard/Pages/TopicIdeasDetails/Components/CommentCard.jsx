@@ -2,7 +2,7 @@ import { BiUpvote } from "react-icons/bi";
 import DeleteCommentButton from "./DeleteCommentButton";
 import "./CommentCard.css";
 
-function CommentCard({ comment, triggerGetComment }) {
+function CommentCard({ comment, triggerGetComments }) {
   return (
     <div className="commentCard">
       <div className="commentCard__main">
@@ -17,7 +17,7 @@ function CommentCard({ comment, triggerGetComment }) {
       </div>
       <DeleteCommentButton
         comment={comment}
-        triggerGetComment={triggerGetComment}
+        triggerGetComments={triggerGetComments}
       />
     </div>
   );

@@ -2,7 +2,7 @@ const { db } = require("./db");
 
 async function getAllCommentsOfOneIdea(ideaId) {
   const [rows] = await db.query(
-    "SELECT c.id, c.content, c.up_vote, c.creator_id, c.creation_date, u.pseudo, u.picture FROM comment AS c INNER JOIN idea AS i ON i.id = c.idea_id INNER JOIN user AS u ON u.id = c.creator_id WHERE c.idea_id = ? ORDER BY c.creation_date DESC",
+    "SELECT c.comment_id, c.id, c.content, c.up_vote, c.creator_id, c.creation_date, u.pseudo, u.picture FROM comment AS c INNER JOIN idea AS i ON i.id = c.idea_id INNER JOIN user AS u ON u.id = c.creator_id WHERE c.idea_id = ? ORDER BY c.creation_date DESC",
     [ideaId]
   );
 
@@ -34,6 +34,7 @@ async function updateOne(id, user) {
 }
 
 async function deleteOne(id) {
+  await db.query("DELETE FROM comment where comment_id = ?", [id]);
   await db.query("UPDATE comment SET comment_id = NULL where id = ?", [id]);
   const [result] = await db.query("DELETE FROM comment WHERE id = ?", [id]);
 
