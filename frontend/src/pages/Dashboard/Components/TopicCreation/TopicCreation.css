@@ -1,13 +1,18 @@
 .topicCreation_container {
-  display: grid;
-  grid-column: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px 30px 30px;
+}
+
+.topicCreation_label {
+  font-size: 20px;
+  margin: 30px 0 10px;
 }
 
 .topic__name {
   border-radius: 8px;
   border-style: none;
-  margin-top: 5%;
-  width: 30%;
+  width: 40%;
   height: 2rem;
 }
 
@@ -15,8 +20,6 @@
   padding: 2%;
   border-radius: 8px;
   border-style: none;
-  margin-top: 5%;
-  width: 80%;
   height: 8rem;
 }
 
@@ -25,14 +28,29 @@
   width: 20%;
   border-radius: 8px;
   border-style: none;
-  margin-top: 5%;
 }
 
-.button {
+.description-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.creation-bottom {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.creation-bottom > div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-creation {
   border-radius: 8px;
   border-style: none;
   width: 60px;
   height: 30px;
-  margin-top: 5%;
-  margin-left: 80%;
+  margin-top: 20px;
 }
