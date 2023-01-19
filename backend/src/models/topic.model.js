@@ -14,7 +14,7 @@ async function getAllTopicCard() {
 async function getOne(id) {
   const [rows] = await db.query("SELECT * FROM TopicData WHERE id = ?", [id]);
 
-  if (rows[0].id === null) {
+  if (!rows[0] || rows[0].id === null) {
     return null;
   }
 

@@ -7,8 +7,7 @@ function DeleteTopicButton({ topicId, triggerGetTopics }) {
     method: "delete",
   });
 
-  const handleClick = async (e) => {
-    e.preventDefault();
+  const handleClick = async () => {
     await triggerDeleteTopic();
     triggerGetTopics();
   };

@@ -10,8 +10,7 @@ function DeleteCommentButton({ comment, triggerGetComments }) {
     method: "delete",
   });
 
-  const handleClick = async (e) => {
-    e.preventDefault();
+  const handleClick = async () => {
     await triggerDeleteComment();
     triggerGetComments();
   };

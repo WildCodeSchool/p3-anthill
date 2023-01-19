@@ -9,8 +9,7 @@ function DeleteIdeaButton({ ideaId, triggerGetIdeas }) {
     method: "delete",
   });
 
-  const handleClick = async (e) => {
-    e.preventDefault();
+  const handleClick = async () => {
     await triggerDeleteIdea();
     triggerGetIdeas();
   };

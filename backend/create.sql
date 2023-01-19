@@ -57,7 +57,7 @@ CREATE TABLE `topic` (
   `is_closed` tinyint(1) NOT NULL DEFAULT 0,
   `is_comment_mode` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_topic_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
+  CONSTRAINT `fk_topic_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`)
 ); 
 
 INSERT INTO topic (deadline, description, is_private, creator_id, title, is_closed, is_comment_mode) 
