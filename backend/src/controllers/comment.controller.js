@@ -1,30 +1,12 @@
 const commentModel = require("../models/comment.model");
-const upvoteModel = require("../models/vote.model");
 // const commentValidator = require("../validators/comment.validator");
 
 async function listCommentsOfOneIdea(req, res) {
-  const result = [];
   const comments = await commentModel.getAllCommentsOfOneIdea(
     req.params.ideaId
   );
-  const upvotes = await upvoteModel.getAllUpvotesCommentOfUser(1); // getCurrentUser();
-  const userVotes = [];
 
-  for (let j = 0; j < upvotes.length; j += 1) {
-    userVotes.push(upvotes[j].comment_id);
-  }
-
-  for (let i = 0; i < comments.length; i += 1) {
-    const commentId = comments[i].id;
-    if (userVotes.includes(commentId)) {
-      const data = Object.assign(comments[i], { canVote: 0 });
-      result.push(data);
-    } else {
-      const data = Object.assign(comments[i], { canVote: 1 });
-      result.push(data);
-    }
-  }
-  res.json(result);
+  res.json(comments);
 }
 
 async function create(req, res) {
