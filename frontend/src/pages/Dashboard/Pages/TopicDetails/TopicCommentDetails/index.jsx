@@ -41,6 +41,7 @@ function TopicCommentDetails({
               description={idea.idea_description}
               nbUpVote={idea.nb_up_vote}
               nbComment={idea.nb_comment}
+              triggerGetIdeas={triggerGetIdeas}
             />
           ))
         ) : (

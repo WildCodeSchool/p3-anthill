@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import useFetchLazy from "../../../../services/useFetchLazy";
 import useFetch from "../../../../services/useFetch";
 import CommentCard from "./Components/CommentCard";
 import CommentCreate from "./Components/CommentCreate";
@@ -8,15 +9,21 @@ import "./index.css";
 function TopicIdeasDetails() {
   const { topicId, ideaId } = useParams();
   const [isClicked, setIsClicked] = useState(false);
-  const { data: comments, loadingComments } = useFetch({
+  const {
+    trigger: triggerGetComments,
+    data: comments,
+    loadingComments,
+  } = useFetchLazy({
     path: `/topics/${topicId}/ideas/${ideaId}/comments`,
     method: "get",
   });
+  useEffect(() => {
+    triggerGetComments();
+  }, []);
   const { data: idea, loadingIdea } = useFetch({
     path: `/ideas/${ideaId}`,
     method: "get",
   });
-
   function handleClick() {
     setIsClicked(true);
   }
@@ -30,7 +37,11 @@ function TopicIdeasDetails() {
           <div className="topicIdeaDetails__commentsList">
             {comments &&
               comments.map((comment) => (
-                <CommentCard key={comment.id} comment={comment} />
+                <CommentCard
+                  key={comment.id}
+                  comment={comment}
+                  triggerGetComments={triggerGetComments}
+                />
               ))}
           </div>
           <div
