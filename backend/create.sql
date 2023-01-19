@@ -4,7 +4,7 @@ CREATE DATABASE `p3-anthill-db`;
 
 USE `p3-anthill-db`;
 
-DROP TABLE IF EXISTS `badge`, `mood`, `user`, `topic`, `bubble`, `idea`, `comment`, `link`, `user_badge`, `user_topic`;
+DROP TABLE IF EXISTS `badge`, `mood`, `user`, `topic`, `bubble`, `idea`, `comment`, `link`, `user_badge`, `user_topic`, `upvote_comment_user`, `upvote_idea_user`;
 
 CREATE TABLE `badge` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -99,7 +99,6 @@ CREATE TABLE `idea` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
-  `up_vote` int DEFAULT 0 CHECK(up_vote >= 0),
   `comment_mode_id` int DEFAULT NULL,
   `creator_id` int NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
@@ -107,36 +106,35 @@ CREATE TABLE `idea` (
   CONSTRAINT `fk_idea_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ); 
 
-INSERT INTO idea (title, description, up_vote, comment_mode_id, creator_id) 
+INSERT INTO idea (title, description, comment_mode_id, creator_id) 
 VALUES 
-  ("idea_title_1", "idea_description_1", 1, 1, 1), 
-  ("idea_title_2", "idea_description_2", 11, 1, 2), 
-  ("idea_title_3", "idea_description_3", 31, 1, 5), 
-  ("idea_title_4", "idea_description_4", 1, 2, 4),  
-  ("idea_title_5", "idea_description_5", 1, 3, 4),  
-  ("idea_title_6", "idea_description_6", 1, 4, 4)
+  ("idea_title_1", "idea_description_1", 1, 1), 
+  ("idea_title_2", "idea_description_2", 1, 2), 
+  ("idea_title_3", "idea_description_3", 1, 5), 
+  ("idea_title_4", "idea_description_4", 2, 4),  
+  ("idea_title_5", "idea_description_5", 3, 4),  
+  ("idea_title_6", "idea_description_6", 4, 4)
 ;
 
 CREATE TABLE `comment` (
   `id` int NOT NULL AUTO_INCREMENT,
   `content` varchar(500) NOT NULL,
   `creation_date` datetime NOT NULL,
-  `up_vote` int DEFAULT 0 CHECK(up_vote >= 0),
   `creator_id` int NOT NULL,
   `idea_id` int NOT NULL,
   `comment_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_comment_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_comment_user` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`),
   CONSTRAINT `fk_comment_idea` FOREIGN KEY (`idea_id`) REFERENCES `idea` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_comment_comment` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`id`) ON DELETE CASCADE
 );
 
-INSERT INTO comment (creation_date, content, up_vote, creator_id, idea_id, comment_id) 
+INSERT INTO comment (creation_date, content, creator_id, idea_id, comment_id) 
 VALUES 
-  (NOW(),"comment_content_1", 1, 1, 1, null), 
-  (NOW(), "comment_content_2", 5, 2, 1, 1), 
-  (NOW(), "comment_content_3", 5, 3, 1, null), 
-  (NOW(), "comment_content_4", 2, 3, 2, null)
+  (NOW(),"comment_content_1", 1, 1, 1), 
+  (NOW(), "comment_content_2", 2, 1, null), 
+  (NOW(), "comment_content_3", 3, 1, null), 
+  (NOW(), "comment_content_4", 3, 2, null)
 ;
 
 CREATE TABLE `link` (
@@ -188,3 +186,55 @@ CREATE VIEW AllFromOneTopic
   LEFT JOIN user AS u3 ON u3.id = t.creator_id
   ORDER BY c.creation_date DESC
   );
+
+CREATE TABLE `upvote_idea_user` (
+  `idea_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`idea_id`, `user_id`),
+  CONSTRAINT `fk_upvote_idea_idea` FOREIGN KEY (`idea_id`) REFERENCES `idea` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_upvote_idea_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+); 
+
+CREATE TABLE `upvote_comment_user` (
+  `comment_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`comment_id`, `user_id`),
+  CONSTRAINT `fk_upvote_comment_comment` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_upvote_comment_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+); 
+
+CREATE VIEW IdeaUpvotes (idea_id, nbr_upvotes) 
+AS (SELECT i.id, count(uiu.idea_id) AS nbr_upvotes
+  FROM idea AS i 
+  LEFT JOIN upvote_idea_user AS uiu ON i.id = uiu.idea_id GROUP by i.id)
+;
+
+CREATE VIEW IdeaData(id, idea_title, idea_description, idea_creator_name, nb_comment, comment_mode_id, nbr_upvotes_idea)
+AS (SELECT i.id, MIN(i.title), MIN(i.description), MIN(u.fullname), count(c.id), i.comment_mode_id, iu.nbr_upvotes
+  FROM idea AS i
+  LEFT JOIN topic AS t ON t.id = i.comment_mode_id
+  LEFT JOIN user AS u ON u.id = i.creator_id
+  LEFT JOIN comment AS c ON c.idea_id = i.id
+  LEFT JOIN IdeaUpvotes AS iu ON iu.idea_id = i.id
+  GROUP BY i.id)
+;
+
+CREATE VIEW CommentUpvotes (comment_id, nbr_upvotes) 
+AS (SELECT c.id, count(ucu.comment_id) AS nbr_upvotes
+  FROM comment AS c 
+  LEFT JOIN upvote_comment_user AS ucu ON c.id = ucu.comment_id GROUP by c.id)
+;
+
+CREATE VIEW CommentData(id, content, up_vote, user_id, creation_date, pseudo, picture, idea_id)
+AS (
+SELECT c.id, c.content, cu.nbr_upvotes, c.creator_id, c.creation_date, u.pseudo, u.picture, i.id
+FROM comment AS c 
+LEFT JOIN idea AS i ON i.id = c.idea_id 
+LEFT JOIN user AS u ON u.id = c.creator_id
+LEFT JOIN CommentUpvotes AS cu ON cu.comment_id = c.id
+)
+;
+
+INSERT IGNORE INTO upvote_idea_user (user_id, idea_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);
+
+INSERT IGNORE INTO upvote_comment_user (user_id, comment_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);

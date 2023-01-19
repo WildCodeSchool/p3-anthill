@@ -2,14 +2,14 @@ const { db } = require("./db");
 
 async function getAllCommentsOfOneIdea(ideaId) {
   const [rows] = await db.query(
-    "SELECT c.comment_id, c.id, c.content, c.up_vote, c.creator_id, c.creation_date, u.pseudo, u.picture FROM comment AS c INNER JOIN idea AS i ON i.id = c.idea_id INNER JOIN user AS u ON u.id = c.creator_id WHERE c.idea_id = ? ORDER BY c.creation_date DESC",
+    "SELECT * FROM CommentData WHERE idea_id = ? ORDER BY creation_date DESC",
     [ideaId]
   );
 
   return rows;
 }
 
-async function insertOne({ ideaId, userId, content }) {
+async function insertOne({ content, userId, ideaId }) {
   const [result] = await db.query(
     "INSERT INTO comment (creation_date, content, creator_id, idea_id) VALUES (NOW(), ?, ?, ?)",
     [content, userId, ideaId]
@@ -19,7 +19,7 @@ async function insertOne({ ideaId, userId, content }) {
 }
 
 async function getOne(id) {
-  const [rows] = await db.query("SELECT * FROM comment WHERE id = ?", [id]);
+  const [rows] = await db.query("SELECT * FROM CommentData WHERE id = ?", [id]);
   return rows[0];
 }
 

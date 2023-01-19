@@ -40,9 +40,6 @@ function BackgrdParticles() {
               opacity: 0.5,
               width: 1.5,
             },
-            // collisions: {
-            //   enable: true,
-            // },
             move: {
               directions: "none",
               enable: true,

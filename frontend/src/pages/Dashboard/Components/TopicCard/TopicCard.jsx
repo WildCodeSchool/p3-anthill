@@ -34,7 +34,8 @@ function TopicCard(props) {
           <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>
         </div>
         <div className="topicCard__nbIdea">
-          {nbIdea} <FaCommentAlt />
+          {nbIdea}
+          <FaCommentAlt />
         </div>
       </div>
       <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />

@@ -39,8 +39,9 @@ function TopicCommentDetails({
               title={idea.idea_title}
               creatorName={idea.idea_creator_name}
               description={idea.idea_description}
-              nbUpVote={idea.nb_up_vote}
+              nbUpVotes={idea.nbr_upvotes_idea}
               nbComment={idea.nb_comment}
+              canVote={idea.canVote}
               triggerGetIdeas={triggerGetIdeas}
             />
           ))
