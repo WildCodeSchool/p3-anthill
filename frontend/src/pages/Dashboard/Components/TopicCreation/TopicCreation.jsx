@@ -77,7 +77,7 @@ function TopicCreation({ closePopUp }) {
           />
           <div>
             <button className="button-creation" type="submit">
-              START
+              Start
             </button>
           </div>
         </div>

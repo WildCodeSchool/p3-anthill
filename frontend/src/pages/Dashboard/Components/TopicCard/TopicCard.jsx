@@ -30,7 +30,6 @@ function TopicCard(props) {
       <p className="topicCard__description">{description}</p>
       <div className="topicCard__bottom">
         <div className="topicCard__deadline">
-          {" "}
           <RxLapTimer />
           <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>
         </div>

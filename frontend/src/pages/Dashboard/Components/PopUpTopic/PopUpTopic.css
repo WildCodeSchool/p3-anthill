@@ -9,9 +9,9 @@
   border-radius: var(--radius);
   color: var(--golden-color);
   background-color: var(--medium-background);
-  box-shadow: var(--medium-background) 0px 5px 15px;
+  box-shadow: var(--golden-color) 5px 5px 15px;
   border: 10px solid var(--medium-background);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35), var(--light-color) 5px 5px 15px,
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
