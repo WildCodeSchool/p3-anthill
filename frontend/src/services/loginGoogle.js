@@ -4,7 +4,7 @@ import jwtDecode from "jwt-decode";
 const GOOGLECLIENTID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 const URL = import.meta.env.VITE_BACKEND_URL;
 
-const handleCallbackResponse = (response) => {
+const handleCallbackResponse = async (response) => {
   const googleToken = response.credential;
   const decodeToken = jwtDecode(googleToken);
   const { sub: googleUserId, name: fullname, email, picture } = decodeToken;
@@ -12,7 +12,7 @@ const handleCallbackResponse = (response) => {
     .get(`${URL}/api/users/email/${email}`)
     .then((res) => {
       localStorage.setItem("currentUser", JSON.stringify(res.data));
-      // window.location.href = "/dashboard";
+      window.location.href = "/dashboard";
     })
     .catch((err) => {
       if (err.response.status === 404) {
@@ -26,17 +26,16 @@ const handleCallbackResponse = (response) => {
           })
           .then((res) => {
             localStorage.setItem("currentUser", JSON.stringify(res.data));
-            // REDIRECTION
+            window.location.href = "/dashboard";
           })
           .catch((error) => {
             console.error(error);
           });
-        // window.location.href = "/dashboard";
       }
     });
 };
 
-const handleLogin = () => {
+const handleLogin = async () => {
   try {
     window.google.accounts.id.initialize({
       client_id: GOOGLECLIENTID,
