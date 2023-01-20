@@ -113,6 +113,9 @@
   background-color: var(--medium-background);
   position: absolute;
   border-radius: var(--radius);
+  border: 10px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   left: 0;
   top: 0;
   transform-style: preserve-3d;
@@ -254,6 +257,10 @@
   color: var(--golden-color);
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
   transition: all 200ms linear;
+}
+
+.btn:active {
+  box-shadow: 0 0 9e9Q inset #0009;
 }
 
 .btn:hover > * {

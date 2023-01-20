@@ -1,38 +1,47 @@
-import jwtDecode from "jwt-decode";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
-const GOOGLE_CLIENT_ID =
-  "380173514511-nl7hpviphofn124ghjirsanfsq7b3ikd.apps.googleusercontent.com";
+const GOOGLECLIENTID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 const URL = import.meta.env.VITE_BACKEND_URL;
-const handleCallbackGetResponse = () => {
-  const data = JSON.parse(localStorage.getItem("currentUser"));
 
-  axios.post(`${URL}/api/users`, {
-    email: data.email,
-    fullname: data.fullname,
-    picture: data.picture,
-    googleId: data.googleUserId,
-  });
-};
-
-const handleCallbackResponse = (response) => {
-  const token = response.credential;
-  const decodeToken = jwtDecode(token);
+const handleCallbackResponse = async (response, cb) => {
+  const googleToken = response.credential;
+  const decodeToken = jwtDecode(googleToken);
   const { sub: googleUserId, name: fullname, email, picture } = decodeToken;
-
-  localStorage.setItem(
-    "currentUser",
-    JSON.stringify({ googleUserId, fullname, email, picture })
-  );
-  handleCallbackGetResponse();
+  axios
+    .get(`${URL}/api/users/email/${email}`)
+    .then((res) => {
+      localStorage.setItem("currentUser", JSON.stringify(res.data));
+      cb();
+    })
+    .catch((err) => {
+      if (err.response?.status === 404) {
+        axios
+          .post(`${URL}/api/users/signupgoogle`, {
+            email,
+            fullname,
+            picture,
+            googleUserId,
+            pseudo: fullname,
+          })
+          .then((res) => {
+            localStorage.setItem("currentUser", JSON.stringify(res.data));
+            cb();
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+    });
 };
 
-const handleLogin = () => {
+const handleLogin = async (cb) => {
   try {
     window.google.accounts.id.initialize({
-      client_id: GOOGLE_CLIENT_ID,
-      callback: handleCallbackResponse,
+      client_id: GOOGLECLIENTID,
+      callback: (response) => handleCallbackResponse(response, cb),
     });
+
     window.google.accounts.id.prompt((notification) => {
       if (notification.isNotDisplayed()) {
         throw new Error("Try to clear the cookies or try again later!");
