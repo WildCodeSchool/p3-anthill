@@ -4,7 +4,7 @@ import jwtDecode from "jwt-decode";
 const GOOGLECLIENTID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 const URL = import.meta.env.VITE_BACKEND_URL;
 
-const handleCallbackResponse = async (response) => {
+const handleCallbackResponse = async (response, cb) => {
   const googleToken = response.credential;
   const decodeToken = jwtDecode(googleToken);
   const { sub: googleUserId, name: fullname, email, picture } = decodeToken;
@@ -12,10 +12,10 @@ const handleCallbackResponse = async (response) => {
     .get(`${URL}/api/users/email/${email}`)
     .then((res) => {
       localStorage.setItem("currentUser", JSON.stringify(res.data));
-      window.location.href = "/dashboard";
+      cb();
     })
     .catch((err) => {
-      if (err.response.status === 404) {
+      if (err.response?.status === 404) {
         axios
           .post(`${URL}/api/users/signupgoogle`, {
             email,
@@ -26,7 +26,7 @@ const handleCallbackResponse = async (response) => {
           })
           .then((res) => {
             localStorage.setItem("currentUser", JSON.stringify(res.data));
-            window.location.href = "/dashboard";
+            cb();
           })
           .catch((error) => {
             console.error(error);
@@ -35,11 +35,11 @@ const handleCallbackResponse = async (response) => {
     });
 };
 
-const handleLogin = async () => {
+const handleLogin = async (cb) => {
   try {
     window.google.accounts.id.initialize({
       client_id: GOOGLECLIENTID,
-      callback: handleCallbackResponse,
+      callback: (response) => handleCallbackResponse(response, cb),
     });
 
     window.google.accounts.id.prompt((notification) => {
