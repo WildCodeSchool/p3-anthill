@@ -2,7 +2,7 @@ const { db } = require("./db");
 
 async function getAllCommentsOfOneIdea(ideaId) {
   const [rows] = await db.query(
-    "SELECT * FROM CommentData WHERE idea_id = ? ORDER BY creation_date DESC",
+    "SELECT cd.*, IF(uc.user_id IS NULL, true, false) AS canVote FROM CommentData AS cd LEFT JOIN upvote_comment_user AS uc ON uc.comment_id = cd.id AND uc.user_id = 1 WHERE cd.idea_id = 1 ORDER BY cd.creation_date DESC",
     [ideaId]
   );
 
