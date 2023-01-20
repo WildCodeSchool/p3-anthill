@@ -124,7 +124,7 @@ CREATE TABLE `comment` (
   `idea_id` int NOT NULL,
   `comment_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_comment_user` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `fk_comment_user` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_comment_idea` FOREIGN KEY (`idea_id`) REFERENCES `idea` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_comment_comment` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`id`) ON DELETE CASCADE
 );
@@ -192,7 +192,7 @@ CREATE TABLE `upvote_idea_user` (
   `user_id` int NOT NULL,
   PRIMARY KEY (`idea_id`, `user_id`),
   CONSTRAINT `fk_upvote_idea_idea` FOREIGN KEY (`idea_id`) REFERENCES `idea` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_upvote_idea_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+  CONSTRAINT `fk_upvote_idea_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ); 
 
 CREATE TABLE `upvote_comment_user` (
@@ -200,7 +200,7 @@ CREATE TABLE `upvote_comment_user` (
   `user_id` int NOT NULL,
   PRIMARY KEY (`comment_id`, `user_id`),
   CONSTRAINT `fk_upvote_comment_comment` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_upvote_comment_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+  CONSTRAINT `fk_upvote_comment_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ); 
 
 CREATE VIEW IdeaUpvotes (idea_id, nbr_upvotes) 

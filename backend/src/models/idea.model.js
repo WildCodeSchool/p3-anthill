@@ -7,8 +7,6 @@ async function getAll() {
 }
 
 async function getAllOfOneTopic(commentModeTopicId) {
-  // SELECT * FROM upvote_idea_user WHERE idea_id = ? AND user_id = ?
-
   const [rows] = await db.query(
     "SELECT * FROM IdeaData WHERE comment_mode_id = ? ",
     [commentModeTopicId]
