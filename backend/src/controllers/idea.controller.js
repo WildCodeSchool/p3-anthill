@@ -1,5 +1,4 @@
 const ideaModel = require("../models/idea.model");
-// const ideaValidator = require("../validators/idea.validator");
 
 async function list(req, res) {
   const ideas = await ideaModel.getAll();

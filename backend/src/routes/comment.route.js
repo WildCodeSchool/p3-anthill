@@ -3,7 +3,7 @@ const commentController = require("../controllers/comment.controller");
 
 const commentRouter = new Router();
 
-commentRouter.get("/", commentController.list);
+commentRouter.get("/", commentController.listCommentsOfOneIdea);
 commentRouter.post("/", commentController.create);
 commentRouter.get("/:id", commentController.get);
 commentRouter.put("/:id", commentController.update);
