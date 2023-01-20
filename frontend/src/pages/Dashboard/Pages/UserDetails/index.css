@@ -1,16 +1,19 @@
 .userDetail {
   display: flex;
   flex-direction: column;
-  width: 100%;
   align-items: center;
   justify-content: center;
 }
 
 .userDetail__card {
   background-color: var(--medium-background);
-  box-shadow: var(--box-shadow);
+  border-radius: var(--radius);
+  border: 10px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   margin: 20px;
   width: 80%;
+  padding: 15px;
 }
 
 .userDetail__header {

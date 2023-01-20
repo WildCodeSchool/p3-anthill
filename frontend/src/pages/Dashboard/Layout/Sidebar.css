@@ -1,6 +1,6 @@
 .user-profile-area {
   background-color: var(--dark-background);
-  border-radius: 10px;
+  border-radius: var(--radius);
   border: 10px solid var(--dark-background);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
