@@ -2,11 +2,20 @@ import { FaCommentAlt } from "react-icons/fa";
 import { RxLapTimer } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import formatDeadline from "../../../../services/formatDeadline";
+import DeleteTopicButton from "../DeleteTopicButton/DeleteTopicButton";
 
 import "./TopicCard.css";
 
 function TopicCard(props) {
-  const { id, title, creatorName, description, deadline, nbIdea } = props;
+  const {
+    id,
+    title,
+    creatorName,
+    description,
+    deadline,
+    nbIdea,
+    triggerGetTopics,
+  } = props;
 
   const formatedDeadLine = formatDeadline(deadline);
   const [year, month, day, hour, minutes] = [...formatedDeadLine];
@@ -25,9 +34,11 @@ function TopicCard(props) {
           <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>
         </div>
         <div className="topicCard__nbIdea">
-          {nbIdea} <FaCommentAlt />
+          {nbIdea}
+          <FaCommentAlt />
         </div>
       </div>
+      <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />
     </article>
   );
 }
