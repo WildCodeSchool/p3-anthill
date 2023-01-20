@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Section01 from "./Components/Section01";
+import NavLanding from "./Components/NavLanding";
 import Footer from "./Components/footer/Footer";
 
 import "./index.css";
@@ -7,20 +7,33 @@ import "./index.css";
 function Landing() {
   return (
     <div className="landing">
-      <Section01 />
-      <div>
-        <img
-          className="logoLanding"
-          src="/png/logoDoré.png"
-          alt="logo anthill"
-        />
+      <NavLanding />
+      <div className="main">
+        <section className="slider" id="tab-intro">
+          <h1>INTRO</h1>
+          <h2>About our website</h2>
+        </section>
+        <section className="slider" id="tab-dash">
+          <h1>DASHBOARD</h1>
+          <h2>introduce the operations</h2>
+        </section>
+        <section className="slider" id="tab-next">
+          <h1>FEATURE</h1>
+          <h2>framework for Production</h2>
+        </section>
+        <section className="slider" id="tab-typescript">
+          <h1>CUSTOMER</h1>
+          <h2>giving you better viewer for the future</h2>
+        </section>
+        <section className="slider-us" id="tab-aboutUs">
+          <Footer />
+        </section>
       </div>
       <div>
         <button type="button" className="buttonLanding">
           <Link to="/login">Log in / Sign in</Link>
         </button>
       </div>
-      <Footer />
     </div>
   );
 }

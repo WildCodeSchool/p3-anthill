@@ -2,6 +2,8 @@ import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
+import "./BackgrdParticles.css";
+
 function BackgrdParticles() {
   const particlesInit = useCallback(async (engine) => {
     await loadFull(engine);
@@ -31,10 +33,12 @@ function BackgrdParticles() {
           },
           particles: {
             color: {
-              value: ["#ffeba7", "#ececec", "#102770"],
+              value: ["#ffeba7", "#9ea93f", "#e49893", "#efc0b4"],
             },
             links: {
-              color: ["#ffeba7", "#ececec"],
+              color: {
+                value: "#ffeba7",
+              },
               distance: 200,
               enable: true,
               opacity: 0.5,
@@ -61,7 +65,7 @@ function BackgrdParticles() {
               type: "circle",
             },
             size: {
-              value: { min: 1, max: 5 },
+              value: { min: 1, max: 3 },
             },
           },
           detectRetina: true,
