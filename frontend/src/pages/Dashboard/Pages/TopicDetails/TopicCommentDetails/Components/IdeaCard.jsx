@@ -1,6 +1,7 @@
 import { BiUpvote } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import CommentPopover from "./CommentPopover";
+import DeleteIdeaButton from "./DeleteIdeaButton";
 
 function IdeaCard({
   id,
@@ -9,6 +10,7 @@ function IdeaCard({
   description,
   nbUpVote,
   nbComment,
+  triggerGetIdeas,
 }) {
   return (
     <div className="ideaCard">
@@ -30,6 +32,7 @@ function IdeaCard({
           </div>
         </div>
       </div>
+      <DeleteIdeaButton ideaId={id} triggerGetIdeas={triggerGetIdeas} />
     </div>
   );
 }

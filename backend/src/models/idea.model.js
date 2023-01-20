@@ -53,6 +53,10 @@ async function updateOne(id, idea) {
 async function deleteOne(id) {
   const [result] = await db.query("DELETE FROM idea WHERE id = ?", [id]);
 
+  if (result.length === 0) {
+    return null;
+  }
+
   return result.affectedRows;
 }
 
