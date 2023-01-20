@@ -1,19 +1,75 @@
 .nav-landing {
   margin: auto;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   /* width: 80%; */
 }
-.nav-landing:not(.blob) {
-  box-sizing: border-box;
-  /* background: rgba(255, 255, 255, 0.01); */
+.nav-landing:not(.particles) {
+  /* box-sizing: border-box; */
   backdrop-filter: blur(1px);
-  /* border-radius: 50%; */
 }
 
-span:hover {
-  color: #ff0266;
-  font-weight: 500;
-  font-size: 2.2vw;
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.stage .content {
+  text-align: center;
+  visibility: hidden;
+}
+
+.txt {
+  margin: 0;
+  font-size: calc(var(--fontSize) * 1vw);
+  font-weight: var(--fw);
+  font-stretch: calc(var(--fs) * 1%);
+  line-height: 0.6;
+  letter-spacing: -1vw;
+  /* user-select: none; */
+  text-shadow: 0 0.05em 0 var(--golden-color),
+    0 0.1em 0.1em rgba(75, 87, 90, 0.3), 0 0.4em 0.3em rgba(133, 90, 112, 0.1);
+}
+
+h3.span .m {
+  font-size: 2vw;
+  margin-right: 1rem;
+  color: var(--light-color);
+  z-index: 1;
+}
+
+.loader span {
+  text-shadow: 0 0 0 var(--medium-background);
+  animation: loading 2s ease-in-out infinite alternate;
+}
+
+@keyframes loading {
+  to {
+    text-shadow: 10px 0 10px var(--golden-color);
+    color: var(--golden-color);
+  }
+}
+
+.loader span:nth-child(2) {
+  animation-delay: 1s;
+}
+.loader span:nth-child(3) {
+  animation-delay: 2s;
+}
+.loader span:nth-child(4) {
+  animation-delay: 3s;
+}
+.loader span:nth-child(5) {
+  animation-delay: 4s;
 }
 
 a {
@@ -25,12 +81,18 @@ a {
   flex-direction: row;
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 99.37%;
   height: 75px;
-  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
   background: var(--dark-background);
+  border: 4px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   z-index: 10;
   transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.nav-container .logoContainer {
+  margin: 0.8rem 0 0.8rem 2rem;
 }
 
 .nav-container--top-first {
@@ -68,6 +130,7 @@ a {
   background: var(--golden-color);
   transition: left 0.3s ease;
 }
+
 .blob {
   animation: blob 1s linear forwards;
 }
