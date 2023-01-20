@@ -8,13 +8,7 @@ async function getAll() {
 
 async function getAllOfOneTopic(commentModeTopicId) {
   const [rows] = await db.query(
-    "SELECT i.id, MIN(i.title) AS idea_title, MIN(i.description) AS idea_description, MIN(i.up_vote) AS nb_up_vote, MIN(u.fullname) AS idea_creator_name, count(c.id) AS nb_comment " +
-      "FROM idea AS i " +
-      "LEFT JOIN topic AS t ON t.id = i.comment_mode_id " +
-      "LEFT JOIN user AS u ON u.id = i.creator_id " +
-      "LEFT JOIN comment AS c ON c.idea_id = i.id " +
-      "WHERE i.comment_mode_id = ? " +
-      "GROUP BY i.id",
+    "SELECT * FROM IdeaData WHERE comment_mode_id = ? ",
     [commentModeTopicId]
   );
   return rows;
@@ -52,6 +46,10 @@ async function updateOne(id, idea) {
 
 async function deleteOne(id) {
   const [result] = await db.query("DELETE FROM idea WHERE id = ?", [id]);
+
+  if (result.length === 0) {
+    return null;
+  }
 
   return result.affectedRows;
 }

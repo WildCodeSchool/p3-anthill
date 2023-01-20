@@ -1,10 +1,11 @@
 const commentModel = require("../models/comment.model");
 // const commentValidator = require("../validators/comment.validator");
 
-async function list(req, res) {
+async function listCommentsOfOneIdea(req, res) {
   const comments = await commentModel.getAllCommentsOfOneIdea(
     req.params.ideaId
   );
+
   res.json(comments);
 }
 
@@ -15,9 +16,9 @@ async function create(req, res) {
   }
 
   const insertId = await commentModel.insertOne({
-    ideaId: req.params.ideaId,
+    content: req.body.content,
     userId: 1,
-    content: req.body,
+    ideaId: req.params.ideaId,
   });
 
   res.status(201).json({ insertId });
@@ -60,7 +61,6 @@ async function remove(req, res) {
     res.sendStatus(400);
     return;
   }
-
   const affectedRows = await commentModel.deleteOne(req.params.id);
 
   if (affectedRows === 0) {
@@ -71,4 +71,4 @@ async function remove(req, res) {
   res.sendStatus(204);
 }
 
-module.exports = { list, create, get, update, remove };
+module.exports = { listCommentsOfOneIdea, create, get, update, remove };

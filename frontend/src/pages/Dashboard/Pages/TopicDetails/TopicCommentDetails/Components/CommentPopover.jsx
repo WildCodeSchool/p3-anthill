@@ -51,7 +51,7 @@ function CommentPopover({ ideaId }) {
       >
         {comments &&
           comments.map((comment) => (
-            <CommentCard key={comment.id} comment={comment} />
+            <CommentCard id={comment.id} key={comment.id} comment={comment} />
           ))}
       </div>
     </div>
