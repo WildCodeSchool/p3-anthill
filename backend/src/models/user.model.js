@@ -11,19 +11,22 @@ async function getAll() {
   return rows;
 }
 
+async function getOne(id) {
+  const [rows] = await db.query(
+    "SELECT id, picture, email, pseudo, description, mood_id FROM user WHERE id = ?",
+    [id]
+  );
+  return rows[0];
+}
+
 async function insertOne(user) {
-  const { picture, email, fullname, password, googleUserId } = user;
+  const { picture, email, fullname, pseudo, password, googleUserId } = user;
   const [result] = await db.query(
-    "INSERT INTO user (picture, email, fullname, password, googleUserId) VALUES (?, ?, ?, ?, ?)",
-    [picture, email, fullname, password, googleUserId]
+    "INSERT INTO user (picture, email, fullname, pseudo, password, googleUserId) VALUES (?, ?, ?, ?, ?, ?)",
+    [picture, email, fullname, pseudo, password, googleUserId]
   );
 
   return result.insertId;
-}
-
-async function getOne(id) {
-  const [rows] = await db.query("SELECT * FROM user WHERE id = ?", [id]);
-  return rows[0];
 }
 
 async function updateOne(id, user) {

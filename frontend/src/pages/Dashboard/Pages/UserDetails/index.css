@@ -1,10 +1,16 @@
 .userDetail {
-  background-color: var(--medium-background);
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 20px;
-  border-radius: 10px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.userDetail__card {
+  background-color: var(--medium-background);
+  box-shadow: var(--box-shadow);
+  margin: 20px;
+  width: 80%;
 }
 
 .userDetail__header {
@@ -34,4 +40,12 @@
 .userDetail__contact > p {
   color: var(--light-color);
   text-decoration: underline;
+}
+
+.userDetail__badge {
+  height: 85px;
+  border-radius: 50%;
+  border: solid;
+  border-color: var(--golden-color);
+  background-color: var(--light-color);
 }

@@ -1,30 +1,32 @@
 const { db } = require("./db");
 
-async function getAll() {
-  const [rows] = await db.query("SELECT * FROM comment");
+async function getAllCommentsOfOneIdea(ideaId) {
+  const [rows] = await db.query(
+    "SELECT * FROM CommentData WHERE idea_id = ? ORDER BY creation_date DESC",
+    [ideaId]
+  );
 
   return rows;
 }
 
-async function insertOne(user) {
-  const { content, upVote, userId, ideaId, commentId } = user;
+async function insertOne({ content, userId, ideaId }) {
   const [result] = await db.query(
-    "INSERT INTO comment (content, up_vote, user_id, idea_id, comment_id) VALUES (?, ?, ?, ?, ?)",
-    [content, upVote, userId, ideaId, commentId]
+    "INSERT INTO comment (creation_date, content, creator_id, idea_id) VALUES (NOW(), ?, ?, ?)",
+    [content, userId, ideaId]
   );
 
   return result.insertId;
 }
 
 async function getOne(id) {
-  const [rows] = await db.query("SELECT * FROM comment WHERE id = ?", [id]);
+  const [rows] = await db.query("SELECT * FROM CommentData WHERE id = ?", [id]);
   return rows[0];
 }
 
 async function updateOne(id, user) {
   const { content, upVote, userId, ideaId, commentId } = user;
   const [result] = await db.query(
-    "UPDATE comment SET content = ?, up_vote = ?, user_id = ?, idea_id = ?, comment_id = ? WHERE id = ?",
+    "UPDATE comment SET content = ?, up_vote = ?, creator_id = ?, idea_id = ?, comment_id = ? WHERE id = ?",
     [content, upVote, userId, ideaId, commentId, id]
   );
 
@@ -34,7 +36,17 @@ async function updateOne(id, user) {
 async function deleteOne(id) {
   const [result] = await db.query("DELETE FROM comment WHERE id = ?", [id]);
 
+  if (result.length === 0) {
+    return null;
+  }
+
   return result.affectedRows;
 }
 
-module.exports = { getAll, insertOne, getOne, updateOne, deleteOne };
+module.exports = {
+  getAllCommentsOfOneIdea,
+  insertOne,
+  getOne,
+  updateOne,
+  deleteOne,
+};

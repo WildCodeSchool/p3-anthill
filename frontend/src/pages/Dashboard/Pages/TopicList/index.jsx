@@ -1,26 +1,43 @@
-import useFetch from "../../../../services/useFetch";
-import TopicCard from "../../Components/TopicCard";
-import ToggleModeButtons from "../../Components/ToggleModeButtons";
+import { useEffect } from "react";
+import useFetchLazy from "../../../../services/useFetchLazy";
+import TopicCard from "../../Components/TopicCard/TopicCard";
+import ToggleModeButtons from "../../Components/ToggleModeButtons/ToggleModeButtons";
+
+import "./index.css";
 
 function TopicsList() {
-  const { data: topics, loading } = useFetch("/topics/card");
+  const {
+    data: topics,
+    loading,
+    trigger: triggerGetTopics,
+  } = useFetchLazy({
+    path: "/topics/card",
+    method: "get",
+  });
+
+  useEffect(() => {
+    triggerGetTopics();
+  }, []);
 
   return (
     <div>
       <ToggleModeButtons />
-      {loading && <div>LOADING...</div>}
-      {topics &&
-        topics.map((topic) => (
-          <TopicCard
-            key={topic.id}
-            id={topic.id}
-            title={topic.title}
-            creatorName={topic.creator_name}
-            description={topic.description}
-            deadline={topic.deadline}
-            nbIdea={topic.nb_idea}
-          />
-        ))}
+      <div className="topicsList">
+        {loading && <div>LOADING...</div>}
+        {topics &&
+          topics.map((topic) => (
+            <TopicCard
+              key={topic.id}
+              id={topic.id}
+              title={topic.title}
+              creatorName={topic.creator_name}
+              description={topic.description}
+              deadline={topic.deadline}
+              nbIdea={topic.nb_idea}
+              triggerGetTopics={triggerGetTopics}
+            />
+          ))}
+      </div>
     </div>
   );
 }

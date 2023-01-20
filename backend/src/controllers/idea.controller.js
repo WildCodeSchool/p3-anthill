@@ -1,5 +1,4 @@
 const ideaModel = require("../models/idea.model");
-// const ideaValidator = require("../validators/idea.validator");
 
 async function list(req, res) {
   const ideas = await ideaModel.getAll();
@@ -8,10 +7,7 @@ async function list(req, res) {
 
 async function listIdeasOfOneTopic(req, res) {
   const ideas = await ideaModel.getAllOfOneTopic(req.params.id);
-  if (ideas.length === 0) {
-    res.sendStatus(404);
-    return;
-  }
+
   res.json(ideas);
 }
 
@@ -29,13 +25,15 @@ async function get(req, res) {
 }
 
 async function create(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.params.topicId) {
     res.sendStatus(400);
     return;
   }
 
-  const insertId = await ideaModel.insertOne(req.body);
-
+  const insertId = await ideaModel.insertOne(req.body, req.params.topicId);
+  if (!insertId) {
+    res.sendStatus(404);
+  }
   res.status(201).json({ insertId });
 }
 
