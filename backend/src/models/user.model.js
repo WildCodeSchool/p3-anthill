@@ -20,19 +20,7 @@ async function getOne(id) {
 }
 
 async function getConnexion(email) {
-  const [rows] = await db.query(
-    "SELECT picture, email, fullname, pseudo, googleUserId FROM user WHERE email = ?",
-    [email]
-  );
-
-  if (rows[0].length === 0) {
-    return null;
-  }
-  return rows[0];
-}
-
-async function getUserByEmailWithPassword(email) {
-  const [rows] = await db.query("SELECT * FROM user WHERE email = ?", [email]);
+  const [rows] = await db.query("SELECT id FROM user WHERE email = ?", [email]);
 
   if (!rows[0]) {
     return null;
@@ -72,7 +60,6 @@ module.exports = {
   getAll,
   getOne,
   getConnexion,
-  getUserByEmailWithPassword,
   insertOne,
   updateOne,
   deleteOne,

@@ -12,7 +12,7 @@ function LoginForm() {
   const [password, setPassword] = useState();
 
   const {
-    trigger: triggerPostUser,
+    trigger: triggerLogin,
     data: user,
     error,
   } = useFetchLazy({
@@ -22,7 +22,7 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    triggerPostUser({ email, password });
+    triggerLogin({ email, password });
   };
 
   useEffect(() => {
@@ -51,7 +51,7 @@ function LoginForm() {
           type="email"
           className="form-style"
           placeholder="Your Email"
-          autoComplete="off"
+          autoComplete="email"
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
@@ -62,7 +62,7 @@ function LoginForm() {
           type="password"
           className="form-style"
           placeholder="Your Password"
-          autoComplete="off"
+          autoComplete="current-password"
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>

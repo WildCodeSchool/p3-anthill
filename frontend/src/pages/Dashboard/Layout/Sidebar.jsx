@@ -44,7 +44,7 @@ function Sidebar({ name, photo }) {
     },
   ];
   const handleClick = () => {
-    window.localStorage.clear();
+    window.localStorage.removeItem("currentUser");
   };
   console.warn(photo);
 
@@ -73,11 +73,11 @@ function Sidebar({ name, photo }) {
               path={e.path}
             />
           ))}
-        </ul>{" "}
+        </ul>
         <Link to="/login" className="signOut-btn">
           <button type="button" className="signOut-btn" onClick={handleClick}>
             Log Out
-          </button>{" "}
+          </button>
         </Link>
       </div>
     </aside>

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsFillPersonFill } from "react-icons/bs";
 import { IoIosAt, IoMdKey } from "react-icons/io";
@@ -14,32 +14,32 @@ function SignUpForm() {
   const navigate = useNavigate();
   const isLoggedIn = useCurrentUser();
 
-  const { trigger: triggerGetUser, data: user } = useFetchLazy({
+  const { trigger: triggerSignUp, data: user } = useFetchLazy({
     method: "post",
-    path: "/users",
+    path: "/users/signup",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    triggerGetUser({
+    triggerSignUp({
       email: emailRef.current?.value,
       fullname: usernameRef.current?.value,
       pseudo: pseudoRef.current?.value,
       hashedPassword: passwordRef.current?.value,
     });
-    if (!isLoggedIn || user) {
+  };
+
+  useEffect(() => {
+    if (!isLoggedIn && user) {
       localStorage.setItem(
         "currentUser",
         JSON.stringify({
-          email: emailRef.current?.value,
-          fullname: usernameRef.current?.value,
-          pseudo: pseudoRef.current?.value,
+          token: user.token,
         })
       );
       navigate("/dashboard");
     }
-    return null;
-  };
+  }, [user]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -71,7 +71,7 @@ function SignUpForm() {
           type="email"
           className="form-style"
           placeholder="Your Email"
-          autoComplete="off"
+          autoComplete="email"
           ref={emailRef}
         />
       </div>
@@ -81,7 +81,7 @@ function SignUpForm() {
           type="password"
           className="form-style"
           placeholder="Your Password"
-          autoComplete="off"
+          autoComplete="new-password"
           ref={passwordRef}
         />
       </div>

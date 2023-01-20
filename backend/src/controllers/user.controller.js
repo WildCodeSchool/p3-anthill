@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const userModel = require("../models/user.model");
 // const userValidator = require("../validators/user.validator");
 
@@ -13,18 +14,13 @@ async function create(req, res) {
   }
 
   const insertId = await userModel.insertOne(req.body);
+  const payload = { sub: insertId };
 
-  res.status(201).json({ insertId });
-}
+  const token = jwt.sign(payload, process.env.JWT_SECRET, {
+    expiresIn: "1h",
+  });
 
-async function getUserByEmailWithPassword(req, res, next) {
-  const user = await userModel.getUserByEmailWithPassword(req.body.email);
-  if (user) {
-    req.user = user;
-    next();
-  } else {
-    res.sendStatus(400);
-  }
+  res.status(201).send({ token });
 }
 
 async function get(req, res) {
@@ -54,7 +50,13 @@ async function getOneByEmail(req, res) {
     res.sendStatus(404);
     return;
   }
-  res.json(userConnexion);
+  const payload = { sub: userConnexion.id };
+
+  const token = jwt.sign(payload, process.env.JWT_SECRET, {
+    expiresIn: "1h",
+  });
+
+  res.send({ token });
 }
 
 async function update(req, res) {
@@ -96,5 +98,4 @@ module.exports = {
   get,
   update,
   remove,
-  getUserByEmailWithPassword,
 };
