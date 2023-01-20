@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
 import NavLanding from "./Components/NavLanding";
 import Footer from "./Components/footer/Footer";
-
 import "./index.css";
 
 function Landing() {
@@ -31,7 +29,7 @@ function Landing() {
       </div>
       <div>
         <button type="button" className="buttonLanding">
-          <Link to="/login">Log in / Sign in</Link>
+          Go to the site
         </button>
       </div>
     </div>

@@ -136,6 +136,7 @@
   font-size: var(--textS);
   padding: 0.6rem;
   text-decoration: none;
+  text-align: center;
 }
 
 .signOut-btn:hover {
