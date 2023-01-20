@@ -12,6 +12,8 @@
         "logname",
         "logpass",
         "Tidus",
-        "toastify"
+        "toastify",
+        "Backgrd",
+        "tsparticles"
     ]
 }

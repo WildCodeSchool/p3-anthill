@@ -1,14 +1,23 @@
-import useFetch from "../../../../services/useFetch";
+import { useEffect } from "react";
+import useFetchLazy from "../../../../services/useFetchLazy";
 import TopicCard from "../../Components/TopicCard/TopicCard";
 import ToggleModeButtons from "../../Components/ToggleModeButtons/ToggleModeButtons";
 
 import "./index.css";
 
 function TopicsList() {
-  const { data: topics, loading } = useFetch({
+  const {
+    data: topics,
+    loading,
+    trigger: triggerGetTopics,
+  } = useFetchLazy({
     path: "/topics/card",
     method: "get",
   });
+
+  useEffect(() => {
+    triggerGetTopics();
+  }, []);
 
   return (
     <div>
@@ -25,8 +34,7 @@ function TopicsList() {
               description={topic.description}
               deadline={topic.deadline}
               nbIdea={topic.nb_idea}
-              nbBubble={topic.nb_bubble}
-              isCommentMode={topic.is_comment_mode}
+              triggerGetTopics={triggerGetTopics}
             />
           ))}
       </div>

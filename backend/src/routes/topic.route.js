@@ -10,7 +10,10 @@ topicRouter.get("/", topicController.list);
 topicRouter.get("/card", topicController.listCard);
 topicRouter.get("/:id", topicController.get);
 topicRouter.get("/:id/ideas", ideaController.listIdeasOfOneTopic);
-topicRouter.get("/:topicId/ideas/:ideaId/comments", commentController.list);
+topicRouter.get(
+  "/:topicId/ideas/:ideaId/comments",
+  commentController.listCommentsOfOneIdea
+);
 
 topicRouter.post(
   "/",
@@ -23,5 +26,10 @@ topicRouter.post("/:topicId/ideas/:ideaId/comments", commentController.create);
 topicRouter.put("/:id", topicController.update);
 
 topicRouter.delete("/:id", topicController.remove);
+topicRouter.delete("/:topicId/ideas/:id", ideaController.remove);
+topicRouter.delete(
+  "/:topicId/ideas/:ideaId/comments/:id",
+  commentController.remove
+);
 
 module.exports = { topicRouter };

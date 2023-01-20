@@ -1,8 +1,8 @@
-import { BiMessageDetail } from "react-icons/bi";
 import { RxLapTimer } from "react-icons/rx";
-import { TbMessageCircle2 } from "react-icons/tb";
+
 import { Link } from "react-router-dom";
 import formatDeadline from "../../../../services/formatDeadline";
+import DeleteTopicButton from "../DeleteTopicButton/DeleteTopicButton";
 
 import "./TopicCard.css";
 
@@ -14,8 +14,7 @@ function TopicCard(props) {
     description,
     deadline,
     nbIdea,
-    nbBubble,
-    isCommentMode,
+    triggerGetTopics,
   } = props;
 
   const formatedDeadLine = formatDeadline(deadline);
@@ -33,18 +32,9 @@ function TopicCard(props) {
           <RxLapTimer />
           <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>
         </div>
-        {isCommentMode ? (
-          <div className="topicCard__nbIdea notification">
-            <div className="notification-number">{nbIdea}</div>
-            <BiMessageDetail />
-          </div>
-        ) : (
-          <div className="topicCard__nbIdea notification">
-            <div className="notification-bubble-number">{nbBubble}</div>
-            <TbMessageCircle2 />
-          </div>
-        )}
+        <div className="topicCard__nbIdea">{nbIdea}</div>
       </div>
+      <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />
     </article>
   );
 }

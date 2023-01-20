@@ -13,6 +13,11 @@
   /* 32px : big title */
   --textXL: 2rem;
 
+  /* FONT STRETCH */
+  --fw: 600; /* font weight target 100-800 */
+  --fs: 150; /* font stretch target 10-150% */
+  --fontSize: 15; /* vw units */
+
   /* Transition */
   --transition: 0.2s;
 
