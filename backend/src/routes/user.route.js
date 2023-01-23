@@ -2,11 +2,11 @@ const { Router } = require("express");
 const userController = require("../controllers/user.controller");
 const badgeController = require("../controllers/badge.controller");
 const topicController = require("../controllers/topic.controller");
-const { login } = require("../controllers/auth.controller");
 const {
+  login,
   hashPassword,
   getUserByEmailWithPassword,
-} = require("../../services/auth.service");
+} = require("../controllers/auth.controller");
 
 const userRouter = new Router();
 
