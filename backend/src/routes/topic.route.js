@@ -3,6 +3,7 @@ const topicController = require("../controllers/topic.controller");
 const ideaController = require("../controllers/idea.controller");
 const commentController = require("../controllers/comment.controller");
 const topicValidator = require("../validators/topic.validator");
+const { verifyToken } = require("../controllers/auth.controller");
 
 const topicRouter = new Router();
 
@@ -14,6 +15,8 @@ topicRouter.get(
   "/:topicId/ideas/:ideaId/comments",
   commentController.listCommentsOfOneIdea
 );
+
+topicRouter.use(verifyToken); // Authorization middleware
 
 topicRouter.post(
   "/",

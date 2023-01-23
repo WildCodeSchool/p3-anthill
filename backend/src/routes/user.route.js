@@ -6,6 +6,7 @@ const {
   login,
   hashPassword,
   getUserByEmailWithPassword,
+  verifyToken,
 } = require("../controllers/auth.controller");
 
 const userRouter = new Router();
@@ -19,6 +20,8 @@ userRouter.get("/:id/topics", topicController.getUserTopics);
 userRouter.post("/signupgoogle", userController.create);
 userRouter.post("/signup", hashPassword, userController.create);
 userRouter.post("/login", getUserByEmailWithPassword, login);
+
+userRouter.use(verifyToken); // Authorization middleware
 
 userRouter.put("/:id", userController.update);
 
