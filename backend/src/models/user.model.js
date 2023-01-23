@@ -30,10 +30,10 @@ async function insertOne(user) {
 }
 
 async function updateOne(id, user) {
-  const { pseudo, email, picture } = user;
+  const { pseudo, email } = user;
   const [result] = await db.query(
-    "UPDATE user SET pseudo = ?, email = ?, picture = ? WHERE id = ?",
-    [pseudo, email, picture, id]
+    "UPDATE user SET pseudo = ?, email = ? WHERE id = ?",
+    [pseudo, email, id]
   );
 
   return result.affectedRows;
