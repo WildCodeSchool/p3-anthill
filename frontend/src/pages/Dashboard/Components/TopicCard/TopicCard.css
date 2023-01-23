@@ -1,4 +1,4 @@
-.topicCard {
+.topicCard__grid {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,9 +19,10 @@
 }
 
 .topicCard__title {
-  text-align: start;
+  text-align: center;
   margin: 5% 5% 5% 6%;
   color: var(--golden-color);
+  font-size: var(--textL);
 }
 
 .topicCard__title:hover {
@@ -29,13 +30,11 @@
 }
 
 .topicCard__creatorName {
-  text-align: start;
   margin: 5% 5% 5% 6%;
 }
 
 .topicCard__description {
   margin: 5% 5% 5% 6%;
-  text-align: start;
   font-size: small;
   overflow: hidden;
   max-width: 30ch;
@@ -74,7 +73,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  color: var(--golden-color);
   font-size: small;
   margin-top: 30%;
   color: var(--light-color);

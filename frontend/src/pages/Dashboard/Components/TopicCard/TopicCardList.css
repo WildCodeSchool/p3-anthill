@@ -1,0 +1,71 @@
+.topicCard__list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--radius);
+  height: 110px;
+  margin: 1.5rem;
+  padding: 0.5rem;
+  background-color: var(--medium-background);
+  border: 4px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.topicCard__list:hover {
+  box-shadow: 1px 1px 20px var(--light-color),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.topicCard__title__list {
+  color: var(--golden-color);
+  margin-left: 15px;
+  max-width: 300px;
+  font-size: var(--textL);
+}
+
+.topicCard__title__list:hover {
+  color: #3a6df0;
+}
+
+.topicCard__description__list {
+  margin: 0 15px;
+  text-align: start;
+  font-size: small;
+  overflow: hidden;
+  max-width: 30ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--light-color);
+}
+
+.topicCard__description__list:hover {
+  display: flex;
+  align-items: center;
+  text-align: start;
+  font-size: small;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.topicCard__right__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.topicCard__deadline__list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: small;
+  color: var(--light-color);
+}
+
+.topicCard__nbIdea__list {
+  margin-top: 20px;
+  font-size: small;
+  color: var(--light-color);
+}

@@ -16,6 +16,7 @@
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   border-radius: var(--radius);
   background-color: var(--medium-background);
+  font-size: var(--textM);
 }
 
 .topicInfo__left {
