@@ -31,12 +31,18 @@ async function get(req, res) {
 }
 
 async function create(req, res) {
+  if (!req.payload) {
+    res.sendStatus(401);
+    return;
+  }
   if (!req.body) {
     res.sendStatus(400);
     return;
   }
 
-  const insertId = await topicModel.insertOne(req.body);
+  const creatorId = req.payload.sub;
+
+  const insertId = await topicModel.insertOne(req.body, creatorId);
 
   res.status(201).json({ insertId });
 }
