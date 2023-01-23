@@ -30,11 +30,11 @@ async function insertOne(user) {
 }
 
 async function updateOne(id, user) {
-  const { pseudo } = user;
-  const [result] = await db.query("UPDATE user SET pseudo = ? WHERE id = ?", [
-    pseudo,
-    id,
-  ]);
+  const { pseudo, email, picture } = user;
+  const [result] = await db.query(
+    "UPDATE user SET pseudo = ?, email = ?, picture = ? WHERE id = ?",
+    [pseudo, email, picture, id]
+  );
 
   return result.affectedRows;
 }
