@@ -17,15 +17,24 @@ function TopicCreation({ closePopUp }) {
     method: "post",
   });
 
+  const { token } = JSON.parse(localStorage.getItem("currentUser"));
+
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+
   const submit = (e) => {
     e.preventDefault();
-    triggerPostTopic({
-      title: refTitle.current.value,
-      description: refDescription.current.value,
-      deadline: refDeadline.current.value,
-      creatorId: 1, // pour l'instant c'est une fixture en attendant la bonne valeur venant de local storage
-      isCommentMode: true, // pour l'instant c'est une fixture car mindmapmode n'est géré
-    });
+    triggerPostTopic(
+      {
+        title: refTitle.current.value,
+        description: refDescription.current.value,
+        deadline: refDeadline.current.value,
+        isCommentMode: true, // pour l'instant c'est une fixture car mindmapmode n'est géré
+      },
+      headers
+    );
     refTitle.current.value = "";
     refDescription.current.value = "";
     refDeadline.current.value = "";

@@ -18,7 +18,7 @@ function TopicCommentDetails({
         <TopicInfo
           key={topic.id}
           title={topic.title}
-          creatorName={topic.creator_name}
+          creatorName={topic.fullname}
           description={topic.description}
           deadline={topic.deadline}
         />
