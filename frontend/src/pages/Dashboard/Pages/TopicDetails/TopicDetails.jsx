@@ -5,7 +5,7 @@ import useFetchLazy from "../../../../services/useFetchLazy";
 import TopicCommentDetails from "./TopicCommentDetails";
 
 function TopicDetails() {
-  const topicId = useParams().id;
+  const { topicId } = useParams();
   const { data: topic, loading: loadingTopic } = useFetch({
     path: `/topics/${topicId}`,
     method: "get",

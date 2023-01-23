@@ -1,4 +1,5 @@
 .landing {
+  width: 100%;
   background-color: var(--dark-background);
 }
 
@@ -10,3 +11,53 @@
 .buttonLanding {
   width: clamp(1rem 10vw 2rem);
 }
+
+.landing-nav {
+  margin: auto;
+  height: 70vh;
+  width: 80%;
+}
+
+.main .slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  text-align: center;
+  padding: 0 2em;
+}
+
+.main .slider h1 {
+  /* font-family: "Josefin Sans", sans-serif; */
+  font-size: 5vw;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.5rem;
+  color: var(--light-color);
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+.main h1:hover {
+  transform: translate3d(0, -10px, 22px);
+  color: var(--golden-color);
+}
+
+.main .slider h2 {
+  font-size: 2vw;
+  letter-spacing: 0.3rem;
+  font-family: "ROBOTO", sans-serif;
+  font-weight: 300;
+  color: #faebd7;
+  z-index: 4;
+}
+/* 
+.main h3.span {
+  font-size: 2vw;
+  letter-spacing: 0.7em;
+  font-family: "ROBOTO", sans-serif;
+  font-weight: 300;
+  color: #faebd7;
+  z-index: 4;
+} */

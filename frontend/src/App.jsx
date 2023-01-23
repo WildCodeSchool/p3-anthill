@@ -24,9 +24,9 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />}>
               <Route index element={<Main />} />
               <Route path="topics" element={<TopicsPage />} />
-              <Route path="topics/:id" element={<TopicDetails />} />
+              <Route path="topics/:topicId" element={<TopicDetails />} />
               <Route
-                path="topics/:id/ideas/:ideaId"
+                path="topics/:topicId/ideas/:ideaId"
                 element={<TopicIdeasDetails />}
               />
               <Route path="users" element={<UserList />} />

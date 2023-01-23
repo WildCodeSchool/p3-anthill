@@ -14,7 +14,7 @@ async function getAllTopicCard() {
 async function getOne(id) {
   const [rows] = await db.query("SELECT * FROM TopicData WHERE id = ?", [id]);
 
-  if (rows.length === 0) {
+  if (!rows[0] || rows[0].id === null) {
     return null;
   }
 
@@ -59,13 +59,13 @@ async function updateOne(id, topic) {
 }
 
 async function deleteOne(id) {
-  const [result] = await db.query("DELETE FROM topic WHERE id = ?", [id]);
+  const [result1] = await db.query("DELETE FROM topic WHERE id = ?", [id]);
 
-  if (result.length === 0) {
+  if (result1.length === 0) {
     return null;
   }
 
-  return result.affectedRows;
+  return result1.affectedRows;
 }
 
 module.exports = {

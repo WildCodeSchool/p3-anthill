@@ -1,15 +1,39 @@
-import { BiUpvote } from "react-icons/bi";
+import { BiUpvote, BiDownvote } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import CommentPopover from "./CommentPopover";
+import DeleteIdeaButton from "./DeleteIdeaButton";
+import useFetchLazy from "../../../../../../services/useFetchLazy";
 
 function IdeaCard({
   id,
   title,
   creatorName,
   description,
-  nbUpVote,
+  nbUpVotes,
   nbComment,
+  canVote,
+  triggerGetIdeas,
 }) {
+  const { trigger: triggerDownvoteIdea } = useFetchLazy({
+    path: `/votes/ideas/${id}/downvote`,
+    method: "put",
+  });
+
+  const { trigger: triggerUpvoteIdea } = useFetchLazy({
+    path: `/votes/ideas/${id}/upvote`,
+    method: "post",
+  });
+
+  const upvoteFunction = async () => {
+    await triggerUpvoteIdea();
+    triggerGetIdeas();
+  };
+
+  const downvoteFunction = async () => {
+    await triggerDownvoteIdea();
+    triggerGetIdeas();
+  };
+
   return (
     <div className="ideaCard">
       <div className="ideaCard__main">
@@ -21,7 +45,12 @@ function IdeaCard({
       <p className="ideaCard__description">{description}</p>
       <div className="ideaCard__interactions">
         <div className="ideaCard__nbUpVote">
-          {nbUpVote} <BiUpvote />
+          {nbUpVotes}
+          {canVote ? (
+            <BiUpvote onClick={upvoteFunction} />
+          ) : (
+            <BiDownvote onClick={downvoteFunction} />
+          )}
         </div>
         <div className="ideaCard__nbComment">
           <div>{nbComment}</div>
@@ -30,6 +59,7 @@ function IdeaCard({
           </div>
         </div>
       </div>
+      <DeleteIdeaButton ideaId={id} triggerGetIdeas={triggerGetIdeas} />
     </div>
   );
 }
