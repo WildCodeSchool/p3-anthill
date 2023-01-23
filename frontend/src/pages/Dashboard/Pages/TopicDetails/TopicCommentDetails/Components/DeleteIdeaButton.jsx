@@ -16,7 +16,12 @@ function DeleteIdeaButton({ ideaId, triggerGetIdeas }) {
 
   return (
     <div>
-      <button type="button" className="button-delete" onClick={handleClick}>
+      <button
+        type="button"
+        className="button-delete"
+        style={{ marginRight: "15px", marginBottom: "0" }}
+        onClick={handleClick}
+      >
         Delete
       </button>
     </div>

@@ -12,7 +12,7 @@ function TopicCommentDetails({
   triggerGetIdeas,
 }) {
   return (
-    <div className="ideaCard__title">
+    <div className="ideaCard__page">
       {loadingTopic && <h2 className="loading">LOADING ...</h2>}
       {topic && (
         <TopicInfo
