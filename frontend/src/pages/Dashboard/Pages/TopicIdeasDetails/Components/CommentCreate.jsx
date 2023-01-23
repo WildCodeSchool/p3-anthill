@@ -12,8 +12,15 @@ function CommentCreate({ triggerGetComments }) {
     method: "post",
   });
 
+  const { token } = JSON.parse(localStorage.getItem("currentUser"));
+
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+
   const handleSubmit = async () => {
-    await triggerPostComment({ content: refContent.current?.value });
+    await triggerPostComment({ content: refContent.current?.value }, headers);
     triggerGetComments();
     refContent.current.value = "";
   };

@@ -9,10 +9,10 @@ async function getAllCommentsOfOneIdea(ideaId) {
   return rows;
 }
 
-async function insertOne({ content, userId, ideaId }) {
+async function insertOne({ content, creatorId, ideaId }) {
   const [result] = await db.query(
     "INSERT INTO comment (creation_date, content, creator_id, idea_id) VALUES (NOW(), ?, ?, ?)",
-    [content, userId, ideaId]
+    [content, creatorId, ideaId]
   );
 
   return result.insertId;

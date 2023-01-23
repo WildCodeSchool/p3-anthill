@@ -15,12 +15,22 @@ function IdeaCreationCard({ topicId, triggerGetIdeas }) {
     method: "post",
   });
 
+  const { token } = JSON.parse(localStorage.getItem("currentUser"));
+
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await triggerPostIdea({
-      title: titleRef.current?.value,
-      description: descriptionRef.current?.value,
-    });
+    await triggerPostIdea(
+      {
+        title: titleRef.current?.value,
+        description: descriptionRef.current?.value,
+      },
+      headers
+    );
     triggerGetIdeas();
     titleRef.current.value = "";
     descriptionRef.current.value = "";

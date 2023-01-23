@@ -25,12 +25,22 @@ async function get(req, res) {
 }
 
 async function create(req, res) {
+  if (!req.payload) {
+    res.sendStatus(401);
+    return;
+  }
   if (!req.body || !req.params.topicId) {
     res.sendStatus(400);
     return;
   }
 
-  const insertId = await ideaModel.insertOne(req.body, req.params.topicId);
+  const creatorId = req.payload.sub;
+
+  const insertId = await ideaModel.insertOne(
+    req.body,
+    req.params.topicId,
+    creatorId
+  );
   if (!insertId) {
     res.sendStatus(404);
   }

@@ -35,6 +35,7 @@ async function create(req, res) {
     res.sendStatus(401);
     return;
   }
+
   if (!req.body) {
     res.sendStatus(400);
     return;

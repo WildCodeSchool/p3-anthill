@@ -10,14 +10,21 @@ async function listCommentsOfOneIdea(req, res) {
 }
 
 async function create(req, res) {
+  if (!req.payload) {
+    res.sendStatus(401);
+    return;
+  }
+
   if (!req.body) {
     res.sendStatus(400);
     return;
   }
 
+  const creatorId = req.payload.sub;
+
   const insertId = await commentModel.insertOne({
     content: req.body.content,
-    userId: 1,
+    creatorId,
     ideaId: req.params.ideaId,
   });
 
