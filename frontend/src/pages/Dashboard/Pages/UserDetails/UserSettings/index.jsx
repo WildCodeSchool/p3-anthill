@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useFetchLazy from "../../../../../services/useFetchLazy";
@@ -8,6 +8,7 @@ import "./index.css";
 function UserSettings() {
   const navigate = useNavigate();
   const refPseudo = useRef();
+  const refEmail = useRef();
 
   const [userSettings, setUserSettings] = useState({});
 
@@ -16,11 +17,12 @@ function UserSettings() {
     method: "patch",
   });
 
-  const handlePseudo = () => {
+  const handleSettings = () => {
     setUserSettings((prevState) => {
       return {
         ...prevState,
         pseudo: refPseudo.current.value,
+        email: refEmail.current.value,
       };
     });
   };
@@ -46,7 +48,7 @@ function UserSettings() {
 
   return (
     <form className="settings_container" onSubmit={submit}>
-      <label htmlFor="pseudo">your username</label>
+      <label htmlFor="pseudo">update your username</label>
       <input
         id="pseudo"
         className="settings__pseudo"
@@ -54,9 +56,19 @@ function UserSettings() {
         name="Username"
         type="text"
         ref={refPseudo}
-        onChange={handlePseudo}
+        onChange={handleSettings}
       />
-
+      <label htmlFor="email">update your email</label>
+      <input
+        id="email"
+        className="settings__email"
+        placeholder="EMAIL"
+        name="email"
+        type="text"
+        ref={refEmail}
+        onChange={handleSettings}
+      />
+      ;
       <button className="button" type="submit">
         SUBMIT
       </button>
