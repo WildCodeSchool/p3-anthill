@@ -64,12 +64,12 @@ CREATE TABLE `topic` (
 
 INSERT INTO topic (deadline, description, is_private, creator_id, title, is_closed, is_comment_mode) 
 VALUES 
-  (curdate() + 3, "How should we rename Gwenaël  ?", 0, 1, "Gwenaël Nickname", 0, 1), 
-  (curdate() + 7, "Which day should we fire Johanna ?", 0, 2, "Johanna's departure", 0, 1), 
-  (curdate() + 9, "Which cake for the departure of Johanna", 0, 1, "Johanna's leaving party's cake", 0, 1), 
-  (curdate() + 9, "We all know that we don't drink just one coffee a day. How could the cafe service at Wild Code School be improved?", 0, 3, "Coffee problem", 0, 1), 
-  (curdate() + 5, "Which bar should we go to on Friday nights?", 0, 4, "New bar ?", 0, 1), 
-  (curdate() + 9, "Would you be intereseted in a lan party ? Please respond by a simple 'no' or propose a day and a game", 0, 1, "Lan party ?", 0, 1), 
+  (curdate(), "How should we rename Gwenaël  ?", 0, 1, "Gwenaël Nickname", 0, 1), 
+  (curdate(), "Which day should we fire Johanna ?", 0, 2, "Johanna's departure", 0, 1), 
+  (curdate(), "Which cake for the departure of Johanna", 0, 1, "Johanna's leaving party's cake", 0, 1), 
+  (curdate(), "We all know that we don't drink just one coffee a day. How could the cafe service at Wild Code School be improved?", 0, 3, "Coffee problem", 0, 1), 
+  (curdate(), "Which bar should we go to on Friday nights?", 0, 4, "New bar ?", 0, 1), 
+  (curdate(), "Would you be intereseted in a lan party ? Please respond by a simple 'no' or propose a day and a game", 0, 1, "Lan party ?", 0, 1), 
   (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 0, 0), 
   (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 0, 0), 
   (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 1, 0), 

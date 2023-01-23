@@ -25,7 +25,7 @@ function Login() {
               <div className="card-front">
                 <div className="center-wrap">
                   <div className="all-container">
-                    <h4 className="title-container">Log In</h4>
+                    <h4 className="title-container-log">Log In</h4>
                     <LoginForm />
 
                     <p className="forgot-text">
@@ -39,7 +39,7 @@ function Login() {
               <div className="card-back">
                 <div className="center-wrap">
                   <div className="all-container">
-                    <h4 className="title-container">Sign Up</h4>
+                    <h4 className="title-container-sign">Sign Up</h4>
                     <SignUpForm />
                   </div>
                 </div>

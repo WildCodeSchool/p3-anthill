@@ -1,7 +1,7 @@
 .topicCreation_container {
   display: flex;
   flex-direction: column;
-  margin: 0 30px 30px 30px;
+  margin: 0 50px 30px;
 }
 
 .topicCreation_label {
@@ -30,32 +30,26 @@
   border-style: none;
 }
 
-.description-button {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.creation-bottom {
+.topicCreation_description {
   display: flex;
   flex-direction: column;
-  width: 90%;
 }
 
-.creation-bottom > div {
+.topicCreation_bottom {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .button-creation {
   border-radius: 8px;
   border-style: none;
-  width: 60px;
+  width: 70px;
   height: 30px;
   font-weight: 600;
   margin-top: 20px;
   background-color: var(--golden-color);
-  color: var(--small-touch);
+  color: var(--dark-background);
   text-transform: uppercase;
 }
 

@@ -61,8 +61,8 @@ function TopicCreation({ closePopUp }) {
         type="datetime-local"
         ref={refDeadline}
       />
-      <div className="description-button">
-        <div className="creation-bottom">
+      <div>
+        <div className="topicCreation_description">
           <label className="topicCreation_label" htmlFor="description__title">
             Description
           </label>
@@ -75,13 +75,13 @@ function TopicCreation({ closePopUp }) {
             ref={refDescription}
             required
           />
-          <div>
+          <div className="topicCreation_bottom">
+            <GiAnt size={30} />
             <button className="button-creation" type="submit">
               Start
             </button>
           </div>
         </div>
-        <GiAnt size={30} />
       </div>
     </form>
   );

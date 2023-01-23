@@ -2,40 +2,56 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-radius: 10px;
-  margin: 1rem;
+  border-radius: var(--radius);
+  height: 110px;
+  margin: 1.5rem;
   padding: 0.5rem;
   background-color: var(--medium-background);
-  box-shadow: var(--box-shadow);
+  border: 4px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.userCard__list:hover {
+  box-shadow: 1px 1px 20px var(--light-color),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
 .userCard__grid {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-color: var(--medium-background);
   border-radius: var(--radius);
   height: 300px;
-  box-shadow: var(--box-shadow);
+  max-width: 400px;
+  margin: 1.5rem;
+  border: 4px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
-a {
-  text-decoration: none;
+.userCard__grid:hover {
+  box-shadow: 1px 1px 20px var(--light-color),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
 .userCard__header {
   display: flex;
   flex-direction: row;
-  padding-top: 1rem;
+  margin: 15px 30px 0;
 }
 
 .userCard__names {
   display: flex;
   flex-direction: column;
+  margin-left: 15px;
 }
 
 .userCard__name {
   color: var(--golden-color);
   font-size: var(--textL);
+  margin-bottom: 15px;
 }
 
 .userCard__pseudo {
@@ -46,16 +62,38 @@ a {
 .userCard__greetings {
   color: var(--light-color);
   display: flex;
-  padding-top: 3.5rem;
+  margin: 15px 30px 0;
 }
 
 .userCard__contactGrid {
   display: flex;
-  flex-direction: row;
-  color: var(--light-color);
+  justify-content: space-between;
+  color: var(--golden-color);
+  margin: 0 30px 15px;
+}
+
+.userCard__contactGrid > a {
+  color: var(--golden-color);
+  text-decoration: underline;
+}
+
+.userCard__contactGrid > a:hover {
+  color: var(--small-touch);
 }
 
 .userCard__contactList {
-  color: var(--light-color);
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 30px;
+  color: var(--golden-color);
+}
+
+.userCard__contactList > a {
+  color: var(--golden-color);
+}
+
+.userCard__contactList > a:hover {
+  color: var(--small-touch);
 }

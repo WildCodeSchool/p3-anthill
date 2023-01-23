@@ -2,7 +2,6 @@ import { RxLapTimer } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import formatDeadline from "../../../../services/formatDeadline";
 import DeleteTopicButton from "../DeleteTopicButton/DeleteTopicButton";
-
 import "./TopicCard.css";
 
 function TopicCard(props) {

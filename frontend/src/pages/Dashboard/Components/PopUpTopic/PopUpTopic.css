@@ -42,8 +42,6 @@
 .close__btn {
   background: none;
   color: var(--golden-color);
-  padding: 0;
-  margin-right: 0;
   font-weight: 600;
   font-size: 30px;
   background-color: var(--dark-background);
@@ -52,4 +50,8 @@
   width: 50px;
   position: absolute;
   right: 30px;
+}
+
+.close__btn:hover {
+  color: var(--small-touch);
 }

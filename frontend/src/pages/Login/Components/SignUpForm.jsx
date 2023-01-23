@@ -85,7 +85,7 @@ function SignUpForm() {
           ref={passwordRef}
         />
       </div>
-      <div className="buttons">
+      <div className="submit-button-signup">
         <button type="submit" className="btn">
           submit
         </button>

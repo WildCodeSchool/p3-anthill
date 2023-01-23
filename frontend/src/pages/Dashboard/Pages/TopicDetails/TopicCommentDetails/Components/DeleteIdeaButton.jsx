@@ -16,7 +16,7 @@ function DeleteIdeaButton({ ideaId, triggerGetIdeas }) {
 
   return (
     <div>
-      <button type="button" onClick={handleClick}>
+      <button type="button" className="button-delete" onClick={handleClick}>
         Delete
       </button>
     </div>

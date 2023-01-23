@@ -12,12 +12,24 @@
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   margin: 20px;
-  width: 80%;
-  padding: 15px;
+  width: 60%;
+  padding: 30px;
 }
 
 .userDetail__header {
   display: flex;
+}
+
+.userDetail__picture {
+  background-color: var(--dark-background);
+  height: 15vh;
+  width: 15vh;
+  border-radius: 100px;
+  margin: 15px 0;
+}
+
+.userDetail__infos {
+  margin-left: 40px;
 }
 
 .userDetail__names > h3 {
@@ -28,27 +40,39 @@
   color: var(--light-color);
 }
 
+.userDetail__pseudo {
+  margin-top: 5px;
+}
+
 .userDetail__description > p {
   color: var(--light-color);
-  width: 100%;
   text-align: justify;
 }
 
 .userDetail__contact {
   display: flex;
-  width: 100%;
   justify-content: space-between;
 }
 
-.userDetail__contact > p {
+.userDetail__contact > a {
   color: var(--light-color);
   text-decoration: underline;
 }
 
+.userDetail__contact > a:hover {
+  color: var(--small-touch);
+}
+
+.userDetail__contact > p {
+  color: var(--light-color);
+}
+
 .userDetail__badge {
-  height: 85px;
-  border-radius: 50%;
-  border: solid;
-  border-color: var(--golden-color);
-  background-color: var(--light-color);
+  height: 70px;
+  border-radius: 5px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border: solid 2px var(--golden-color);
+
+  margin: 15px 20px 0 0;
 }
