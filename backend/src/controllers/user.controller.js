@@ -38,6 +38,7 @@ async function getOneByEmail(req, res) {
   const token = jwt.sign(payload, process.env.JWT_SECRET, {
     expiresIn: "1h",
   });
+
   res.send({ token });
 }
 
@@ -48,10 +49,16 @@ async function create(req, res) {
   }
 
   const insertId = await userModel.insertOne(req.body);
+  if (!insertId) {
+    res.sendStatus(404);
+    return;
+  }
+
   const payload = { sub: insertId };
   const token = jwt.sign(payload, process.env.JWT_SECRET, {
     expiresIn: "1h",
   });
+
   res.status(201).send({ token });
 }
 
@@ -72,7 +79,7 @@ async function getCurrentUser(req, res) {
 }
 
 async function update(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.params.id) {
     res.sendStatus(400);
     return;
   }

@@ -6,6 +6,16 @@ async function list(req, res) {
 }
 
 async function listIdeasOfOneTopic(req, res) {
+  if (!req.payload.sub) {
+    res.sendStatus(401);
+    return;
+  }
+
+  if (!req.params.id) {
+    res.sendStatus(400);
+    return;
+  }
+
   const userId = req.payload.sub;
   const ideas = await ideaModel.getAllOfOneTopic(userId, req.params.id);
 
@@ -46,11 +56,12 @@ async function create(req, res) {
   if (!insertId) {
     res.sendStatus(404);
   }
+
   res.status(201).send({ insertId });
 }
 
 async function update(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.params.id) {
     res.sendStatus(400);
     return;
   }

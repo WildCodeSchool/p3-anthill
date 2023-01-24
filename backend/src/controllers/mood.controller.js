@@ -13,6 +13,9 @@ async function create(req, res) {
   }
 
   const insertId = await moodModel.insertOne(req.body);
+  if (!insertId) {
+    res.sendStatus(404);
+  }
 
   res.status(201).send({ insertId });
 }
@@ -33,7 +36,7 @@ async function get(req, res) {
 }
 
 async function update(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.params.id) {
     res.sendStatus(400);
     return;
   }

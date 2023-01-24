@@ -10,6 +10,11 @@ const hashingOptions = {
 };
 
 const hashPassword = (req, res, next) => {
+  if (!req.body.hashedPassword) {
+    res.sendStatus(400);
+    return;
+  }
+
   argon2
     .hash(req.body.hashedPassword, hashingOptions)
     .then((hashedPassword) => {
@@ -25,6 +30,11 @@ const hashPassword = (req, res, next) => {
 };
 
 async function getUserByEmailWithPassword(req, res, next) {
+  if (!req.body.email) {
+    res.sendStatus(400);
+    return;
+  }
+
   const user = await userModel.getUserByEmailWithPassword(req.body.email);
   if (user) {
     req.user = user;
@@ -35,6 +45,11 @@ async function getUserByEmailWithPassword(req, res, next) {
 }
 
 const login = (req, res) => {
+  if (!req.user.hashedPassword || !req.body.password) {
+    res.sendStatus(400);
+    return;
+  }
+
   argon2
     .verify(req.user.hashedPassword, req.body.password)
     .then((isVerified) => {

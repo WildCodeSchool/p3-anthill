@@ -13,6 +13,11 @@ async function list(req, res) {
 }
 
 async function getUserTopics(req, res) {
+  if (!req.params.id) {
+    res.sendStatus(400);
+    return;
+  }
+
   const topics = await topicModel.getAllTopicsOfOneUser(req.params.id);
   res.send(topics);
 }
@@ -44,12 +49,16 @@ async function create(req, res) {
 
   const creatorId = req.payload.sub;
   const insertId = await topicModel.insertOne(req.body, creatorId);
+  if (!insertId) {
+    res.sendStatus(404);
+    return;
+  }
 
   res.status(201).send({ insertId });
 }
 
 async function update(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.params.id) {
     res.sendStatus(400);
     return;
   }

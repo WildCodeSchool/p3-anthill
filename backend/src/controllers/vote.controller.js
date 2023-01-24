@@ -6,8 +6,14 @@ async function upvoteIdea(req, res) {
     return;
   }
 
+  if (!req.payload.sub) {
+    res.sendStatus(401);
+    return;
+  }
+
+  const userId = req.payload.sub;
+
   try {
-    const userId = req.payload.sub;
     const affectedRows = await upvoteModel.insertOneForIdea({
       ideaId: req.params.ideaId,
       userId,
@@ -29,8 +35,14 @@ async function upvoteComment(req, res) {
     return;
   }
 
+  if (!req.payload.sub) {
+    res.sendStatus(401);
+    return;
+  }
+
+  const userId = req.payload.sub;
+
   try {
-    const userId = req.payload.sub;
     const affectedRows = await upvoteModel.insertOneForComment({
       commentId: req.params.commentId,
       userId,
@@ -52,8 +64,14 @@ async function downvoteIdea(req, res) {
     return;
   }
 
+  if (!req.payload.sub) {
+    res.sendStatus(401);
+    return;
+  }
+
+  const userId = req.payload.sub;
+
   try {
-    const userId = req.payload.sub;
     const affectedRows = await upvoteModel.updateOneForIdea(
       req.params.ideaId,
       userId
@@ -75,8 +93,14 @@ async function downvoteComment(req, res) {
     return;
   }
 
+  if (!req.payload.sub) {
+    res.sendStatus(401);
+    return;
+  }
+
+  const userId = req.payload.sub;
+
   try {
-    const userId = req.payload.sub;
     const affectedRows = await upvoteModel.updateOneForComment(
       req.params.commentId,
       userId

@@ -2,17 +2,22 @@ const commentModel = require("../models/comment.model");
 // const commentValidator = require("../validators/comment.validator");
 
 async function listCommentsOfOneIdea(req, res) {
+  if (!req.payload.sub) {
+    res.sendStatus(401);
+    return;
+  }
+
   const userId = req.payload.sub;
   const comments = await commentModel.getAllCommentsOfOneIdea(
     userId,
     req.params.ideaId
   );
 
-  res.json(comments);
+  res.send(comments);
 }
 
 async function create(req, res) {
-  if (!req.payload) {
+  if (!req.payload.sub) {
     res.sendStatus(401);
     return;
   }
@@ -23,14 +28,13 @@ async function create(req, res) {
   }
 
   const creatorId = req.payload.sub;
-
   const insertId = await commentModel.insertOne({
     content: req.body.content,
     creatorId,
     ideaId: req.params.ideaId,
   });
 
-  res.status(201).json({ insertId });
+  res.status(201).send({ insertId });
 }
 
 async function get(req, res) {
@@ -46,11 +50,11 @@ async function get(req, res) {
     return;
   }
 
-  res.json(comment);
+  res.send(comment);
 }
 
 async function update(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.params.id) {
     res.sendStatus(400);
     return;
   }
