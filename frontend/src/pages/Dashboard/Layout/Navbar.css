@@ -105,3 +105,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.setting-btn:hover {
+  background-color: var(--golden-color);
+  color: var(--small-touch);
+}

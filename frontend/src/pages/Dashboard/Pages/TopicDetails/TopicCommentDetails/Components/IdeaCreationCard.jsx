@@ -27,23 +27,36 @@ function IdeaCreationCard({ topicId, triggerGetIdeas }) {
   };
 
   return (
-    <div className="ideaCreationCard">
-      <form className="ideaCreationCard__form" onSubmit={handleSubmit}>
-        <div style={{ width: "90%" }}>
-          <label htmlFor="ideaInput">Idea :</label>
-          <input type="text" id="ideaInput" ref={titleRef} />
-          <label htmlFor="descriptionInput">Description :</label>
-          <input type="text" id="descriptionInput" ref={descriptionRef} />
-          {error && <p>{error.message}</p>}
-        </div>
+    <div>
+      {" "}
+      <div className="ideaCreationCard">
+        <form className="ideaCreationCard__form" onSubmit={handleSubmit}>
+          <div style={{ width: "90%" }}>
+            <label htmlFor="ideaInput">Idea :</label>
+            <input type="text" id="ideaInput" ref={titleRef} />
+            <label htmlFor="descriptionInput">Description :</label>
+            <input type="text" id="descriptionInput" ref={descriptionRef} />
+            {error && <p>{error.message}</p>}
+          </div>
 
-        <div className="ideaCreationCardè">
-          <button type="submit" id="ideaCreationCard__button">
-            {loading ? "Loading..." : "Add"}
-          </button>
-          {isSuccess && <p>New idea created !</p>}
-        </div>
-      </form>
+          <div className="ideaCreation_Card">
+            <button type="submit" id="ideaCreationCard__button">
+              {loading ? "Loading..." : "Add"}
+            </button>
+          </div>
+        </form>
+      </div>
+      {isSuccess && (
+        <p
+          style={{
+            textAlign: "center",
+            color: "var(--light-color)",
+            fontWeight: "600",
+          }}
+        >
+          New idea created !
+        </p>
+      )}
     </div>
   );
 }

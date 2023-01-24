@@ -25,7 +25,7 @@
 }
 
 .topicCard__title__list:hover {
-  color: #3a6df0;
+  color: var(--small-touch);
 }
 
 .topicCard__description__list {
