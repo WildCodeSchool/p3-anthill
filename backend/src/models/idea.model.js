@@ -5,11 +5,10 @@ async function getAll() {
 
   return rows;
 }
-
-async function getAllOfOneTopic(commentModeTopicId) {
+async function getAllOfOneTopic(userId, commentModeTopicId) {
   const [rows] = await db.query(
-    "SELECT * FROM IdeaData WHERE comment_mode_id = ? ",
-    [commentModeTopicId]
+    "SELECT id.*, IF(ui.user_id IS NULL, true, false) AS canVote FROM IdeaData AS id LEFT JOIN upvote_idea_user AS ui ON ui.idea_id = id.id AND ui.user_id = ? WHERE id.comment_mode_id = ?",
+    [userId, commentModeTopicId]
   );
   return rows;
 }

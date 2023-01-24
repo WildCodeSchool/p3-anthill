@@ -6,7 +6,7 @@ async function list(req, res) {
 }
 
 async function listIdeasOfOneTopic(req, res) {
-  const ideas = await ideaModel.getAllOfOneTopic(req.params.id);
+  const ideas = await ideaModel.getAllOfOneTopic(1, req.params.id); // getcurrentUser
 
   res.json(ideas);
 }

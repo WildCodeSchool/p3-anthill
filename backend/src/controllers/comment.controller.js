@@ -3,6 +3,7 @@ const commentModel = require("../models/comment.model");
 
 async function listCommentsOfOneIdea(req, res) {
   const comments = await commentModel.getAllCommentsOfOneIdea(
+    1,
     req.params.ideaId
   );
 
