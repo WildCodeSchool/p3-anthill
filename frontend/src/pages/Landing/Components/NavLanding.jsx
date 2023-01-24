@@ -8,7 +8,7 @@ const {
   gsap: { set, to },
 } = window;
 
-function NavLanding() {
+function NavLanding({ sticky }) {
   const textRef = useRef(null);
   const stageRef = useRef(null);
 
@@ -54,22 +54,25 @@ function NavLanding() {
           </h3>
         </div>
       </div>
-      <div className="nav-container">
+      <nav className={sticky ? "nav-container top-first" : "nav-container"}>
         <Logo />
-        <a className="nav-tab" href="#tab-intro">
+        <a className="nav-tab" href="#section1">
           INTRO
         </a>
-        <a className="nav-tab" href="#tab-dash">
+        <a className="nav-tab" href="#section2">
           DASHBOARD
         </a>
-        <a className="nav-tab" href="#tab-typescript">
-          TYPESCRIPT
+        <a className="nav-tab" href="#section3">
+          FEATURE
         </a>
-        <a className="nav-tab" href="#tab-aboutUs">
+        <a className="nav-tab" href="#section4">
+          CUSTOMER
+        </a>
+        <a className="nav-tab" href="#section5">
           About Us
         </a>
         <span className="nav-tab-slider" />
-      </div>
+      </nav>
     </div>
   );
 }

@@ -60,12 +60,28 @@ async function getOneByEmail(req, res) {
 }
 
 async function update(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.params.id) {
     res.sendStatus(400);
     return;
   }
 
   const affectedRows = await userModel.updateOne(req.params.id, req.body);
+
+  if (affectedRows === 0) {
+    res.sendStatus(404);
+    return;
+  }
+
+  res.sendStatus(204);
+}
+
+async function updateAudrey(req, res) {
+  if (!req.body || !req.params.id) {
+    res.sendStatus(400);
+    return;
+  }
+
+  const affectedRows = await userModel.updateOneAudrey(req.params.id, req.body);
 
   if (affectedRows === 0) {
     res.sendStatus(404);
@@ -97,5 +113,6 @@ module.exports = {
   getOneByEmail,
   get,
   update,
+  updateAudrey,
   remove,
 };

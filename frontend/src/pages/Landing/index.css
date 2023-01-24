@@ -18,15 +18,24 @@
   width: 80%;
 }
 
+.main {
+  position: relative;
+  background-color: var(--dark-background);
+}
+
 .main .slider {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  position: relative;
+  /* position: relative; */
   text-align: center;
   padding: 0 2em;
+}
+
+.slider-us {
+  height: 100vh;
 }
 
 .main .slider h1 {
