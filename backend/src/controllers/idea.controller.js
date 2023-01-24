@@ -81,6 +81,11 @@ async function remove(req, res) {
     return;
   }
 
+  if (req.payload.sub !== req.params.id) {
+    res.sendStatus(401);
+    return;
+  }
+
   const affectedRows = await ideaModel.deleteOne(req.params.id);
   if (affectedRows === 0) {
     res.sendStatus(404);

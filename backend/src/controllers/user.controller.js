@@ -95,13 +95,13 @@ async function getCurrentUser(req, res) {
 }
 
 async function update(req, res) {
-  if (!req.payload) {
-    res.sendStatus(401);
+  if (!req.body || !req.params.id || !req.user) {
+    res.sendStatus(400);
     return;
   }
 
-  if (!req.body || !req.params.id || !req.user) {
-    res.sendStatus(400);
+  if (req.payload.sub !== req.params.id) {
+    res.sendStatus(401);
     return;
   }
 

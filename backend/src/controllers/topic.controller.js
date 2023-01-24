@@ -78,6 +78,11 @@ async function remove(req, res) {
     return;
   }
 
+  if (!req.payload !== req.params.id) {
+    res.sendStatus(401);
+    return;
+  }
+
   const affectedRows = await topicModel.deleteOne(req.params.id);
   if (affectedRows === 0) {
     res.sendStatus(404);

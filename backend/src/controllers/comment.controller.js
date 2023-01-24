@@ -74,8 +74,13 @@ async function remove(req, res) {
     res.sendStatus(400);
     return;
   }
-  const affectedRows = await commentModel.deleteOne(req.params.id);
 
+  if (!req.payload.sub !== req.params.id) {
+    res.sendStatus(401);
+    return;
+  }
+
+  const affectedRows = await commentModel.deleteOne(req.params.id);
   if (affectedRows === 0) {
     res.sendStatus(404);
     return;
