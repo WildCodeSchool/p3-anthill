@@ -11,7 +11,7 @@ function TopicsList() {
     loading,
     trigger: triggerGetTopics,
   } = useFetchLazy({
-    path: "/topics/card",
+    path: "/topics?view=card",
     method: "get",
   });
 

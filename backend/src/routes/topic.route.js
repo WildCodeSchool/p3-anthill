@@ -7,16 +7,15 @@ const { verifyToken } = require("../controllers/auth.controller");
 
 const topicRouter = new Router();
 
+topicRouter.use(verifyToken); // Authorization middleware
+
 topicRouter.get("/", topicController.list);
-topicRouter.get("/card", topicController.listCard);
 topicRouter.get("/:id", topicController.get);
 topicRouter.get("/:id/ideas", ideaController.listIdeasOfOneTopic);
 topicRouter.get(
   "/:topicId/ideas/:ideaId/comments",
   commentController.listCommentsOfOneIdea
 );
-
-topicRouter.use(verifyToken); // Authorization middleware
 
 topicRouter.post(
   "/",

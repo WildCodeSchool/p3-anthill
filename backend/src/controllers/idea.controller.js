@@ -2,13 +2,14 @@ const ideaModel = require("../models/idea.model");
 
 async function list(req, res) {
   const ideas = await ideaModel.getAll();
-  res.json(ideas);
+  res.send(ideas);
 }
 
 async function listIdeasOfOneTopic(req, res) {
-  const ideas = await ideaModel.getAllOfOneTopic(1, req.params.id); // getcurrentUser
+  const userId = req.payload.sub;
+  const ideas = await ideaModel.getAllOfOneTopic(userId, req.params.id);
 
-  res.json(ideas);
+  res.send(ideas);
 }
 
 async function get(req, res) {
@@ -16,12 +17,13 @@ async function get(req, res) {
     res.sendStatus(400);
     return;
   }
+
   const idea = await ideaModel.getOne(req.params.id);
   if (!idea) {
     res.sendStatus(404);
     return;
   }
-  res.json(idea);
+  res.send(idea);
 }
 
 async function create(req, res) {
@@ -29,13 +31,13 @@ async function create(req, res) {
     res.sendStatus(401);
     return;
   }
+
   if (!req.body || !req.params.topicId) {
     res.sendStatus(400);
     return;
   }
 
   const creatorId = req.payload.sub;
-
   const insertId = await ideaModel.insertOne(
     req.body,
     req.params.topicId,
@@ -44,7 +46,7 @@ async function create(req, res) {
   if (!insertId) {
     res.sendStatus(404);
   }
-  res.status(201).json({ insertId });
+  res.status(201).send({ insertId });
 }
 
 async function update(req, res) {
@@ -54,7 +56,6 @@ async function update(req, res) {
   }
 
   const affectedRows = await ideaModel.updateOne(req.params.id, req.body);
-
   if (affectedRows === 0) {
     res.sendStatus(404);
     return;
@@ -70,7 +71,6 @@ async function remove(req, res) {
   }
 
   const affectedRows = await ideaModel.deleteOne(req.params.id);
-
   if (affectedRows === 0) {
     res.sendStatus(404);
     return;

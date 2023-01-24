@@ -2,18 +2,19 @@ const topicModel = require("../models/topic.model");
 // const topicValidator = require("../validators/topic.validator");
 
 async function list(req, res) {
-  const topics = await topicModel.getAll();
-  res.json(topics);
-}
+  if (req.query.view === "card") {
+    const topics = await topicModel.getAllTopicCard();
+    res.send(topics);
+    return;
+  }
 
-async function listCard(req, res) {
-  const topics = await topicModel.getAllTopicCard();
-  res.json(topics);
+  const topics = await topicModel.getAll();
+  res.send(topics);
 }
 
 async function getUserTopics(req, res) {
   const topics = await topicModel.getAllTopicsOfOneUser(req.params.id);
-  res.json(topics);
+  res.send(topics);
 }
 
 async function get(req, res) {
@@ -27,7 +28,7 @@ async function get(req, res) {
     res.sendStatus(404);
     return;
   }
-  res.json(topic);
+  res.send(topic);
 }
 
 async function create(req, res) {
@@ -42,10 +43,9 @@ async function create(req, res) {
   }
 
   const creatorId = req.payload.sub;
-
   const insertId = await topicModel.insertOne(req.body, creatorId);
 
-  res.status(201).json({ insertId });
+  res.status(201).send({ insertId });
 }
 
 async function update(req, res) {
@@ -55,7 +55,6 @@ async function update(req, res) {
   }
 
   const affectedRows = await topicModel.updateOne(req.params.id, req.body);
-
   if (affectedRows === 0) {
     res.sendStatus(404);
     return;
@@ -71,7 +70,6 @@ async function remove(req, res) {
   }
 
   const affectedRows = await topicModel.deleteOne(req.params.id);
-
   if (affectedRows === 0) {
     res.sendStatus(404);
     return;
@@ -82,7 +80,6 @@ async function remove(req, res) {
 
 module.exports = {
   list,
-  listCard,
   get,
   create,
   update,
