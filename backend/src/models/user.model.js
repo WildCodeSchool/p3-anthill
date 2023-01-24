@@ -50,6 +50,16 @@ async function updateOne(id, user) {
   return result.affectedRows;
 }
 
+async function updateOneAudrey(id, user) {
+  const { pseudo, email } = user;
+  const [result] = await db.query(
+    "UPDATE user SET pseudo = ?, email = ? WHERE id = ?",
+    [pseudo, email, id]
+  );
+
+  return result.affectedRows;
+}
+
 async function deleteOne(id) {
   const [result] = await db.query("DELETE FROM user WHERE id = ?", [id]);
 
@@ -62,5 +72,6 @@ module.exports = {
   getConnexion,
   insertOne,
   updateOne,
+  updateOneAudrey,
   deleteOne,
 };

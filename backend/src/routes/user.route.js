@@ -25,9 +25,8 @@ userRouter.post("/signupgoogle", userController.create);
 userRouter.post("/signup", hashPassword, userController.create);
 userRouter.post("/login", getUserByEmailWithPassword, login);
 
-userRouter.patch("/:id", userController.update);
+userRouter.patch("/:id", userController.updateAudrey);
 userRouter.patch("/:id/picture", upload.single("picture"), (req, res) => {
-  res.send("File uploaded");
   const { originalname } = req.file;
   const { filename } = req.file;
   fs.rename(

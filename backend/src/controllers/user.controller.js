@@ -75,6 +75,22 @@ async function update(req, res) {
   res.sendStatus(204);
 }
 
+async function updateAudrey(req, res) {
+  if (!req.body || !req.params.id) {
+    res.sendStatus(400);
+    return;
+  }
+
+  const affectedRows = await userModel.updateOneAudrey(req.params.id, req.body);
+
+  if (affectedRows === 0) {
+    res.sendStatus(404);
+    return;
+  }
+
+  res.sendStatus(204);
+}
+
 async function remove(req, res) {
   if (!req.params.id) {
     res.sendStatus(400);
@@ -97,5 +113,6 @@ module.exports = {
   getOneByEmail,
   get,
   update,
+  updateAudrey,
   remove,
 };
