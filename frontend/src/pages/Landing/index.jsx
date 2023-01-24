@@ -3,7 +3,6 @@ import scrollController from "./Components/scrollController";
 
 import NavLanding from "./Components/NavLanding";
 import Footer from "./Components/footer/Footer";
-
 import "./index.css";
 
 function Landing() {
