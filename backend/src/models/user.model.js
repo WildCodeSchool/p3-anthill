@@ -40,11 +40,21 @@ async function insertOne(user) {
 }
 
 async function updateOne(id, user) {
-  const { picture, email, fullname, hashedPassword, googleUserId, moodId } =
+  const { pseudo, email, fullname, hashedPassword, googleUserId, moodId } =
     user;
   const [result] = await db.query(
-    "UPDATE user SET picture = ?, email = ?, fullname = ?, hashedPassword = ?, googleUserId = ?, mood_id= ? WHERE id = ?",
-    [picture, email, fullname, hashedPassword, googleUserId, moodId, id]
+    "UPDATE user SET pseudo = ?, email = ?, fullname = ?, hashedPassword = ?, googleUserId = ?, mood_id= ? WHERE id = ?",
+    [pseudo, email, fullname, hashedPassword, googleUserId, moodId, id]
+  );
+
+  return result.affectedRows;
+}
+
+async function updateOneAudrey(id, user) {
+  const { pseudo, email } = user;
+  const [result] = await db.query(
+    "UPDATE user SET pseudo = ?, email = ? WHERE id = ?",
+    [pseudo, email, id]
   );
 
   return result.affectedRows;
@@ -62,5 +72,6 @@ module.exports = {
   getConnexion,
   insertOne,
   updateOne,
+  updateOneAudrey,
   deleteOne,
 };

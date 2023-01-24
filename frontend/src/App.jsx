@@ -11,6 +11,7 @@ import UserDetailsTopics from "./pages/Dashboard/Pages/UserDetailsTopics";
 import { ToggleModeProvider } from "./contexts/ToggleModeContext";
 import TopicIdeasDetails from "./pages/Dashboard/Pages/TopicIdeasDetails";
 import TopicDetails from "./pages/Dashboard/Pages/TopicDetails/TopicDetails";
+import UserSettings from "./pages/Dashboard/Pages/UserDetails/UserSettings";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
                 path="users/:userId/topics"
                 element={<UserDetailsTopics />}
               />
+              <Route path="users/:userId/settings" element={<UserSettings />} />
             </Route>
           </Routes>
         </Router>

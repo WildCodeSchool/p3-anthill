@@ -18,7 +18,6 @@ function UserDetails() {
     <div className="userDetail">
       <div className="userDetail__card">
         <div className="userDetail__header">
-          <img className="userDetail__picture" alt={user.picture} />
           <div className="userDetail__infos">
             <div className="userDetail__names">
               <h3 className="userDetail__name">{user.fullname}</h3>

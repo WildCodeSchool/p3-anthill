@@ -49,3 +49,11 @@
   border-color: var(--golden-color);
   background-color: var(--light-color);
 }
+
+.userDetail__picture {
+  height: 85px;
+  border-radius: 50%;
+  border: solid;
+  border-color: var(--golden-color);
+  background-color: var(--light-color);
+}
