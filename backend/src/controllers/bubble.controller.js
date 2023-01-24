@@ -15,7 +15,7 @@ async function listBubblesOfOneTopic(req, res) {
   res.json(bubbles);
 }
 
-async function get(req, res) {
+async function getOneBubble(req, res) {
   if (!req.params.topicId) {
     res.sendStatus(400);
     return;
@@ -31,7 +31,7 @@ async function get(req, res) {
 }
 
 async function create(req, res) {
-  if (!req.body || !req.params.topicId) {
+  if (!req.body || !req.body.content || !req.params.topicId) {
     res.sendStatus(400);
     return;
   }
@@ -48,7 +48,7 @@ async function create(req, res) {
 }
 
 async function update(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.body.content || !req.params.bubbleId) {
     res.sendStatus(400);
     return;
   }
@@ -86,4 +86,11 @@ async function remove(req, res) {
   res.sendStatus(204);
 }
 
-module.exports = { list, listBubblesOfOneTopic, get, create, update, remove };
+module.exports = {
+  list,
+  listBubblesOfOneTopic,
+  getOneBubble,
+  create,
+  update,
+  remove,
+};
