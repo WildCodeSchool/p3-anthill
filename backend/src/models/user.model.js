@@ -7,7 +7,6 @@ async function getAll() {
       "INNER JOIN user_badge AS ub ON ub.user_id = u.id " +
       "GROUP BY u.id "
   );
-
   return rows;
 }
 
@@ -16,15 +15,19 @@ async function getOne(id) {
     "SELECT picture, email, fullname, pseudo, googleUserId FROM user WHERE id = ?",
     [id]
   );
+  if (!rows[0]) {
+    return null;
+  }
+
   return rows[0];
 }
 
 async function getConnexion(email) {
   const [rows] = await db.query("SELECT id FROM user WHERE email = ?", [email]);
-
   if (!rows[0]) {
     return null;
   }
+
   return rows[0];
 }
 
@@ -37,6 +40,20 @@ async function insertOne(user) {
   );
 
   return result.insertId;
+}
+
+async function getCurrentUser(currentUserId) {
+  const [rows] = await db.query(
+    "SELECT u.id, u.picture, u.email, u.pseudo, u.fullname, u.mood_id " +
+      "FROM user AS u " +
+      "WHERE u.id = ? ",
+    [currentUserId]
+  );
+  if (!rows[0]) {
+    return null;
+  }
+
+  return rows[0];
 }
 
 async function updateOne(id, user) {
@@ -61,6 +78,7 @@ module.exports = {
   getOne,
   getConnexion,
   insertOne,
+  getCurrentUser,
   updateOne,
   deleteOne,
 };

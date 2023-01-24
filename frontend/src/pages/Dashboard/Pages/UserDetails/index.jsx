@@ -5,6 +5,7 @@ import "./index.css";
 
 function UserDetails() {
   const { id } = useParams();
+
   const { data: userBadges, loading: loadingBadges } = useFetch({
     path: `/users/${id}/badges`,
     method: "get",

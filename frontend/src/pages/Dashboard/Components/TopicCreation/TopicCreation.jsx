@@ -17,24 +17,14 @@ function TopicCreation({ closePopUp }) {
     method: "post",
   });
 
-  const { token } = JSON.parse(localStorage.getItem("currentUser"));
-
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-  };
-
   const submit = (e) => {
     e.preventDefault();
-    triggerPostTopic(
-      {
-        title: refTitle.current.value,
-        description: refDescription.current.value,
-        deadline: refDeadline.current.value,
-        isCommentMode: true, // pour l'instant c'est une fixture car mindmapmode n'est géré
-      },
-      headers
-    );
+    triggerPostTopic({
+      title: refTitle.current.value,
+      description: refDescription.current.value,
+      deadline: refDeadline.current.value,
+      isCommentMode: true, // pour l'instant c'est une fixture car mindmapmode n'est géré
+    });
     refTitle.current.value = "";
     refDescription.current.value = "";
     refDeadline.current.value = "";

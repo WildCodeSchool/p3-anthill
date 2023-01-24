@@ -11,20 +11,19 @@ const {
 
 const userRouter = new Router();
 
-userRouter.get("/", userController.list);
-userRouter.get("/:id", userController.get);
+userRouter.get("/", verifyToken, userController.list);
+userRouter.get("/currentUser", verifyToken, userController.getCurrentUser);
+userRouter.get("/:id", verifyToken, userController.get);
 userRouter.get("/email/:email", userController.getOneByEmail);
-userRouter.get("/:id/badges", badgeController.getUserBadges);
-userRouter.get("/:id/topics", topicController.getUserTopics);
+userRouter.get("/:id/badges", verifyToken, badgeController.getUserBadges);
+userRouter.get("/:id/topics", verifyToken, topicController.getUserTopics);
 
 userRouter.post("/signupgoogle", userController.create);
 userRouter.post("/signup", hashPassword, userController.create);
 userRouter.post("/login", getUserByEmailWithPassword, login);
 
-userRouter.use(verifyToken); // Authorization middleware
+userRouter.put("/:id", verifyToken, userController.update);
 
-userRouter.put("/:id", userController.update);
-
-userRouter.delete("/:id", userController.remove);
+userRouter.delete("/:id", verifyToken, userController.remove);
 
 module.exports = { userRouter };
