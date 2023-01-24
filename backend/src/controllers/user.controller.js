@@ -22,6 +22,22 @@ async function get(req, res) {
   res.send(user);
 }
 
+async function getMiddleware(req, res, next) {
+  if (!req.params.id) {
+    res.sendStatus(400);
+    return;
+  }
+
+  const user = await userModel.getOne(req.params.id);
+  if (!user) {
+    res.sendStatus(404);
+    return;
+  }
+
+  req.user = user;
+  next();
+}
+
 async function getOneByEmail(req, res) {
   if (!req.params.email) {
     res.sendStatus(400);
@@ -79,28 +95,21 @@ async function getCurrentUser(req, res) {
 }
 
 async function update(req, res) {
-  if (!req.body || !req.params.id) {
+  if (!req.payload) {
+    res.sendStatus(401);
+    return;
+  }
+
+  if (!req.body || !req.params.id || !req.user) {
     res.sendStatus(400);
     return;
   }
 
-  const affectedRows = await userModel.updateOne(req.params.id, req.body);
-  if (affectedRows === 0) {
-    res.sendStatus(404);
-    return;
-  }
-
-  res.sendStatus(204);
-}
-
-async function updateAudrey(req, res) {
-  if (!req.body || !req.params.id) {
-    res.sendStatus(400);
-    return;
-  }
-
-  const affectedRows = await userModel.updateOneAudrey(req.params.id, req.body);
-
+  const affectedRows = await userModel.updateOne(
+    req.params.id,
+    req.body,
+    req.user
+  );
   if (affectedRows === 0) {
     res.sendStatus(404);
     return;
@@ -127,10 +136,10 @@ async function remove(req, res) {
 module.exports = {
   list,
   get,
+  getMiddleware,
   getOneByEmail,
   create,
   getCurrentUser,
   update,
-  updateAudrey,
   remove,
 };

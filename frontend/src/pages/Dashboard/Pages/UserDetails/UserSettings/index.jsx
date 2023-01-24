@@ -1,23 +1,24 @@
 import React, { useRef } from "react";
+import useCurrentUser from "../../../../../services/useCurrentUser";
 
 import useFetchLazy from "../../../../../services/useFetchLazy";
 
 import "./index.css";
 
 function UserSettings() {
+  const { currentUser } = useCurrentUser();
   const refPseudo = useRef();
   const refEmail = useRef();
-
   const { trigger: triggerPatchSettings } = useFetchLazy({
-    path: "/users/1",
+    path: `/users/${currentUser?.id}`,
     method: "patch",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     triggerPatchSettings({
-      pseudo: refPseudo.current.value,
-      email: refEmail.current.value,
+      pseudo: refPseudo.current.value !== "" ? refPseudo.current.value : null,
+      email: refEmail.current.value !== "" ? refEmail.current.value : null,
     });
   };
 

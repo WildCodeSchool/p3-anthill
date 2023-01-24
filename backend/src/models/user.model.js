@@ -12,7 +12,7 @@ async function getAll() {
 
 async function getOne(id) {
   const [rows] = await db.query(
-    "SELECT picture, email, fullname, pseudo, googleUserId FROM user WHERE id = ?",
+    "SELECT picture, email, fullname, pseudo, description FROM user WHERE id = ?",
     [id]
   );
   if (!rows[0]) {
@@ -56,22 +56,24 @@ async function getCurrentUser(currentUserId) {
   return rows[0];
 }
 
-async function updateOne(id, user) {
-  const { pseudo, email, fullname, hashedPassword, googleUserId, moodId } =
-    user;
-  const [result] = await db.query(
-    "UPDATE user SET pseudo = ?, email = ?, fullname = ?, hashedPassword = ?, googleUserId = ?, mood_id= ? WHERE id = ?",
-    [pseudo, email, fullname, hashedPassword, googleUserId, moodId, id]
-  );
+async function updateOne(id, body, user) {
+  let { pseudo, email, fullname, description } = body;
+  if (!pseudo) {
+    pseudo = user.pseudo;
+  }
+  if (!email) {
+    email = user.email;
+  }
+  if (!fullname) {
+    fullname = user.fullname;
+  }
+  if (!description) {
+    description = user.description;
+  }
 
-  return result.affectedRows;
-}
-
-async function updateOneAudrey(id, user) {
-  const { pseudo, email } = user;
   const [result] = await db.query(
-    "UPDATE user SET pseudo = ?, email = ? WHERE id = ?",
-    [pseudo, email, id]
+    "UPDATE user SET pseudo = ?, email = ?, fullname = ?, description = ? WHERE id = ?",
+    [pseudo, email, fullname, description, id]
   );
 
   return result.affectedRows;
@@ -90,6 +92,5 @@ module.exports = {
   insertOne,
   getCurrentUser,
   updateOne,
-  updateOneAudrey,
   deleteOne,
 };
