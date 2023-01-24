@@ -42,7 +42,7 @@ function IdeaCard({
         </Link>
         <div className="ideaCard__creatorName">{creatorName}</div>
       </div>
-      <textarea className="ideaCard__description" row={3} disabled>
+      <textarea className="ideaCard__description" row={3} readOnly>
         {description}
       </textarea>
       <div className="ideaCard__interactions">

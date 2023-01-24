@@ -6,7 +6,9 @@ import "./index.css";
 function Login() {
   return (
     <div className="login">
-      <Logo />
+      <div className="logoLogin">
+        <Logo />
+      </div>
       <div className="container">
         <div className="container2">
           <div className="container-checkbox">

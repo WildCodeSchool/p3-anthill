@@ -68,7 +68,8 @@
 }
 
 #descriptionInput {
-  width: 30%;
+  width: 40%;
+  height: 80px;
 }
 
 #ideaCreationCard__button {
@@ -78,6 +79,11 @@
   padding: 5px;
   border-radius: 5px;
   border: none;
+}
+
+#ideaCreationCard__button:hover {
+  background-color: var(--small-touch);
+  color: var(--golden-color);
 }
 
 .ideaCard {
@@ -119,7 +125,8 @@
   color: var(--light-color);
   max-width: 50%;
   margin: 10px 0;
-  height: 100%;
+  resize: none;
+  border: none;
 }
 
 .ideaCard__description {

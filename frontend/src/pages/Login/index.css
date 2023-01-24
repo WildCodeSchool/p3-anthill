@@ -71,7 +71,7 @@
   height: 36px;
   border-radius: 20px;
   color: var(--golden-color);
-  background-color: #102770;
+  background-color: var(--small-touch);
   content: "\eb4f";
   z-index: 20;
   top: -10px;
@@ -253,19 +253,19 @@
   letter-spacing: 1px;
   border: none;
   background-color: var(--golden-color);
-  color: #102770;
+  color: var(--small-touch);
   box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
 }
 
 .btn > * {
-  color: #102770;
+  color: var(--small-touch);
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
 }
 
 .btn:hover {
-  background-color: #102770;
+  background-color: var(--small-touch);
   color: var(--golden-color);
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
   transition: all 200ms linear;
@@ -288,7 +288,7 @@
   height: 45px;
   cursor: pointer;
   transition: all 200ms linear;
-  color: #102770;
+  color: var(--small-touch);
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
@@ -302,13 +302,13 @@
 
 .googleBtn:active,
 .googleBtn:focus {
-  background-color: #102770;
+  background-color: var(--small-touch);
   color: var(--golden-color);
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
 
 .googleBtn:hover {
-  background-color: #102770;
+  background-color: var(--small-touch);
   color: var(--golden-color);
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }

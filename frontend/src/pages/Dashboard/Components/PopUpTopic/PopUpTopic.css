@@ -11,7 +11,7 @@
   background-color: var(--medium-background);
   box-shadow: var(--golden-color) 5px 5px 15px;
   border: 10px solid var(--medium-background);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35), var(--light-color) 5px 5px 15px,
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35), var(--light-color) 1px 1px 15px,
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
