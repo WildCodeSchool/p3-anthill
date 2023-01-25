@@ -11,7 +11,7 @@ function PopUpTopic({ closePopUp }) {
             X
           </button>
         </div>
-        <TopicCreation closePopUp={closePopUp} />{" "}
+        <TopicCreation closePopUp={closePopUp} />
       </div>
     </div>
   );
