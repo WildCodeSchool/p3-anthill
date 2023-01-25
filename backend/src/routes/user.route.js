@@ -11,7 +11,7 @@ const {
   getUserByEmailWithPassword,
 } = require("../../services/auth.service");
 
-const upload = multer({ dest: "uploads/" });
+const upload = multer({ dest: "public/uploads/" });
 
 const userRouter = new Router();
 
@@ -30,8 +30,8 @@ userRouter.patch("/:id/picture", upload.single("picture"), (req, res) => {
   const { originalname } = req.file;
   const { filename } = req.file;
   fs.rename(
-    `uploads/${filename}`,
-    `uploads/${uuidv4()}-${originalname}`,
+    `public/uploads/${filename}`,
+    `public/uploads/${uuidv4()}-${originalname}`,
     (err) => {
       if (err) throw err;
       res.send("File uploaded");

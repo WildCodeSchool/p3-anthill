@@ -1,3 +1,20 @@
 .settings_container {
-  color: var(--light-color);
+  display: grid;
+  gap: 10%;
+  padding: 20%;
+  color: var(--golden-color);
+  border-radius: var(--radius);
+  background-color: var(--medium-background);
+  width: 500px;
+  min-height: 500px;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-bottom: 5%;
+  box-shadow: var(--box-shadow);
+}
+
+.changes {
+  text-align: center;
+  color: var(--golden-color);
+  filter: drop-shadow(0 0 0.35rem var(--golden-color));
 }

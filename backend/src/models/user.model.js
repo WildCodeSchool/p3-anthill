@@ -40,21 +40,28 @@ async function insertOne(user) {
 }
 
 async function updateOne(id, user) {
-  const { pseudo, email, fullname, hashedPassword, googleUserId, moodId } =
-    user;
+  const {
+    pseudo,
+    email,
+    fullname,
+    hashedPassword,
+    googleUserId,
+    moodId,
+    picture,
+  } = user;
   const [result] = await db.query(
-    "UPDATE user SET pseudo = ?, email = ?, fullname = ?, hashedPassword = ?, googleUserId = ?, mood_id= ? WHERE id = ?",
-    [pseudo, email, fullname, hashedPassword, googleUserId, moodId, id]
+    "UPDATE user SET pseudo = ?, email = ?, fullname = ?, hashedPassword = ?, googleUserId = ?, mood_id= ?, picture = ? WHERE id = ?",
+    [pseudo, email, fullname, hashedPassword, googleUserId, moodId, picture, id]
   );
 
   return result.affectedRows;
 }
 
 async function updateOneAudrey(id, user) {
-  const { pseudo, email } = user;
+  const { pseudo, email, picture } = user;
   const [result] = await db.query(
-    "UPDATE user SET pseudo = ?, email = ? WHERE id = ?",
-    [pseudo, email, id]
+    "UPDATE user SET pseudo = ?, email = ?, picture = ? WHERE id = ?",
+    [pseudo, email, picture, id]
   );
 
   return result.affectedRows;
