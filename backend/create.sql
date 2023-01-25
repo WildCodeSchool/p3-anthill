@@ -13,7 +13,7 @@ CREATE TABLE `badge` (
   PRIMARY KEY (`id`)
 ); 
 
-INSERT INTO badge (name, path) VALUES ("creator", "/creator.png"), ("likesGiver", "/likesGiver.png"), ("thinker", "/thinker.png"), ("visitor", "/visitor.png");
+INSERT INTO badge (name, path) VALUES ("Creator", "/creator.png"), ("Likes", "/likesGiver.png"), ("Thinker", "/thinker.png"), ("Visitor", "/visitor.png");
 
 CREATE TABLE `mood` (
   `id` int NOT NULL AUTO_INCREMENT,

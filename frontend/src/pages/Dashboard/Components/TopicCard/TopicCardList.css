@@ -13,7 +13,7 @@
 }
 
 .topicCard__list:hover {
-  box-shadow: 1px 1px 20px var(--light-color),
+  box-shadow: 1px 1px 10px var(--light-color),
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 

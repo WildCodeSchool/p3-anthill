@@ -67,14 +67,52 @@
   color: var(--light-color);
 }
 
-.userDetail__badge {
-  height: 70px;
+.userDetail__badgesContainer {
+  display: flex;
+}
+
+.userDetail__badgeUpperContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.userDetail__badgeContainer {
   border-radius: 5px;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
-  border: solid 2px var(--golden-color);
+  border: solid 4px var(--dark-background);
+  background-color: var(--light-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 100px;
+}
 
-  margin: 15px 20px 0 0;
+.userDetail__badge__Creator {
+  height: 70px;
+  padding: 0 10px;
+}
+
+.userDetail__badge__Likes {
+  height: 80px;
+}
+
+.userDetail__badge__Thinker {
+  height: 90px;
+  padding: 0 8px 5px;
+}
+
+.userDetail__badge__Visitor {
+  height: 75px;
+  padding: 0 15px 2px;
+}
+
+.userDetail__badgeName {
+  color: var(--golden-color);
+  font-size: var(--textS);
 }
 
 .userDetail__picture {

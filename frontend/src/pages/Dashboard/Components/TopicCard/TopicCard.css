@@ -13,8 +13,8 @@
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
-.topicCard:hover {
-  box-shadow: 1px 1px 20px var(--light-color),
+.topicCard__grid:hover {
+  box-shadow: 1px 1px 10px var(--light-color),
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
@@ -26,7 +26,7 @@
 }
 
 .topicCard__title:hover {
-  color: #3a6df0;
+  color: var(--small-touch);
 }
 
 .topicCard__creatorName {
