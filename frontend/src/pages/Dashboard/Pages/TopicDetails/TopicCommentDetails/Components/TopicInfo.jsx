@@ -1,14 +1,33 @@
 import { RxLapTimer } from "react-icons/rx";
 import formatDeadline from "../../../../../../services/formatDeadline";
+import useFetchLazy from "../../../../../../services/useFetchLazy";
 
 function TopicInfo(props) {
-  const { title, creatorName, description, deadline } = props;
+  const {
+    id,
+    title,
+    creatorName,
+    description,
+    deadline,
+    slackChannelLink,
+    triggerGetTopic,
+  } = props;
   let formatedDeadLine = [];
 
   if (deadline) {
     formatedDeadLine = formatDeadline(deadline);
   }
   const [year, month, day, hour, minutes] = [...formatedDeadLine];
+
+  const { trigger: triggerCreateChannel } = useFetchLazy({
+    path: `/topics/${id}/slack/channels/create`,
+    method: "post",
+  });
+
+  const createSlackChannel = async () => {
+    await triggerCreateChannel();
+    triggerGetTopic();
+  };
 
   return (
     <div className="topicInfo">
@@ -22,6 +41,17 @@ function TopicInfo(props) {
         <RxLapTimer />
         <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>
       </div>
+      {!slackChannelLink ? (
+        <button type="button" onClick={createSlackChannel}>
+          Create Slack Channel
+        </button>
+      ) : (
+        <p>
+          <a href={slackChannelLink && slackChannelLink}>
+            Join us on the Slack Channel !
+          </a>
+        </p>
+      )}
     </div>
   );
 }

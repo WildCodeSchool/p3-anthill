@@ -43,12 +43,35 @@ async function insertOne(topic) {
   return result.insertId;
 }
 
-async function updateOne(id, topic) {
+async function updateOne(id, slackWorkingPlaceId, slackChannel, topic) {
   const { deadline, description, isPrivate, creatorId, title, isClosed } =
     topic;
   const [result] = await db.query(
-    "UPDATE topic SET deadline = ?, description = ?, is_private = ?, creator_id = ?, title = ?, is_closed= ? WHERE id = ?",
-    [deadline, description, isPrivate, creatorId, title, isClosed, id]
+    "UPDATE topic SET deadline = ?, description = ?, is_private = ?, creator_id = ?, title = ?, is_closed= ?, slack_working_place_id = ?, slack_channel = ? WHERE id = ?",
+    [
+      deadline,
+      description,
+      isPrivate,
+      creatorId,
+      title,
+      isClosed,
+      slackWorkingPlaceId,
+      slackChannel,
+      id,
+    ]
+  );
+
+  if (result.length === 0) {
+    return null;
+  }
+
+  return result.affectedRows;
+}
+
+async function updateOnlySlackInfos(id, slackChannelLink) {
+  const [result] = await db.query(
+    "UPDATE topic SET slack_channel_link = ? WHERE id = ?",
+    [slackChannelLink, id]
   );
 
   if (result.length === 0) {
@@ -76,4 +99,5 @@ module.exports = {
   updateOne,
   deleteOne,
   getAllTopicsOfOneUser,
+  updateOnlySlackInfos,
 };
