@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import ToggleModeContext from "../../../../contexts/ToggleModeContext";
 import useFetchLazy from "../../../../services/useFetchLazy";
 import TopicCard from "../../Components/TopicCard/TopicCard";
+import "./index.css";
 
 function UserDetailsTopics() {
+  const { toggleMode } = useContext(ToggleModeContext);
+
   const { userId } = useParams();
   const {
     data: topics,
@@ -17,7 +21,11 @@ function UserDetailsTopics() {
     triggerGetTopics();
   }, []);
   return (
-    <div className="userDetailsTopics__main">
+    <div
+      className={
+        toggleMode ? "userDetailsTopics__main" : "userDetailsTopics__main__list"
+      }
+    >
       {loadingTopic && <h2>LOADING ...</h2>}
       {topics &&
         topics.map((topic) => (

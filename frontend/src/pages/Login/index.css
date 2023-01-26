@@ -1,13 +1,14 @@
 .login {
   line-height: 1.7;
   color: #c4c3ca;
-  background-color: #1f2029;
+  background-color: var(--dark-background);
   overflow-x: hidden;
+  height: 100vh;
 }
 
 .container2 {
   text-align: center;
-  margin-top: 70px;
+  margin-top: 40px;
 }
 
 .container-checkbox span {
@@ -70,7 +71,7 @@
   height: 36px;
   border-radius: 20px;
   color: var(--golden-color);
-  background-color: #102770;
+  background-color: var(--small-touch);
   content: "\eb4f";
   z-index: 20;
   top: -10px;
@@ -146,8 +147,15 @@
   justify-content: center;
 }
 
-.title-container {
-  margin: 0 0 30px;
+.title-container-log {
+  margin: 0 0 40px;
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--light-color);
+}
+
+.title-container-sign {
+  margin: 0 0 40px 0;
   font-weight: 700;
   font-size: 25px;
   color: var(--light-color);
@@ -186,7 +194,7 @@
 }
 
 .form-style {
-  margin: 0.7rem;
+  margin: 0.4rem;
   padding: 13px 20px;
   padding-left: 55px;
   height: 25px;
@@ -221,13 +229,17 @@
   transition: all 200ms linear;
 }
 
-.buttons {
+.submit-button-signup {
+  margin-top: 40px;
+}
+
+.submit-button-login {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   height: 120px;
-  margin: 20px 0 0;
+  margin-top: 20px;
 }
 
 .btn {
@@ -241,21 +253,21 @@
   letter-spacing: 1px;
   border: none;
   background-color: var(--golden-color);
-  color: #102770;
-  box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
+  color: var(--dark-background);
+  box-shadow: 0 4px 10px 0 rgba(255, 235, 167, 0.2);
 }
 
 .btn > * {
-  color: #102770;
+  color: var(--dark-background);
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
 }
 
 .btn:hover {
-  background-color: #102770;
+  background-color: var(--small-touch);
   color: var(--golden-color);
-  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+  box-shadow: 0 4px 10px 0 rgba(16, 39, 112, 0.2);
   transition: all 200ms linear;
 }
 
@@ -268,38 +280,6 @@
   transition: all 200ms linear;
 }
 
-.googleBtn {
-  background: var(--golden-color);
-  border-radius: var(--radius);
-  border: none;
-  width: 120px;
-  height: 45px;
-  cursor: pointer;
-  transition: all 200ms linear;
-  color: #102770;
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  transition: all 200ms linear;
-  letter-spacing: 1px;
-  box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.googleBtn:active,
-.googleBtn:focus {
-  background-color: #102770;
-  color: var(--golden-color);
-  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
-}
-
-.googleBtn:hover {
-  background-color: #102770;
-  color: var(--golden-color);
-  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
-}
 
 .logo {
   position: absolute;

@@ -13,7 +13,7 @@ CREATE TABLE `badge` (
   PRIMARY KEY (`id`)
 ); 
 
-INSERT INTO badge (name, path) VALUES ("creator", "/creator.png"), ("likesGiver", "/likesGiver.png"), ("thinker", "/thinker.png"), ("visitor", "/visitor.png");
+INSERT INTO badge (name, path) VALUES ("Creator", "/creator.png"), ("Likes", "/likesGiver.png"), ("Thinker", "/thinker.png"), ("Visitor", "/visitor.png");
 
 CREATE TABLE `mood` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -64,17 +64,17 @@ CREATE TABLE `topic` (
 
 INSERT INTO topic (deadline, description, is_private, creator_id, title, is_closed, is_comment_mode) 
 VALUES 
-  (curdate(), "topic_description_1", 0, 1, "topic_title_1", 0, 1), 
-  (curdate(), "topic_description_2", 0, 2, "topic_title_2", 0, 1), 
-  (curdate(), "topic_description_3", 0, 3, "topic_title_3", 0, 1), 
-  (curdate(), "topic_description_4", 0, 4, "topic_title_4", 0, 1), 
-  (curdate(), "topic_description_5", 0, 1, "topic_title_5", 0, 1), 
-  (curdate(), "topic_description_6", 0, 1, "topic_title_6", 0, 1), 
-  (curdate(), "topic_description_7", 0, 1, "topic_title_7", 0, 0), 
-  (curdate(), "topic_description_8", 0, 1, "topic_title_8", 0, 0), 
-  (curdate(), "topic_description_9", 0, 1, "topic_title_9", 1, 0), 
-  (curdate(), "topic_description_10", 0, 2, "topic_title_10", 0, 0), 
-  (curdate(), "topic_description_11", 0, 2, "topic_title_11", 1, 0)
+  (curdate(), "How should we rename Gwenaël  ?", 0, 1, "Gwenaël Nickname", 0, 1), 
+  (curdate(), "Which day should we fire Johanna ?", 0, 2, "Johanna's departure", 0, 1), 
+  (curdate(), "Which cake for the departure of Johanna", 0, 1, "Johanna's leaving party's cake", 0, 1), 
+  (curdate(), "We all know that we don't drink just one coffee a day. How could the cafe service at Wild Code School be improved?", 0, 3, "Coffee problem", 0, 1), 
+  (curdate(), "Which bar should we go to on Friday nights?", 0, 4, "New bar ?", 0, 1), 
+  (curdate(), "Would you be intereseted in a lan party ? Please respond by a simple 'no' or propose a day and a game", 0, 1, "Lan party ?", 0, 1), 
+  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 0, 0), 
+  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 0, 0), 
+  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 1, 0), 
+  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 0, 0), 
+  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0)
 ;
 
 CREATE TABLE `bubble` (

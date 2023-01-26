@@ -51,6 +51,7 @@ function Sidebar({ name, photo }) {
   const handleButtonClick = (button) => {
     setActiveButton(button);
   };
+
   return (
     <aside className="side-bar">
       <div className="user-profile-area">

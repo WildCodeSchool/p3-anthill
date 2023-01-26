@@ -22,7 +22,7 @@ function Navbar() {
             className="add-btn"
             title="Add New Project"
           >
-            <TiPlus />
+            <TiPlus className="add-icon" />
           </button>
           {isOpen ? <PopUpTopic closePopUp={() => setIsOpen(false)} /> : null}
         </div>
