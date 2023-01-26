@@ -49,18 +49,18 @@ function TopicCard(props) {
       <p
         className={
           !toggleMode
-            ? "topicCard__description__list"
-            : "topicCard__description"
+            ? "topicCard__description"
+            : "topicCard__description__list"
         }
       >
         {description}
       </p>
       <div
-        className={!toggleMode ? "topicCard__right__list" : "topicCard__bottom"}
+        className={!toggleMode ? "topicCard__bottom" : "topicCard__right__list"}
       >
         <div
           className={
-            !toggleMode ? "topicCard__deadline__list" : "topicCard__deadline"
+            !toggleMode ? "topicCard__deadline" : "topicCard__deadline__list"
           }
         >
           <RxLapTimer />
@@ -68,7 +68,7 @@ function TopicCard(props) {
         </div>
         <div
           className={
-            !toggleMode ? "topicCard__nbIdea__list" : "topicCard__nbIdea"
+            !toggleMode ? "topicCard__nbIdea" : "topicCard__nbIdea__list"
           }
         >
           {nbIdea}
