@@ -41,7 +41,6 @@ function BubbleDetails() {
   };
 
   const width = 1000;
-
   const height = 1200;
   const links = data.links.map((d) => Object.create(d));
   const nodes = data.nodes.map((d) => Object.create(d));
@@ -87,7 +86,6 @@ function BubbleDetails() {
         links={links}
         nodes={nodes}
       />
-      <div>TOTO</div>
     </div>
   );
 }
