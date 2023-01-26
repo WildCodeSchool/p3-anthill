@@ -23,7 +23,9 @@ function UserDetailsTopics() {
   return (
     <div
       className={
-        toggleMode ? "userDetailsTopics__main" : "userDetailsTopics__main__list"
+        !toggleMode
+          ? "userDetailsTopics__main"
+          : "userDetailsTopics__main__list"
       }
     >
       {loadingTopic && <h2>LOADING ...</h2>}
