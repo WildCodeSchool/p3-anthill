@@ -20,7 +20,7 @@
 .topicCard__title__list {
   color: var(--golden-color);
   margin-left: 15px;
-  max-width: 300px;
+  width: 300px;
   font-size: var(--textL);
 }
 

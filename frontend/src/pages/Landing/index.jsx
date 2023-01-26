@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import scrollController from "./Components/scrollController";
-
 import NavLanding from "./Components/NavLanding";
 import Footer from "./Components/footer/Footer";
+import mockup from "../../../public/png/mockup.png";
 import "./index.css";
 
 function Landing() {
@@ -14,6 +14,7 @@ function Landing() {
         <section className="slider" id="section1">
           <h1>INTRO</h1>
           <h2>About our website</h2>
+          <img src={mockup} alt="mockup of the site" className="mockup" />
         </section>
         <section className="slider" id="section2">
           <h1>DASHBOARD</h1>

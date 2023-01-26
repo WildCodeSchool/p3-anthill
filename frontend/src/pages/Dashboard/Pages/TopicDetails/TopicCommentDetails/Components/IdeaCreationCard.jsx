@@ -28,7 +28,6 @@ function IdeaCreationCard({ topicId, triggerGetIdeas }) {
 
   return (
     <div>
-      {" "}
       <div className="ideaCreationCard">
         <form className="ideaCreationCard__form" onSubmit={handleSubmit}>
           <div style={{ width: "90%" }}>

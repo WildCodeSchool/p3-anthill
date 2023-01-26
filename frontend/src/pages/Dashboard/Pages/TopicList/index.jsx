@@ -27,7 +27,7 @@ function TopicsList() {
       <ToggleModeButtons />
       <div className="topicsList">
         {loading && <div>LOADING...</div>}
-        <div className={!toggleMode ? "topic_list__main" : "topic_grid__main"}>
+        <div className={!toggleMode ? "topic_grid__main" : "topic_list__main"}>
           {topics &&
             topics.map((topic) => (
               <TopicCard

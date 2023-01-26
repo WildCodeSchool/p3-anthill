@@ -1,3 +1,4 @@
+import BackgrdParticles from "../../assets/BackgrdParticles/BackgrdParticles";
 import LoginForm from "./Components/LoginForm";
 import SignUpForm from "./Components/SignUpForm";
 import Logo from "../../assets/Logo/Logo";
@@ -6,6 +7,7 @@ import "./index.css";
 function Login() {
   return (
     <div className="login">
+      <BackgrdParticles />
       <div className="logoLogin">
         <Logo />
       </div>

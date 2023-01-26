@@ -8,22 +8,22 @@ function ToggleModeButtons() {
   const { toggleMode, setToggleMode } = useContext(ToggleModeContext);
 
   function changeModeToGrid() {
-    setToggleMode(true);
+    setToggleMode(false);
   }
   function changeModeToList() {
-    setToggleMode(false);
+    setToggleMode(true);
   }
 
   return (
     <div className="toggleMode_main">
       <button type="button" onClick={changeModeToGrid}>
         <BsFillGridFill
-          color={toggleMode ? "var(--small-touch)" : "var(--light-color)"}
+          color={!toggleMode ? "var(--small-touch)" : "var(--light-color)"}
         />
       </button>
       <button type="button" onClick={changeModeToList}>
         <FaThList
-          color={!toggleMode ? "var(--small-touch)" : "var(--light-color)"}
+          color={toggleMode ? "var(--small-touch)" : "var(--light-color)"}
         />
       </button>
     </div>

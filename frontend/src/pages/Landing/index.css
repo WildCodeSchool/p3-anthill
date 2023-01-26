@@ -8,10 +8,6 @@
   width: clamp(2rem 20vw 15rem);
 }
 
-.buttonLanding {
-  width: clamp(1rem 10vw 2rem);
-}
-
 .landing-nav {
   margin: auto;
   height: 70vh;
@@ -29,7 +25,6 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* position: relative; */
   text-align: center;
   padding: 0 2em;
 }
@@ -39,7 +34,6 @@
 }
 
 .main .slider h1 {
-  /* font-family: "Josefin Sans", sans-serif; */
   font-size: 5vw;
   margin: 0;
   padding-bottom: 0.5rem;
@@ -70,3 +64,7 @@
   color: #faebd7;
   z-index: 4;
 } */
+
+.mockup {
+  height: 800px;
+}

@@ -28,12 +28,15 @@ function UserDetails() {
               <div className="userDetail__badgesContainer">
                 {userBadges &&
                   userBadges.map((badge) => (
-                    <div className="userDetail__badgeUpperContainer">
+                    <div
+                      key={badge.badge_id}
+                      className="userDetail__badgeUpperContainer"
+                    >
                       <div className="userDetail__badgeContainer">
                         <img
                           className={`userDetail__badge__${badge.name}`}
                           alt={badge.name}
-                          key={badge.id}
+                          key={badge.badge_id}
                           src={`/png/${badge.path}`}
                         />
                       </div>

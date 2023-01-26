@@ -24,12 +24,12 @@ function TopicCard(props) {
   const { toggleMode } = useContext(ToggleModeContext);
 
   return (
-    <article className={!toggleMode ? "topicCard__list" : "topicCard__grid"}>
+    <article className={!toggleMode ? "topicCard__grid" : "topicCard__list"}>
       <div>
         <Link to={`/dashboard/topics/${id}`}>
           <h2
             className={
-              !toggleMode ? "topicCard__title__list" : "topicCard__title"
+              !toggleMode ? "topicCard__title" : "topicCard__title__list"
             }
           >
             {title}
@@ -38,8 +38,8 @@ function TopicCard(props) {
         <p
           className={
             !toggleMode
-              ? "topicCard__creatorName__list"
-              : "topicCard__creatorName"
+              ? "topicCard__creatorName"
+              : "topicCard__creatorName__list"
           }
         >
           {creatorName}

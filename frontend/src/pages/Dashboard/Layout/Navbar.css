@@ -32,9 +32,6 @@
 
 .add-btn:hover {
   background-color: var(--golden-color);
-}
-
-.add-icon:hover {
   color: var(--small-touch);
 }
 
