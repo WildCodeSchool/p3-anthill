@@ -30,6 +30,10 @@ function BubbleDetails() {
         id: "f",
         text: "Kevin alalaoalaoalao",
       },
+      {
+        id: "g",
+        text: "Kevin alalaoalaoalao",
+      },
     ],
     links: [
       { source: "a", target: "b", text: "foo" },
@@ -37,6 +41,7 @@ function BubbleDetails() {
       { source: "a", target: "d", text: "foobar" },
       { source: "a", target: "e", text: "foo and bar" },
       { source: "a", target: "f", text: "barfoo" },
+      { source: "a", target: "g", text: "barfoo" },
     ],
   };
 
