@@ -58,6 +58,7 @@ CREATE TABLE `topic` (
   `title` varchar(255) NOT NULL,
   `is_closed` tinyint(1) NOT NULL DEFAULT 0,
   `is_comment_mode` tinyint(1) NOT NULL DEFAULT 1,
+  `slack_channel_link` varchar(500),
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_topic_creator` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`)
 ); 
@@ -169,8 +170,8 @@ CREATE TABLE `user_topic` (
 
 INSERT INTO user_topic (user_id, topic_id) VALUES (1, 1), (1, 4), (1, 5), (1, 2), (1, 3), (2, 1), (2, 6), (2, 11), (3, 4), (4, 6), (5, 7), (1, 8), (2, 9), (3, 10);
 
-CREATE VIEW TopicData (id, is_comment_mode, title, creator_id, fullname, description, deadline, nb_idea, nb_bubble) 
-AS (SELECT t.id, t.is_comment_mode, t.title, u.id, u.fullname, t.description, t.deadline, count(i.id), count(b.id) 
+CREATE VIEW TopicData (id, is_comment_mode, title, creator_id, fullname, description, deadline, nb_idea, nb_bubble, slack_channel_link) 
+AS (SELECT t.id, t.is_comment_mode, t.title, u.id, u.fullname, t.description, t.deadline, count(i.id), count(b.id), t.slack_channel_link
   FROM topic AS t 
   LEFT JOIN idea AS i ON i.comment_mode_id = t.id
   LEFT JOIN bubble as b ON b.mindmap_id = t.id 

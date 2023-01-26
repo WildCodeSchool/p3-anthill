@@ -7,6 +7,7 @@ const { badgeRouter } = require("./badge.route");
 const { moodRouter } = require("./mood.route");
 const { voteRouter } = require("./vote.route");
 const { bubbleRouter } = require("./bubble.route");
+const { slackRouter } = require("./slack.route");
 
 const router = express.Router();
 
@@ -18,5 +19,6 @@ router.use("/api/badges", badgeRouter);
 router.use("/api/moods", moodRouter);
 router.use("/api/votes", voteRouter);
 router.use("/api/topics", bubbleRouter);
+router.use("/api/topics", slackRouter);
 
 module.exports = router;
