@@ -7,6 +7,7 @@ function useFetchLazy({ path, method }) {
   const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
   const headers = {
     Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
   };
 
   const [data, setData] = useState(undefined);
@@ -14,33 +15,24 @@ function useFetchLazy({ path, method }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const trigger = async (body) => {
+  const trigger = async (body = undefined) => {
     setLoading(true);
-    if (method === "get" || method === "delete") {
-      await axios[method](`${URL}/api${path}`, { headers })
-        .then((res) => {
-          setData(res.data);
-          setIsSuccess(true);
-        })
-        .catch((err) => {
-          setError(err);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    } else if (method === "post" || method === "put" || method === "patch") {
-      await axios[method](`${URL}/api${path}`, body, { headers })
-        .then((res) => {
-          setData(res.data);
-          setIsSuccess(true);
-        })
-        .catch((err) => {
-          setError(err);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
+    await axios({
+      method,
+      url: `${URL}/api${path}`,
+      data: body,
+      headers,
+    })
+      .then((res) => {
+        setData(res.data);
+        setIsSuccess(true);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
   return { trigger, data, isSuccess, loading, error };
 }

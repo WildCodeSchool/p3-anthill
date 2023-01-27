@@ -18,8 +18,8 @@ function UserSettings() {
   const handleSubmit = (e) => {
     e.preventDefault();
     triggerPatchSettings({
-      pseudo: refPseudo.current.value !== "" ? refPseudo.current.value : null,
-      email: refEmail.current.value !== "" ? refEmail.current.value : null,
+      pseudo: refPseudo.current.value ?? undefined,
+      email: refEmail.current.value ?? undefined,
     });
   };
 

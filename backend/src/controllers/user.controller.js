@@ -22,22 +22,6 @@ async function get(req, res) {
   res.json(user);
 }
 
-async function getMiddleware(req, res, next) {
-  if (!req.params.id) {
-    res.sendStatus(400);
-    return;
-  }
-
-  const user = await userModel.getOne(req.params.id);
-  if (!user) {
-    res.sendStatus(404);
-    return;
-  }
-
-  req.user = user;
-  next();
-}
-
 async function getOneByEmail(req, res) {
   if (!req.params.email) {
     res.sendStatus(400);
@@ -95,7 +79,7 @@ async function update(req, res) {
     return;
   }
 
-  if (req.user.id !== req.params.id) {
+  if (req.user.id !== parseInt(req.params.id, 10)) {
     res.sendStatus(401);
     return;
   }
@@ -131,7 +115,6 @@ async function remove(req, res) {
 module.exports = {
   list,
   get,
-  getMiddleware,
   getOneByEmail,
   create,
   getCurrentUser,

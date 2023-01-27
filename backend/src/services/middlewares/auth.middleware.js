@@ -1,5 +1,6 @@
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
+const authModel = require("../../models/auth.model");
 const userModel = require("../../models/user.model");
 
 const hashingOptions = {
@@ -35,7 +36,7 @@ async function getUserByEmailWithPassword(req, res, next) {
     return;
   }
 
-  const user = await userModel.getUserByEmailWithPassword(req.body.email);
+  const user = await authModel.getUserByEmailWithPassword(req.body.email);
   if (user) {
     req.user = user;
     next();

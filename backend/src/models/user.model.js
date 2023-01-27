@@ -57,23 +57,15 @@ async function getCurrentUser(currentUserId) {
 }
 
 async function updateOne(id, body, user) {
-  let { pseudo, email, fullname, description } = body;
-  if (!pseudo) {
-    pseudo = user.pseudo;
-  }
-  if (!email) {
-    email = user.email;
-  }
-  if (!fullname) {
-    fullname = user.fullname;
-  }
-  if (!description) {
-    description = user.description;
-  }
-
   const [result] = await db.query(
     "UPDATE user SET pseudo = ?, email = ?, fullname = ?, description = ? WHERE id = ?",
-    [pseudo, email, fullname, description, id]
+    [
+      body.pseudo ?? user.pseudo,
+      body.email ?? user.email,
+      body.fullname ?? user.fullname,
+      body.description ?? user.description,
+      id,
+    ]
   );
 
   return result.affectedRows;

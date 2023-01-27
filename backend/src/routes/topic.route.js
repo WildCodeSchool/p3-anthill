@@ -2,7 +2,7 @@ const { Router } = require("express");
 const topicController = require("../controllers/topic.controller");
 const ideaController = require("../controllers/idea.controller");
 const commentController = require("../controllers/comment.controller");
-const topicValidator = require("../validators/topic.validator");
+// const topicValidator = require("../validators/topic.validator");
 const { verifyToken } = require("../services/middlewares/auth.middleware");
 
 const topicRouter = new Router();
@@ -19,7 +19,7 @@ topicRouter.get(
 
 topicRouter.post(
   "/",
-  topicValidator.validateCreateTopic,
+  // topicValidator.validateCreateTopic,
   topicController.create
 );
 topicRouter.post("/:topicId/ideas", ideaController.create);
