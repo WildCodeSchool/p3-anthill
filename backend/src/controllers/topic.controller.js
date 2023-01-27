@@ -12,7 +12,7 @@ async function listCard(req, res) {
 }
 
 async function getTrendingTopics(req, res) {
-  const topics = await topicModel.getTopicCardByNbIdeas();
+  const topics = await topicModel.getTrendingTopicsByIdeasCount();
   res.json(topics);
 }
 
