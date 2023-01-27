@@ -16,13 +16,11 @@ async function listBubblesOfOneTopic(req, res) {
 }
 
 async function getOneBubble(req, res) {
-  if (!req.params.topicId || !req.params.bubbleId) {
+  if (!req.params.bubbleId) {
     res.sendStatus(400);
     return;
   }
-  const bubble = await bubbleModel.getOneBubbleById({
-    bubbleId: req.params.bubbleId,
-  });
+  const bubble = await bubbleModel.getOneBubbleById(req.params.bubbleId);
   if (!bubble) {
     res.sendStatus(404);
     return;
@@ -36,13 +34,13 @@ async function create(req, res) {
     return;
   }
 
-  const insertId = await bubbleModel.insertOne({
-    mindmapId: req.params.topicId,
-    userId: 1,
-    content: req.body.content,
-  }); // getCurrentUser()
+  const insertId = await bubbleModel.insertOne(
+    req.params.topicId,
+    1,
+    req.body.content
+  ); // getCurrentUser()
   if (!insertId) {
-    res.sendStatus(404);
+    res.sendStatus(403);
   }
   res.status(201).json({ insertId });
 }

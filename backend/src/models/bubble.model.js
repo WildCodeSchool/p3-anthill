@@ -14,14 +14,14 @@ async function getAllBubblesByTopicId(topicId) {
   return rows;
 }
 
-async function getOneBubbleById({ bubbleId }) {
+async function getOneBubbleById(bubbleId) {
   const [rows] = await db.query("SELECT * FROM BubbleData WHERE id = ?", [
     bubbleId,
   ]);
   return rows[0];
 }
 
-async function insertOne({ mindmapId, userId, content }) {
+async function insertOne(mindmapId, userId, content) {
   const [result] = await db.query(
     "INSERT INTO bubble (mindmap_id, creator_id, content) VALUES (?, ?, ?)",
     [mindmapId, userId, content]
