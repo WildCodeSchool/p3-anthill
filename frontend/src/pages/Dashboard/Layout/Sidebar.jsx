@@ -38,7 +38,7 @@ function Sidebar({ name, photo }) {
     },
     {
       id: 4,
-      text: "Co Topics",
+      text: "Co. Topics",
       icon: <GiAnt className="icon" />,
       active: activeButton === 4,
       path: "/dashboard",

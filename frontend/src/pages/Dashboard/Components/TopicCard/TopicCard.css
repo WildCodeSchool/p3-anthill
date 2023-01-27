@@ -121,3 +121,7 @@
   right: -10px;
   top: 2px;
 }
+
+.icon-ampule {
+  font-size: var(--textL);
+}

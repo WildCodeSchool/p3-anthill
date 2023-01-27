@@ -69,4 +69,6 @@
   margin-top: 20px;
   font-size: small;
   color: var(--light-color);
+  display: flex;
+  align-items: center;
 }

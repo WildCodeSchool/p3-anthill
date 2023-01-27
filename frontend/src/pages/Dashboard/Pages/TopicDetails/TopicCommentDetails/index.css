@@ -19,12 +19,17 @@
   font-size: var(--textM);
 }
 
+.topicInfo__title {
+  font-size: var(--textM);
+}
+
 .topicInfo__left {
   margin-left: 15px;
 }
 
 .topicInfo__description {
   color: var(--light-color);
+  font-size: var(--textS);
 }
 
 .topicInfo__deadline {
@@ -33,6 +38,7 @@
   justify-content: space-between;
   margin-right: 15px;
   color: var(--light-color);
+  font-size: var(--textS);
 }
 
 .ideaCreationCard {

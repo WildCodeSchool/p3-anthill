@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { RxLapTimer } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import { RiLightbulbLine } from "react-icons/ri";
 import ToggleModeContext from "../../../../contexts/ToggleModeContext";
 import formatDeadline from "../../../../services/formatDeadline";
 import DeleteTopicButton from "../DeleteTopicButton/DeleteTopicButton";
@@ -72,6 +73,7 @@ function TopicCard(props) {
           }
         >
           {nbIdea}
+          <RiLightbulbLine className="icon-ampule" />
         </div>
       </div>
       <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />
