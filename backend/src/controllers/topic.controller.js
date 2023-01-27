@@ -11,8 +11,8 @@ async function listCard(req, res) {
   res.json(topics);
 }
 
-async function listCardWhereIdeas(req, res) {
-  const topics = await topicModel.getTopicCardByNbOfIdeas();
+async function getTrendingTopics(req, res) {
+  const topics = await topicModel.getTopicCardByNbIdeas();
   res.json(topics);
 }
 
@@ -81,7 +81,7 @@ async function remove(req, res) {
 module.exports = {
   list,
   listCard,
-  listCardWhereIdeas,
+  getTrendingTopics,
   get,
   create,
   update,
