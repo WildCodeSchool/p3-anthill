@@ -3,7 +3,7 @@ const moodModel = require("../models/mood.model");
 
 async function list(req, res) {
   const moods = await moodModel.getAll();
-  res.send(moods);
+  res.json(moods);
 }
 
 async function create(req, res) {
@@ -17,7 +17,7 @@ async function create(req, res) {
     res.sendStatus(404);
   }
 
-  res.status(201).send({ insertId });
+  res.status(201).json({ insertId });
 }
 
 async function get(req, res) {
@@ -32,7 +32,7 @@ async function get(req, res) {
     return;
   }
 
-  res.send(mood);
+  res.json(mood);
 }
 
 async function update(req, res) {

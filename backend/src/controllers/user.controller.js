@@ -4,7 +4,7 @@ const userModel = require("../models/user.model");
 
 async function list(req, res) {
   const users = await userModel.getAll();
-  res.send(users);
+  res.json(users);
 }
 
 async function get(req, res) {
@@ -19,7 +19,7 @@ async function get(req, res) {
     return;
   }
 
-  res.send(user);
+  res.json(user);
 }
 
 async function getMiddleware(req, res, next) {
@@ -55,7 +55,7 @@ async function getOneByEmail(req, res) {
     expiresIn: "1h",
   });
 
-  res.send({ token });
+  res.json({ token });
 }
 
 async function create(req, res) {
@@ -75,7 +75,7 @@ async function create(req, res) {
     expiresIn: "1h",
   });
 
-  res.status(201).send({ token });
+  res.status(201).json({ token });
 }
 
 async function getCurrentUser(req, res) {
@@ -91,7 +91,7 @@ async function getCurrentUser(req, res) {
     return;
   }
 
-  res.send(currentUser);
+  res.json(currentUser);
 }
 
 async function update(req, res) {

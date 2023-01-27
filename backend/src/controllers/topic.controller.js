@@ -4,12 +4,12 @@ const topicModel = require("../models/topic.model");
 async function list(req, res) {
   if (req.query.view === "card") {
     const topics = await topicModel.getAllTopicCard();
-    res.send(topics);
+    res.json(topics);
     return;
   }
 
   const topics = await topicModel.getAll();
-  res.send(topics);
+  res.json(topics);
 }
 
 async function getUserTopics(req, res) {
@@ -19,7 +19,7 @@ async function getUserTopics(req, res) {
   }
 
   const topics = await topicModel.getAllTopicsOfOneUser(req.params.id);
-  res.send(topics);
+  res.json(topics);
 }
 
 async function get(req, res) {
@@ -33,7 +33,7 @@ async function get(req, res) {
     res.sendStatus(404);
     return;
   }
-  res.send(topic);
+  res.json(topic);
 }
 
 async function create(req, res) {
@@ -54,7 +54,7 @@ async function create(req, res) {
     return;
   }
 
-  res.status(201).send({ insertId });
+  res.status(201).json({ insertId });
 }
 
 async function update(req, res) {

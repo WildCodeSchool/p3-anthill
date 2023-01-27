@@ -2,7 +2,7 @@ const ideaModel = require("../models/idea.model");
 
 async function list(req, res) {
   const ideas = await ideaModel.getAll();
-  res.send(ideas);
+  res.json(ideas);
 }
 
 async function listIdeasOfOneTopic(req, res) {
@@ -19,7 +19,7 @@ async function listIdeasOfOneTopic(req, res) {
   const userId = req.payload.sub;
   const ideas = await ideaModel.getAllOfOneTopic(userId, req.params.id);
 
-  res.send(ideas);
+  res.json(ideas);
 }
 
 async function get(req, res) {
@@ -33,7 +33,7 @@ async function get(req, res) {
     res.sendStatus(404);
     return;
   }
-  res.send(idea);
+  res.json(idea);
 }
 
 async function create(req, res) {

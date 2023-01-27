@@ -23,7 +23,7 @@ function SignUpForm() {
       email: emailRef.current?.value,
       fullname: usernameRef.current?.value,
       pseudo: pseudoRef.current?.value,
-      hashedPassword: passwordRef.current?.value,
+      password: passwordRef.current?.value,
     });
   };
 

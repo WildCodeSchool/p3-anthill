@@ -13,7 +13,7 @@ async function listCommentsOfOneIdea(req, res) {
     req.params.ideaId
   );
 
-  res.send(comments);
+  res.json(comments);
 }
 
 async function create(req, res) {
@@ -34,7 +34,7 @@ async function create(req, res) {
     ideaId: req.params.ideaId,
   });
 
-  res.status(201).send({ insertId });
+  res.status(201).json({ insertId });
 }
 
 async function get(req, res) {
@@ -50,7 +50,7 @@ async function get(req, res) {
     return;
   }
 
-  res.send(comment);
+  res.json(comment);
 }
 
 async function update(req, res) {
