@@ -8,6 +8,7 @@ const { moodRouter } = require("./mood.route");
 const { voteRouter } = require("./vote.route");
 const { bubbleRouter } = require("./bubble.route");
 const { slackRouter } = require("./slack.route");
+const { bubbleRouter } = require("./bubble.route");
 
 const router = express.Router();
 
@@ -20,5 +21,6 @@ router.use("/api/moods", moodRouter);
 router.use("/api/votes", voteRouter);
 router.use("/api/topics", bubbleRouter);
 router.use("/api/topics", slackRouter);
+router.use("/api/topics", bubbleRouter);
 
 module.exports = router;
