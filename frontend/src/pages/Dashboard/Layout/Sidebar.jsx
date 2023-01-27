@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import { MdAllInclusive } from "react-icons/md";
 import { TbCrown } from "react-icons/tb";
+import { BsPencil } from "react-icons/bs";
 import { GiAnt } from "react-icons/gi";
 import { RiContactsLine } from "react-icons/ri";
 
@@ -16,30 +17,37 @@ function Sidebar({ name, photo }) {
   const sideBarList = [
     {
       id: 1,
-      text: "My Topics",
+      text: "Top Topics",
       icon: <TbCrown className="icon" />,
       active: activeButton === 1,
-      path: `/dashboard/users/1/topics`, // getCurrentUser
+      path: `/dashboard`, // getCurrentUser
     },
     {
       id: 2,
-      text: "All Topics",
-      icon: <MdAllInclusive className="icon" />,
+      text: "My Topics",
+      icon: <BsPencil className="icon" />,
       active: activeButton === 2,
-      path: "/dashboard/topics",
+      path: `/dashboard/users/1/topics`, // getCurrentUser
     },
     {
       id: 3,
-      text: "Co Topics",
-      icon: <GiAnt className="icon" />,
+      text: "All Topics",
+      icon: <MdAllInclusive className="icon" />,
       active: activeButton === 3,
-      path: "/dashboard",
+      path: "/dashboard/topics",
     },
     {
       id: 4,
+      text: "Co Topics",
+      icon: <GiAnt className="icon" />,
+      active: activeButton === 4,
+      path: "/dashboard",
+    },
+    {
+      id: 5,
       text: "Contacts",
       icon: <RiContactsLine className="icon" />,
-      active: activeButton === 4,
+      active: activeButton === 5,
       path: "/dashboard/users",
     },
   ];
