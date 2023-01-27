@@ -11,6 +11,11 @@ async function listCard(req, res) {
   res.json(topics);
 }
 
+async function listCardWhereIdeas(req, res) {
+  const topics = await topicModel.getTopicCardByNbOfIdeas();
+  res.json(topics);
+}
+
 async function getUserTopics(req, res) {
   const topics = await topicModel.getAllTopicsOfOneUser(req.params.id);
   res.json(topics);
@@ -76,6 +81,7 @@ async function remove(req, res) {
 module.exports = {
   list,
   listCard,
+  listCardWhereIdeas,
   get,
   create,
   update,
