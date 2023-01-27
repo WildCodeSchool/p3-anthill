@@ -1,6 +1,6 @@
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
-const userModel = require("../../models/auth.model");
+const userModel = require("../../models/user.model");
 
 const hashingOptions = {
   type: argon2.argon2id,
@@ -10,7 +10,7 @@ const hashingOptions = {
 };
 
 const hashPassword = (req, res, next) => {
-  if (!req.body.password) {
+  if (!req.body?.password) {
     res.sendStatus(400);
     return;
   }
@@ -44,7 +44,7 @@ async function getUserByEmailWithPassword(req, res, next) {
   }
 }
 
-const verifyToken = (req, res, next) => {
+async function verifyToken(req, res, next) {
   try {
     const authorizationHeader = req.get("Authorization");
     if (authorizationHeader == null) {
@@ -56,13 +56,19 @@ const verifyToken = (req, res, next) => {
       throw new Error("Authorization header has not the 'Bearer' type");
     }
 
-    req.payload = jwt.verify(token, process.env.JWT_SECRET);
+    const { sub } = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await userModel.getCurrentUser(sub);
+    if (!user) {
+      throw new Error("User not found");
+    }
+    req.user = user;
+
     next();
   } catch (err) {
     console.error(err);
     res.sendStatus(401);
   }
-};
+}
 
 module.exports = {
   hashPassword,

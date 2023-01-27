@@ -58,8 +58,11 @@ async function updateOne(id, topic) {
   return result.affectedRows;
 }
 
-async function deleteOne(id) {
-  const [result1] = await db.query("DELETE FROM topic WHERE id = ?", [id]);
+async function deleteOne(topicId, userId) {
+  const [result1] = await db.query(
+    "DELETE FROM topic WHERE id = ? AND creator_id = ?",
+    [topicId, userId]
+  );
 
   if (result1.length === 0) {
     return null;

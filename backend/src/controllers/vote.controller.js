@@ -6,12 +6,7 @@ async function upvoteIdea(req, res) {
     return;
   }
 
-  if (!req.payload.sub) {
-    res.sendStatus(401);
-    return;
-  }
-
-  const userId = req.payload.sub;
+  const userId = req.user.id;
 
   try {
     const affectedRows = await upvoteModel.insertOneForIdea({
@@ -35,12 +30,7 @@ async function upvoteComment(req, res) {
     return;
   }
 
-  if (!req.payload.sub) {
-    res.sendStatus(401);
-    return;
-  }
-
-  const userId = req.payload.sub;
+  const userId = req.user.id;
 
   try {
     const affectedRows = await upvoteModel.insertOneForComment({
@@ -64,12 +54,7 @@ async function downvoteIdea(req, res) {
     return;
   }
 
-  if (!req.payload.sub) {
-    res.sendStatus(401);
-    return;
-  }
-
-  const userId = req.payload.sub;
+  const userId = req.user.id;
 
   try {
     const affectedRows = await upvoteModel.updateOneForIdea(
@@ -93,12 +78,7 @@ async function downvoteComment(req, res) {
     return;
   }
 
-  if (!req.payload.sub) {
-    res.sendStatus(401);
-    return;
-  }
-
-  const userId = req.payload.sub;
+  const userId = req.user.id;
 
   try {
     const affectedRows = await upvoteModel.updateOneForComment(

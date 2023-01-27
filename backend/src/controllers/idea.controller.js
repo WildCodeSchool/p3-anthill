@@ -6,17 +6,12 @@ async function list(req, res) {
 }
 
 async function listIdeasOfOneTopic(req, res) {
-  if (!req.payload.sub) {
-    res.sendStatus(401);
-    return;
-  }
-
   if (!req.params.id) {
     res.sendStatus(400);
     return;
   }
 
-  const userId = req.payload.sub;
+  const userId = req.user.id;
   const ideas = await ideaModel.getAllOfOneTopic(userId, req.params.id);
 
   res.json(ideas);
@@ -37,17 +32,12 @@ async function get(req, res) {
 }
 
 async function create(req, res) {
-  if (!req.payload) {
-    res.sendStatus(401);
-    return;
-  }
-
   if (!req.body || !req.params.topicId) {
     res.sendStatus(400);
     return;
   }
 
-  const creatorId = req.payload.sub;
+  const creatorId = req.user.id;
   const insertId = await ideaModel.insertOne(
     req.body,
     req.params.topicId,
@@ -81,12 +71,7 @@ async function remove(req, res) {
     return;
   }
 
-  if (req.payload.sub !== req.params.id) {
-    res.sendStatus(401);
-    return;
-  }
-
-  const affectedRows = await ideaModel.deleteOne(req.params.id);
+  const affectedRows = await ideaModel.deleteOne(req.params.id, req.user.id);
   if (affectedRows === 0) {
     res.sendStatus(404);
     return;

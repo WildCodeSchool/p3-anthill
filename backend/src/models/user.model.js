@@ -44,7 +44,7 @@ async function insertOne(user) {
 
 async function getCurrentUser(currentUserId) {
   const [rows] = await db.query(
-    "SELECT u.id, u.picture, u.email, u.pseudo, u.fullname, u.mood_id " +
+    "SELECT u.id, u.picture, u.email, u.pseudo, u.fullname, u.description, u.mood_id " +
       "FROM user AS u " +
       "WHERE u.id = ? ",
     [currentUserId]

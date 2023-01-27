@@ -37,17 +37,12 @@ async function get(req, res) {
 }
 
 async function create(req, res) {
-  if (!req.payload) {
-    res.sendStatus(401);
-    return;
-  }
-
   if (!req.body) {
     res.sendStatus(400);
     return;
   }
 
-  const creatorId = req.payload.sub;
+  const creatorId = req.user.id;
   const insertId = await topicModel.insertOne(req.body, creatorId);
   if (!insertId) {
     res.sendStatus(404);
@@ -78,12 +73,7 @@ async function remove(req, res) {
     return;
   }
 
-  if (!req.payload !== req.params.id) {
-    res.sendStatus(401);
-    return;
-  }
-
-  const affectedRows = await topicModel.deleteOne(req.params.id);
+  const affectedRows = await topicModel.deleteOne(req.params.id, req.user.id);
   if (affectedRows === 0) {
     res.sendStatus(404);
     return;

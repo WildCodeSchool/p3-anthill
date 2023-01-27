@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const moodController = require("../controllers/mood.controller");
-const { verifyToken } = require("../controllers/auth.controller");
+const { verifyToken } = require("../services/middlewares/auth.middleware");
 
 const moodRouter = new Router();
 

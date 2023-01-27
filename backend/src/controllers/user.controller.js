@@ -79,12 +79,7 @@ async function create(req, res) {
 }
 
 async function getCurrentUser(req, res) {
-  if (!req.payload) {
-    res.sendStatus(401);
-    return;
-  }
-
-  const currentUserId = req.payload.sub;
+  const currentUserId = req.user.id;
   const currentUser = await userModel.getCurrentUser(currentUserId);
   if (!currentUser) {
     res.sendStatus(404);
@@ -100,7 +95,7 @@ async function update(req, res) {
     return;
   }
 
-  if (req.payload.sub !== req.params.id) {
+  if (req.user.id !== req.params.id) {
     res.sendStatus(401);
     return;
   }

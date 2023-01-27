@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const commentController = require("../controllers/comment.controller");
-const { verifyToken } = require("../controllers/auth.controller");
+const { verifyToken } = require("../services/middlewares/auth.middleware");
 
 const commentRouter = new Router();
 

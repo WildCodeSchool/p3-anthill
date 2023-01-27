@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const badgeController = require("../controllers/badge.controller");
-const { verifyToken } = require("../controllers/auth.controller");
+const { verifyToken } = require("../services/middlewares/auth.middleware");
 
 const badgeRouter = new Router();
 

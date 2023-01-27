@@ -3,7 +3,7 @@ const topicController = require("../controllers/topic.controller");
 const ideaController = require("../controllers/idea.controller");
 const commentController = require("../controllers/comment.controller");
 const topicValidator = require("../validators/topic.validator");
-const { verifyToken } = require("../controllers/auth.controller");
+const { verifyToken } = require("../services/middlewares/auth.middleware");
 
 const topicRouter = new Router();
 
@@ -28,7 +28,11 @@ topicRouter.post("/:topicId/ideas/:ideaId/comments", commentController.create);
 topicRouter.put("/:id", topicController.update);
 
 topicRouter.delete("/:id", topicController.remove);
-topicRouter.delete("/:topicId/ideas/:id", ideaController.remove);
+topicRouter.delete(
+  "/:topicId/ideas/:id",
+
+  ideaController.remove
+);
 topicRouter.delete(
   "/:topicId/ideas/:ideaId/comments/:id",
   commentController.remove
