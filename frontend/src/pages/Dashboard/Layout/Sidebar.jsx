@@ -26,28 +26,28 @@ function Sidebar({ name, photo }) {
       id: 2,
       text: "My Topics",
       icon: <BsPencil className="icon" />,
-      active: activeButton === 1,
+      active: activeButton === 2,
       path: `/dashboard/users/1/topics`, // getCurrentUser
     },
     {
       id: 3,
       text: "All Topics",
       icon: <MdAllInclusive className="icon" />,
-      active: activeButton === 2,
+      active: activeButton === 3,
       path: "/dashboard/topics",
     },
     {
       id: 4,
       text: "Co Topics",
       icon: <GiAnt className="icon" />,
-      active: activeButton === 3,
+      active: activeButton === 4,
       path: "/dashboard",
     },
     {
       id: 5,
       text: "Contacts",
       icon: <RiContactsLine className="icon" />,
-      active: activeButton === 4,
+      active: activeButton === 5,
       path: "/dashboard/users",
     },
   ];
