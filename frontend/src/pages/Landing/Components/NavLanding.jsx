@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../../../public/png/logoDoré.png";
+import logo from "../../../assets/Logo/Logo";
 import BackgrdParticles from "../../../assets/BackgrdParticles/BackgrdParticles";
 import "./NavLanding.css";
 
