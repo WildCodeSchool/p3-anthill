@@ -6,6 +6,7 @@ import { MdAllInclusive } from "react-icons/md";
 import { TbCrown } from "react-icons/tb";
 import { GiAnt } from "react-icons/gi";
 import { RiContactsLine } from "react-icons/ri";
+import { FiSettings } from "react-icons/fi";
 
 import SideBarListItems from "../Components/SideBarListItems/SideBarListItems";
 
@@ -41,6 +42,13 @@ function Sidebar({ name, photo }) {
       icon: <RiContactsLine className="icon" />,
       active: activeButton === 4,
       path: "/dashboard/users",
+    },
+    {
+      id: 5,
+      text: "Settings",
+      icon: <FiSettings className="icon" />,
+      active: activeButton === 5,
+      path: "/dashboard/users/1/settings",
     },
   ];
   const handleClick = () => {

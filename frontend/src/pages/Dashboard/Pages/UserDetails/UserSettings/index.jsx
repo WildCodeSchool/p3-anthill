@@ -1,17 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 
 import useFetchLazy from "../../../../../services/useFetchLazy";
-import UploadPicture from "./UploadPicture";
 
 import "./index.css";
 
 function UserSettings() {
   const [alert, setAlert] = useState(false);
-
-  useEffect(() => {
-    const form = document.querySelector("form");
-    form.addEventListener("submit", () => setAlert(true));
-  }, []);
 
   const refPseudo = useRef();
   const refEmail = useRef();
@@ -27,6 +21,8 @@ function UserSettings() {
       pseudo: refPseudo.current.value,
       email: refEmail.current.value,
     });
+    e.preventDefault();
+    setAlert(true);
   };
 
   return (
@@ -50,13 +46,12 @@ function UserSettings() {
           type="text"
           ref={refEmail}
         />
-        <UploadPicture />
         <img src="" alt="img" />
-        <button className="button" type="submit">
+        <button className="settings__btn" type="submit">
           SUBMIT
         </button>
+        {alert && <div>Changes done</div>}
       </form>
-      {alert && <div className="changes">Changes done</div>}
     </div>
   );
 }

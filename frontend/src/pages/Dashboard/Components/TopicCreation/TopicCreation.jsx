@@ -50,7 +50,7 @@ function TopicCreation({ closePopUp }) {
         ref={refTitle}
         required
       />
-      <label htmlFor="deadline">DATE</label>
+      <label htmlFor="deadline">DEADLINE</label>
       <input
         id="deadline"
         className="deadline"

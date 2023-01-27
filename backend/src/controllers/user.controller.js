@@ -1,3 +1,5 @@
+const fs = require("fs/promises");
+const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/user.model");
 // const userValidator = require("../validators/user.validator");
@@ -91,6 +93,21 @@ async function updateAudrey(req, res) {
   res.sendStatus(204);
 }
 
+async function updatePicture(req, res) {
+  const { originalname } = req.file;
+  const { filename } = req.file;
+  const newName = `${uuidv4()}-${originalname}`;
+  await fs.rename(`public/uploads/${filename}`, `public/uploads/${newName}`);
+
+  const affectedRows = await userModel.updatePicture(req.params.id, newName);
+  if (affectedRows === 0) {
+    res.sendStatus(404);
+    return;
+  }
+
+  res.sendStatus(204);
+}
+
 async function remove(req, res) {
   if (!req.params.id) {
     res.sendStatus(400);
@@ -114,5 +131,6 @@ module.exports = {
   get,
   update,
   updateAudrey,
+  updatePicture,
   remove,
 };

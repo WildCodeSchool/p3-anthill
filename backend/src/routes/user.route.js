@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const multer = require("multer");
-const fs = require("fs");
-const { v4: uuidv4 } = require("uuid");
+
 const userController = require("../controllers/user.controller");
 const badgeController = require("../controllers/badge.controller");
 const topicController = require("../controllers/topic.controller");
@@ -26,18 +25,11 @@ userRouter.post("/signup", hashPassword, userController.create);
 userRouter.post("/login", getUserByEmailWithPassword, login);
 
 userRouter.patch("/:id", userController.updateAudrey);
-userRouter.patch("/:id/picture", upload.single("picture"), (req, res) => {
-  const { originalname } = req.file;
-  const { filename } = req.file;
-  fs.rename(
-    `public/uploads/${filename}`,
-    `public/uploads/${uuidv4()}-${originalname}`,
-    (err) => {
-      if (err) throw err;
-      res.send("File uploaded");
-    }
-  );
-});
+userRouter.patch(
+  "/:id/picture",
+  upload.single("picture"),
+  userController.updatePicture
+);
 
 userRouter.delete("/:id", userController.remove);
 
