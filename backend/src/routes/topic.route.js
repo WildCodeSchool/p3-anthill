@@ -8,6 +8,7 @@ const topicRouter = new Router();
 
 topicRouter.get("/", topicController.list);
 topicRouter.get("/card", topicController.listCard);
+topicRouter.get("/card/top", topicController.listCardWhereIdeas);
 topicRouter.get("/:id", topicController.get);
 topicRouter.get("/:id/ideas", ideaController.listIdeasOfOneTopic);
 topicRouter.get(
