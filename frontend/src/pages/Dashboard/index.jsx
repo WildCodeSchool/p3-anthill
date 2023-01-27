@@ -8,16 +8,18 @@ import "./index.css";
 function Dashboard() {
   const { currentUser } = useCurrentUser();
   return (
-    <div className="dashboard">
-      <Navbar />
-      <Sidebar
-        userId={currentUser?.id}
-        name={currentUser?.fullname}
-        photo={currentUser?.picture}
-      />
-      <main className="outlet">
-        <Outlet />
-      </main>
+    <div>
+      <div className="dashboard">
+        <Navbar />
+        <Sidebar
+          userId={currentUser?.id}
+          name={currentUser?.fullname}
+          photo={currentUser?.picture}
+        />
+        <main className="outlet">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 }

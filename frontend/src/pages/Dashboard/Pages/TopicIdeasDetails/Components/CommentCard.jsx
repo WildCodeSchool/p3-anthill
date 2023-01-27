@@ -35,11 +35,14 @@ function CommentCard({
 
   return (
     <div className="commentCard">
-      <div className="commentCard__main">
-        <img src={picture} alt="avatar" />
-        <div className="commentCard__creatorName">{pseudo}</div>
+      <div className="commentCard__info">
+        <div className="commentCard__main">
+          <img src={picture} alt="avatar" />
+          <div className="commentCard__creatorName">{pseudo}</div>
+        </div>
+        <p className="commentCard__description">{content}</p>
       </div>
-      <p className="commentCard__description">{content}</p>
+
       <div className="commentCard__interactions">
         <div className="commentCard__nbUpVote">
           {upVote}
@@ -49,11 +52,11 @@ function CommentCard({
             <BiDownvote onClick={downvoteFunction} />
           )}
         </div>
+        <DeleteCommentButton
+          comment={comment}
+          triggerGetComments={triggerGetComments}
+        />
       </div>
-      <DeleteCommentButton
-        comment={comment}
-        triggerGetComments={triggerGetComments}
-      />
     </div>
   );
 }

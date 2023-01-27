@@ -12,8 +12,11 @@ function TopicInfo(props) {
 
   return (
     <div className="topicInfo">
-      <h2 className="topicInfo__title">{title}</h2>
-      <div className="topicInfo__creatorName">{creatorName}</div>
+      <div className="topicInfo__left">
+        <h2 className="topicInfo__title">{title}</h2>
+        <p className="topicInfo__creatorName">{creatorName}</p>
+      </div>
+
       <p className="topicInfo__description">{description}</p>
       <div className="topicInfo__deadline">
         <RxLapTimer />

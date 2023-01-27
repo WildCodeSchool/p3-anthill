@@ -22,9 +22,15 @@ function CommentCreate({ triggerGetComments }) {
     <div className="commentCreate">
       <div className="commentCreate__main">
         <form className="commentCreate__form">
-          <label htmlFor="commentContent">Your comment</label>
+          <label htmlFor="commentContent" className="commentCreate__title">
+            Your comment
+          </label>
           <input type="textarea" ref={refContent} />
-          <button onClick={handleSubmit} type="button">
+          <button
+            onClick={handleSubmit}
+            type="button"
+            className="button-delete"
+          >
             Send
           </button>
         </form>

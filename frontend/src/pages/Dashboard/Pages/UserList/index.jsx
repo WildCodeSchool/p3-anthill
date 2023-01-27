@@ -16,7 +16,7 @@ export default function UserList() {
       <ToggleModeButtons />
       {loading && <div>LOADING...</div>}
       <div
-        className={!toggleMode ? "userList__list__main" : "userList_grid__main"}
+        className={!toggleMode ? "userList_grid__main" : "userList__list__main"}
       >
         {users.length &&
           users.map((el) => {

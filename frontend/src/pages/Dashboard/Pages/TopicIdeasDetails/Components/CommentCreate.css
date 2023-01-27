@@ -1,10 +1,13 @@
-.commentCreate {
-  width: 100%;
-  min-height: 200px;
-}
-
 .commentCreate__main {
-  width: 100%;
+  color: var(--light-color);
+  background-color: var(--medium-background);
+  padding: 30px 25px;
+  margin: 1.5rem auto;
+  border-radius: var(--radius);
+  border: 10px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+  width: 50%;
 }
 
 .commentCreate__form {
@@ -14,7 +17,11 @@
 }
 
 .commentCreate__form > input {
-  width: 80%;
+  width: 90%;
   min-height: 100px;
-  margin-bottom: 10px;
+  border-radius: var(--radius);
+}
+
+.commentCreate__title {
+  margin: 20px 0 40px;
 }

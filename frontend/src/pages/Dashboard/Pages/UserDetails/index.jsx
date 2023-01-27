@@ -26,16 +26,26 @@ function UserDetails() {
             </div>
             <div className="userDetail__greetings">
               <img className="userDetail__mood" alt={user.mood_id} />
-              {userBadges &&
-                userBadges.map((badge) => (
-                  <img
-                    className="userDetail__badge"
-                    alt={badge.name}
-                    key={badge.id}
-                    src={`/png/${badge.path}`}
-                  />
-                ))}
-              {loadingBadges && <div>LOADING...</div>}
+              <div className="userDetail__badgesContainer">
+                {userBadges &&
+                  userBadges.map((badge) => (
+                    <div
+                      key={badge.badge_id}
+                      className="userDetail__badgeUpperContainer"
+                    >
+                      <div className="userDetail__badgeContainer">
+                        <img
+                          className={`userDetail__badge__${badge.name}`}
+                          alt={badge.name}
+                          key={badge.badge_id}
+                          src={`/png/${badge.path}`}
+                        />
+                      </div>
+                      <p className="userDetail__badgeName">{badge.name}</p>
+                    </div>
+                  ))}
+                {loadingBadges && <div>LOADING...</div>}
+              </div>
             </div>
           </div>
         </div>

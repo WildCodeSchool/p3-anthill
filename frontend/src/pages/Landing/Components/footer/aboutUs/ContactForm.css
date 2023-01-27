@@ -125,9 +125,8 @@
 
 .col .btn-ant {
   position: absolute;
-  rotate: 45deg;
   top: 8px;
-  left: 95px;
+  right: 0;
   font-size: 25px;
-  color: #102770;
+  color: var(--golden-color);
 }

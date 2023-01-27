@@ -13,8 +13,8 @@ function DeleteTopicButton({ topicId, triggerGetTopics }) {
   };
 
   return (
-    <div>
-      <button type="button" onClick={handleClick}>
+    <div className="div-delete">
+      <button type="button" className="button-delete" onClick={handleClick}>
         Delete
       </button>
     </div>

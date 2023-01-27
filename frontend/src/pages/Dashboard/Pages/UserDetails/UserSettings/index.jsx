@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
+import { GiAnt } from "react-icons/gi";
+import { IoIosAt } from "react-icons/io";
 import useCurrentUser from "../../../../../services/useCurrentUser";
-
 import useFetchLazy from "../../../../../services/useFetchLazy";
 
 import "./index.css";
@@ -23,29 +24,37 @@ function UserSettings() {
   };
 
   return (
-    <form className="settings_container" onSubmit={handleSubmit}>
-      <label htmlFor="pseudo">update your username</label>
-      <input
-        id="pseudo"
-        className="settings__pseudo"
-        placeholder="USERNAME"
-        name="Username"
-        type="text"
-        ref={refPseudo}
-      />
-      <label htmlFor="email">update your email</label>
-      <input
-        id="email"
-        className="settings__email"
-        placeholder="EMAIL"
-        name="email"
-        type="text"
-        ref={refEmail}
-      />
-      <button className="button" type="submit">
-        SUBMIT
-      </button>
-    </form>
+    <div className="settings_container">
+      <form className="settings_form" onSubmit={handleSubmit}>
+        <p className="settings__title">Update your info</p>
+        <label htmlFor="pseudo"> </label>
+        <GiAnt className="settings__antIcon" />
+        <input
+          id="pseudo"
+          className="settings__input"
+          placeholder="Your Pseudo"
+          name="Username"
+          type="text"
+          ref={refPseudo}
+        />
+        <label htmlFor="email"> </label>
+
+        <IoIosAt className="settings__emailIcon" />
+        <input
+          id="email"
+          className="settings__input"
+          placeholder="Your Email"
+          name="email"
+          type="text"
+          ref={refEmail}
+        />
+        <div className="settings__button">
+          <button className="btn" type="submit">
+            SUBMIT
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 
