@@ -26,11 +26,7 @@ function CommentCreate({ triggerGetComments }) {
             Your comment
           </label>
           <input type="textarea" ref={refContent} />
-          <button
-            onClick={handleSubmit}
-            type="button"
-            className="button-delete"
-          >
+          <button onClick={handleSubmit} type="button" className="button-send">
             Send
           </button>
         </form>
