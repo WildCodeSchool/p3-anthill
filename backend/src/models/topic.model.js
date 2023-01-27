@@ -11,6 +11,13 @@ async function getAllTopicCard() {
   return rows;
 }
 
+async function getTrendingTopicsByIdeasCount() {
+  const [rows] = await db.query(
+    "SELECT * FROM topicData ORDER BY nb_idea desc"
+  );
+  return rows;
+}
+
 async function getOne(id) {
   const [rows] = await db.query("SELECT * FROM TopicData WHERE id = ?", [id]);
 
@@ -71,6 +78,7 @@ async function deleteOne(id) {
 module.exports = {
   getAll,
   getAllTopicCard,
+  getTrendingTopicsByIdeasCount,
   getOne,
   insertOne,
   updateOne,
