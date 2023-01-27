@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import scrollController from "./Components/scrollController";
 import NavLanding from "./Components/NavLanding";
 import Footer from "./Components/footer/Footer";
@@ -6,7 +6,14 @@ import mockup from "../../../public/png/mockup.png";
 import "./index.css";
 
 function Landing() {
+  const navigate = useNavigate();
+
   const { isSticky, element } = scrollController();
+
+  const handleNavigate = () => {
+    navigate("/login");
+  };
+
   return (
     <div className="landing">
       <NavLanding sticky={isSticky} />
@@ -31,11 +38,16 @@ function Landing() {
         <section className="slider-us" id="section5">
           <Footer />
         </section>
-      </div>
-      <div>
-        <button type="button" className="buttonLanding">
-          <Link to="/login">Log in / Sign in</Link>
-        </button>
+        <div style={{ textAlign: "center" }}>
+          <button
+            type="button"
+            className="btn-login"
+            onClick={handleNavigate}
+            style={{ marginBottom: "100px" }}
+          >
+            Log in
+          </button>
+        </div>
       </div>
     </div>
   );
