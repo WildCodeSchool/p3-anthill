@@ -43,12 +43,15 @@ function Sidebar({ name, photo }) {
       path: "/dashboard/users",
     },
   ];
-
+  const handleClick = () => {
+    window.localStorage.removeItem("currentUser");
+  };
   console.warn(photo);
 
   const handleButtonClick = (button) => {
     setActiveButton(button);
   };
+
   return (
     <aside className="side-bar">
       <div className="user-profile-area">
@@ -72,11 +75,11 @@ function Sidebar({ name, photo }) {
             />
           ))}
         </ul>
-        <button type="button" className="signOut-btn">
-          <Link to="/login" className="signOut-btn">
+        <Link to="/login" className="signOut-btn">
+          <button type="button" className="signOut-btn" onClick={handleClick}>
             Log Out
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
     </aside>
   );

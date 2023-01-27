@@ -2,8 +2,6 @@ import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
-import "./BackgrdParticles.css";
-
 function BackgrdParticles() {
   const particlesInit = useCallback(async (engine) => {
     await loadFull(engine);
@@ -26,7 +24,7 @@ function BackgrdParticles() {
             },
             modes: {
               repulse: {
-                distance: 200,
+                distance: 300,
                 duration: 1.4,
               },
             },
@@ -41,7 +39,7 @@ function BackgrdParticles() {
               },
               distance: 200,
               enable: true,
-              opacity: 0.5,
+              opacity: 0.4,
               width: 1.5,
             },
             move: {
@@ -51,13 +49,13 @@ function BackgrdParticles() {
                 default: "bounce",
               },
               random: false,
-              speed: 4,
+              speed: 1.5,
               straight: false,
             },
             number: {
               density: {
                 enable: true,
-                area: 600,
+                area: 2000,
               },
               value: 100,
             },

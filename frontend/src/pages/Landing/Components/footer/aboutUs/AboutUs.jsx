@@ -34,7 +34,7 @@ function AboutUs() {
     {
       id: 4,
       name: "Herschel Tuil",
-      mood: "Product Manager",
+      mood: "Developer",
       photo: "./ContactPhotos/Herschel.jpeg",
       gitHub: "https://github.com/ht18",
       mail: "herschel.tuil@gmail.com",
@@ -61,7 +61,7 @@ function AboutUs() {
     {
       id: 7,
       name: "Quentin Feuvrais",
-      mood: "Super Developer",
+      mood: "Developer",
       photo: "./ContactPhotos/Quentin.jpg",
       gitHub: "https://github.com/Angeloox",
       mail: "feuvrais.quentin@gmail.com",

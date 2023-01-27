@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { GiAnt } from "react-icons/gi";
 import useFetchLazy from "../../../../services/useFetchLazy";
 
 import "./TopicCreation.css";
@@ -40,7 +40,9 @@ function TopicCreation({ closePopUp }) {
 
   return (
     <form className="topicCreation_container" onSubmit={submit}>
-      <label htmlFor="topic__nameTitle">TOPIC NAME</label>
+      <label className="topicCreation_label" htmlFor="topic__nameTitle">
+        Topic Name
+      </label>
       <input
         id="topic__nameTitle"
         className="topic__name"
@@ -50,26 +52,37 @@ function TopicCreation({ closePopUp }) {
         ref={refTitle}
         required
       />
-      <label htmlFor="deadline">DATE</label>
+      <label className="topicCreation_label" htmlFor="deadline">
+        Date
+      </label>
       <input
         id="deadline"
         className="deadline"
         type="datetime-local"
         ref={refDeadline}
       />
-      <label htmlFor="description__title">DESCRIPTION</label>
-      <input
-        id="description__title"
-        className="description"
-        placeholder="Write here a short description of your topic..."
-        name="description"
-        type="text"
-        ref={refDescription}
-        required
-      />
-      <button className="button" type="submit">
-        START
-      </button>
+      <div>
+        <div className="topicCreation_description">
+          <label className="topicCreation_label" htmlFor="description__title">
+            Description
+          </label>
+          <input
+            id="description__title"
+            className="description"
+            placeholder="Write here a short description of your topic..."
+            name="description"
+            type="text"
+            ref={refDescription}
+            required
+          />
+          <div className="topicCreation_bottom">
+            <GiAnt size={30} />
+            <button className="button-creation" type="submit">
+              Start
+            </button>
+          </div>
+        </div>
+      </div>
     </form>
   );
 }

@@ -13,7 +13,7 @@ CREATE TABLE `badge` (
   PRIMARY KEY (`id`)
 ); 
 
-INSERT INTO badge (name, path) VALUES ("creator", "/creator.png"), ("likesGiver", "/likesGiver.png"), ("thinker", "/thinker.png"), ("visitor", "/visitor.png");
+INSERT INTO badge (name, path) VALUES ("Creator", "/creator.png"), ("Likes", "/likesGiver.png"), ("Thinker", "/thinker.png"), ("Visitor", "/visitor.png");
 
 CREATE TABLE `mood` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -30,21 +30,23 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `pseudo` varchar(255) NULL,
   `description` varchar(255) NULL, 
-  `password` varchar(600) NULL,
+  `hashedPassword` varchar(600) NULL,
   `fullname` varchar(255) NOT NULL,
   `googleUserId` varchar(255) NULL,
   `mood_id` int NULL,
+  UNIQUE(`pseudo`),
+  UNIQUE(`email`),
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_user_mood` FOREIGN KEY (`mood_id`) REFERENCES `mood` (`id`)
 );
 
-INSERT INTO user (description, pseudo, picture, email, password, fullname, googleUserId, mood_id) 
+INSERT INTO user (description, pseudo, picture, email, hashedPassword, fullname, googleUserId, mood_id) 
 VALUES 
-  ("description_1", "pseudo_1", "picture_user_1", "email_1@gmail.com", "user_password_1", "user_fullname_1", "user_google_id_1", 1), 
-  ("description_2", "pseudo_2", "picture_user_2", "email_2@gmail.com", "user_password_2", "user_fullname_2", "user_google_id_2", 2), 
-  ("description_3", "pseudo_3", "picture_user_3", "email_3@gmail.com", "user_password_3", "user_fullname_3", "user_google_id_3", 3), 
-  ("description_4", "pseudo_4", "picture_user_4", "email_4@gmail.com", "user_password_4", "user_fullname_4", "user_google_id_4", 4), 
-  ("description_5", "pseudo_5", "picture_user_5", "email_5@gmail.com", "user_password_5", "user_fullname_5", "user_google_id_5", 1)
+  ("description_1", "pseudo_1", "picture_user_1", "email_1@gmail.com", "user_hashedPassword_1", "user_fullname_1", "user_google_id_1", 1), 
+  ("description_2", "pseudo_2", "picture_user_2", "email_2@gmail.com", "user_hashedPassword_2", "user_fullname_2", "user_google_id_2", 2), 
+  ("description_3", "pseudo_3", "picture_user_3", "email_3@gmail.com", "user_hashedPassword_3", "user_fullname_3", "user_google_id_3", 3), 
+  ("description_4", "pseudo_4", "picture_user_4", "email_4@gmail.com", "user_hashedPassword_4", "user_fullname_4", "user_google_id_4", 4), 
+  ("description_5", "pseudo_5", "picture_user_5", "email_5@gmail.com", "user_hashedPassword_5", "user_fullname_5", "user_google_id_5", 1)
 ;
 
 CREATE TABLE `topic` (
@@ -62,17 +64,17 @@ CREATE TABLE `topic` (
 
 INSERT INTO topic (deadline, description, is_private, creator_id, title, is_closed, is_comment_mode) 
 VALUES 
-  (curdate(), "topic_description_1", 0, 1, "topic_title_1", 0, 1), 
-  (curdate(), "topic_description_2", 0, 2, "topic_title_2", 0, 1), 
-  (curdate(), "topic_description_3", 0, 3, "topic_title_3", 0, 1), 
-  (curdate(), "topic_description_4", 0, 4, "topic_title_4", 0, 1), 
-  (curdate(), "topic_description_5", 0, 1, "topic_title_5", 0, 1), 
-  (curdate(), "topic_description_6", 0, 1, "topic_title_6", 0, 1), 
-  (curdate(), "topic_description_7", 0, 1, "topic_title_7", 0, 0), 
-  (curdate(), "topic_description_8", 0, 1, "topic_title_8", 0, 0), 
-  (curdate(), "topic_description_9", 0, 1, "topic_title_9", 1, 0), 
-  (curdate(), "topic_description_10", 0, 2, "topic_title_10", 0, 0), 
-  (curdate(), "topic_description_11", 0, 2, "topic_title_11", 1, 0)
+  (curdate(), "How should we rename Gwenaël  ?", 0, 1, "Gwenaël Nickname", 0, 1), 
+  (curdate(), "Which day should we fire Johanna ?", 0, 2, "Johanna's departure", 0, 1), 
+  (curdate(), "Which cake for the departure of Johanna", 0, 1, "Johanna's leaving party's cake", 0, 1), 
+  (curdate(), "We all know that we don't drink just one coffee a day. How could the cafe service at Wild Code School be improved?", 0, 3, "Coffee problem", 0, 1), 
+  (curdate(), "Which bar should we go to on Friday nights?", 0, 4, "New bar ?", 0, 1), 
+  (curdate(), "Would you be intereseted in a lan party ? Please respond by a simple 'no' or propose a day and a game", 0, 1, "Lan party ?", 0, 1), 
+  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 0, 0), 
+  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 0, 0), 
+  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 1, 0), 
+  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 0, 0), 
+  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0)
 ;
 
 CREATE TABLE `bubble` (

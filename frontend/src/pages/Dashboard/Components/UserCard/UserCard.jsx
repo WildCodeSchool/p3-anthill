@@ -7,7 +7,7 @@ export default function UserCard({ user }) {
   const { toggleMode } = useContext(ToggleModeContext);
 
   return (
-    <div className={!toggleMode ? "userCard__list" : "userCard__grid"}>
+    <div className={!toggleMode ? "userCard__grid" : "userCard__list"}>
       <div className="userCard__header">
         <img className="userCard__picture" alt={user.picture} />
         <div className="userCard__names">
@@ -21,7 +21,7 @@ export default function UserCard({ user }) {
       </div>
       <div
         className={
-          !toggleMode ? "userCard__contactList" : "userCard__contactGrid"
+          !toggleMode ? "userCard__contactGrid" : "userCard__contactList"
         }
       >
         <Link to={`/dashboard/users/${user.id}`}>

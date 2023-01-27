@@ -1,0 +1,33 @@
+.section01 {
+  margin: auto;
+  height: 70vh;
+  width: 80%;
+}
+.section01:not(.blob) {
+  box-sizing: border-box;
+  padding: 10rem;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(15px);
+  border-radius: 50%;
+  user-select: none;
+  color: white;
+}
+
+.section01 h1,
+p {
+  margin: 0;
+  /* text-transform: uppercase; */
+}
+
+.blob {
+  animation: blob 1s linear forwards;
+}
+@keyframes blob {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
