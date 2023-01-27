@@ -1,18 +1,41 @@
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
-import Drag from "./Drag";
 
-function Graph({
-  data,
-  width,
-  height,
-  dragBehavior,
-  simulation,
-  links,
-  nodes,
-}) {
+function Graph({ width, height, links, nodes }) {
   const svgRef = useRef(null);
+
   useEffect(() => {
+    const simulation = d3
+      .forceSimulation(nodes)
+      .force(
+        "link",
+        d3.forceLink(links).id((d) => d.id)
+      )
+      .force("charge", d3.forceManyBody().strength(-20000))
+      .force("center", d3.forceCenter(width / 2, height / 2));
+
+    const dragstarted = (e) => {
+      if (!e.active) simulation.alphaTarget(0.3).restart();
+      e.subject.fx = e.subject.x;
+      e.subject.fy = e.subject.y;
+    };
+    const dragged = (e) => {
+      e.subject.fx = e.x;
+      e.subject.fy = e.y;
+    };
+    const dragended = (e) => {
+      if (!e.active) simulation.alphaTarget(0);
+      e.subject.fx = null;
+      e.subject.fy = null;
+    };
+
+    const dragBehavior = () =>
+      d3
+        .drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended);
+
     const svg = d3
       .select(svgRef.current)
       .attr("viewBox", [0, 0, width, height]);
@@ -51,7 +74,7 @@ function Graph({
       .selectAll(".node")
       .data(nodes)
       .join("g")
-      .call(dragBehavior);
+      .call(dragBehavior());
 
     node
       .append("rect")
@@ -95,12 +118,9 @@ function Graph({
         (d) => `translate(${d.x - 0.5 * nodeWidth},${d.y - 0.5 * nodeHeight})`
       );
     });
-  }, [data, width, height]);
-  return (
-    <svg ref={svgRef}>
-      <Drag simulation={simulation} dragBehavior={dragBehavior} />
-    </svg>
-  );
+    return () => simulation.stop();
+  }, []);
+  return <svg ref={svgRef} />;
 }
 
 export default Graph;
