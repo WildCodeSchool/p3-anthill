@@ -8,6 +8,7 @@ const { moodRouter } = require("./mood.route");
 const { voteRouter } = require("./vote.route");
 const { bubbleRouter } = require("./bubble.route");
 const { slackRouter } = require("./slack.route");
+const { bubbleRouter } = require("./bubble.route");
 
 const router = express.Router();
 
