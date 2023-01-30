@@ -1,5 +1,4 @@
 const ideaModel = require("../models/idea.model");
-// const ideaValidator = require("../validators/idea.validator");
 
 async function list(req, res) {
   const ideas = await ideaModel.getAll();
@@ -7,11 +6,14 @@ async function list(req, res) {
 }
 
 async function listIdeasOfOneTopic(req, res) {
-  const ideas = await ideaModel.getAllOfOneTopic(req.params.id);
-  if (ideas.length === 0) {
-    res.sendStatus(404);
+  if (!req.params.id) {
+    res.sendStatus(400);
     return;
   }
+
+  const userId = req.user.id;
+  const ideas = await ideaModel.getAllOfOneTopic(userId, req.params.id);
+
   res.json(ideas);
 }
 
@@ -20,6 +22,7 @@ async function get(req, res) {
     res.sendStatus(400);
     return;
   }
+
   const idea = await ideaModel.getOne(req.params.id);
   if (!idea) {
     res.sendStatus(404);
@@ -29,26 +32,31 @@ async function get(req, res) {
 }
 
 async function create(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.params.topicId) {
     res.sendStatus(400);
     return;
   }
 
-  const insertId = await ideaModel.insertOne(req.body);
+  const creatorId = req.user.id;
+  const insertId = await ideaModel.insertOne(
+    req.body,
+    req.params.topicId,
+    creatorId
+  );
   if (!insertId) {
     res.sendStatus(404);
   }
-  res.status(201).json({ insertId });
+
+  res.status(201).send({ insertId });
 }
 
 async function update(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.params.id) {
     res.sendStatus(400);
     return;
   }
 
   const affectedRows = await ideaModel.updateOne(req.params.id, req.body);
-
   if (affectedRows === 0) {
     res.sendStatus(404);
     return;
@@ -63,8 +71,7 @@ async function remove(req, res) {
     return;
   }
 
-  const affectedRows = await ideaModel.deleteOne(req.params.id);
-
+  const affectedRows = await ideaModel.deleteOne(req.params.id, req.user.id);
   if (affectedRows === 0) {
     res.sendStatus(404);
     return;

@@ -1,36 +1,44 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { BsFillPersonFill } from "react-icons/bs";
 import { IoIosAt, IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
-import ButtonSignUpGoogle from "./ButtonSignUpGoogle";
+import useFetchLazy from "../../../services/useFetchLazy";
 
 function SignUpForm() {
-  const usernameRef = useRef("");
-  const pseudoRef = useRef("");
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
+  const usernameRef = useRef();
+  const pseudoRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
   const navigate = useNavigate();
 
-  const URL = import.meta.env.VITE_BACKEND_URL;
+  const { trigger: triggerSignUp, data: user } = useFetchLazy({
+    method: "post",
+    path: "/users/signup",
+  });
 
-  const register = () => {
-    axios
-      .post(`${URL}/api/users`, {
-        email: emailRef.current?.value,
-        fullname: usernameRef.current?.value,
-        pseudo: pseudoRef.current?.value,
-        password: passwordRef.current?.value,
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    triggerSignUp({
+      email: emailRef.current?.value,
+      fullname: usernameRef.current?.value,
+      pseudo: pseudoRef.current?.value,
+      password: passwordRef.current?.value,
+    });
   };
 
-  const handleSubmit = () => {
-    navigate("/dashboard");
-  };
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({
+          token: user.token,
+        })
+      );
+      navigate("/dashboard");
+    }
+  }, [user]);
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-group">
@@ -61,7 +69,7 @@ function SignUpForm() {
           type="email"
           className="form-style"
           placeholder="Your Email"
-          autoComplete="off"
+          autoComplete="email"
           ref={emailRef}
         />
       </div>
@@ -71,15 +79,14 @@ function SignUpForm() {
           type="password"
           className="form-style"
           placeholder="Your Password"
-          autoComplete="off"
+          autoComplete="new-password"
           ref={passwordRef}
         />
       </div>
-      <div className="buttons">
-        <button onClick={register} type="submit" className="btn">
+      <div className="submit-button-signup">
+        <button type="submit" className="btn">
           submit
         </button>
-        <ButtonSignUpGoogle />
       </div>
     </form>
   );

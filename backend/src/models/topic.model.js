@@ -11,17 +11,17 @@ async function getAllTopicCard() {
   return rows;
 }
 
-async function getOne(id) {
+async function getTrendingTopicsByIdeasCount() {
   const [rows] = await db.query(
-    "SELECT t.id, t.title, u.fullname AS creator_name, t.description, t.deadline, cm.topic_id AS comment_mode_topic_id " +
-      "FROM topic AS t " +
-      "LEFT JOIN comment_mode AS cm ON cm.topic_id = t.id " +
-      "LEFT JOIN user AS u ON u.id = t.creator_id " +
-      "WHERE t.id = ?",
-    [id]
+    "SELECT * FROM topicData ORDER BY nb_idea desc"
   );
+  return rows;
+}
 
-  if (rows.length === 0) {
+async function getOne(id) {
+  const [rows] = await db.query("SELECT * FROM TopicData WHERE id = ?", [id]);
+
+  if (!rows[0] || rows[0].id === null) {
     return null;
   }
 
@@ -36,11 +36,11 @@ async function getAllTopicsOfOneUser(userId) {
   return rows;
 }
 
-async function insertOne(topic) {
-  const { deadline, description, title } = topic;
+async function insertOne(topic, creatorId) {
+  const { deadline, description, title, isCommentMode } = topic;
   const [result] = await db.query(
-    "INSERT INTO topic (deadline, description, title) VALUES (?, ?, ?)",
-    [deadline, description, title]
+    "INSERT INTO topic (deadline, description, title, creator_id, is_comment_mode) VALUES (?, ?, ?, ?, ?)",
+    [deadline, description, title, creatorId, isCommentMode]
   );
 
   if (result.length === 0) {
@@ -50,12 +50,22 @@ async function insertOne(topic) {
   return result.insertId;
 }
 
-async function updateOne(id, topic) {
+async function updateOne(id, slackWorkingPlaceId, slackChannel, topic) {
   const { deadline, description, isPrivate, creatorId, title, isClosed } =
     topic;
   const [result] = await db.query(
-    "UPDATE topic SET deadline = ?, description = ?, is_private = ?, creator_id = ?, title = ?, is_closed= ? WHERE id = ?",
-    [deadline, description, isPrivate, creatorId, title, isClosed, id]
+    "UPDATE topic SET deadline = ?, description = ?, is_private = ?, creator_id = ?, title = ?, is_closed= ?, slack_working_place_id = ?, slack_channel = ? WHERE id = ?",
+    [
+      deadline,
+      description,
+      isPrivate,
+      creatorId,
+      title,
+      isClosed,
+      slackWorkingPlaceId,
+      slackChannel,
+      id,
+    ]
   );
 
   if (result.length === 0) {
@@ -65,8 +75,11 @@ async function updateOne(id, topic) {
   return result.affectedRows;
 }
 
-async function deleteOne(id) {
-  const [result] = await db.query("DELETE FROM topic WHERE id = ?", [id]);
+async function updateOnlySlackInfos(id, slackChannelLink) {
+  const [result] = await db.query(
+    "UPDATE topic SET slack_channel_link = ? WHERE id = ?",
+    [slackChannelLink, id]
+  );
 
   if (result.length === 0) {
     return null;
@@ -75,12 +88,27 @@ async function deleteOne(id) {
   return result.affectedRows;
 }
 
+async function deleteOne(topicId, userId) {
+  const [result1] = await db.query(
+    "DELETE FROM topic WHERE id = ? AND creator_id = ?",
+    [topicId, userId]
+  );
+
+  if (result1.length === 0) {
+    return null;
+  }
+
+  return result1.affectedRows;
+}
+
 module.exports = {
   getAll,
   getAllTopicCard,
+  getTrendingTopicsByIdeasCount,
   getOne,
   insertOne,
   updateOne,
   deleteOne,
   getAllTopicsOfOneUser,
+  updateOnlySlackInfos,
 };

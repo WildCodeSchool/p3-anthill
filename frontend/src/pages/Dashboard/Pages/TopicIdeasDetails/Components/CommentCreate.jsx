@@ -1,41 +1,36 @@
 import { useRef } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import "./CommentCreate.css";
+import useFetchLazy from "../../../../../services/useFetchLazy";
 
-function CommentCreate() {
+function CommentCreate({ triggerGetComments }) {
   const refContent = useRef();
   const { topicId, ideaId } = useParams();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const data = JSON.stringify({
-      content: refContent.current.value,
-    });
+  const { trigger: triggerPostComment } = useFetchLazy({
+    path: `/topics/${topicId}/ideas/${ideaId}/comments`,
+    method: "post",
+  });
 
-    const config = {
-      method: "post",
-      url: `${
-        import.meta.env.VITE_BACKEND_URL
-      }/api/topics/${topicId}/ideas/${ideaId}/comments`,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data,
-    };
-
-    axios(config)
-      .then(() => {})
-      .catch(() => {});
-  }
+  const handleSubmit = async () => {
+    await triggerPostComment({ content: refContent.current?.value });
+    triggerGetComments();
+    refContent.current.value = "";
+  };
 
   return (
     <div className="commentCreate">
       <div className="commentCreate__main">
         <form className="commentCreate__form">
-          <label htmlFor="commentContent">Your comment</label>
+          <label htmlFor="commentContent" className="commentCreate__title">
+            Your comment
+          </label>
           <input type="textarea" ref={refContent} />
-          <button onClick={handleSubmit} type="button">
+          <button
+            onClick={handleSubmit}
+            type="button"
+            className="button-delete"
+          >
             Send
           </button>
         </form>

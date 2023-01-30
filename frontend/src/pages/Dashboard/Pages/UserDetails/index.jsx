@@ -5,8 +5,9 @@ import "./index.css";
 
 function UserDetails() {
   const { id } = useParams();
+
   const { data: userBadges, loading: loadingBadges } = useFetch({
-    path: `/badges/${id}/badges`,
+    path: `/users/${id}/badges`,
     method: "get",
   });
   const { data: user, loading: loadingUser } = useFetch({
@@ -18,7 +19,6 @@ function UserDetails() {
     <div className="userDetail">
       <div className="userDetail__card">
         <div className="userDetail__header">
-          <img className="userDetail__picture" alt={user.picture} />
           <div className="userDetail__infos">
             <div className="userDetail__names">
               <h3 className="userDetail__name">{user.fullname}</h3>
@@ -26,15 +26,26 @@ function UserDetails() {
             </div>
             <div className="userDetail__greetings">
               <img className="userDetail__mood" alt={user.mood_id} />
-              {userBadges &&
-                userBadges.map((elt) => (
-                  <img
-                    className="userDetail__badge"
-                    alt={elt.picture}
-                    key={elt.id}
-                  />
-                ))}
-              {loadingBadges && <div>LOADING...</div>}
+              <div className="userDetail__badgesContainer">
+                {userBadges &&
+                  userBadges.map((badge) => (
+                    <div
+                      key={badge.badge_id}
+                      className="userDetail__badgeUpperContainer"
+                    >
+                      <div className="userDetail__badgeContainer">
+                        <img
+                          className={`userDetail__badge__${badge.name}`}
+                          alt={badge.name}
+                          key={badge.badge_id}
+                          src={`/png/${badge.path}`}
+                        />
+                      </div>
+                      <p className="userDetail__badgeName">{badge.name}</p>
+                    </div>
+                  ))}
+                {loadingBadges && <div>LOADING...</div>}
+              </div>
             </div>
           </div>
         </div>

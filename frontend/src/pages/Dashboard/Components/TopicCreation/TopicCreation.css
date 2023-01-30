@@ -1,0 +1,60 @@
+.topicCreation_container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 50px 30px;
+}
+
+.topicCreation_label {
+  font-size: 20px;
+  margin: 30px 0 10px;
+}
+
+.topic__name {
+  border-radius: 8px;
+  border-style: none;
+  width: 40%;
+  height: 2rem;
+}
+
+.description {
+  padding: 2%;
+  border-radius: 8px;
+  border-style: none;
+  height: 8rem;
+}
+
+.deadline {
+  padding: 2%;
+  width: 20%;
+  border-radius: 8px;
+  border-style: none;
+}
+
+.topicCreation_description {
+  display: flex;
+  flex-direction: column;
+}
+
+.topicCreation_bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button-creation {
+  border-radius: 8px;
+  border-style: none;
+  width: 70px;
+  height: 30px;
+  font-weight: 600;
+  margin-top: 20px;
+  background-color: var(--golden-color);
+  color: var(--dark-background);
+  text-transform: uppercase;
+}
+
+.button-creation:hover {
+  background-color: var(--small-touch);
+  color: var(--golden-color);
+  transition: all 200ms linear;
+}

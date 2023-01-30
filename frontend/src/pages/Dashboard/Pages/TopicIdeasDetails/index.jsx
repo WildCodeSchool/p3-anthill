@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../../../services/useFetch";
+import useFetchLazy from "../../../../services/useFetchLazy";
 import CommentCard from "./Components/CommentCard";
 import CommentCreate from "./Components/CommentCreate";
 import "./index.css";
 
 function TopicIdeasDetails() {
   const { topicId, ideaId } = useParams();
+
   const [isClicked, setIsClicked] = useState(false);
-  const { data: comments, loadingComments } = useFetch({
+
+  const {
+    trigger: triggerGetComments,
+    data: comments,
+    loading: loadingComments,
+  } = useFetchLazy({
     path: `/topics/${topicId}/ideas/${ideaId}/comments`,
     method: "get",
   });
@@ -16,10 +23,13 @@ function TopicIdeasDetails() {
     path: `/ideas/${ideaId}`,
     method: "get",
   });
-
   function handleClick() {
     setIsClicked(true);
   }
+
+  useEffect(() => {
+    triggerGetComments();
+  }, []);
 
   return (
     <div className="topicIdeasDetails__main">
@@ -30,7 +40,17 @@ function TopicIdeasDetails() {
           <div className="topicIdeaDetails__commentsList">
             {comments &&
               comments.map((comment) => (
-                <CommentCard key={comment.id} comment={comment} />
+                <CommentCard
+                  key={comment.id}
+                  id={comment.id}
+                  pseudo={comment.pseudo}
+                  picture={comment.picture}
+                  content={comment.content}
+                  upVote={comment.up_vote}
+                  canVote={comment.canVote}
+                  triggerGetComments={triggerGetComments}
+                  comment={comment}
+                />
               ))}
           </div>
           <div
@@ -42,7 +62,11 @@ function TopicIdeasDetails() {
             onKeyDown={() => {}}
             role="button"
           >
-            {isClicked ? <CommentCreate /> : <div id="createComment">+</div>}
+            {isClicked ? (
+              <CommentCreate triggerGetComments={triggerGetComments} />
+            ) : (
+              <div id="createComment">+</div>
+            )}
           </div>
         </div>
       </div>

@@ -5,12 +5,13 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Main from "./pages/Dashboard/Layout/Main";
 import TopicsPage from "./pages/Dashboard/Pages/TopicList";
-import TopicCommentDetails from "./pages/Dashboard/Pages/TopicCommentDetails";
 import UserList from "./pages/Dashboard/Pages/UserList";
 import UserDetails from "./pages/Dashboard/Pages/UserDetails";
-import UserDetailsTopics from "./pages/Dashboard/Pages/UserDetails/UserDetailsTopics";
+import UserDetailsTopics from "./pages/Dashboard/Pages/UserDetailsTopics";
 import { ToggleModeProvider } from "./contexts/ToggleModeContext";
 import TopicIdeasDetails from "./pages/Dashboard/Pages/TopicIdeasDetails";
+import TopicDetails from "./pages/Dashboard/Pages/TopicDetails/TopicDetails";
+import UserSettings from "./pages/Dashboard/Pages/UserDetails/UserSettings";
 
 function App() {
   return (
@@ -23,9 +24,9 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />}>
               <Route index element={<Main />} />
               <Route path="topics" element={<TopicsPage />} />
-              <Route path="topics/:id" element={<TopicCommentDetails />} />
+              <Route path="topics/:topicId" element={<TopicDetails />} />
               <Route
-                path="topics/:id/ideas/:ideaId"
+                path="topics/:topicId/ideas/:ideaId"
                 element={<TopicIdeasDetails />}
               />
               <Route path="users" element={<UserList />} />
@@ -34,6 +35,7 @@ function App() {
                 path="users/:userId/topics"
                 element={<UserDetailsTopics />}
               />
+              <Route path="users/settings" element={<UserSettings />} />
             </Route>
           </Routes>
         </Router>

@@ -1,4 +1,10 @@
-.topicsList {
+.topic__list__main {
   display: flex;
+  flex-direction: column;
+}
+
+.topic_grid__main {
+  display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }

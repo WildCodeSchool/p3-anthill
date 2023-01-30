@@ -1,0 +1,57 @@
+.popup-body {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  margin: auto;
+  margin-left: 5%;
+  border-radius: var(--radius);
+  color: var(--golden-color);
+  background-color: var(--medium-background);
+  box-shadow: var(--golden-color) 5px 5px 15px;
+  border: 10px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.35) 1px 1px 120px, inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.popup-body {
+  animation: zoom-in 1s;
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(10) translateY(50%);
+    opacity: 0;
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 30px 0px;
+}
+
+.title-create-topic {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 35px;
+}
+
+.close__btn {
+  background: none;
+  color: var(--golden-color);
+  font-weight: 600;
+  font-size: 30px;
+  background-color: var(--dark-background);
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  right: 30px;
+}
+
+.close__btn:hover {
+  color: var(--small-touch);
+}

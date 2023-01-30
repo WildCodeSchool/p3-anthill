@@ -4,13 +4,25 @@ import { useState } from "react";
 const URL = import.meta.env.VITE_BACKEND_URL;
 
 function useFetchLazy({ path, method }) {
-  const [data, setData] = useState([]);
+  const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  };
+
+  const [data, setData] = useState(undefined);
   const [isSuccess, setIsSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const trigger = async (body) => {
+
+  const trigger = async (body = undefined) => {
     setLoading(true);
-    await axios[method](`${URL}/api${path}`, body)
+    await axios({
+      method,
+      url: `${URL}/api${path}`,
+      data: body,
+      headers,
+    })
       .then((res) => {
         setData(res.data);
         setIsSuccess(true);
