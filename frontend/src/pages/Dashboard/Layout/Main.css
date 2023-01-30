@@ -1,0 +1,6 @@
+.title-top {
+  text-align: center;
+  color: var(--golden-color);
+  font-size: var(--textXL);
+  margin: 50px;
+}

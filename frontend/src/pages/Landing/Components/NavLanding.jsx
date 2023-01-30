@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
-
+import { useNavigate } from "react-router-dom";
+import logo from "../../../assets/Logo/Logo";
 import BackgrdParticles from "../../../assets/BackgrdParticles/BackgrdParticles";
-import Logo from "../../../assets/Logo/Logo";
 import "./NavLanding.css";
 
 const {
@@ -12,6 +12,12 @@ function NavLanding({ sticky }) {
   const textRef = useRef(null);
   const stageRef = useRef(null);
 
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/login");
+  };
+
   useEffect(() => {
     set(stageRef.current, { autoAlpha: 1 });
 
@@ -21,12 +27,10 @@ function NavLanding({ sticky }) {
     });
 
     to(textRef.current, {
-      y: 80,
-      fontWeight: 600,
-      fontStretch: 40,
+      y: 40,
       scaleY: 1,
       ease: "elastic(0.3, 0.1)",
-      duration: 1.5,
+      duration: 1,
       delay: 0.5,
       stagger: {
         each: 0.05,
@@ -37,25 +41,25 @@ function NavLanding({ sticky }) {
 
   return (
     <div className="nav-landing">
+      <div className="container-btn-login">
+        <button type="button" onClick={handleNavigate} className="btn-login">
+          Log in
+        </button>
+      </div>
       <BackgrdParticles />
       <div className="stage">
         <div className="content" ref={stageRef}>
-          <h1 className="txt" ref={textRef}>
-            AntHill
-          </h1>
+          <img src={logo} alt="" ref={textRef} className="txt" />
         </div>
         <div>
           <h3 className="span loader">
             <span className="m">Make</span>
             <span className="m">Ideas</span>
-            <span className="m">Brilli</span>
-            <span className="m">-</span>
-            <span className="m">Ant</span>
+            <span className="m">Brilli-ant</span>
           </h3>
         </div>
       </div>
       <nav className={sticky ? "nav-container top-first" : "nav-container"}>
-        <Logo />
         <a className="nav-tab" href="#section1">
           INTRO
         </a>
@@ -63,7 +67,7 @@ function NavLanding({ sticky }) {
           DASHBOARD
         </a>
         <a className="nav-tab" href="#section3">
-          FEATURE
+          FEATURES
         </a>
         <a className="nav-tab" href="#section4">
           CUSTOMER

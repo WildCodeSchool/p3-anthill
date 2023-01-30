@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import { MdAllInclusive } from "react-icons/md";
 import { TbCrown } from "react-icons/tb";
+import { BsPencil } from "react-icons/bs";
 import { GiAnt } from "react-icons/gi";
 import { RiContactsLine } from "react-icons/ri";
 import { FiSettings } from "react-icons/fi";
@@ -12,53 +13,60 @@ import SideBarListItems from "../Components/SideBarListItems/SideBarListItems";
 
 import "./Sidebar.css";
 
-function Sidebar({ name, photo }) {
+function Sidebar({ userId, name, photo }) {
   const [activeButton, setActiveButton] = useState(null);
   const sideBarList = [
     {
       id: 1,
-      text: "My Topics",
+      text: "Top Topics",
       icon: <TbCrown className="icon" />,
       active: activeButton === 1,
-      path: `/dashboard/users/1/topics`, // getCurrentUser
+      path: `/dashboard`, // getCurrentUser
     },
     {
       id: 2,
-      text: "All Topics",
-      icon: <MdAllInclusive className="icon" />,
+      text: "My Topics",
+      icon: <BsPencil className="icon" />,
       active: activeButton === 2,
-      path: "/dashboard/topics",
+      path: `/dashboard/users/${userId}/topics`,
     },
     {
       id: 3,
-      text: "Co Topics",
-      icon: <GiAnt className="icon" />,
+      text: "All Topics",
+      icon: <MdAllInclusive className="icon" />,
       active: activeButton === 3,
-      path: "/dashboard",
+      path: "/dashboard/topics",
     },
     {
       id: 4,
-      text: "Contacts",
-      icon: <RiContactsLine className="icon" />,
+      text: "Co Topics",
+      icon: <GiAnt className="icon" />,
       active: activeButton === 4,
-      path: "/dashboard/users",
+      path: "/dashboard",
     },
     {
       id: 5,
+      text: "Contacts",
+      icon: <RiContactsLine className="icon" />,
+      active: activeButton === 5,
+      path: "/dashboard/users",
+    },
+    {
+      id: 6,
       text: "Settings",
       icon: <FiSettings className="icon" />,
       active: activeButton === 5,
-      path: "/dashboard/users/1/settings",
+      path: `/dashboard/users/${userId}/settings`,
     },
   ];
-  const handleClick = () => {
+  const handleLogout = () => {
     window.localStorage.removeItem("currentUser");
   };
-  console.warn(photo);
 
   const handleButtonClick = (button) => {
     setActiveButton(button);
   };
+
   return (
     <aside className="side-bar">
       <div className="user-profile-area">
@@ -83,7 +91,7 @@ function Sidebar({ name, photo }) {
           ))}
         </ul>
         <Link to="/login" className="signOut-btn">
-          <button type="button" className="signOut-btn" onClick={handleClick}>
+          <button type="button" className="signOut-btn" onClick={handleLogout}>
             Log Out
           </button>
         </Link>

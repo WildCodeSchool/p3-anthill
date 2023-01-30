@@ -2,6 +2,11 @@ const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
 
 const login = (req, res) => {
+  if (!req.user.hashedPassword || !req.body.password) {
+    res.sendStatus(400);
+    return;
+  }
+
   argon2
     .verify(req.user.hashedPassword, req.body.password)
     .then((isVerified) => {

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-
+import useCurrentUser from "../../../../../services/useCurrentUser";
 import useFetchLazy from "../../../../../services/useFetchLazy";
 
 import "./index.css";
@@ -7,19 +7,19 @@ import "./index.css";
 function UserSettings() {
   const [alert, setAlert] = useState(false);
 
-  const refPseudo = useRef();
-  const refEmail = useRef();
-
+  const { currentUser } = useCurrentUser();
+  const refPseudo = useRef(undefined);
+  const refEmail = useRef(undefined);
   const { trigger: triggerPatchSettings } = useFetchLazy({
-    path: "/users/1",
+    path: `/users/${currentUser?.id}`,
     method: "patch",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     triggerPatchSettings({
-      pseudo: refPseudo.current.value,
-      email: refEmail.current.value,
+      pseudo: refPseudo.current?.value,
+      email: refEmail.current?.value,
     });
     e.preventDefault();
     setAlert(true);
@@ -46,7 +46,6 @@ function UserSettings() {
           type="text"
           ref={refEmail}
         />
-        <img src="" alt="img" />
         <button className="settings__btn" type="submit">
           SUBMIT
         </button>

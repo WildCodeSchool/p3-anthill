@@ -1,13 +1,18 @@
 .topicCreation_container {
-  display: grid;
-  grid-column: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 50px 30px;
+}
+
+.topicCreation_label {
+  font-size: 20px;
+  margin: 30px 0 10px;
 }
 
 .topic__name {
   border-radius: 8px;
   border-style: none;
-  margin-top: 5%;
-  width: 30%;
+  width: 40%;
   height: 2rem;
 }
 
@@ -15,8 +20,6 @@
   padding: 2%;
   border-radius: 8px;
   border-style: none;
-  margin-top: 5%;
-  width: 80%;
   height: 8rem;
 }
 
@@ -25,14 +28,33 @@
   width: 20%;
   border-radius: 8px;
   border-style: none;
-  margin-top: 5%;
 }
 
-.button {
+.topicCreation_description {
+  display: flex;
+  flex-direction: column;
+}
+
+.topicCreation_bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button-creation {
   border-radius: 8px;
   border-style: none;
-  width: 60px;
+  width: 70px;
   height: 30px;
-  margin-top: 5%;
-  margin-left: 80%;
+  font-weight: 600;
+  margin-top: 20px;
+  background-color: var(--golden-color);
+  color: var(--dark-background);
+  text-transform: uppercase;
+}
+
+.button-creation:hover {
+  background-color: var(--small-touch);
+  color: var(--golden-color);
+  transition: all 200ms linear;
 }

@@ -10,17 +10,21 @@ function TopicCommentDetails({
   ideas,
   loadingIdeas,
   triggerGetIdeas,
+  triggerGetTopic,
 }) {
   return (
-    <div className="ideaCard__title">
+    <div className="ideaCard__page">
       {loadingTopic && <h2 className="loading">LOADING ...</h2>}
       {topic && (
         <TopicInfo
           key={topic.id}
+          id={topic.id}
           title={topic.title}
-          creatorName={topic.creator_name}
+          creatorName={topic.fullname}
           description={topic.description}
           deadline={topic.deadline}
+          slackChannelLink={topic.slack_channel_link}
+          triggerGetTopic={triggerGetTopic}
         />
       )}
       <div>
