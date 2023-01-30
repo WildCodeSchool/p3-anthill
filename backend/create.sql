@@ -4,7 +4,7 @@ CREATE DATABASE `p3-anthill-db`;
 
 USE `p3-anthill-db`;
 
-DROP TABLE IF EXISTS `badge`, `mood`, `user`, `topic`, `bubble`, `idea`, `comment`, `link`, `user_badge`, `user_topic`, `upvote_comment_user`, `upvote_idea_user`;
+DROP TABLE IF EXISTS `badge`, `mood`, `user`, `topic`, `bubble`, `idea`, `comment`, `link`, `user_badge`, `user_topic`, `upvote_comment_user`, `upvote_idea_user`, `upvote_bubble_user`;
 
 CREATE TABLE `badge` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -241,3 +241,26 @@ LEFT JOIN CommentUpvotes AS cu ON cu.comment_id = c.id
 INSERT IGNORE INTO upvote_idea_user (user_id, idea_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);
 
 INSERT IGNORE INTO upvote_comment_user (user_id, comment_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);
+CREATE TABLE `upvote_bubble_user` (
+  `bubble_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`bubble_id`, `user_id`),
+  CONSTRAINT `fk_upvote_bubble_bubble` FOREIGN KEY (`bubble_id`) REFERENCES `bubble` (`id`),
+  CONSTRAINT `fk_upvote_bubble_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+); 
+
+INSERT IGNORE INTO upvote_comment_user (user_id, comment_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);
+
+INSERT IGNORE INTO upvote_bubble_user (user_id, bubble_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);
+
+CREATE VIEW BubbleUpvotes (bubble_id, nbr_upvotes) 
+AS (SELECT b.id, count(ubu.bubble_id) AS nbr_upvotes
+  FROM bubble AS b 
+  LEFT JOIN upvote_bubble_user AS ubu ON b.id = ubu.bubble_id GROUP by b.id)
+;
+
+CREATE VIEW BubbleData (id, mindmap_id, bubble_creator_name, bubble_content, bubble_nbr_upvotes)
+AS (SELECT b.id, b.mindmap_id, u.fullname, b.content, bu.nbr_upvotes
+  FROM bubble AS b
+  LEFT JOIN user AS u ON u.id = b.creator_id
+  LEFT JOIN BubbleUpvotes AS bu ON bu.bubble_id = b.id GROUP BY b.id);
