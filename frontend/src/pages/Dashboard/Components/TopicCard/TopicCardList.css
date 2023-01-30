@@ -61,15 +61,3 @@
   font-size: var(--textXS);
   color: var(--light-color);
 }
-
-.topicCard__nbIdea__list {
-  margin-top: 15px;
-  font-size: var(--textS);
-  font-weight: 600;
-  color: var(--dark-background);
-  display: flex;
-  align-items: center;
-  background-color: var(--small-touch);
-  border-radius: var(--radius);
-  padding: 2px 5px;
-}

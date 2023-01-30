@@ -62,29 +62,36 @@
   margin: 15px;
 }
 
-.textareas {
+.inputs {
   flex-wrap: nowrap;
   width: 90%;
   display: flex;
 }
 
-.textareas > textarea {
-  margin-left: 20px;
+.inputs > div > textarea {
   resize: none;
   border: none;
+  height: 60px;
   border-radius: var(--radius);
-  height: 30px;
   font-size: var(--textM);
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
 }
 
-#ideaTextarea {
-  margin-right: 20px;
+.ideaArea {
+  display: flex;
+  flex-direction: column;
 }
 
-#descriptionTextarea {
-  width: 50%;
+.descriptionArea {
+  height: 100%;
+  width: 100%;
+  margin-left: 80px;
+}
+
+.ideaCreation_Card {
+  display: flex;
+  align-items: center;
 }
 
 #ideaCreationCard__button {

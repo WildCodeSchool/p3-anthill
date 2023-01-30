@@ -21,7 +21,16 @@ function Landing() {
         <section className="slider" id="section1">
           <h1>INTRO</h1>
           <h2>About our website</h2>
-          <img src={mockup} alt="mockup of the site" className="mockup" />
+          <div className="sous-section1">
+            <div className="sous-section1-text-image">
+              <img src={mockup} alt="mockup of the site" className="mockup" />
+              <p>
+                A simple way to make decisions with your team. <br /> Stay
+                always connected with the rest of your company.
+                <br /> Find new ideas, comment, vote.
+              </p>
+            </div>
+          </div>
         </section>
         <section className="slider" id="section2">
           <h1>DASHBOARD</h1>

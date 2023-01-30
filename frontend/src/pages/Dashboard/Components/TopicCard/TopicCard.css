@@ -64,16 +64,6 @@
   height: 50px;
 }
 
-.topicCard__nbIdea {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  color: var(--dark-background);
-  background-color: var(--small-touch);
-  border-radius: var(--radius);
-  padding: 0 5px;
-}
-
 .notification {
   position: relative;
   color: var(--light-color);
@@ -85,7 +75,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 10px;
+  margin: 10px 10px 0 0;
 }
 
 .notification-number {
@@ -94,28 +84,15 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  font-size: 10px;
+  font-size: var(--textXS);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  right: -12px;
-  top: 1px;
-}
-
-.notification-bubble-number {
-  position: absolute;
-  background-color: var(--small-touch);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  font-size: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
+  color: var(--dark-background);
+  font-weight: 600;
+  padding-top: 1px;
   right: -10px;
-  top: 2px;
+  top: 0;
 }
 
 .icon-ampule {

@@ -67,12 +67,9 @@ function TopicCard(props) {
           <RxLapTimer />
           <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>
         </div>
-        <div
-          className={
-            !toggleMode ? "topicCard__nbIdea" : "topicCard__nbIdea__list"
-          }
-        >
-          {nbIdea}
+
+        <div className="notification">
+          <span className="notification-number">{nbIdea}</span>
           <RiLightbulbLine className="icon-ampule" />
         </div>
       </div>
