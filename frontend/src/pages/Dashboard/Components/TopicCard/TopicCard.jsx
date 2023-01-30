@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import DOMPurify from "isomorphic-dompurify";
 import { RxLapTimer } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import ToggleModeContext from "../../../../contexts/ToggleModeContext";
@@ -52,9 +53,8 @@ function TopicCard(props) {
             ? "topicCard__description"
             : "topicCard__description__list"
         }
-      >
-        {description}
-      </p>
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+      />
       <div
         className={!toggleMode ? "topicCard__bottom" : "topicCard__right__list"}
       >
