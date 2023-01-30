@@ -27,14 +27,14 @@ function Sidebar({ userId, name, photo }) {
       id: 2,
       text: "All Topics",
       icon: <MdAllInclusive className="icon" />,
-      active: activeButton === 3,
+      active: activeButton === 2,
       path: "/dashboard/topics",
     },
     {
       id: 3,
       text: "My Topics",
       icon: <BsPencil className="icon" />,
-      active: activeButton === 2,
+      active: activeButton === 3,
       path: `/dashboard/users/${userId}/topics`,
     },
     {
