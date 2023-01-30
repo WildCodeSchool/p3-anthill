@@ -35,12 +35,7 @@
 
 .topicCard__description {
   margin: 5% 5% 5% 6%;
-  font-size: small;
-  overflow: hidden;
-  max-width: 30ch;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: pointer;
+  font-size: var(--textS);
   color: var(--light-color);
 }
 
@@ -48,7 +43,7 @@
   display: flex;
   align-items: center;
   text-align: start;
-  font-size: small;
+  font-size: var(--textS);
   overflow: visible;
   box-sizing: border-box;
 }
@@ -64,18 +59,19 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: small;
-  margin-top: 30%;
+  font-size: var(--textS);
   color: var(--light-color);
+  height: 50px;
 }
 
 .topicCard__nbIdea {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-size: small;
-  margin-top: 30%;
-  color: var(--light-color);
+  color: var(--dark-background);
+  background-color: var(--small-touch);
+  border-radius: var(--radius);
+  padding: 0 5px;
 }
 
 .notification {
@@ -94,7 +90,7 @@
 
 .notification-number {
   position: absolute;
-  background-color: #3a6df0;
+  background-color: var(--small-touch);
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -109,7 +105,7 @@
 
 .notification-bubble-number {
   position: absolute;
-  background-color: #3a6df0;
+  background-color: var(--small-touch);
   width: 20px;
   height: 20px;
   border-radius: 50%;

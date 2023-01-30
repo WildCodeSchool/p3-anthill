@@ -30,6 +30,7 @@
 .topicInfo__description {
   color: var(--light-color);
   font-size: var(--textS);
+  margin: 0 1px;
 }
 
 .topicInfo__deadline {
@@ -61,21 +62,29 @@
   margin: 15px;
 }
 
-.ideaCreationCard__form > div {
+.textareas {
   flex-wrap: nowrap;
+  width: 90%;
+  display: flex;
 }
 
-.ideaCreationCard__form > div > input {
+.textareas > textarea {
   margin-left: 20px;
+  resize: none;
+  border: none;
+  border-radius: var(--radius);
+  height: 30px;
+  font-size: var(--textM);
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 }
 
-#ideaInput {
+#ideaTextarea {
   margin-right: 20px;
 }
 
-#descriptionInput {
-  width: 40%;
-  height: 80px;
+#descriptionTextarea {
+  width: 50%;
 }
 
 #ideaCreationCard__button {
@@ -133,14 +142,8 @@
   margin: 10px 0;
   resize: none;
   border: none;
-}
-
-.ideaCard__description {
   width: 500px;
   text-align: center;
-  background: none;
-  border: none;
-  font-family: "Poppins", sans-serif;
   font-size: var(--textS);
 }
 

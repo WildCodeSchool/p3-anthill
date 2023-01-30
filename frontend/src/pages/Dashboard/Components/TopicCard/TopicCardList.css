@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   border-radius: var(--radius);
-  height: 110px;
+  min-height: 110px;
   margin: 1.5rem;
   padding: 0.5rem;
   z-index: 1;
@@ -21,7 +21,7 @@
 .topicCard__title__list {
   color: var(--golden-color);
   margin-left: 15px;
-  width: 300px;
+  width: 260px;
   font-size: var(--textL);
 }
 
@@ -31,13 +31,9 @@
 
 .topicCard__description__list {
   margin: 0 15px;
+  width: 600px;
   text-align: start;
-  font-size: small;
-  overflow: hidden;
-  max-width: 30ch;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: pointer;
+  font-size: var(--textS);
   color: var(--light-color);
 }
 
@@ -45,7 +41,7 @@
   display: flex;
   align-items: center;
   text-align: start;
-  font-size: small;
+  font-size: var(--textS);
   overflow: visible;
   box-sizing: border-box;
 }
@@ -55,20 +51,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-width: 185px;
 }
 
 .topicCard__deadline__list {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: small;
+  font-size: var(--textXS);
   color: var(--light-color);
 }
 
 .topicCard__nbIdea__list {
-  margin-top: 20px;
-  font-size: small;
-  color: var(--light-color);
+  margin-top: 15px;
+  font-size: var(--textS);
+  font-weight: 600;
+  color: var(--dark-background);
   display: flex;
   align-items: center;
+  background-color: var(--small-touch);
+  border-radius: var(--radius);
+  padding: 2px 5px;
 }

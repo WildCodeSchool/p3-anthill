@@ -30,11 +30,15 @@ function IdeaCreationCard({ topicId, triggerGetIdeas }) {
     <div>
       <div className="ideaCreationCard">
         <form className="ideaCreationCard__form" onSubmit={handleSubmit}>
-          <div style={{ width: "90%" }}>
-            <label htmlFor="ideaInput">Idea :</label>
-            <input type="text" id="ideaInput" ref={titleRef} />
-            <label htmlFor="descriptionInput">Description :</label>
-            <input type="text" id="descriptionInput" ref={descriptionRef} />
+          <div className="textareas">
+            <label htmlFor="ideaTextarea">Idea :</label>
+            <textarea type="text" id="ideaTextarea" ref={titleRef} />
+            <label htmlFor="descriptiontextarea">Description :</label>
+            <textarea
+              type="text"
+              id="descriptionTextarea"
+              ref={descriptionRef}
+            />
             {error && <p>{error.message}</p>}
           </div>
 

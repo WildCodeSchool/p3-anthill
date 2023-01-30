@@ -42,9 +42,9 @@ function IdeaCard({
         </Link>
         <div className="ideaCard__creatorName">{creatorName}</div>
       </div>
-      <textarea className="ideaCard__description" readOnly>
+      <p className="ideaCard__description" readOnly>
         {description}
-      </textarea>
+      </p>
       <div className="ideaCard__interactions">
         <div className="ideaCard__nbUpVote">
           {nbUpVotes}

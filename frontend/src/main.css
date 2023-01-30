@@ -23,11 +23,11 @@
 
   /* COLORS */
   --dark-background: #191a20;
-  --medium-background: #2a2b38;
+  --medium-background: #2d2e38;
   --light-background: #3b4554;
-  --light-color: #ececec;
+  --light-color: #ffffff;
   --golden-color: #ffeba7;
-  --small-touch: #0065b8;
+  --small-touch: #77c2ff;
 
   --radius: 10px;
   --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
