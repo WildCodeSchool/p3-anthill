@@ -55,7 +55,7 @@ function Sidebar({ userId, name, photo }) {
       id: 6,
       text: "Settings",
       icon: <FiSettings className="icon" />,
-      active: activeButton === 5,
+      active: activeButton === 6,
       path: `/dashboard/users/${userId}/settings`,
     },
   ];
