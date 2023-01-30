@@ -7,7 +7,7 @@ const URL = import.meta.env.VITE_BACKEND_URL;
 const handleCallbackResponse = async (response, cb) => {
   const googleToken = response.credential;
   const decodeToken = jwtDecode(googleToken);
-  const { sub: googleUserId, name: fullname, email, picture } = decodeToken;
+  const { sub: googleUserId, name: fullname, email } = decodeToken;
   axios
     .get(`${URL}/api/users/email/${email}`)
     .then((res) => {
@@ -20,7 +20,6 @@ const handleCallbackResponse = async (response, cb) => {
           .post(`${URL}/api/users/signupgoogle`, {
             email,
             fullname,
-            picture,
             googleUserId,
             pseudo: fullname,
           })

@@ -27,6 +27,17 @@ function useCurrentUser() {
       })
       .then((res) => {
         setCurrentUser(res.data);
+        if (res.data.picture) {
+          setCurrentUser((prevState) => ({
+            ...prevState,
+            picture: `${URL}/uploads/${res.data.picture}`,
+          }));
+        } else {
+          setCurrentUser((prevState) => ({
+            ...prevState,
+            picture: `/png/visitor.png`,
+          }));
+        }
       })
       .catch((err) => {
         setError(err);

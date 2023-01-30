@@ -97,3 +97,9 @@
 .userCard__contactList > a:hover {
   color: var(--small-touch);
 }
+
+.userCard__picture {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
