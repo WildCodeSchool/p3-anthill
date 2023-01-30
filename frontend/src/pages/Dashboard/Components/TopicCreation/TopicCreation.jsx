@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Editor } from "@tinymce/tinymce-react";
 import { useNavigate } from "react-router-dom";
 import { GiAnt } from "react-icons/gi";
 import useFetchLazy from "../../../../services/useFetchLazy";
@@ -9,7 +10,7 @@ function TopicCreation({ closePopUp }) {
   const navigate = useNavigate();
 
   const refTitle = useRef();
-  const refDescription = useRef();
+  const editorRef = useRef();
   const refDeadline = useRef();
 
   const { trigger: triggerPostTopic, data } = useFetchLazy({
@@ -21,12 +22,12 @@ function TopicCreation({ closePopUp }) {
     e.preventDefault();
     triggerPostTopic({
       title: refTitle.current.value,
-      description: refDescription.current.value,
+      description: editorRef.current.getContent(),
       deadline: refDeadline.current.value,
       isCommentMode: true, // pour l'instant c'est une fixture car mindmapmode n'est géré
     });
     refTitle.current.value = "";
-    refDescription.current.value = "";
+    editorRef.current.setContent("");
     refDeadline.current.value = "";
   };
 
@@ -65,15 +66,50 @@ function TopicCreation({ closePopUp }) {
           <label className="topicCreation_label" htmlFor="description__title">
             Description
           </label>
-          <input
+          <div
             id="description__title"
             className="description"
-            placeholder="Write here a short description of your topic..."
             name="description"
             type="text"
-            ref={refDescription}
-            required
-          />
+          >
+            <Editor
+              onInit={(evt, editor) => {
+                editorRef.current = editor;
+              }}
+              initialValue=""
+              init={{
+                height: "80%",
+                menubar: false,
+                plugins: [
+                  "advlist",
+                  "autolink",
+                  "link",
+                  "image",
+                  "lists",
+                  "charmap",
+                  "anchor",
+                  "pagebreak",
+                  "searchreplace",
+                  "wordcount",
+                  "visualblocks",
+                  "code",
+                  "fullscreen",
+                  "insertdatetime",
+                  "media",
+                  "table",
+                  "emoticons",
+                  "template",
+                  "codesample",
+                ],
+                toolbar:
+                  "undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify |" +
+                  "bullist numlist outdent indent | link image | print preview media fullscreen | " +
+                  "forecolor backcolor emoticons",
+                content_style:
+                  "body{font-family:Helvetica,Arial,sans-serif; font-size:16px}",
+              }}
+            />
+          </div>
           <div className="topicCreation_bottom">
             <GiAnt size={30} />
             <button className="button-creation" type="submit">
