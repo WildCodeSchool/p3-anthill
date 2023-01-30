@@ -12,7 +12,7 @@ import SideBarListItems from "../Components/SideBarListItems/SideBarListItems";
 
 import "./Sidebar.css";
 
-function Sidebar({ name, photo }) {
+function Sidebar({ userId, name, photo }) {
   const [activeButton, setActiveButton] = useState(null);
   const sideBarList = [
     {
@@ -27,7 +27,7 @@ function Sidebar({ name, photo }) {
       text: "My Topics",
       icon: <BsPencil className="icon" />,
       active: activeButton === 2,
-      path: `/dashboard/users/1/topics`, // getCurrentUser
+      path: `/dashboard/users/${userId}/topics`,
     },
     {
       id: 3,
@@ -51,10 +51,9 @@ function Sidebar({ name, photo }) {
       path: "/dashboard/users",
     },
   ];
-  const handleClick = () => {
+  const handleLogout = () => {
     window.localStorage.removeItem("currentUser");
   };
-  console.warn(photo);
 
   const handleButtonClick = (button) => {
     setActiveButton(button);
@@ -84,7 +83,7 @@ function Sidebar({ name, photo }) {
           ))}
         </ul>
         <Link to="/login" className="signOut-btn">
-          <button type="button" className="signOut-btn" onClick={handleClick}>
+          <button type="button" className="signOut-btn" onClick={handleLogout}>
             Log Out
           </button>
         </Link>

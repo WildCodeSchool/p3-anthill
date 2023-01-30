@@ -1,9 +1,10 @@
 import { useRef } from "react";
+import { Editor } from "@tinymce/tinymce-react";
 import useFetchLazy from "../../../../../../services/useFetchLazy";
 
 function IdeaCreationCard({ topicId, triggerGetIdeas }) {
   const titleRef = useRef();
-  const descriptionRef = useRef();
+  const editorRef = useRef();
 
   const {
     trigger: triggerPostIdea,
@@ -19,25 +20,57 @@ function IdeaCreationCard({ topicId, triggerGetIdeas }) {
     event.preventDefault();
     await triggerPostIdea({
       title: titleRef.current?.value,
-      description: descriptionRef.current?.value,
+      description: editorRef.current.getContent(),
     });
     triggerGetIdeas();
     titleRef.current.value = "";
-    descriptionRef.current.value = "";
+    editorRef.current.setContent("");
   };
 
   return (
     <div>
       <div className="ideaCreationCard">
         <form className="ideaCreationCard__form" onSubmit={handleSubmit}>
-          <div className="textareas">
-            <label htmlFor="ideaTextarea">Idea :</label>
-            <textarea type="text" id="ideaTextarea" ref={titleRef} />
-            <label htmlFor="descriptiontextarea">Description :</label>
-            <textarea
-              type="text"
-              id="descriptionTextarea"
-              ref={descriptionRef}
+          <div style={{ width: "90%" }}>
+            <label htmlFor="ideaInput">Idea :</label>
+            <input type="text" id="ideaInput" ref={titleRef} />
+            <label htmlFor="descriptionInput">Description :</label>
+            <Editor
+              onInit={(evt, editor) => {
+                editorRef.current = editor;
+              }}
+              initialValue=""
+              init={{
+                height: "80%",
+                menubar: false,
+                plugins: [
+                  "advlist",
+                  "autolink",
+                  "link",
+                  "image",
+                  "lists",
+                  "charmap",
+                  "anchor",
+                  "pagebreak",
+                  "searchreplace",
+                  "wordcount",
+                  "visualblocks",
+                  "code",
+                  "fullscreen",
+                  "insertdatetime",
+                  "media",
+                  "table",
+                  "emoticons",
+                  "template",
+                  "codesample",
+                ],
+                toolbar:
+                  "undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify |" +
+                  "bullist numlist outdent indent | link image | print preview media fullscreen | " +
+                  "forecolor backcolor emoticons",
+                content_style:
+                  "body{font-family:Helvetica,Arial,sans-serif; font-size:16px}",
+              }}
             />
             {error && <p>{error.message}</p>}
           </div>

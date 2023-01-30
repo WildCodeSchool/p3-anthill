@@ -26,7 +26,7 @@ function Navbar() {
           </button>
           {isOpen ? <PopUpTopic closePopUp={() => setIsOpen(false)} /> : null}
         </div>
-        <Link to="users/1/settings">
+        <Link to="users/settings">
           <button type="button" className="setting-btn" title="User Settings">
             <FiSettings />
           </button>

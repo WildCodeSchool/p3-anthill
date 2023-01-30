@@ -1,4 +1,5 @@
 import { RxLapTimer } from "react-icons/rx";
+import DOMPurify from "isomorphic-dompurify";
 import formatDeadline from "../../../../../../services/formatDeadline";
 import useFetchLazy from "../../../../../../services/useFetchLazy";
 
@@ -36,7 +37,10 @@ function TopicInfo(props) {
         <p className="topicInfo__creatorName">{creatorName}</p>
       </div>
 
-      <p className="topicInfo__description">{description}</p>
+      <div
+        className="topicInfo__description"
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+      />
       <div className="topicInfo__deadline">
         <RxLapTimer />
         <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>

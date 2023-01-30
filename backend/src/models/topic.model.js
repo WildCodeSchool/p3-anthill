@@ -36,8 +36,8 @@ async function getAllTopicsOfOneUser(userId) {
   return rows;
 }
 
-async function insertOne(topic) {
-  const { deadline, description, title, creatorId, isCommentMode } = topic;
+async function insertOne(topic, creatorId) {
+  const { deadline, description, title, isCommentMode } = topic;
   const [result] = await db.query(
     "INSERT INTO topic (deadline, description, title, creator_id, is_comment_mode) VALUES (?, ?, ?, ?, ?)",
     [deadline, description, title, creatorId, isCommentMode]
@@ -88,8 +88,11 @@ async function updateOnlySlackInfos(id, slackChannelLink) {
   return result.affectedRows;
 }
 
-async function deleteOne(id) {
-  const [result1] = await db.query("DELETE FROM topic WHERE id = ?", [id]);
+async function deleteOne(topicId, userId) {
+  const [result1] = await db.query(
+    "DELETE FROM topic WHERE id = ? AND creator_id = ?",
+    [topicId, userId]
+  );
 
   if (result1.length === 0) {
     return null;

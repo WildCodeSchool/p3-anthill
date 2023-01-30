@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 
 const URL = import.meta.env.VITE_BACKEND_URL;
 
-function useFetch({ path, method, body = null }) {
+function useFetch({ path, method, body = undefined }) {
+  const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
+
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
   const [data, setData] = useState([]);
   const [isSuccess, setIsSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -11,7 +17,12 @@ function useFetch({ path, method, body = null }) {
 
   useEffect(() => {
     setLoading(true);
-    axios[method](`${URL}/api${path}`, body)
+    axios({
+      method,
+      url: `${URL}/api${path}`,
+      data: body,
+      headers,
+    })
       .then((res) => {
         setData(res.data);
         setIsSuccess(true);

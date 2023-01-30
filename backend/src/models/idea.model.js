@@ -7,7 +7,7 @@ async function getAll() {
 }
 async function getAllOfOneTopic(userId, commentModeTopicId) {
   const [rows] = await db.query(
-    "SELECT id.*, IF(ui.user_id IS NULL, true, false) AS canVote FROM IdeaData AS id LEFT JOIN upvote_idea_user AS ui ON ui.idea_id = id.id AND ui.user_id = ? WHERE id.comment_mode_id = ?",
+    "SELECT id.*, IF(ui.user_id IS NULL, true, false) AS canVote FROM IdeaData AS id LEFT JOIN upvote_idea_user AS ui ON ui.idea_id = id.id AND ui.user_id = ? WHERE id.comment_mode_id = ? ORDER BY nbr_upvotes_idea DESC",
     [userId, commentModeTopicId]
   );
   return rows;
@@ -18,12 +18,12 @@ async function getOne(id) {
   return rows[0];
 }
 
-async function insertOne(body, params) {
+async function insertOne(body, params, creatorId) {
   const { title, description } = body;
   const topicId = params;
   const [result] = await db.query(
-    "INSERT INTO idea (title, description, comment_mode_id) VALUES (?, ?, ?)",
-    [title, description, topicId]
+    "INSERT INTO idea (title, description, comment_mode_id, creator_id) VALUES (?, ?, ?, ?)",
+    [title, description, topicId, creatorId]
   );
 
   if (!result.insertId) {
@@ -43,8 +43,11 @@ async function updateOne(id, idea) {
   return result.affectedRows;
 }
 
-async function deleteOne(id) {
-  const [result] = await db.query("DELETE FROM idea WHERE id = ?", [id]);
+async function deleteOne(ideaId, userId) {
+  const [result] = await db.query(
+    "DELETE FROM idea WHERE id = ? AND creator_id = ?",
+    [ideaId, userId]
+  );
 
   if (result.length === 0) {
     return null;

@@ -1,24 +1,25 @@
 import React, { useRef } from "react";
 import { GiAnt } from "react-icons/gi";
 import { IoIosAt } from "react-icons/io";
+import useCurrentUser from "../../../../../services/useCurrentUser";
 import useFetchLazy from "../../../../../services/useFetchLazy";
 
 import "./index.css";
 
 function UserSettings() {
+  const { currentUser } = useCurrentUser();
   const refPseudo = useRef();
   const refEmail = useRef();
-
   const { trigger: triggerPatchSettings } = useFetchLazy({
-    path: "/users/1",
+    path: `/users/${currentUser?.id}`,
     method: "patch",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     triggerPatchSettings({
-      pseudo: refPseudo.current.value,
-      email: refEmail.current.value,
+      pseudo: refPseudo.current.value ?? undefined,
+      email: refEmail.current.value ?? undefined,
     });
   };
 
