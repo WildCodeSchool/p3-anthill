@@ -2,6 +2,7 @@ import { useContext } from "react";
 import DOMPurify from "isomorphic-dompurify";
 import { RxLapTimer } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import useCurrentUser from "../../../../services/useCurrentUser";
 import ToggleModeContext from "../../../../contexts/ToggleModeContext";
 import formatDeadline from "../../../../services/formatDeadline";
 import DeleteTopicButton from "../DeleteTopicButton/DeleteTopicButton";
@@ -11,6 +12,7 @@ import "./TopicCardList.css";
 function TopicCard(props) {
   const {
     id,
+    creatorId,
     title,
     creatorName,
     description,
@@ -23,6 +25,8 @@ function TopicCard(props) {
   const [year, month, day, hour, minutes] = [...formatedDeadLine];
 
   const { toggleMode } = useContext(ToggleModeContext);
+
+  const { currentUser } = useCurrentUser();
 
   return (
     <article className={!toggleMode ? "topicCard__grid" : "topicCard__list"}>
@@ -74,7 +78,11 @@ function TopicCard(props) {
           {nbIdea}
         </div>
       </div>
-      <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />
+      {currentUser?.id === creatorId ? (
+        <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />
+      ) : (
+        ""
+      )}
     </article>
   );
 }

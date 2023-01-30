@@ -3,9 +3,11 @@ import DOMPurify from "isomorphic-dompurify";
 import DeleteCommentButton from "./DeleteCommentButton";
 import "./CommentCard.css";
 import useFetchLazy from "../../../../../services/useFetchLazy";
+import useCurrentUser from "../../../../../services/useCurrentUser";
 
 function CommentCard({
   id,
+  creatorId,
   pseudo,
   picture,
   content,
@@ -14,6 +16,8 @@ function CommentCard({
   triggerGetComments,
   comment,
 }) {
+  const { currentUser } = useCurrentUser();
+
   const { trigger: triggerDownvoteComment } = useFetchLazy({
     path: `/votes/comments/${id}/downvote`,
     method: "put",
@@ -56,10 +60,14 @@ function CommentCard({
             <BiDownvote onClick={downvoteFunction} />
           )}
         </div>
-        <DeleteCommentButton
-          comment={comment}
-          triggerGetComments={triggerGetComments}
-        />
+        {creatorId === currentUser?.id ? (
+          <DeleteCommentButton
+            comment={comment}
+            triggerGetComments={triggerGetComments}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

@@ -34,6 +34,7 @@ function UserDetailsTopics() {
           <TopicCard
             key={topic.id}
             id={topic.id}
+            creatorId={topic.creator_id}
             title={topic.title}
             creatorName={topic.creator_name}
             description={topic.description}
