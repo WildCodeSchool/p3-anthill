@@ -25,6 +25,8 @@ app.use(express.static(path.join(__dirname, "..", "..", "frontend", "dist")));
 // API routes
 app.use(router);
 
+fs.mkdirSync(path.resolve(__dirname, "../public/uploads"), { recursive: true });
+
 // Redirect all requests to the REACT app
 const reactIndexFile = path.join(
   __dirname,
