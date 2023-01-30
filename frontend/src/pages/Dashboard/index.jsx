@@ -1,15 +1,21 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Layout/Navbar";
 import Sidebar from "./Layout/Sidebar";
+import useCurrentUser from "../../services/useCurrentUser";
+
 import "./index.css";
 
 function Dashboard() {
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const { currentUser } = useCurrentUser();
   return (
     <div>
       <div className="dashboard">
-        <Navbar name={currentUser?.fullname} photo={currentUser?.picture} />
-        <Sidebar name={currentUser?.fullname} photo={currentUser?.picture} />
+        <Navbar />
+        <Sidebar
+          userId={currentUser?.id}
+          name={currentUser?.fullname}
+          photo={currentUser?.picture}
+        />
         <main className="outlet">
           <Outlet />
         </main>

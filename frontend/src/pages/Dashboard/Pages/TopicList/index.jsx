@@ -14,7 +14,7 @@ function TopicsList() {
     loading,
     trigger: triggerGetTopics,
   } = useFetchLazy({
-    path: "/topics/card",
+    path: "/topics?view=card",
     method: "get",
   });
 
@@ -34,7 +34,7 @@ function TopicsList() {
                 key={topic.id}
                 id={topic.id}
                 title={topic.title}
-                creatorName={topic.creator_name}
+                creatorName={topic.fullname}
                 description={topic.description}
                 deadline={topic.deadline}
                 nbIdea={topic.nb_idea}

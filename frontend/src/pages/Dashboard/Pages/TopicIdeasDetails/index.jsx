@@ -8,6 +8,7 @@ import "./index.css";
 
 function TopicIdeasDetails() {
   const { topicId, ideaId } = useParams();
+
   const [isClicked, setIsClicked] = useState(false);
 
   const {

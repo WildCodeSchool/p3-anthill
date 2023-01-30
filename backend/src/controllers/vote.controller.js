@@ -6,15 +6,18 @@ async function upvoteIdea(req, res) {
     return;
   }
 
+  const userId = req.user.id;
+
   try {
     const affectedRows = await upvoteModel.insertOneForIdea({
       ideaId: req.params.ideaId,
-      userId: 1, // getCurrentUser()
+      userId,
     });
     if (affectedRows === 1) {
       res.sendStatus(200);
       return;
     }
+
     res.sendStatus(404);
   } catch (error) {
     res.sendStatus(403);
@@ -27,15 +30,18 @@ async function upvoteComment(req, res) {
     return;
   }
 
+  const userId = req.user.id;
+
   try {
     const affectedRows = await upvoteModel.insertOneForComment({
       commentId: req.params.commentId,
-      userId: 1, // getCurrentUser()
+      userId,
     });
     if (affectedRows === 1) {
       res.sendStatus(200);
       return;
     }
+
     res.sendStatus(404);
   } catch (error) {
     res.sendStatus(403);
@@ -48,16 +54,18 @@ async function downvoteIdea(req, res) {
     return;
   }
 
+  const userId = req.user.id;
+
   try {
     const affectedRows = await upvoteModel.updateOneForIdea(
       req.params.ideaId,
-      1
-    ); // getCurrentUser()
-
+      userId
+    );
     if (affectedRows === 1) {
       res.sendStatus(200);
       return;
     }
+
     res.sendStatus(400);
   } catch (error) {
     res.sendStatus(403);
@@ -70,16 +78,18 @@ async function downvoteComment(req, res) {
     return;
   }
 
+  const userId = req.user.id;
+
   try {
     const affectedRows = await upvoteModel.updateOneForComment(
       req.params.commentId,
-      1
-    ); // getCurrentUser()
-
+      userId
+    );
     if (affectedRows === 1) {
       res.sendStatus(200);
       return;
     }
+
     res.sendStatus(400);
   } catch (error) {
     res.sendStatus(403);

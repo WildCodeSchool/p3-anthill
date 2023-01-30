@@ -13,6 +13,9 @@ async function create(req, res) {
   }
 
   const insertId = await moodModel.insertOne(req.body);
+  if (!insertId) {
+    res.sendStatus(404);
+  }
 
   res.status(201).json({ insertId });
 }
@@ -24,7 +27,6 @@ async function get(req, res) {
   }
 
   const mood = await moodModel.getOne(req.params.id);
-
   if (!mood) {
     res.sendStatus(404);
     return;
@@ -34,13 +36,12 @@ async function get(req, res) {
 }
 
 async function update(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.params.id) {
     res.sendStatus(400);
     return;
   }
 
   const affectedRows = await moodModel.updateOne(req.params.id, req.body);
-
   if (affectedRows === 0) {
     res.sendStatus(404);
     return;
@@ -56,7 +57,6 @@ async function remove(req, res) {
   }
 
   const affectedRows = await moodModel.deleteOne(req.params.id);
-
   if (affectedRows === 0) {
     res.sendStatus(404);
     return;
