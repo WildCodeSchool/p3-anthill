@@ -12,6 +12,16 @@ async function list(req, res) {
   res.json(topics);
 }
 
+async function listCard(req, res) {
+  const topics = await topicModel.getAllTopicCard();
+  res.json(topics);
+}
+
+async function getTrendingTopics(req, res) {
+  const topics = await topicModel.getTrendingTopicsByIdeasCount();
+  res.json(topics);
+}
+
 async function getUserTopics(req, res) {
   if (!req.params.id) {
     res.sendStatus(400);
@@ -84,6 +94,8 @@ async function remove(req, res) {
 
 module.exports = {
   list,
+  listCard,
+  getTrendingTopics,
   get,
   create,
   update,
