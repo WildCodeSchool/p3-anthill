@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
+import { GiAnt } from "react-icons/gi";
+import { IoIosAt } from "react-icons/io";
 import useCurrentUser from "../../../../../services/useCurrentUser";
 import useFetchLazy from "../../../../../services/useFetchLazy";
 
@@ -32,7 +34,7 @@ function UserSettings() {
     formData.append("picture", inputRef.current?.files[0]);
     axios
       .post(
-        `http://localhost:5500/api/users/${currentUser?.id}/picture`,
+        `http://localhost:5000/api/users/${currentUser?.id}/picture`,
         formData,
         {
           headers: {
@@ -51,39 +53,61 @@ function UserSettings() {
       });
   };
 
+  const [image, setImage] = useState("");
+
+  const onImageChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setImage(URL.createObjectURL(e.target.files[0]));
+    }
+  };
+
   return (
-    <div>
-      <form className="settings_container" onSubmit={handleSubmit}>
-        <label htmlFor="pseudo">update your username</label>
-        <input
-          id="pseudo"
-          className="settings__pseudo"
-          placeholder="USERNAME"
-          name="Username"
-          type="text"
-          ref={refPseudo}
-        />
-        <label htmlFor="email">update your email</label>
-        <input
-          id="email"
-          className="settings__email"
-          placeholder="EMAIL"
-          name="email"
-          type="text"
-          ref={refEmail}
-        />
-        <button className="settings__btn" type="submit">
+    <div className="settings-main">
+      <form className="settings-container" onSubmit={handleSubmit}>
+        <p className="update-title">Update informations</p>
+        <div>
+          <GiAnt className="icons-settings-ant" />
+          <input
+            id="pseudo"
+            className="form-style"
+            placeholder="Your Pseudo"
+            name="Username"
+            type="text"
+            ref={refPseudo}
+          />
+          <IoIosAt className="icons-settings-email" />
+          <input
+            id="email"
+            className="form-style"
+            placeholder="Your Email"
+            name="email"
+            type="text"
+            ref={refEmail}
+          />
+        </div>
+
+        <button className="btn" type="submit">
           SUBMIT
         </button>
-        {isSuccess && <div>Changes done</div>}
+        {isSuccess && <div className="changes">Changes done</div>}
       </form>
       <form
-        className="settings_container"
+        className="settings-container"
         encType="multipart/form-data"
         onSubmit={imageSubmit}
       >
-        <input type="file" name="picture" ref={inputRef} />
-        <button type="submit">SUBMIT</button>
+        <label htmlFor="email">Update profile picture</label>
+        <img className="image-preview" src={image} alt="" />
+        <input
+          id="picture-input"
+          type="file"
+          name="picture"
+          onChange={onImageChange}
+          ref={inputRef}
+        />
+        <button type="submit" className="btn">
+          SUBMIT
+        </button>
         {alert && <div>Changes done, please reload to see changes</div>}
       </form>
     </div>
