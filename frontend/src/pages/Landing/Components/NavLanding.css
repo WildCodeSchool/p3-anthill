@@ -37,6 +37,7 @@
   border-radius: var(--radius);
   font-weight: 600;
   text-transform: uppercase;
+
   padding: 12px 25px;
   box-shadow: 0 4px 10px 0 rgba(255, 235, 167, 0.2);
 }
@@ -44,6 +45,7 @@
 .btn-login:hover {
   background-color: var(--small-touch);
   color: var(--golden-color);
+  transition: all 200ms linear;
 }
 
 .stage .content {
@@ -58,10 +60,11 @@
 }
 
 h3.span .m {
-  font-size: 2vw;
+  font-size: var(--textXL);
   margin-right: 1rem;
   color: var(--light-color);
   z-index: 1;
+  font-weight: 600;
 }
 
 a {

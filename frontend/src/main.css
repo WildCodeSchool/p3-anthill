@@ -22,13 +22,12 @@
   --transition: 0.2s;
 
   /* COLORS */
-  --dark-background: #191a20;
-  --medium-background: #2a2b38;
+  --dark-background: #1f2025;
+  --medium-background: #35363f;
   --light-background: #3b4554;
-  --light-color: #ececec;
+  --light-color: #ffffff;
   --golden-color: #ffeba7;
-  /* --small-touch: #3a6df0; */
-  --small-touch: #0065b8;
+  --small-touch: #67c2ff;
 
   --radius: 10px;
   --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

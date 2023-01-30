@@ -24,21 +24,21 @@ function Sidebar({ userId, name, photo }) {
     },
     {
       id: 2,
-      text: "My Topics",
-      icon: <BsPencil className="icon" />,
-      active: activeButton === 2,
-      path: `/dashboard/users/${userId}/topics`,
-    },
-    {
-      id: 3,
       text: "All Topics",
       icon: <MdAllInclusive className="icon" />,
       active: activeButton === 3,
       path: "/dashboard/topics",
     },
     {
+      id: 3,
+      text: "My Topics",
+      icon: <BsPencil className="icon" />,
+      active: activeButton === 2,
+      path: `/dashboard/users/${userId}/topics`,
+    },
+    {
       id: 4,
-      text: "Co Topics",
+      text: "Co. Topics",
       icon: <GiAnt className="icon" />,
       active: activeButton === 4,
       path: "/dashboard",
@@ -67,7 +67,6 @@ function Sidebar({ userId, name, photo }) {
           <div className="user-profile">
             <div className="user-name">{name}</div>
             <img src={photo} alt="" className="user-photo" />
-            <div className="user-mood">Mood</div>
           </div>
         </div>
         <ul className="sidebar-list">

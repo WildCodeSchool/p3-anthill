@@ -4,8 +4,8 @@
   justify-content: space-between;
   background-color: var(--medium-background);
   border-radius: var(--radius);
-  height: 110px;
-  margin: 1.5rem;
+  min-height: 50px;
+  margin: 0.5rem 1.5rem;
   padding: 0.5rem;
   border: 4px solid var(--medium-background);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
@@ -13,7 +13,7 @@
 }
 
 .commentCard:hover {
-  box-shadow: 1px 1px 10px var(--light-color),
+  box-shadow: 1px 1px 8px var(--light-color),
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
@@ -40,6 +40,7 @@
 }
 
 .commentCard__description {
+  margin: 10px 20px;
   font-size: var(--textXS);
 }
 
