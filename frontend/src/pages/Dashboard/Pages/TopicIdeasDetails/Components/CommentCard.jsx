@@ -1,4 +1,5 @@
 import { BiUpvote, BiDownvote } from "react-icons/bi";
+import DOMPurify from "isomorphic-dompurify";
 import DeleteCommentButton from "./DeleteCommentButton";
 import "./CommentCard.css";
 import useFetchLazy from "../../../../../services/useFetchLazy";
@@ -40,7 +41,10 @@ function CommentCard({
           <img src={picture} alt="avatar" />
           <div className="commentCard__creatorName">{pseudo}</div>
         </div>
-        <p className="commentCard__description">{content}</p>
+        <p
+          className="commentCard__description"
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
+        />
       </div>
 
       <div className="commentCard__interactions">
