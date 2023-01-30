@@ -95,8 +95,6 @@ CREATE TABLE `user_badge` (
   CONSTRAINT `fk_user_badge_badge` FOREIGN KEY (`badge_id`) REFERENCES `badge` (`id`) ON DELETE CASCADE
 );
 
-INSERT INTO user_badge (user_id, badge_id) VALUES (1, 1), (1, 2), (1, 3), (1, 4), (2, 2), (3, 3), (4, 4);
-
 CREATE TABLE `user_topic` (
   `user_id` int NOT NULL,
   `topic_id` int NOT NULL,
