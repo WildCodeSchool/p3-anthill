@@ -60,14 +60,22 @@ async function updateOne(id, body, user) {
   const [result] = await db.query(
     "UPDATE user SET pseudo = ?, email = ?, fullname = ?, description = ? WHERE id = ?",
     [
-      body.pseudo ?? user.pseudo,
-      body.email ?? user.email,
-      body.fullname ?? user.fullname,
-      body.description ?? user.description,
+      body.pseudo || user.pseudo,
+      body.email || user.email,
+      body.fullname || user.fullname,
+      body.description || user.description,
       id,
     ]
   );
 
+  return result.affectedRows;
+}
+
+async function updatePicture(id, picture) {
+  const [result] = await db.query("UPDATE user SET picture = ? WHERE id = ?", [
+    picture,
+    id,
+  ]);
   return result.affectedRows;
 }
 
@@ -84,5 +92,6 @@ module.exports = {
   insertOne,
   getCurrentUser,
   updateOne,
+  updatePicture,
   deleteOne,
 };

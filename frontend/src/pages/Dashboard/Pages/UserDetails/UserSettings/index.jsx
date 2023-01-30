@@ -1,16 +1,18 @@
-import React, { useRef } from "react";
-import { GiAnt } from "react-icons/gi";
-import { IoIosAt } from "react-icons/io";
+import axios from "axios";
+import React, { useRef, useState } from "react";
 import useCurrentUser from "../../../../../services/useCurrentUser";
 import useFetchLazy from "../../../../../services/useFetchLazy";
 
 import "./index.css";
 
 function UserSettings() {
+  const [alert, setAlert] = useState(false);
+
   const { currentUser } = useCurrentUser();
-  const refPseudo = useRef();
-  const refEmail = useRef();
-  const { trigger: triggerPatchSettings } = useFetchLazy({
+  const refPseudo = useRef(undefined);
+  const refEmail = useRef(undefined);
+  const inputRef = useRef(undefined);
+  const { trigger: triggerPatchSettings, isSuccess } = useFetchLazy({
     path: `/users/${currentUser?.id}`,
     method: "patch",
   });
@@ -18,41 +20,71 @@ function UserSettings() {
   const handleSubmit = (e) => {
     e.preventDefault();
     triggerPatchSettings({
-      pseudo: refPseudo.current.value ?? undefined,
-      email: refEmail.current.value ?? undefined,
+      pseudo: refPseudo.current?.value,
+      email: refEmail.current?.value,
     });
+    e.preventDefault();
+  };
+
+  const imageSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("picture", inputRef.current?.files[0]);
+    axios
+      .post(
+        `http://localhost:5500/api/users/${currentUser?.id}/picture`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("currentUser"))?.token
+            }`,
+          },
+        }
+      )
+      .then(() => {
+        setAlert(true);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (
-    <div className="settings_container">
-      <form className="settings_form" onSubmit={handleSubmit}>
-        <p className="settings__title">Update your info</p>
-        <label htmlFor="pseudo"> </label>
-        <GiAnt className="settings__antIcon" />
+    <div>
+      <form className="settings_container" onSubmit={handleSubmit}>
+        <label htmlFor="pseudo">update your username</label>
         <input
           id="pseudo"
-          className="settings__input"
-          placeholder="Your Pseudo"
+          className="settings__pseudo"
+          placeholder="USERNAME"
           name="Username"
           type="text"
           ref={refPseudo}
         />
-        <label htmlFor="email"> </label>
-
-        <IoIosAt className="settings__emailIcon" />
+        <label htmlFor="email">update your email</label>
         <input
           id="email"
-          className="settings__input"
-          placeholder="Your Email"
+          className="settings__email"
+          placeholder="EMAIL"
           name="email"
           type="text"
           ref={refEmail}
         />
-        <div className="settings__button">
-          <button className="btn" type="submit">
-            SUBMIT
-          </button>
-        </div>
+        <button className="settings__btn" type="submit">
+          SUBMIT
+        </button>
+        {isSuccess && <div>Changes done</div>}
+      </form>
+      <form
+        className="settings_container"
+        encType="multipart/form-data"
+        onSubmit={imageSubmit}
+      >
+        <input type="file" name="picture" ref={inputRef} />
+        <button type="submit">SUBMIT</button>
+        {alert && <div>Changes done, please reload to see changes</div>}
       </form>
     </div>
   );
