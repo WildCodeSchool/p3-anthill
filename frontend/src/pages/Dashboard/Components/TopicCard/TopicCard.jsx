@@ -3,6 +3,7 @@ import DOMPurify from "isomorphic-dompurify";
 import { RxLapTimer } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import useCurrentUser from "../../../../services/useCurrentUser";
+import { RiLightbulbLine } from "react-icons/ri";
 import ToggleModeContext from "../../../../contexts/ToggleModeContext";
 import formatDeadline from "../../../../services/formatDeadline";
 import DeleteTopicButton from "../DeleteTopicButton/DeleteTopicButton";
@@ -70,12 +71,10 @@ function TopicCard(props) {
           <RxLapTimer />
           <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>
         </div>
-        <div
-          className={
-            !toggleMode ? "topicCard__nbIdea" : "topicCard__nbIdea__list"
-          }
-        >
-          {nbIdea}
+
+        <div className="notification">
+          <span className="notification-number">{nbIdea}</span>
+          <RiLightbulbLine className="icon-ampule" />
         </div>
       </div>
       {currentUser?.id === creatorId ? (

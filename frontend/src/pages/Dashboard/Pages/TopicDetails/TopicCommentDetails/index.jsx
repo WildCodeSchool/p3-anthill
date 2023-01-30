@@ -51,7 +51,7 @@ function TopicCommentDetails({
             />
           ))
         ) : (
-          <h2 className="no-found">There is no idea yet</h2>
+          <h2 className="no-found">There is no idea yet !</h2>
         )}
       </div>
     </div>

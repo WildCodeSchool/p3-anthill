@@ -45,7 +45,6 @@ function TopicIdeasDetails() {
                   creatorId={comment.creator_id}
                   id={comment.id}
                   pseudo={comment.pseudo}
-                  picture={comment.picture}
                   content={comment.content}
                   upVote={comment.up_vote}
                   canVote={comment.canVote}

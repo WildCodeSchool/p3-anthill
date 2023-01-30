@@ -9,7 +9,6 @@ function CommentCard({
   id,
   creatorId,
   pseudo,
-  picture,
   content,
   upVote,
   canVote,
@@ -28,6 +27,8 @@ function CommentCard({
     method: "post",
   });
 
+  const { currentUser } = useCurrentUser();
+
   const upvoteFunction = async () => {
     await triggerUpvoteComment();
     triggerGetComments();
@@ -42,7 +43,7 @@ function CommentCard({
     <div className="commentCard">
       <div className="commentCard__info">
         <div className="commentCard__main">
-          <img src={picture} alt="avatar" />
+          <img src={currentUser?.picture} alt="avatar" />
           <div className="commentCard__creatorName">{pseudo}</div>
         </div>
         <p
