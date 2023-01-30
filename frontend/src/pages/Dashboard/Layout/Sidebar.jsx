@@ -7,6 +7,7 @@ import { TbCrown } from "react-icons/tb";
 import { BsPencil } from "react-icons/bs";
 import { GiAnt } from "react-icons/gi";
 import { RiContactsLine } from "react-icons/ri";
+import { FiSettings } from "react-icons/fi";
 
 import SideBarListItems from "../Components/SideBarListItems/SideBarListItems";
 
@@ -26,14 +27,14 @@ function Sidebar({ userId, name, photo }) {
       id: 2,
       text: "All Topics",
       icon: <MdAllInclusive className="icon" />,
-      active: activeButton === 3,
+      active: activeButton === 2,
       path: "/dashboard/topics",
     },
     {
       id: 3,
       text: "My Topics",
       icon: <BsPencil className="icon" />,
-      active: activeButton === 2,
+      active: activeButton === 3,
       path: `/dashboard/users/${userId}/topics`,
     },
     {
@@ -49,6 +50,13 @@ function Sidebar({ userId, name, photo }) {
       icon: <RiContactsLine className="icon" />,
       active: activeButton === 5,
       path: "/dashboard/users",
+    },
+    {
+      id: 6,
+      text: "Settings",
+      icon: <FiSettings className="icon" />,
+      active: activeButton === 6,
+      path: `/dashboard/users/${userId}/settings`,
     },
   ];
   const handleLogout = () => {
