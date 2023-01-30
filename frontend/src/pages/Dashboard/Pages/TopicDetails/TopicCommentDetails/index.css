@@ -19,12 +19,18 @@
   font-size: var(--textM);
 }
 
+.topicInfo__title {
+  font-size: var(--textM);
+}
+
 .topicInfo__left {
   margin-left: 15px;
 }
 
 .topicInfo__description {
   color: var(--light-color);
+  font-size: var(--textS);
+  margin: 0 1px;
 }
 
 .topicInfo__deadline {
@@ -33,6 +39,7 @@
   justify-content: space-between;
   margin-right: 15px;
   color: var(--light-color);
+  font-size: var(--textS);
 }
 
 .ideaCreationCard {
@@ -55,21 +62,36 @@
   margin: 15px;
 }
 
-.ideaCreationCard__form > div {
+.inputs {
   flex-wrap: nowrap;
+  width: 90%;
+  display: flex;
 }
 
-.ideaCreationCard__form > div > input {
-  margin-left: 20px;
+.inputs > div > textarea {
+  resize: none;
+  border: none;
+  height: 60px;
+  border-radius: var(--radius);
+  font-size: var(--textM);
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 }
 
-#ideaInput {
-  margin-right: 20px;
+.ideaArea {
+  display: flex;
+  flex-direction: column;
 }
 
-#descriptionInput {
-  width: 40%;
-  height: 80px;
+.descriptionArea {
+  height: 100%;
+  width: 100%;
+  margin-left: 80px;
+}
+
+.ideaCreation_Card {
+  display: flex;
+  align-items: center;
 }
 
 #ideaCreationCard__button {
@@ -127,14 +149,8 @@
   margin: 10px 0;
   resize: none;
   border: none;
-}
-
-.ideaCard__description {
   width: 500px;
   text-align: center;
-  background: none;
-  border: none;
-  font-family: "Poppins", sans-serif;
   font-size: var(--textS);
 }
 

@@ -30,7 +30,7 @@
 }
 
 .slider-us {
-  height: 100vh;
+  height: 90vh;
 }
 
 .main .slider h1 {
@@ -55,16 +55,26 @@
   color: #faebd7;
   z-index: 4;
 }
-/* 
-.main h3.span {
-  font-size: 2vw;
-  letter-spacing: 0.7em;
-  font-family: "ROBOTO", sans-serif;
-  font-weight: 300;
-  color: #faebd7;
-  z-index: 4;
-} */
+
+.sous-section1 {
+  background-color: var(--medium-background);
+  height: 470px;
+  width: 100vw;
+  margin-top: 100px;
+}
+
+.sous-section1-text-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light-color);
+  margin-top: 30px;
+}
+
+.sous-section1-text-image > p {
+  margin: 0 0 200px 80px;
+}
 
 .mockup {
-  height: 800px;
+  height: 600px;
 }

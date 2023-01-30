@@ -35,12 +35,7 @@
 
 .topicCard__description {
   margin: 5% 5% 5% 6%;
-  font-size: small;
-  overflow: hidden;
-  max-width: 30ch;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: pointer;
+  font-size: var(--textS);
   color: var(--light-color);
 }
 
@@ -48,7 +43,7 @@
   display: flex;
   align-items: center;
   text-align: start;
-  font-size: small;
+  font-size: var(--textS);
   overflow: visible;
   box-sizing: border-box;
 }
@@ -64,18 +59,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: small;
-  margin-top: 30%;
+  font-size: var(--textS);
   color: var(--light-color);
-}
-
-.topicCard__nbIdea {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  font-size: small;
-  margin-top: 30%;
-  color: var(--light-color);
+  height: 50px;
 }
 
 .notification {
@@ -89,35 +75,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 10px;
+  margin: 10px 10px 0 0;
 }
 
 .notification-number {
   position: absolute;
-  background-color: #3a6df0;
+  background-color: var(--small-touch);
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  font-size: 10px;
+  font-size: var(--textXS);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  right: -12px;
-  top: 1px;
+  color: var(--dark-background);
+  font-weight: 600;
+  padding-top: 1px;
+  right: -10px;
+  top: 0;
 }
 
-.notification-bubble-number {
-  position: absolute;
-  background-color: #3a6df0;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  font-size: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  right: -10px;
-  top: 2px;
+.icon-ampule {
+  font-size: var(--textL);
 }
