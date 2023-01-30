@@ -27,8 +27,6 @@ function CommentCard({
     method: "post",
   });
 
-  const { currentUser } = useCurrentUser();
-
   const upvoteFunction = async () => {
     await triggerUpvoteComment();
     triggerGetComments();
