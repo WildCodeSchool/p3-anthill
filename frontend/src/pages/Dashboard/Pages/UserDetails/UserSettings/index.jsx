@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useRef, useState } from "react";
 import useCurrentUser from "../../../../../services/useCurrentUser";
 import useFetchLazy from "../../../../../services/useFetchLazy";
@@ -10,7 +11,8 @@ function UserSettings() {
   const { currentUser } = useCurrentUser();
   const refPseudo = useRef(undefined);
   const refEmail = useRef(undefined);
-  const { trigger: triggerPatchSettings } = useFetchLazy({
+  const inputRef = useRef(undefined);
+  const { trigger: triggerPatchSettings, isSuccess } = useFetchLazy({
     path: `/users/${currentUser?.id}`,
     method: "patch",
   });
@@ -22,7 +24,31 @@ function UserSettings() {
       email: refEmail.current?.value,
     });
     e.preventDefault();
-    setAlert(true);
+  };
+
+  const imageSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("picture", inputRef.current?.files[0]);
+    axios
+      .post(
+        `http://localhost:5500/api/users/${currentUser?.id}/picture`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("currentUser"))?.token
+            }`,
+          },
+        }
+      )
+      .then(() => {
+        setAlert(true);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (
@@ -49,7 +75,16 @@ function UserSettings() {
         <button className="settings__btn" type="submit">
           SUBMIT
         </button>
-        {alert && <div>Changes done</div>}
+        {isSuccess && <div>Changes done</div>}
+      </form>
+      <form
+        className="settings_container"
+        encType="multipart/form-data"
+        onSubmit={imageSubmit}
+      >
+        <input type="file" name="picture" ref={inputRef} />
+        <button type="submit">SUBMIT</button>
+        {alert && <div>Changes done, please reload to see changes</div>}
       </form>
     </div>
   );

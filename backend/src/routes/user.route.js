@@ -25,13 +25,14 @@ userRouter.get("/:id/topics", verifyToken, topicController.getUserTopics);
 userRouter.post("/signupgoogle", userController.create);
 userRouter.post("/signup", hashPassword, userController.create);
 userRouter.post("/login", getUserByEmailWithPassword, authController.login);
-
-userRouter.patch("/:id", verifyToken, userController.update);
-userRouter.patch(
+userRouter.post(
   "/:id/picture",
+  verifyToken,
   upload.single("picture"),
   userController.updatePicture
 );
+
+userRouter.patch("/:id", verifyToken, userController.update);
 
 userRouter.delete("/:id", verifyToken, userController.remove);
 
