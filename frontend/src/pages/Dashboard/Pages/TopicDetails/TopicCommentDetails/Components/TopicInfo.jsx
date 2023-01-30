@@ -46,12 +46,19 @@ function TopicInfo(props) {
         <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>
       </div>
       {!slackChannelLink ? (
-        <button type="button" onClick={createSlackChannel}>
+        <button
+          type="button"
+          className="button-delete"
+          onClick={createSlackChannel}
+        >
           Create Slack Channel
         </button>
       ) : (
         <p>
-          <a href={slackChannelLink && slackChannelLink}>
+          <a
+            className="button-delete"
+            href={slackChannelLink && slackChannelLink}
+          >
             Join us on the Slack Channel !
           </a>
         </p>

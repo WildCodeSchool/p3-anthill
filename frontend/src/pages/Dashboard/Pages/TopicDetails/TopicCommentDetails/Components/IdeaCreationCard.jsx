@@ -31,47 +31,52 @@ function IdeaCreationCard({ topicId, triggerGetIdeas }) {
     <div>
       <div className="ideaCreationCard">
         <form className="ideaCreationCard__form" onSubmit={handleSubmit}>
-          <div style={{ width: "90%" }}>
-            <label htmlFor="ideaInput">Idea :</label>
-            <input type="text" id="ideaInput" ref={titleRef} />
-            <label htmlFor="descriptionInput">Description :</label>
-            <Editor
-              onInit={(evt, editor) => {
-                editorRef.current = editor;
-              }}
-              initialValue=""
-              init={{
-                height: "80%",
-                menubar: false,
-                plugins: [
-                  "advlist",
-                  "autolink",
-                  "link",
-                  "image",
-                  "lists",
-                  "charmap",
-                  "anchor",
-                  "pagebreak",
-                  "searchreplace",
-                  "wordcount",
-                  "visualblocks",
-                  "code",
-                  "fullscreen",
-                  "insertdatetime",
-                  "media",
-                  "table",
-                  "emoticons",
-                  "template",
-                  "codesample",
-                ],
-                toolbar:
-                  "undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify |" +
-                  "bullist numlist outdent indent | link image | print preview media fullscreen | " +
-                  "forecolor backcolor emoticons",
-                content_style:
-                  "body{font-family:Helvetica,Arial,sans-serif; font-size:16px}",
-              }}
-            />
+          <div className="inputs">
+            <div className="ideaArea">
+              <label htmlFor="ideaInput">Idea :</label>
+              <textarea type="text" id="ideaInput" ref={titleRef} />
+            </div>
+            <div className="descriptionArea">
+              <label htmlFor="descriptionInput">Description :</label>
+              <Editor
+                onInit={(evt, editor) => {
+                  editorRef.current = editor;
+                }}
+                initialValue=""
+                init={{
+                  height: "80%",
+                  menubar: false,
+                  plugins: [
+                    "advlist",
+                    "autolink",
+                    "link",
+                    "image",
+                    "lists",
+                    "charmap",
+                    "anchor",
+                    "pagebreak",
+                    "searchreplace",
+                    "wordcount",
+                    "visualblocks",
+                    "code",
+                    "fullscreen",
+                    "insertdatetime",
+                    "media",
+                    "table",
+                    "emoticons",
+                    "template",
+                    "codesample",
+                  ],
+                  toolbar:
+                    "undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify |" +
+                    "bullist numlist outdent indent | link image | print preview media fullscreen | " +
+                    "forecolor backcolor emoticons",
+                  content_style:
+                    "body{font-family:Helvetica,Arial,sans-serif; font-size:16px}",
+                }}
+              />
+            </div>
+
             {error && <p>{error.message}</p>}
           </div>
 
