@@ -4,6 +4,8 @@ WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 ARG VITE_BACKEND_URL=${VITE_BACKEND_URL}
 ENV VITE_BACKEND_URL=${VITE_BACKEND_URL}
+ARG GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+ENV GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
 COPY ./frontend /usr/src/app
 RUN npm install
 RUN npm run build
