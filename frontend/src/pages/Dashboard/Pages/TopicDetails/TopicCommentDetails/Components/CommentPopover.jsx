@@ -7,12 +7,12 @@ import "./CommentPopover.css";
 import useFetch from "../../../../../../services/useFetch";
 
 function CommentPopover({ ideaId }) {
+  const { topicId } = useParams();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const boxRef = useRef();
   const tooltipRef = useRef();
-
-  const { topicId } = useParams();
 
   const { data: comments } = useFetch({
     path: `/topics/${topicId}/ideas/${ideaId}/comments`,

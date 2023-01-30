@@ -6,7 +6,10 @@ import ToggleModeContext from "../../../../contexts/ToggleModeContext";
 import "./index.css";
 
 export default function UserList() {
-  const { data: users, loading } = useFetch({ path: "/users", method: "get" });
+  const { data: users, loading } = useFetch({
+    path: "/users",
+    method: "get",
+  });
   const { toggleMode } = useContext(ToggleModeContext);
   return (
     <div className="userList">

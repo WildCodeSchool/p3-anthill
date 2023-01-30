@@ -35,7 +35,7 @@ function App() {
                 path="users/:userId/topics"
                 element={<UserDetailsTopics />}
               />
-              <Route path="users/:userId/settings" element={<UserSettings />} />
+              <Route path="users/settings" element={<UserSettings />} />
             </Route>
           </Routes>
         </Router>
