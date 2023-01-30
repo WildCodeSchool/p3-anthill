@@ -1,4 +1,6 @@
-DROP TABLE IF EXISTS `badge`, `mood`, `user`, `topic`, `bubble`, `idea`, `comment`, `link`, `user_badge`, `user_topic`, `upvote_comment_user`, `upvote_idea_user`, `upvote_bubble_user`;
+DROP TABLE IF EXISTS `user_badge`, `user_topic`, `upvote_comment_user`, `upvote_idea_user`, `upvote_bubble_user`, `badge`, `mood`, `user`, `topic`, `bubble`, `idea`, `comment`, `link`;
+
+DROP VIEW IF EXISTS `TopicData`, `IdeaUpvotes`, `AllFromOneTopic`, `IdeaData`, `CommentUpvotes`, `BubbleUpvotes`, `CommentData`, `BubbleData`;
 
 CREATE TABLE `badge` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -138,6 +140,14 @@ CREATE TABLE `upvote_comment_user` (
   CONSTRAINT `fk_upvote_comment_comment` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_upvote_comment_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ); 
+
+CREATE TABLE `upvote_bubble_user` (
+  `bubble_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`bubble_id`, `user_id`),
+  CONSTRAINT `fk_upvote_bubble_bubble` FOREIGN KEY (`bubble_id`) REFERENCES `bubble` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_upvote_bubble_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
+);
 
 CREATE VIEW IdeaUpvotes (idea_id, nbr_upvotes) 
 AS (SELECT i.id, count(uiu.idea_id) AS nbr_upvotes
