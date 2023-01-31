@@ -15,7 +15,6 @@ function CommentCard({
   triggerGetComments,
   comment,
 }) {
-  const { currentUser } = useCurrentUser();
 
   const { trigger: triggerDownvoteComment } = useFetchLazy({
     path: `/votes/comments/${id}/downvote`,
