@@ -4,6 +4,7 @@ const ideaController = require("../controllers/idea.controller");
 const commentController = require("../controllers/comment.controller");
 // const topicValidator = require("../validators/topic.validator");
 const { verifyToken } = require("../services/middlewares/auth.middleware");
+const { verifyIsClosed } = require("../services/middlewares/topic.middleware");
 
 const topicRouter = new Router();
 
@@ -24,8 +25,12 @@ topicRouter.post(
   // topicValidator.validateCreateTopic,
   topicController.create
 );
-topicRouter.post("/:topicId/ideas", ideaController.create);
-topicRouter.post("/:topicId/ideas/:ideaId/comments", commentController.create);
+topicRouter.post("/:topicId/ideas", verifyIsClosed, ideaController.create);
+topicRouter.post(
+  "/:topicId/ideas/:ideaId/comments",
+  verifyIsClosed,
+  commentController.create
+);
 
 topicRouter.put("/:id", topicController.update);
 

@@ -105,8 +105,8 @@ CREATE TABLE `user_topic` (
   CONSTRAINT `fk_user_topic_topic` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id`) ON DELETE CASCADE
 );
 
-CREATE VIEW TopicData (id, is_comment_mode, title, creator_id, fullname, description, deadline, nb_idea, nb_bubble, slack_channel_link) 
-AS (SELECT t.id, t.is_comment_mode, t.title, u.id, u.fullname, t.description, t.deadline, count(i.id), count(b.id), t.slack_channel_link
+CREATE VIEW TopicData (id, is_comment_mode, title, creator_id, fullname, description, deadline, is_closed, nb_idea, nb_bubble, slack_channel_link) 
+AS (SELECT t.id, t.is_comment_mode, t.title, u.id, u.fullname, t.description, t.deadline, t.is_closed, count(i.id), count(b.id), t.slack_channel_link
   FROM topic AS t 
   LEFT JOIN idea AS i ON i.comment_mode_id = t.id
   LEFT JOIN bubble as b ON b.mindmap_id = t.id 
