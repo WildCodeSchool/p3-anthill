@@ -23,7 +23,7 @@ function TopicsList() {
   }, []);
 
   return (
-    <div>
+    <div className="topicsContainer">
       <ToggleModeButtons />
       <div className="topicsList">
         {loading && <div>LOADING...</div>}
