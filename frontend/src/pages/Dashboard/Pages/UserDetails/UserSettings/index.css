@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  min-height: 90vh;
   flex-wrap: wrap;
   z-index: -10;
 }
@@ -107,4 +107,10 @@
 
 #picture-input::file-selector-button:active {
   box-shadow: 0 0 9e9Q inset #0009;
+}
+
+.settings-message {
+  margin: 0 5% 5%;
+  font-size: var(--textXS);
+  color: var(--light-color);
 }

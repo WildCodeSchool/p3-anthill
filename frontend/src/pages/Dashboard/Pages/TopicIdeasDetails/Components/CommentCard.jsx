@@ -48,7 +48,11 @@ function CommentCard({
     <div className="commentCard">
       <div className="commentCard__info">
         <div className="commentCard__main">
-          <img src={currentUser?.picture} alt="avatar" />
+          <img
+            src={currentUser?.picture}
+            alt="avatar"
+            className="commentCard__avatar"
+          />
           <div className="commentCard__creatorName">{pseudo}</div>
         </div>
         <p

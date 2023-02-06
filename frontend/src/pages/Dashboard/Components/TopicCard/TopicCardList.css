@@ -29,6 +29,12 @@
   color: var(--small-touch);
 }
 
+.topicCard__creatorName__list {
+  color: var(--light-color);
+  margin-left: 15px;
+  font-size: var(--textS);
+}
+
 .topicCard__description__list {
   margin: 0 15px;
   width: 600px;

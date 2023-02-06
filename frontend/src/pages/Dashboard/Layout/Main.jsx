@@ -37,7 +37,7 @@ function Main() {
                 id={topic.id}
                 creatorId={topic.creator_id}
                 title={topic.title}
-                creatorName={topic.creator_name}
+                creatorName={topic.fullname}
                 description={topic.description}
                 deadline={topic.deadline}
                 nbIdea={topic.nb_idea}
