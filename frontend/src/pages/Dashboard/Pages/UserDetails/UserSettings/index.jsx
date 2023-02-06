@@ -7,7 +7,7 @@ import useFetchLazy from "../../../../../services/useFetchLazy";
 
 import "./index.css";
 
-const URL = import.meta.env.VITE_BACKEND_URL;
+const { VITE_BACKEND_URL } = import.meta.env;
 
 function UserSettings() {
   const [alert, setAlert] = useState(false);
@@ -35,14 +35,18 @@ function UserSettings() {
     const formData = new FormData();
     formData.append("picture", inputRef.current?.files[0]);
     axios
-      .post(`${URL}/api/users/${currentUser?.id}/picture`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem("currentUser"))?.token
-          }`,
-        },
-      })
+      .post(
+        `${VITE_BACKEND_URL}/api/users/${currentUser?.id}/picture`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("currentUser"))?.token
+            }`,
+          },
+        }
+      )
       .then(() => {
         setAlert(true);
       })
@@ -87,7 +91,11 @@ function UserSettings() {
         <button className="btn" type="submit">
           SUBMIT
         </button>
-        {isSuccess && <div className="changes">Changes done</div>}
+        {isSuccess && (
+          <div className="settings-message">
+            Changes done, please reload to see changes
+          </div>
+        )}
       </form>
       <form
         className="settings-container"
@@ -102,6 +110,7 @@ function UserSettings() {
           name="picture"
           onChange={onImageChange}
           ref={inputRef}
+          accept=".png,.jpg,.jpeg"
         />
         <button type="submit" className="btn">
           SUBMIT
