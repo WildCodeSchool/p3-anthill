@@ -1,32 +1,33 @@
+.side-bar {
+  height: 100%;
+}
+
 .user-profile-area {
   background-color: var(--dark-background);
-  border-radius: var(--radius);
+  border-radius: 0 0 var(--radius) var(--radius);
   border: 10px solid var(--dark-background);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(15px);
-  width: 280px;
-  height: 88.1vh;
+  max-width: 280px;
+  height: 88vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex-shrink: 0;
-  overflow: auto;
-  position: relative;
+  justify-content: space-around;
   transition: width 0.3s ease-in-out;
   margin-bottom: 50px;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  overflow: auto;
 }
 
 .topic-manager {
   font-size: var(--textL);
   font-weight: 700;
   text-align: center;
-  height: 70px;
   letter-spacing: 0.7px;
-  position: sticky;
-  top: 2rem;
-  z-index: 3;
   text-transform: uppercase;
+  margin-top: 25%;
 }
 .user-photo {
   width: 90px;
@@ -35,23 +36,20 @@
   object-fit: cover;
 }
 .user-name {
-  top: 0;
   font-weight: 600;
-  padding-bottom: 1.5rem;
+  margin: 10% 0;
 }
-.user-mood {
-  margin-top: 0.5rem;
-  font-size: var(--textS);
-  font-weight: 600;
-}
+
 .user-profile {
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
+  flex-wrap: wrap;
 }
+
 .side-wrapper {
-  padding: 20px 40px;
+  margin: 5% 1rem;
 }
 
 .sidebar-list {
@@ -60,7 +58,7 @@
   justify-content: space-between;
   list-style: none;
   padding: 0;
-  margin: 12px 0 0;
+  margin: 5% 0 0;
 }
 
 .sidebar-list a {
@@ -88,7 +86,6 @@
   transform: translateX(-16px);
   opacity: 0;
   padding: 8px 0;
-  position: relative;
 }
 
 .sidebar-listItemText {
@@ -137,6 +134,11 @@
   padding: 0.6rem;
   text-decoration: none;
   text-align: center;
+  margin-top: 8%;
+}
+
+.signOut-btn > .signOut-btn {
+  margin: 0 0 2rem;
 }
 
 .signOut-btn:hover {

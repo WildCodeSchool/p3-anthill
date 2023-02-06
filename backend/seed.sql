@@ -1,3 +1,4 @@
+USE `p3-anthill-db`;
 
 INSERT INTO badge (name, path) VALUES ("Creator", "/creator.png"), ("Likes", "/likesGiver.png"), ("Thinker", "/thinker.png"), ("Visitor", "/visitor.png");
 
@@ -6,11 +7,17 @@ INSERT INTO mood (name, emoji) VALUES ("mood_name_1", "mood_emoji_1"), ("mood_na
 
 INSERT INTO user (description, pseudo, picture, email, hashedPassword, fullname, googleUserId, mood_id) 
 VALUES 
-  ("description_1", "pseudo_1", "picture_user_1", "email_1@gmail.com", "user_hashedPassword_1", "user_fullname_1", "user_google_id_1", 1), 
-  ("description_2", "pseudo_2", "picture_user_2", "email_2@gmail.com", "user_hashedPassword_2", "user_fullname_2", "user_google_id_2", 2), 
-  ("description_3", "pseudo_3", "picture_user_3", "email_3@gmail.com", "user_hashedPassword_3", "user_fullname_3", "user_google_id_3", 3), 
-  ("description_4", "pseudo_4", "picture_user_4", "email_4@gmail.com", "user_hashedPassword_4", "user_fullname_4", "user_google_id_4", 4), 
-  ("description_5", "pseudo_5", "picture_user_5", "email_5@gmail.com", "user_hashedPassword_5", "user_fullname_5", "user_google_id_5", 1)
+  ("description_1", "Laser", "https://i.postimg.cc/NjMzrjn2/Huy.png", "email_1@gmail.com", "user_hashedPassword_1", "Huy", "user_google_id_1", 1), 
+  ("description_2", "Angeloox", "https://i.postimg.cc/ncn5pkYk/Quentin.png", "email_2@gmail.com", "user_hashedPassword_2", "Quentin", "user_google_id_2", 2), 
+  ("description_3", "Xx_D4rk_Sir_Hyle_xX", "https://i.postimg.cc/QC3zBkLj/Cyril.png", "email_3@gmail.com", "user_hashedPassword_3", "Cyril", "user_google_id_3", 3), 
+  ("description_4", "Morticia", "https://i.postimg.cc/13CbWqFK/Audrey.png", "email_4@gmail.com", "user_hashedPassword_4", "Audrey", "user_google_id_4", 4), 
+  ("description_5", "Jojodu75", "https://i.postimg.cc/MGgNwJdM/Johanna.png", "email_5@gmail.com", "user_hashedPassword_5", "Johanna", "user_google_id_5", 1),
+  ("description_6", "HMP180", "https://i.postimg.cc/W3rKbYH9/Herschel.png", "email_6@gmail.com", "user_hashedPassword_5", "Herschell", "user_google_id_6", 1),
+  ("description_7", "Fransoué", "https://i.postimg.cc/7hhZp5w4/Eric.jpg", "email_7@gmail.com", "user_hashedPassword_5", "François", "user_google_id_7", 1),
+  ("description_8", "Mago", "https://i.postimg.cc/fbSqBgDw/Margot.png", "email_8@gmail.com", "user_hashedPassword_5", "Magomhed", "user_google_id_8", 1),
+  ("description_9", "Cass_la_menace", "https://i.postimg.cc/YSvZTCfB/Celia.png", "email_9@gmail.com", "user_hashedPassword_5", "Cassandra", "user_google_id_9", 1),
+  ("description_10", "Gwenzouz", "https://i.postimg.cc/xjv7w7H8/Gwenael.png", "email_10@gmail.com", "user_hashedPassword_5", "Gwenaël", "user_google_id_10", 1),
+  ("description_11", "Mika_comme_le_chanteur", "https://i.postimg.cc/7hnWSGD0/Mickael.png", "email_11@gmail.com", "user_hashedPassword_5", "Mickaël", "user_google_id_11", 1)
 ;
 
 INSERT INTO topic (deadline, description, is_private, creator_id, title, is_closed, is_comment_mode) 
@@ -25,7 +32,8 @@ VALUES
   (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 0, 0), 
   (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 1, 0), 
   (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 0, 0), 
-  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0)
+  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0),
+  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 0, 0)
 ;
 INSERT INTO bubble (content, mindmap_id, creator_id) 
 VALUES 
@@ -66,13 +74,6 @@ INSERT INTO user_topic (user_id, topic_id) VALUES (1, 1), (1, 4), (1, 5), (1, 2)
 INSERT IGNORE INTO upvote_idea_user (user_id, idea_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);
 
 INSERT IGNORE INTO upvote_comment_user (user_id, comment_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);
-CREATE TABLE `upvote_bubble_user` (
-  `bubble_id` int NOT NULL,
-  `user_id` int NOT NULL,
-  PRIMARY KEY (`bubble_id`, `user_id`),
-  CONSTRAINT `fk_upvote_bubble_bubble` FOREIGN KEY (`bubble_id`) REFERENCES `bubble` (`id`),
-  CONSTRAINT `fk_upvote_bubble_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-); 
 
 INSERT IGNORE INTO upvote_comment_user (user_id, comment_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);
 

@@ -13,7 +13,7 @@ import SideBarListItems from "../Components/SideBarListItems/SideBarListItems";
 
 import "./Sidebar.css";
 
-function Sidebar({ userId, name, photo }) {
+function Sidebar({ userId, name, photo, pseudo }) {
   const [activeButton, setActiveButton] = useState(null);
   const sideBarList = [
     {
@@ -70,11 +70,12 @@ function Sidebar({ userId, name, photo }) {
   return (
     <aside className="side-bar">
       <div className="user-profile-area">
-        <div className="topic-manager">Welcome back</div>
         <div className="side-wrapper">
+          <div className="topic-manager">Welcome back</div>
           <div className="user-profile">
             <div className="user-name">{name}</div>
             <img src={photo} alt="" className="user-photo" />
+            <div className="user-name">{pseudo}</div>
           </div>
         </div>
         <ul className="sidebar-list">
