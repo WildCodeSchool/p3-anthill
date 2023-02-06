@@ -16,6 +16,7 @@ function IdeaCard({
   nbComment,
   canVote,
   triggerGetIdeas,
+  isClosed,
 }) {
   const { currentUser } = useCurrentUser();
 
@@ -30,13 +31,19 @@ function IdeaCard({
   });
 
   const upvoteFunction = async () => {
+    if (isClosed) return alert("This topic is closed");
+
     await triggerUpvoteIdea();
     triggerGetIdeas();
+    return null;
   };
 
   const downvoteFunction = async () => {
+    if (isClosed) return alert("This topic is closed");
+
     await triggerDownvoteIdea();
     triggerGetIdeas();
+    return null;
   };
 
   return (
@@ -68,10 +75,8 @@ function IdeaCard({
           </div>
         </div>
       </div>
-      {creatorId === currentUser?.id ? (
+      {creatorId === currentUser?.id && (
         <DeleteIdeaButton ideaId={id} triggerGetIdeas={triggerGetIdeas} />
-      ) : (
-        ""
       )}
     </div>
   );

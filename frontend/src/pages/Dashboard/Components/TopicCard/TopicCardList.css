@@ -61,3 +61,11 @@
   font-size: var(--textXS);
   color: var(--light-color);
 }
+
+.topicCard__disabled {
+  background-color: var(--medium-background-disabled);
+}
+
+.topicCard__closed {
+  color: var(--error);
+}
