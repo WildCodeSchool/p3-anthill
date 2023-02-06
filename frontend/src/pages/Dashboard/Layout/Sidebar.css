@@ -40,6 +40,11 @@
   margin: 10% 0;
 }
 
+.user-pseudo {
+  font-weight: 600;
+  margin: 10% 0 0;
+}
+
 .user-profile {
   display: flex;
   flex-direction: column;

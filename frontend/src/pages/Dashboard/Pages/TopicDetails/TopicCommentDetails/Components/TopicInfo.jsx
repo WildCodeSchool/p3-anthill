@@ -46,26 +46,28 @@ function TopicInfo(props) {
         <RxLapTimer />
         <p>{`${formatedDeadLine}`}</p>
       </div>
-      {!slackChannelLink ? (
-        <button
-          type="button"
-          className="button-delete"
-          onClick={createSlackChannel}
-        >
-          Create Slack Channel
-        </button>
-      ) : (
-        <p>
-          <a
-            className="button-delete"
-            href={slackChannelLink && slackChannelLink}
-            target="_blank"
-            rel="noreferrer"
+      <div className="topicInfo__slack">
+        {!slackChannelLink ? (
+          <button
+            type="button"
+            className="button-slack"
+            onClick={createSlackChannel}
           >
-            Join us on the Slack Channel !
-          </a>
-        </p>
-      )}
+            Create Slack Channel
+          </button>
+        ) : (
+          <p>
+            <a
+              className="button-slack"
+              href={slackChannelLink && slackChannelLink}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Join us on the Slack Channel !
+            </a>
+          </p>
+        )}
+      </div>
     </div>
   );
 }
