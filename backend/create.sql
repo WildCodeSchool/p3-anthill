@@ -40,7 +40,7 @@ CREATE TABLE `topic` (
   `is_private` tinyint(1) NOT NULL DEFAULT 0,
   `creator_id` int NOT NULL DEFAULT 0,
   `title` varchar(255) NOT NULL,
-  `is_closed` tinyint(1) NOT NULL DEFAULT 0,
+  `is_closed` tinyint(1) NOT NULL DEFAULT (CASE WHEN deadline < CURRENT_TIMESTAMP() THEN 1 ELSE 0 END),
   `is_comment_mode` tinyint(1) NOT NULL DEFAULT 1,
   `slack_channel_link` varchar(500),
   PRIMARY KEY (`id`),
