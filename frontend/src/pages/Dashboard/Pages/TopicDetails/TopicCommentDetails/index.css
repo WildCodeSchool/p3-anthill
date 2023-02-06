@@ -1,20 +1,14 @@
 .ideaCard__page {
-  padding-top: 0.5rem;
+  padding-top: 1px;
 }
 
 .topicInfo {
   color: var(--golden-color);
-  margin: 1.5rem;
-  margin-bottom: 3rem;
+  margin: 10px 24px 3rem;
   padding: 0.5rem;
+  border-radius: 0 0 var(--radius) var(--radius);
   display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
   border: 4px solid var(--medium-background);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
-    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
-  border-radius: var(--radius);
   background-color: var(--medium-background);
   font-size: var(--textM);
 }
@@ -41,17 +35,25 @@
 .topicInfo__deadline {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-right: 15px;
+  margin: 15px auto;
   color: var(--light-color);
   font-size: var(--textS);
+}
+
+.button-slack {
+  background-color: var(--golden-color);
+  color: var(--dark-background);
+  font-weight: 600;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 15px;
 }
 
 .ideaCreationCard {
   color: var(--golden-color);
   display: flex;
   justify-content: space-around;
-  background-color: var(--medium-background);
+  background-color: var(--light-background);
   border-radius: var(--radius);
   height: 220px;
   margin: 1.5rem;
@@ -118,12 +120,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--medium-background);
+  background-color: var(--light-background);
   border-radius: var(--radius);
   height: 110px;
   margin: 1.5rem;
   padding: 0.5rem;
-  border: 4px solid var(--medium-background);
+  border: 4px solid var(--light-background);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
