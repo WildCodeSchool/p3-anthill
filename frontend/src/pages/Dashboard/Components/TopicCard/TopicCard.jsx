@@ -104,7 +104,7 @@ function TopicCard(props) {
         <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />
       )}
       <div className="btn_delete">
-        <button>Toppics Mode</button>
+        <button type="button">Topics Mode</button>
       </div>
     </article>
   );
