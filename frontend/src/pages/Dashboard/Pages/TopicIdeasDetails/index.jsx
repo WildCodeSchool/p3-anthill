@@ -19,13 +19,31 @@ function TopicIdeasDetails() {
     path: `/topics/${topicId}/ideas/${ideaId}/comments`,
     method: "get",
   });
+
   const { data: idea, loadingIdea } = useFetch({
     path: `/ideas/${ideaId}`,
     method: "get",
   });
+
+  const { data: topic } = useFetch({
+    path: `/topics/${topicId}`,
+    method: "get",
+  });
+
   function handleClick() {
     setIsClicked(true);
   }
+
+  const [isClosed, setIsClosed] = useState(false);
+
+  const currentDate = new Date();
+  const newDeadline = new Date(topic.deadline);
+
+  useEffect(() => {
+    if (currentDate > newDeadline) {
+      setIsClosed(true);
+    }
+  }, [currentDate, newDeadline]);
 
   useEffect(() => {
     triggerGetComments();
@@ -49,6 +67,7 @@ function TopicIdeasDetails() {
                   canVote={comment.canVote}
                   triggerGetComments={triggerGetComments}
                   comment={comment}
+                  isClosed={isClosed}
                 />
               ))}
           </div>
@@ -61,11 +80,12 @@ function TopicIdeasDetails() {
             onKeyDown={() => {}}
             role="button"
           >
-            {isClicked ? (
-              <CommentCreate triggerGetComments={triggerGetComments} />
-            ) : (
-              <div id="createComment">+</div>
-            )}
+            {!isClosed &&
+              (isClicked ? (
+                <CommentCreate triggerGetComments={triggerGetComments} />
+              ) : (
+                <div id="createComment">+</div>
+              ))}
           </div>
         </div>
       </div>

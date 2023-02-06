@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import TopicInfo from "./Components/TopicInfo";
 import IdeaCard from "./Components/IdeaCard";
 import IdeaCreationCard from "./Components/IdeaCreationCard";
@@ -12,6 +13,17 @@ function TopicCommentDetails({
   triggerGetIdeas,
   triggerGetTopic,
 }) {
+  const [isClosed, setIsClosed] = useState(false);
+
+  const currentDate = new Date();
+  const newDeadline = new Date(topic.deadline);
+
+  useEffect(() => {
+    if (currentDate > newDeadline) {
+      setIsClosed(true);
+    }
+  }, [currentDate, newDeadline]);
+
   return (
     <div className="ideaCard__page">
       {loadingTopic && <h2 className="loading">LOADING ...</h2>}
@@ -28,10 +40,12 @@ function TopicCommentDetails({
         />
       )}
       <div>
-        <IdeaCreationCard
-          topicId={topic.id}
-          triggerGetIdeas={triggerGetIdeas}
-        />
+        {!isClosed && (
+          <IdeaCreationCard
+            topicId={topic.id}
+            triggerGetIdeas={triggerGetIdeas}
+          />
+        )}
       </div>
       <div className="ideaContainer">
         {loadingIdeas && <h2 className="ideaCard__title">LOADING ...</h2>}
@@ -47,6 +61,7 @@ function TopicCommentDetails({
               nbComment={idea.nb_comment}
               canVote={idea.canVote}
               triggerGetIdeas={triggerGetIdeas}
+              isClosed={isClosed}
             />
           ))
         ) : (

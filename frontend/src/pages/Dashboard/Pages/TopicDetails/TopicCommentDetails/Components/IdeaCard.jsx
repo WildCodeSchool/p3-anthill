@@ -14,6 +14,7 @@ function IdeaCard({
   nbComment,
   canVote,
   triggerGetIdeas,
+  isClosed,
 }) {
   const { trigger: triggerDownvoteIdea } = useFetchLazy({
     path: `/votes/ideas/${id}/downvote`,
@@ -26,13 +27,19 @@ function IdeaCard({
   });
 
   const upvoteFunction = async () => {
+    if (isClosed) return alert("This topic is closed");
+
     await triggerUpvoteIdea();
     triggerGetIdeas();
+    return null;
   };
 
   const downvoteFunction = async () => {
+    if (isClosed) return alert("This topic is closed");
+
     await triggerDownvoteIdea();
     triggerGetIdeas();
+    return null;
   };
 
   return (
