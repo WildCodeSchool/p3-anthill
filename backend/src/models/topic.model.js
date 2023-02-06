@@ -13,7 +13,7 @@ async function getAllTopicCard() {
 
 async function getTrendingTopicsByIdeasCount() {
   const [rows] = await db.query(
-    "SELECT * FROM TopicData ORDER BY nb_idea desc"
+    "SELECT * FROM TopicData WHERE deadline > NOW() ORDER BY nb_idea desc"
   );
   return rows;
 }
