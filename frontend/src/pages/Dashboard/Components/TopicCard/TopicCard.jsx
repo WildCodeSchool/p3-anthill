@@ -48,7 +48,7 @@ function TopicCard(props) {
               : "topicCard__creatorName__list"
           }
         >
-          {creatorName}
+          By {creatorName}
         </p>
       </div>
 
