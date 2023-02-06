@@ -155,8 +155,8 @@ AS (SELECT i.id, count(uiu.idea_id) AS nbr_upvotes
   LEFT JOIN upvote_idea_user AS uiu ON i.id = uiu.idea_id GROUP by i.id)
 ;
 
-CREATE VIEW IdeaData(id, idea_title, idea_description, idea_creator_name, nb_comment, comment_mode_id, nbr_upvotes_idea)
-AS (SELECT i.id, MIN(i.title), MIN(i.description), MIN(u.fullname), count(c.id), i.comment_mode_id, iu.nbr_upvotes
+CREATE VIEW IdeaData(id, idea_creator_id, idea_title, idea_description, idea_creator_name, nb_comment, comment_mode_id, nbr_upvotes_idea)
+AS (SELECT i.id, i.creator_id, MIN(i.title), MIN(i.description), MIN(u.fullname), count(c.id), i.comment_mode_id, iu.nbr_upvotes
   FROM idea AS i
   LEFT JOIN topic AS t ON t.id = i.comment_mode_id
   LEFT JOIN user AS u ON u.id = i.creator_id
@@ -171,9 +171,9 @@ AS (SELECT c.id, count(ucu.comment_id) AS nbr_upvotes
   LEFT JOIN upvote_comment_user AS ucu ON c.id = ucu.comment_id GROUP by c.id)
 ;
 
-CREATE VIEW CommentData(id, content, up_vote, user_id, creation_date, pseudo, picture, idea_id)
+CREATE VIEW CommentData(id, creator_id, content, up_vote, user_id, creation_date, pseudo, picture, idea_id)
 AS (
-SELECT c.id, c.content, cu.nbr_upvotes, c.creator_id, c.creation_date, u.pseudo, u.picture, i.id
+SELECT c.id, c.creator_id, c.content, cu.nbr_upvotes, c.creator_id, c.creation_date, u.pseudo, u.picture, i.id
 FROM comment AS c 
 LEFT JOIN idea AS i ON i.id = c.idea_id 
 LEFT JOIN user AS u ON u.id = c.creator_id

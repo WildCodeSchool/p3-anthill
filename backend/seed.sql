@@ -1,3 +1,4 @@
+USE `p3-anthill-db`;
 
 INSERT INTO badge (name, path) VALUES ("Creator", "/creator.png"), ("Likes", "/likesGiver.png"), ("Thinker", "/thinker.png"), ("Visitor", "/visitor.png");
 
@@ -25,7 +26,8 @@ VALUES
   (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 0, 0), 
   (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 1, 0), 
   (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 0, 0), 
-  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0)
+  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0),
+  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 0, 0)
 ;
 INSERT INTO bubble (content, mindmap_id, creator_id) 
 VALUES 
@@ -66,13 +68,6 @@ INSERT INTO user_topic (user_id, topic_id) VALUES (1, 1), (1, 4), (1, 5), (1, 2)
 INSERT IGNORE INTO upvote_idea_user (user_id, idea_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);
 
 INSERT IGNORE INTO upvote_comment_user (user_id, comment_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);
-CREATE TABLE `upvote_bubble_user` (
-  `bubble_id` int NOT NULL,
-  `user_id` int NOT NULL,
-  PRIMARY KEY (`bubble_id`, `user_id`),
-  CONSTRAINT `fk_upvote_bubble_bubble` FOREIGN KEY (`bubble_id`) REFERENCES `bubble` (`id`),
-  CONSTRAINT `fk_upvote_bubble_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-); 
 
 INSERT IGNORE INTO upvote_comment_user (user_id, comment_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);
 
