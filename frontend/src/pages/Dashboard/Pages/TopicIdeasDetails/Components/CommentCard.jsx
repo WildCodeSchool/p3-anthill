@@ -7,6 +7,7 @@ import useCurrentUser from "../../../../../services/useCurrentUser";
 
 function CommentCard({
   id,
+  creatorId,
   pseudo,
   content,
   upVote,
@@ -58,10 +59,14 @@ function CommentCard({
             <BiDownvote onClick={downvoteFunction} />
           )}
         </div>
-        <DeleteCommentButton
-          comment={comment}
-          triggerGetComments={triggerGetComments}
-        />
+        {creatorId === currentUser?.id ? (
+          <DeleteCommentButton
+            comment={comment}
+            triggerGetComments={triggerGetComments}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
