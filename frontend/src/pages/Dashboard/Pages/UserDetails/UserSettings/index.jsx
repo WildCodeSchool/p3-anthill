@@ -5,6 +5,8 @@ import useFetchLazy from "../../../../../services/useFetchLazy";
 
 import "./index.css";
 
+const URL = import.meta.env.VITE_BACKEND_URL;
+
 function UserSettings() {
   const [alert, setAlert] = useState(false);
 
@@ -31,18 +33,14 @@ function UserSettings() {
     const formData = new FormData();
     formData.append("picture", inputRef.current?.files[0]);
     axios
-      .post(
-        `http://localhost:5500/api/users/${currentUser?.id}/picture`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("currentUser"))?.token
-            }`,
-          },
-        }
-      )
+      .post(`${URL}/api/users/${currentUser?.id}/picture`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("currentUser"))?.token
+          }`,
+        },
+      })
       .then(() => {
         setAlert(true);
       })
