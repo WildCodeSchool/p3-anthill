@@ -24,19 +24,22 @@
 
 .commentCard__main {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
   margin-left: 15px;
-  width: 150px;
+  width: 320px;
 }
 
-.commentCard__main > img {
+.commentCard__avatar {
   font-size: var(--textXS);
+  border-radius: 100%;
+  height: 60px;
+  width: 60px;
 }
 
 .commentCard__creatorName {
   font-size: var(--textS);
   color: var(--golden-color);
+  margin-left: 10px;
 }
 
 .commentCard__description {

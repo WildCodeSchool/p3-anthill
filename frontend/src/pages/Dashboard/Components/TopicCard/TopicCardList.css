@@ -29,6 +29,12 @@
   color: var(--small-touch);
 }
 
+.topicCard__creatorName__list {
+  color: var(--light-color);
+  margin-left: 15px;
+  font-size: var(--textS);
+}
+
 .topicCard__description__list {
   margin: 0 15px;
   width: 600px;
@@ -60,4 +66,12 @@
   justify-content: flex-start;
   font-size: var(--textXS);
   color: var(--light-color);
+}
+
+.topicCard__disabled {
+  background-color: var(--medium-background-disabled);
+}
+
+.topicCard__closed {
+  color: var(--error);
 }

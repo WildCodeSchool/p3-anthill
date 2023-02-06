@@ -106,7 +106,11 @@ function UserSettings() {
         <button type="submit" className="btn">
           SUBMIT
         </button>
-        {alert && <div>Changes done, please reload to see changes</div>}
+        {alert && (
+          <div className="settings-message">
+            Changes done, please reload to see changes
+          </div>
+        )}
       </form>
     </div>
   );

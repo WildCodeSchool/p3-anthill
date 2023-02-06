@@ -4,7 +4,7 @@ async function getAll() {
   const [rows] = await db.query(
     "SELECT u.id, u.picture, u.email, u.pseudo, u.fullname, u.mood_id, COUNT(ub.badge_id) AS nbr_badges " +
       "FROM user AS u " +
-      "INNER JOIN user_badge AS ub ON ub.user_id = u.id " +
+      "LEFT JOIN user_badge AS ub ON ub.user_id = u.id " +
       "GROUP BY u.id "
   );
   return rows;

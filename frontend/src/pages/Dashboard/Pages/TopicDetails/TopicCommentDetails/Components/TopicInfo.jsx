@@ -1,6 +1,5 @@
 import { RxLapTimer } from "react-icons/rx";
 import DOMPurify from "isomorphic-dompurify";
-import formatDeadline from "../../../../../../services/formatDeadline";
 import useFetchLazy from "../../../../../../services/useFetchLazy";
 
 function TopicInfo(props) {
@@ -13,12 +12,14 @@ function TopicInfo(props) {
     slackChannelLink,
     triggerGetTopic,
   } = props;
-  let formatedDeadLine = [];
 
-  if (deadline) {
-    formatedDeadLine = formatDeadline(deadline);
-  }
-  const [year, month, day, hour, minutes] = [...formatedDeadLine];
+  const newDeadline = new Date(deadline);
+  const options = {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  };
+  const formatedDeadLine = newDeadline.toLocaleTimeString("gb-GB", options);
 
   const { trigger: triggerCreateChannel } = useFetchLazy({
     path: `/topics/${id}/slack/channels/create`,
@@ -43,7 +44,7 @@ function TopicInfo(props) {
       />
       <div className="topicInfo__deadline">
         <RxLapTimer />
-        <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>
+        <p>{`${formatedDeadLine}`}</p>
       </div>
       {!slackChannelLink ? (
         <button
