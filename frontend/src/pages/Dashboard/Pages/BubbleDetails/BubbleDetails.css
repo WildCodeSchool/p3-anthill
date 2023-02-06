@@ -1,5 +1,15 @@
 .bubbleTeas {
-  margin-top: -100px;
+  margin-top: -170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 80%;
   height: 100%;
+}
+
+.bb-title {
+  position: absolute;
+  top: 70%;
+  color: var(--light-color);
 }

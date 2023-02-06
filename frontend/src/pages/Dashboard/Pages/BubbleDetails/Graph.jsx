@@ -1,9 +1,9 @@
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
+import "./Graph.css";
 
 function Graph({ width, height, links, nodes }) {
   const svgRef = useRef(null);
-
   useEffect(() => {
     const simulation = d3
       .forceSimulation(nodes)
@@ -40,36 +40,45 @@ function Graph({ width, height, links, nodes }) {
       .select(svgRef.current)
       .attr("viewBox", [0, 0, width, height]);
 
-    const nodeWidth = 200;
+    const nodeWidth = 250;
     const nodeHeight = 100;
 
     const link = svg
       .append("g")
-      .attr("stroke", "#000")
-      .attr("stroke-width", 1.5)
+      .attr("stroke", "#ffeba7")
+      .attr("stroke-width", 2.5)
       .selectAll("line")
       .data(links)
       .join("line")
       .attr("stroke-width", (d) => Math.sqrt(d.value));
 
     const label = svg.append("g").selectAll(".label").data(links).join("g");
-
     label
-      .append("rect")
-      .attr("x", -50)
-      .attr("y", -15)
-      .attr("height", 20)
-      .attr("width", 100)
-      .attr("fill", "#fff");
+      .append("circle")
+      .attr("class", (d) => `ava_${d.name}`)
+      .attr("r", 50)
+      .attr("fill", "#ffeba7");
+    label
+      .append("image")
+      .attr("id", (d) => d.name)
+      .attr("x", -25)
+      .attr("y", -5)
+      .attr("width", 50)
+      .attr("height", 50)
+      .attr("xlink:href", (d) => d.photo)
+      .attr("alt", "photo");
 
     label
       .append("text")
+      .attr("y", -15)
       .attr("text-anchor", "middle")
-      .text((d) => d.text);
+      .style("font-weight", "bold")
+      .style("font-size", "1rem")
+      .text((d) => d.name);
 
     const node = svg
       .append("g")
-      .attr("stroke", "#000")
+      .attr("stroke", "#ffeba7")
       .attr("stroke-width", 1.5)
       .selectAll(".node")
       .data(nodes)
@@ -78,10 +87,35 @@ function Graph({ width, height, links, nodes }) {
 
     node
       .append("rect")
-      .attr("rx", 50)
+      .attr("id", (d) => d.id)
+      .attr("rx", 10)
       .attr("width", nodeWidth)
       .attr("height", nodeHeight)
-      .attr("fill", "#fff");
+      .attr("fill", "#3b4554")
+      .attr("opacity", 0.8);
+    node
+      .select("#a")
+      .attr("width", nodeWidth)
+      .attr("height", 200)
+      .attr("stroke", "#38d6ae");
+
+    node
+      .append("text")
+      .attr("x", 40)
+      .attr("y", 180)
+      .attr("text-anchor", "middle")
+      .style("color", "#ffeba7")
+      .style("font-weight", "bold")
+      .style("font-size", "1rem")
+      .text((d) => d.name);
+    node
+      .append("image")
+      .attr("x", 185)
+      .attr("y", 140)
+      .attr("width", 50)
+      .attr("height", 50)
+      .attr("xlink:href", (d) => d.photo)
+      .attr("alt", "photo");
 
     node
       .append("foreignObject")

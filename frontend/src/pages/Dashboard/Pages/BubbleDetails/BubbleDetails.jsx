@@ -6,7 +6,9 @@ function BubbleDetails() {
     nodes: [
       {
         id: "a",
-        text: "Quentin hehehehihih",
+        text: "Quentin hehehefhihih fsfg fdg f g",
+        name: "Quentin",
+        photo: "/ContactPhotos/Quentin.png",
       },
       {
         id: "b",
@@ -34,12 +36,42 @@ function BubbleDetails() {
       },
     ],
     links: [
-      { source: "a", target: "b", text: "foo" },
-      { source: "a", target: "c", text: "bar" },
-      { source: "a", target: "d", text: "foobar" },
-      { source: "a", target: "e", text: "foo and bar" },
-      { source: "a", target: "f", text: "barfoo" },
-      { source: "a", target: "g", text: "barfoo" },
+      {
+        source: "a",
+        target: "b",
+        name: "Audrey H",
+        photo: "/ContactPhotos/Audrey.png",
+      },
+      {
+        source: "a",
+        target: "c",
+        name: "Cyril",
+        photo: "/ContactPhotos/Cyril.png",
+      },
+      {
+        source: "a",
+        target: "d",
+        name: "Gwenael",
+        photo: "/ContactPhotos/Gwenael.png",
+      },
+      {
+        source: "a",
+        target: "e",
+        name: "Herschel",
+        photo: "/ContactPhotos/Herschel.png",
+      },
+      {
+        source: "a",
+        target: "f",
+        name: "Huy",
+        photo: "/ContactPhotos/Huy.png",
+      },
+      {
+        source: "a",
+        target: "g",
+        name: "Johanna",
+        photo: "/ContactPhotos/Johanna.png",
+      },
     ],
   };
 
@@ -52,6 +84,9 @@ function BubbleDetails() {
   return (
     <div className="bubbleTeas">
       <Graph width={width} height={height} links={links} nodes={nodes} />
+      <div className="bb-title">
+        <h1>Bubbles View Mode</h1>
+      </div>
     </div>
   );
 }

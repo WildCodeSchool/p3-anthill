@@ -1,0 +1,12 @@
+.bubbleTeas g {
+  color: var(--light-color);
+}
+
+#img-bubble {
+  /* position: absolute;
+    top: 0;
+    left: 0; */
+  border-radius: 50%;
+  object-fit: cover;
+  transition: 0.5s;
+}
