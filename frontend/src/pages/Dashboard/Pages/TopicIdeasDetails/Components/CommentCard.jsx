@@ -7,7 +7,6 @@ import useCurrentUser from "../../../../../services/useCurrentUser";
 
 function CommentCard({
   id,
-  creatorId,
   pseudo,
   content,
   upVote,
@@ -24,6 +23,8 @@ function CommentCard({
     path: `/votes/comments/${id}/upvote`,
     method: "post",
   });
+
+  const { currentUser } = useCurrentUser();
 
   const upvoteFunction = async () => {
     await triggerUpvoteComment();
@@ -57,14 +58,10 @@ function CommentCard({
             <BiDownvote onClick={downvoteFunction} />
           )}
         </div>
-        {creatorId === currentUser?.id ? (
-          <DeleteCommentButton
-            comment={comment}
-            triggerGetComments={triggerGetComments}
-          />
-        ) : (
-          ""
-        )}
+        <DeleteCommentButton
+          comment={comment}
+          triggerGetComments={triggerGetComments}
+        />
       </div>
     </div>
   );
