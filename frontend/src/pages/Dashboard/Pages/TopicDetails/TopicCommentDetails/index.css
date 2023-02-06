@@ -1,23 +1,45 @@
-.topicCommentDeatils_main {
-  width: 100%;
-  padding: 20px;
+.ideaCard__page {
+  padding-top: 0.5rem;
 }
 
 .topicInfo {
   color: var(--golden-color);
-  padding: 2%;
+  margin: 1.5rem;
+  margin-bottom: 3rem;
+  padding: 0.5rem;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  box-shadow: var(--box-shadow);
+  border: 4px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   border-radius: var(--radius);
   background-color: var(--medium-background);
+  font-size: var(--textM);
+}
+
+.topicInfo__title {
+  font-size: var(--textM);
+}
+
+.topicInfo__left {
+  margin-left: 15px;
+}
+
+.topicInfo__description {
+  color: var(--light-color);
+  font-size: var(--textS);
+  margin: 0 1px;
 }
 
 .topicInfo__deadline {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  margin-right: 15px;
+  color: var(--light-color);
+  font-size: var(--textS);
 }
 
 .ideaCreationCard {
@@ -26,63 +48,124 @@
   justify-content: space-around;
   background-color: var(--medium-background);
   border-radius: var(--radius);
-  margin-top: 5%;
-  margin-bottom: 5%;
-  padding: 5%;
+  height: 220px;
+  margin: 1.5rem;
+  padding: 0.5rem;
   box-shadow: var(--box-shadow);
 }
 
 .ideaCreationCard__form {
   width: 100%;
-}
-
-.ideaCreationCard__form > input {
-  margin: 0 5%;
-}
-
-.ideaCreationCard__form > #descriptionInput {
-  width: 30%;
-}
-
-.ideaCreationCard__interactions {
-  width: 10%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: space-between;
+  margin: 15px;
+}
+
+.inputs {
+  flex-wrap: nowrap;
+  width: 90%;
+  display: flex;
+}
+
+.inputs > div > textarea {
+  resize: none;
+  border: none;
+  height: 60px;
+  border-radius: var(--radius);
+  font-size: var(--textM);
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.ideaArea {
+  display: flex;
+  flex-direction: column;
+}
+
+.descriptionArea {
+  height: 100%;
+  width: 100%;
+  margin-left: 80px;
+}
+
+.ideaCreation_Card {
+  display: flex;
+  align-items: center;
 }
 
 #ideaCreationCard__button {
-  height: 100%;
-  width: 10%;
-  border-radius: var(--radius);
-  border: 2px solid var(--dark-background);
   background-color: var(--golden-color);
+  color: var(--dark-background);
+  font-weight: 600;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+#ideaCreationCard__button:hover {
+  background-color: var(--small-touch);
+  color: var(--golden-color);
 }
 
 .ideaCard {
   color: var(--golden-color);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   background-color: var(--medium-background);
   border-radius: var(--radius);
-  margin: 5% 0;
-  padding: 5%;
-  box-shadow: var(--box-shadow);
+  height: 110px;
+  margin: 1.5rem;
+  padding: 0.5rem;
+  border: 4px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
 .ideaCard__main {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  margin-left: 15px;
+}
+
+.ideaCard__main > a {
+  color: var(--golden-color);
+}
+
+.ideaCard__main > a:hover {
+  color: var(--small-touch);
+}
+
+.ideaCard__creatorName {
+  color: var(--light-color);
+  margin-top: 15px;
 }
 
 .ideaCard__description {
-  display: flex;
-  align-items: center;
+  color: var(--light-color);
+  max-width: 50%;
+  margin: 10px 0;
+  resize: none;
+  border: none;
+  width: 500px;
+  text-align: center;
+  font-size: var(--textS);
 }
 
 .ideaCard__interactions {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.ideaCard__nbUpVote {
+  margin: 20px;
+}
+
+.ideaCard__nbComment {
+  margin: 20px;
 }
 
 .ideaCard__nbComment {

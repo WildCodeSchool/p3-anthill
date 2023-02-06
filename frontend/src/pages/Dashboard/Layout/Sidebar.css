@@ -1,18 +1,20 @@
 .user-profile-area {
   background-color: var(--dark-background);
-  border-radius: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius);
+  border: 10px solid var(--dark-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(15px);
-  width: 290px;
-  height: 90vh;
+  max-width: 280px;
+  height: 88.1vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   flex-shrink: 0;
   overflow: auto;
   position: relative;
   transition: width 0.3s ease-in-out;
+  margin-bottom: 50px;
 }
 
 .topic-manager {
@@ -49,7 +51,7 @@
   align-items: center;
 }
 .side-wrapper {
-  padding: 20px 40px;
+  padding: 20px;
 }
 
 .sidebar-list {
@@ -135,6 +137,11 @@
   padding: 0.6rem;
   text-decoration: none;
   text-align: center;
+  margin-top: 80px;
+}
+
+.signOut-btn > .signOut-btn {
+  margin: 0;
 }
 
 .signOut-btn:hover {

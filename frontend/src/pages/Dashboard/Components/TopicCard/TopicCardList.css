@@ -1,0 +1,63 @@
+.topicCard__list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--radius);
+  min-height: 110px;
+  margin: 1.5rem;
+  padding: 0.5rem;
+  z-index: 1;
+  background-color: var(--medium-background);
+  border: 4px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.topicCard__list:hover {
+  box-shadow: 1px 1px 10px var(--light-color),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.topicCard__title__list {
+  color: var(--golden-color);
+  margin-left: 15px;
+  width: 260px;
+  font-size: var(--textL);
+}
+
+.topicCard__title__list:hover {
+  color: var(--small-touch);
+}
+
+.topicCard__description__list {
+  margin: 0 15px;
+  width: 600px;
+  text-align: start;
+  font-size: var(--textS);
+  color: var(--light-color);
+}
+
+.topicCard__description__list:hover {
+  display: flex;
+  align-items: center;
+  text-align: start;
+  font-size: var(--textS);
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.topicCard__right__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 185px;
+}
+
+.topicCard__deadline__list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: var(--textXS);
+  color: var(--light-color);
+}

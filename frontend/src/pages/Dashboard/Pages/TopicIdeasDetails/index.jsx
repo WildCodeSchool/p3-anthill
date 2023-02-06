@@ -8,6 +8,7 @@ import "./index.css";
 
 function TopicIdeasDetails() {
   const { topicId, ideaId } = useParams();
+
   const [isClicked, setIsClicked] = useState(false);
 
   const {
@@ -41,9 +42,9 @@ function TopicIdeasDetails() {
               comments.map((comment) => (
                 <CommentCard
                   key={comment.id}
+                  creatorId={comment.creator_id}
                   id={comment.id}
                   pseudo={comment.pseudo}
-                  picture={comment.picture}
                   content={comment.content}
                   upVote={comment.up_vote}
                   canVote={comment.canVote}

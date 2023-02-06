@@ -2,17 +2,17 @@ const { db } = require("./db");
 
 async function getAllCommentsOfOneIdea(userId, ideaId) {
   const [rows] = await db.query(
-    "SELECT cd.*, IF(uc.user_id IS NULL, true, false) AS canVote FROM CommentData AS cd LEFT JOIN upvote_comment_user AS uc ON uc.comment_id = cd.id AND uc.user_id = ? WHERE cd.idea_id = ? ORDER BY cd.creation_date DESC",
+    "SELECT cd.*, IF(uc.user_id IS NULL, true, false) AS canVote FROM CommentData AS cd LEFT JOIN upvote_comment_user AS uc ON uc.comment_id = cd.id AND uc.user_id = ? WHERE cd.idea_id = ? ORDER BY up_vote DESC",
     [userId, ideaId]
   );
 
   return rows;
 }
 
-async function insertOne({ content, userId, ideaId }) {
+async function insertOne({ content, creatorId, ideaId }) {
   const [result] = await db.query(
     "INSERT INTO comment (creation_date, content, creator_id, idea_id) VALUES (NOW(), ?, ?, ?)",
-    [content, userId, ideaId]
+    [content, creatorId, ideaId]
   );
 
   return result.insertId;
@@ -33,8 +33,11 @@ async function updateOne(id, user) {
   return result.affectedRows;
 }
 
-async function deleteOne(id) {
-  const [result] = await db.query("DELETE FROM comment WHERE id = ?", [id]);
+async function deleteOne(commentId, creatorId) {
+  const [result] = await db.query(
+    "DELETE FROM comment WHERE id = ? AND creator_id = ?",
+    [commentId, creatorId]
+  );
 
   if (result.length === 0) {
     return null;

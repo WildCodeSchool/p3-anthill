@@ -1,11 +1,14 @@
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import DOMPurify from "isomorphic-dompurify";
 import CommentPopover from "./CommentPopover";
 import DeleteIdeaButton from "./DeleteIdeaButton";
 import useFetchLazy from "../../../../../../services/useFetchLazy";
+import useCurrentUser from "../../../../../../services/useCurrentUser";
 
 function IdeaCard({
   id,
+  creatorId,
   title,
   creatorName,
   description,
@@ -14,6 +17,8 @@ function IdeaCard({
   canVote,
   triggerGetIdeas,
 }) {
+  const { currentUser } = useCurrentUser();
+
   const { trigger: triggerDownvoteIdea } = useFetchLazy({
     path: `/votes/ideas/${id}/downvote`,
     method: "put",
@@ -42,7 +47,11 @@ function IdeaCard({
         </Link>
         <div className="ideaCard__creatorName">{creatorName}</div>
       </div>
-      <p className="ideaCard__description">{description}</p>
+      <div
+        className="ideaCard__description"
+        readOnly
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+      />
       <div className="ideaCard__interactions">
         <div className="ideaCard__nbUpVote">
           {nbUpVotes}
@@ -59,7 +68,11 @@ function IdeaCard({
           </div>
         </div>
       </div>
-      <DeleteIdeaButton ideaId={id} triggerGetIdeas={triggerGetIdeas} />
+      {creatorId === currentUser?.id ? (
+        <DeleteIdeaButton ideaId={id} triggerGetIdeas={triggerGetIdeas} />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

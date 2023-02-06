@@ -1,0 +1,10 @@
+.userDetailsTopics__main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.userDetailsTopics__main__list {
+  display: flex;
+  flex-direction: column;
+}

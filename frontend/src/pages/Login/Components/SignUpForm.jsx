@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { BsFillPersonFill } from "react-icons/bs";
 import { IoIosAt, IoMdKey } from "react-icons/io";
 import { GiAnt } from "react-icons/gi";
-import useCurrentUser from "../../../services/useCurrentUser";
 import useFetchLazy from "../../../services/useFetchLazy";
 
 function SignUpForm() {
@@ -12,7 +11,6 @@ function SignUpForm() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
-  const isLoggedIn = useCurrentUser();
 
   const { trigger: triggerSignUp, data: user } = useFetchLazy({
     method: "post",
@@ -25,12 +23,12 @@ function SignUpForm() {
       email: emailRef.current?.value,
       fullname: usernameRef.current?.value,
       pseudo: pseudoRef.current?.value,
-      hashedPassword: passwordRef.current?.value,
+      password: passwordRef.current?.value,
     });
   };
 
   useEffect(() => {
-    if (!isLoggedIn && user) {
+    if (user) {
       localStorage.setItem(
         "currentUser",
         JSON.stringify({
@@ -85,7 +83,7 @@ function SignUpForm() {
           ref={passwordRef}
         />
       </div>
-      <div className="buttons">
+      <div className="submit-button-signup">
         <button type="submit" className="btn">
           submit
         </button>

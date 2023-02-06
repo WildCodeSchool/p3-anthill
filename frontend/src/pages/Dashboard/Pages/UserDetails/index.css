@@ -1,20 +1,35 @@
 .userDetail {
   display: flex;
   flex-direction: column;
-  width: 100%;
   align-items: center;
   justify-content: center;
 }
 
 .userDetail__card {
   background-color: var(--medium-background);
-  box-shadow: var(--box-shadow);
+  border-radius: var(--radius);
+  border: 10px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   margin: 20px;
-  width: 80%;
+  width: 60%;
+  padding: 30px;
 }
 
 .userDetail__header {
   display: flex;
+}
+
+.userDetail__picture {
+  background-color: var(--dark-background);
+  height: 15vh;
+  width: 15vh;
+  border-radius: 100px;
+  margin: 15px 0;
+}
+
+.userDetail__infos {
+  margin-left: 40px;
 }
 
 .userDetail__names > h3 {
@@ -25,29 +40,79 @@
   color: var(--light-color);
 }
 
+.userDetail__pseudo {
+  margin-top: 5px;
+}
+
 .userDetail__description > p {
   color: var(--light-color);
-  width: 100%;
   text-align: justify;
 }
 
 .userDetail__contact {
   display: flex;
-  width: 100%;
   justify-content: space-between;
 }
 
-.userDetail__contact > p {
+.userDetail__contact > a {
   color: var(--light-color);
   text-decoration: underline;
 }
 
-.userDetail__badge {
-  height: 85px;
-  border-radius: 50%;
-  border: solid;
-  border-color: var(--golden-color);
+.userDetail__contact > a:hover {
+  color: var(--small-touch);
+}
+
+.userDetail__contact > p {
+  color: var(--light-color);
+}
+
+.userDetail__badgesContainer {
+  display: flex;
+}
+
+.userDetail__badgeUpperContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.userDetail__badgeContainer {
+  border-radius: 5px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border: solid 4px var(--dark-background);
   background-color: var(--light-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 100px;
+}
+
+.userDetail__badge__Creator {
+  height: 70px;
+  padding: 0 10px;
+}
+
+.userDetail__badge__Likes {
+  height: 80px;
+}
+
+.userDetail__badge__Thinker {
+  height: 90px;
+  padding: 0 8px 5px;
+}
+
+.userDetail__badge__Visitor {
+  height: 75px;
+  padding: 0 15px 2px;
+}
+
+.userDetail__badgeName {
+  color: var(--golden-color);
+  font-size: var(--textS);
 }
 
 .userDetail__picture {

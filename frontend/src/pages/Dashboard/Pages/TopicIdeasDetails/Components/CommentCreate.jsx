@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import { useParams } from "react-router-dom";
 import "./CommentCreate.css";
+import { Editor } from "@tinymce/tinymce-react";
 import useFetchLazy from "../../../../../services/useFetchLazy";
 
 function CommentCreate({ triggerGetComments }) {
-  const refContent = useRef();
   const { topicId, ideaId } = useParams();
 
   const { trigger: triggerPostComment } = useFetchLazy({
@@ -12,19 +12,61 @@ function CommentCreate({ triggerGetComments }) {
     method: "post",
   });
 
-  const handleSubmit = async () => {
-    await triggerPostComment({ content: refContent.current?.value });
-    triggerGetComments();
-    refContent.current.value = "";
-  };
+  const editorRef = useRef(null);
+  async function log(e) {
+    e.preventDefault();
+    if (editorRef.current) {
+      await triggerPostComment({ content: editorRef.current.getContent() });
+      triggerGetComments();
+      editorRef.current.setContent("");
+    }
+  }
 
   return (
     <div className="commentCreate">
       <div className="commentCreate__main">
         <form className="commentCreate__form">
-          <label htmlFor="commentContent">Your comment</label>
-          <input type="textarea" ref={refContent} />
-          <button onClick={handleSubmit} type="button">
+          <label htmlFor="commentContent" className="commentCreate__title">
+            Your comment
+          </label>
+          <Editor
+            onInit={(evt, editor) => {
+              editorRef.current = editor;
+            }}
+            initialValue=""
+            init={{
+              height: "300px",
+              menubar: false,
+              plugins: [
+                "advlist",
+                "autolink",
+                "link",
+                "image",
+                "lists",
+                "charmap",
+                "anchor",
+                "pagebreak",
+                "searchreplace",
+                "wordcount",
+                "visualblocks",
+                "code",
+                "fullscreen",
+                "insertdatetime",
+                "media",
+                "table",
+                "emoticons",
+                "template",
+                "codesample",
+              ],
+              toolbar:
+                "undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify |" +
+                "bullist numlist outdent indent | link image | print preview media fullscreen | " +
+                "forecolor backcolor emoticons",
+              content_style:
+                "body{font-family:Helvetica,Arial,sans-serif; font-size:16px}",
+            }}
+          />
+          <button type="button" className="button-delete" onClick={log}>
             Send
           </button>
         </form>

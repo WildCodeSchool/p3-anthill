@@ -1,3 +1,110 @@
-.settings_container {
+.settings-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  flex-wrap: wrap;
+  z-index: -10;
+}
+
+.settings-container {
+  color: var(--golden-color);
+  border-radius: var(--radius);
+  background-color: var(--medium-background);
+  width: 500px;
+  height: 443px;
+  border: 10px solid var(--medium-background);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  margin: 10px;
+}
+
+.settings-container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-container > label {
+  font-weight: 700;
+  font-size: 25px;
   color: var(--light-color);
+  margin: 50px 0 30px;
+}
+
+.settings-container > button {
+  margin: 30px 0 50px;
+}
+
+.update-title {
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--light-color);
+  margin: 50px 0 30px;
+}
+
+.icons-settings-ant {
+  color: var(--golden-color);
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  box-sizing: border-box;
+  top: 174px;
+  left: 85px;
+}
+
+.icons-settings-email {
+  color: var(--golden-color);
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  box-sizing: border-box;
+  top: 237px;
+  left: 86px;
+}
+
+.changes {
+  text-align: center;
+  color: var(--golden-color);
+  filter: drop-shadow(0 0 0.35rem var(--golden-color));
+}
+
+.image-preview {
+  height: 100px;
+  margin-bottom: 30px;
+  border-radius: 120px;
+}
+
+#picture-input {
+  height: 50px;
+}
+
+#picture-input::file-selector-button {
+  border-radius: var(--radius);
+  height: 30px;
+  width: 170px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 200ms linear;
+  letter-spacing: 1px;
+  border: none;
+  background-color: var(--golden-color);
+  color: var(--dark-background);
+}
+
+#picture-input::file-selector-button:hover {
+  background-color: var(--small-touch);
+  color: var(--golden-color);
+  transition: all 200ms linear;
+}
+
+#picture-input::file-selector-button:active {
+  box-shadow: 0 0 9e9Q inset #0009;
 }

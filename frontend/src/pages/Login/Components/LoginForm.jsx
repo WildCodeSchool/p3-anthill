@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { IoMdKey } from "react-icons/io";
-import { GiAnt } from "react-icons/gi";
+import { IoIosAt, IoMdKey } from "react-icons/io";
 import ButtonLoginGoogle from "./ButtonLoginGoogle";
 import useFetchLazy from "../../../services/useFetchLazy";
 
@@ -46,7 +45,7 @@ function LoginForm() {
         <div className="error-login">Invalid password</div>
       )}
       <div className="form-group">
-        <GiAnt className="ant-icon" />
+        <IoIosAt className="ant-icon" />
         <input
           type="email"
           className="form-style"
@@ -66,7 +65,7 @@ function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <div className="buttons">
+      <div className="submit-button-login">
         <button type="submit" className="btn">
           submit
         </button>
