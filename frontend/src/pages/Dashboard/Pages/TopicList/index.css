@@ -1,6 +1,11 @@
+.topicsContainer {
+  padding-bottom: 1px;
+}
+
 .topic__list__main {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .topic_grid__main {

@@ -15,6 +15,7 @@ function Dashboard() {
           userId={currentUser?.id}
           name={currentUser?.fullname}
           photo={currentUser?.picture}
+          pseudo={currentUser?.pseudo}
         />
         <main className="outlet">
           <Outlet />
