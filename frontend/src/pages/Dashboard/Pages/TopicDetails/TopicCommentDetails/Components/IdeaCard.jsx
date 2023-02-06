@@ -4,9 +4,11 @@ import DOMPurify from "isomorphic-dompurify";
 import CommentPopover from "./CommentPopover";
 import DeleteIdeaButton from "./DeleteIdeaButton";
 import useFetchLazy from "../../../../../../services/useFetchLazy";
+import useCurrentUser from "../../../../../../services/useCurrentUser";
 
 function IdeaCard({
   id,
+  creatorId,
   title,
   creatorName,
   description,
@@ -16,6 +18,8 @@ function IdeaCard({
   triggerGetIdeas,
   isClosed,
 }) {
+  const { currentUser } = useCurrentUser();
+
   const { trigger: triggerDownvoteIdea } = useFetchLazy({
     path: `/votes/ideas/${id}/downvote`,
     method: "put",
@@ -71,7 +75,9 @@ function IdeaCard({
           </div>
         </div>
       </div>
-      <DeleteIdeaButton ideaId={id} triggerGetIdeas={triggerGetIdeas} />
+      {creatorId === currentUser?.id && (
+        <DeleteIdeaButton ideaId={id} triggerGetIdeas={triggerGetIdeas} />
+      )}
     </div>
   );
 }

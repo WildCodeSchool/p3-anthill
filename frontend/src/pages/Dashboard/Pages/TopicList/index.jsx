@@ -33,6 +33,7 @@ function TopicsList() {
               <TopicCard
                 key={topic.id}
                 id={topic.id}
+                creatorId={topic.creator_id}
                 title={topic.title}
                 creatorName={topic.fullname}
                 description={topic.description}

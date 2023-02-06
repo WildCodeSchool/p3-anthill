@@ -60,6 +60,7 @@ function TopicIdeasDetails() {
               comments.map((comment) => (
                 <CommentCard
                   key={comment.id}
+                  creatorId={comment.creator_id}
                   id={comment.id}
                   pseudo={comment.pseudo}
                   content={comment.content}

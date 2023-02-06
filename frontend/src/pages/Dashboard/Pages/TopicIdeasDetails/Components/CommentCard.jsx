@@ -13,6 +13,7 @@ function CommentCard({
   canVote,
   triggerGetComments,
   comment,
+  creatorId,
   isClosed,
 }) {
   const { trigger: triggerDownvoteComment } = useFetchLazy({
@@ -65,10 +66,12 @@ function CommentCard({
             <BiDownvote onClick={downvoteFunction} />
           )}
         </div>
-        <DeleteCommentButton
-          comment={comment}
-          triggerGetComments={triggerGetComments}
-        />
+        {creatorId === currentUser?.id && (
+          <DeleteCommentButton
+            comment={comment}
+            triggerGetComments={triggerGetComments}
+          />
+        )}
       </div>
     </div>
   );

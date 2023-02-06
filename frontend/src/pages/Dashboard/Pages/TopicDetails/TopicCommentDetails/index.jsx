@@ -54,6 +54,7 @@ function TopicCommentDetails({
             <IdeaCard
               key={idea.id}
               id={idea.id}
+              creatorId={idea.idea_creator_id}
               title={idea.idea_title}
               creatorName={idea.idea_creator_name}
               description={idea.idea_description}

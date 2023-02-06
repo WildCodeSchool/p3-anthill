@@ -3,6 +3,7 @@ import DOMPurify from "isomorphic-dompurify";
 import { RxLapTimer } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import { RiLightbulbLine } from "react-icons/ri";
+import useCurrentUser from "../../../../services/useCurrentUser";
 import ToggleModeContext from "../../../../contexts/ToggleModeContext";
 import DeleteTopicButton from "../DeleteTopicButton/DeleteTopicButton";
 import "./TopicCard.css";
@@ -11,6 +12,7 @@ import "./TopicCardList.css";
 function TopicCard(props) {
   const {
     id,
+    creatorId,
     title,
     creatorName,
     description,
@@ -32,6 +34,8 @@ function TopicCard(props) {
   const formatedDeadLine = newDeadline.toLocaleTimeString("gb-GB", options);
 
   const { toggleMode } = useContext(ToggleModeContext);
+
+  const { currentUser } = useCurrentUser();
 
   useEffect(() => {
     if (currentDate > newDeadline) {
@@ -94,9 +98,11 @@ function TopicCard(props) {
       {isClosed ? (
         <p className="topicCard__closed">This topic is closed</p>
       ) : (
-        <p className="topicCard__notClosed">This topic is closed</p>
+        <p className="topicCard__notClosed">This line is invisible</p>
       )}
-      <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />
+      {currentUser?.id === creatorId && (
+        <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />
+      )}
     </article>
   );
 }

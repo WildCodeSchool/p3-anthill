@@ -59,6 +59,8 @@ function TopicInfo(props) {
           <a
             className="button-delete"
             href={slackChannelLink && slackChannelLink}
+            target="_blank"
+            rel="noreferrer"
           >
             Join us on the Slack Channel !
           </a>
