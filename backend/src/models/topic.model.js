@@ -7,7 +7,9 @@ async function getAll() {
 }
 
 async function getAllTopicCard() {
-  const [rows] = await db.query("SELECT * FROM TopicData");
+  const [rows] = await db.query(
+    "SELECT * FROM TopicData ORDER BY is_closed asc, nb_idea desc"
+  );
   return rows;
 }
 
