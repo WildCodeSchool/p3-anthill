@@ -103,6 +103,9 @@ function TopicCard(props) {
       {currentUser?.id === creatorId && (
         <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />
       )}
+      <div className="btn_delete">
+        <button>Toppics Mode</button>
+      </div>
     </article>
   );
 }

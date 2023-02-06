@@ -24,35 +24,37 @@ INSERT INTO topic (deadline, description, is_private, creator_id, title, is_clos
 VALUES 
   (curdate(), "How should we rename Gwenaël  ?", 0, 1, "Gwenaël Nickname", 0, 1), 
   (curdate(), "Which day should we fire Johanna ?", 0, 2, "Johanna's departure", 0, 1), 
-  (curdate(), "Which cake for the departure of Johanna", 0, 1, "Johanna's leaving party's cake", 0, 1), 
-  (curdate(), "We all know that we don't drink just one coffee a day. How could the cafe service at Wild Code School be improved?", 0, 3, "Coffee problem", 0, 1), 
+  (curdate(), "All know that we don't drink just one coffee per day. How could the cafe service at WCS be improved?", 0, 3, "Coffee problem", 0, 1), 
   (curdate(), "Which bar should we go to on Friday nights?", 0, 4, "New bar ?", 0, 1), 
-  (curdate(), "Would you be intereseted in a lan party ? Please respond by a simple 'no' or propose a day and a game", 0, 1, "Lan party ?", 0, 1), 
-  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 0, 0), 
-  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 0, 0), 
-  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 1, 0), 
-  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 0, 0), 
-  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0),
-  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 0, 0)
+  ("2023-04-01 12:00:00", "Would you be intereseted in a lan party ? Please respond by a simple 'no' or propose a day and a game", 0, 5, "Fridays party ?", 0, 1)
 ;
-INSERT INTO bubble (content, mindmap_id, creator_id) 
-VALUES 
-  ("bubble_content_1", 8, 1),
-  ("bubble_content_2", 8, 1),
-  ("bubble_content_3", 8, 1),
-  ("bubble_content_4", 9, 3),
-  ("bubble_content_5", 10, 4),
-  ("bubble_content_6", 11, 2)
-;
+
+-- INSERT INTO bubble (content, mindmap_id, creator_id) 
+-- VALUES 
+--   ("bubble_content_1", 8, 1),
+--   ("bubble_content_2", 8, 1),
+--   ("bubble_content_3", 8, 1),
+--   ("bubble_content_4", 9, 3),
+--   ("bubble_content_5", 10, 4),
+--   ("bubble_content_6", 11, 2)
+-- ;
 
 INSERT INTO idea (title, description, comment_mode_id, creator_id) 
 VALUES 
-  ("idea_title_1", "idea_description_1", 1, 1), 
-  ("idea_title_2", "idea_description_2", 1, 2), 
-  ("idea_title_3", "idea_description_3", 1, 5), 
-  ("idea_title_4", "idea_description_4", 2, 4),  
-  ("idea_title_5", "idea_description_5", 3, 4),  
-  ("idea_title_6", "idea_description_6", 4, 4)
+  ("Gwenkolokante", "Because he play for the Chelsea", 1, 1),
+  ("Da Gwe", "He likes WCS rappers", 1, 2),
+  ("Gwecamole", "He eats avocados everyday", 1, 5),
+  ("Agree", "But she have to buy a cake for everyone first", 2, 3),
+  ("Disgree", "Dont let her go pls", 2, 2),
+  ("Disgree", "I love you forever", 2, 9),
+  ("Disgree", "Noone want you leave, tell me who want and I will kick him", 2, 6),
+  ("2 dose per day", "Give us 2 please", 3, 4),
+  ("10 please", "I really want 5 for the morning and 5 for the afternoon", 3, 10),
+  ("Heaven", "where we can drink immilit beers", 4, 4),
+  ("Wonderland", "you can drinks beers with Mr Rabbits", 4, 2), 
+  ("Nowhere", "Dont go to the bar, lets go to the Cassandra's house", 4, 5), 
+  ("WCSchool", "You can drinks with Tidus, and plays with him", 4, 10), 
+  ("Playing chess", "Chess party playgames is great", 5, 8)
 ;
 
 INSERT INTO comment (creation_date, content, creator_id, idea_id, comment_id) 
@@ -63,12 +65,12 @@ VALUES
   (NOW(), "comment_content_4", 3, 2, null)
 ;
 
-INSERT INTO link (source_id, target_id) VALUES (1, 1);
+-- INSERT INTO link (source_id, target_id) VALUES (1, 1);
 
 
 INSERT INTO user_badge (user_id, badge_id) VALUES (1, 1), (1, 2), (1, 3), (1, 4), (2, 2), (3, 3), (4, 4);
 
-INSERT INTO user_topic (user_id, topic_id) VALUES (1, 1), (1, 4), (1, 5), (1, 2), (1, 3), (2, 1), (2, 6), (2, 11), (3, 4), (4, 6), (5, 7), (1, 8), (2, 9), (3, 10);
+INSERT INTO user_topic (user_id, topic_id) VALUES (1, 1), (1, 4), (1, 5), (1, 2), (1, 3), (2, 1), (3, 4);
 
 
 INSERT IGNORE INTO upvote_idea_user (user_id, idea_id) VALUES (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3);
