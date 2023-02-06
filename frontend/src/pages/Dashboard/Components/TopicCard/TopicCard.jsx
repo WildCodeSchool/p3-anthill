@@ -1,11 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import DOMPurify from "isomorphic-dompurify";
 import { RxLapTimer } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import { RiLightbulbLine } from "react-icons/ri";
 import useCurrentUser from "../../../../services/useCurrentUser";
 import ToggleModeContext from "../../../../contexts/ToggleModeContext";
-import formatDeadline from "../../../../services/formatDeadline";
 import DeleteTopicButton from "../DeleteTopicButton/DeleteTopicButton";
 import "./TopicCard.css";
 import "./TopicCardList.css";
@@ -22,15 +21,34 @@ function TopicCard(props) {
     triggerGetTopics,
   } = props;
 
-  const formatedDeadLine = formatDeadline(deadline);
-  const [year, month, day, hour, minutes] = [...formatedDeadLine];
+  const [isClosed, setIsClosed] = useState(false);
+
+  const currentDate = new Date();
+  const newDeadline = new Date(deadline);
+
+  const options = {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  };
+  const formatedDeadLine = newDeadline.toLocaleTimeString("gb-GB", options);
 
   const { toggleMode } = useContext(ToggleModeContext);
 
   const { currentUser } = useCurrentUser();
 
+  useEffect(() => {
+    if (currentDate > newDeadline) {
+      setIsClosed(true);
+    }
+  }, [currentDate, newDeadline]);
+
   return (
-    <article className={!toggleMode ? "topicCard__grid" : "topicCard__list"}>
+    <article
+      className={`${!toggleMode ? "topicCard__grid" : "topicCard__list"} ${
+        isClosed && "topicCard__disabled"
+      }`}
+    >
       <div>
         <Link to={`/dashboard/topics/${id}`}>
           <h2
@@ -69,7 +87,7 @@ function TopicCard(props) {
           }
         >
           <RxLapTimer />
-          <p>{`${day}/${month}/${year} at ${hour}h${minutes}`}</p>
+          <p>{`${formatedDeadLine}`}</p>
         </div>
 
         <div className="notification">
@@ -77,10 +95,13 @@ function TopicCard(props) {
           <RiLightbulbLine className="icon-ampule" />
         </div>
       </div>
-      {currentUser?.id === creatorId ? (
-        <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />
+      {isClosed ? (
+        <p className="topicCard__closed">This topic is closed</p>
       ) : (
-        ""
+        <p className="topicCard__notClosed">This line is invisible</p>
+      )}
+      {currentUser?.id === creatorId && (
+        <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />
       )}
     </article>
   );
