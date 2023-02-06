@@ -24,10 +24,12 @@
   /* COLORS */
   --dark-background: #1f2025;
   --medium-background: #35363f;
+  --medium-background-disabled: #7e8195;
   --light-background: #3b4554;
   --light-color: #ffffff;
   --golden-color: #ffeba7;
   --small-touch: #67c2ff;
+  --error: #ad0000;
 
   --radius: 10px;
   --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

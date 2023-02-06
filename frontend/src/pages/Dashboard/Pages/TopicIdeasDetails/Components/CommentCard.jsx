@@ -13,6 +13,8 @@ function CommentCard({
   canVote,
   triggerGetComments,
   comment,
+  creatorId,
+  isClosed,
 }) {
   const { trigger: triggerDownvoteComment } = useFetchLazy({
     path: `/votes/comments/${id}/downvote`,
@@ -27,13 +29,19 @@ function CommentCard({
   const { currentUser } = useCurrentUser();
 
   const upvoteFunction = async () => {
+    if (isClosed) return alert("This topic is closed");
+
     await triggerUpvoteComment();
     triggerGetComments();
+    return null;
   };
 
   const downvoteFunction = async () => {
+    if (isClosed) return alert("This topic is closed");
+
     await triggerDownvoteComment();
     triggerGetComments();
+    return null;
   };
 
   return (
@@ -62,10 +70,12 @@ function CommentCard({
             <BiDownvote onClick={downvoteFunction} />
           )}
         </div>
-        <DeleteCommentButton
-          comment={comment}
-          triggerGetComments={triggerGetComments}
-        />
+        {creatorId === currentUser?.id && (
+          <DeleteCommentButton
+            comment={comment}
+            triggerGetComments={triggerGetComments}
+          />
+        )}
       </div>
     </div>
   );
