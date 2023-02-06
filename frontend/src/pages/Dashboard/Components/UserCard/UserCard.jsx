@@ -27,7 +27,6 @@ export default function UserCard({ user }) {
         <Link to={`/dashboard/users/${user.id}`}>
           <p>Profil</p>
         </Link>
-        <p>Slack</p>
       </div>
     </div>
   );

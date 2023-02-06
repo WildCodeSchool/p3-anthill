@@ -23,6 +23,11 @@
   font-size: var(--textM);
 }
 
+.topicInfo__creatorName {
+  color: var(--light-color);
+  font-size: var(--textS);
+}
+
 .topicInfo__left {
   margin-left: 15px;
 }
@@ -30,7 +35,7 @@
 .topicInfo__description {
   color: var(--light-color);
   font-size: var(--textS);
-  margin: 0 1px;
+  margin: 0 10px;
 }
 
 .topicInfo__deadline {
