@@ -3,8 +3,8 @@ import { useState } from "react";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import DOMPurify from "isomorphic-dompurify";
 import "./CommentCard.css";
-import useFetchLazy from "../../../../../services/useFetchLazy";
-import useCurrentUser from "../../../../../services/useCurrentUser";
+import useFetchLazy from "../../../../../../../../services/useFetchLazy";
+import useCurrentUser from "../../../../../../../../services/useCurrentUser";
 
 function CommentCard({
   id,
