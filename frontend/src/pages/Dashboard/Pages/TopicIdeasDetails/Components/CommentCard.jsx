@@ -1,6 +1,7 @@
+import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import DOMPurify from "isomorphic-dompurify";
-import DeleteCommentButton from "./DeleteCommentButton";
 import "./CommentCard.css";
 import useFetchLazy from "../../../../../services/useFetchLazy";
 import useCurrentUser from "../../../../../services/useCurrentUser";
@@ -12,10 +13,13 @@ function CommentCard({
   upVote,
   canVote,
   triggerGetComments,
-  comment,
   creatorId,
   isClosed,
 }) {
+  const { id: topicId, ideaId } = useParams();
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   const { trigger: triggerDownvoteComment } = useFetchLazy({
     path: `/votes/comments/${id}/downvote`,
     method: "put",
@@ -24,6 +28,11 @@ function CommentCard({
   const { trigger: triggerUpvoteComment } = useFetchLazy({
     path: `/votes/comments/${id}/upvote`,
     method: "post",
+  });
+
+  const { trigger: triggerDeleteComment } = useFetchLazy({
+    path: `/topics/${topicId}/ideas/${ideaId}/comments/${id}`,
+    method: "delete",
   });
 
   const { currentUser } = useCurrentUser();
@@ -44,39 +53,72 @@ function CommentCard({
     return null;
   };
 
+  const handleDelete = async () => {
+    await triggerDeleteComment();
+    triggerGetComments();
+  };
+
   return (
     <div className="commentCard">
-      <div className="commentCard__info">
-        <div className="commentCard__main">
-          <img
-            src={currentUser?.picture}
-            alt="avatar"
-            className="commentCard__avatar"
-          />
-          <div className="commentCard__creatorName">{pseudo}</div>
-        </div>
-        <p
-          className="commentCard__description"
-          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
-        />
-      </div>
+      {!isPopupOpen ? (
+        <>
+          <div className="commentCard__info">
+            <div className="commentCard__main">
+              <img
+                src={currentUser?.picture}
+                alt="avatar"
+                className="commentCard__avatar"
+              />
+              <div className="commentCard__creatorName">{pseudo}</div>
+            </div>
+            <p
+              className="commentCard__description"
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
+            />
+          </div>
 
-      <div className="commentCard__interactions">
-        <div className="commentCard__nbUpVote">
-          {upVote}
-          {canVote ? (
-            <BiUpvote onClick={upvoteFunction} />
-          ) : (
-            <BiDownvote onClick={downvoteFunction} />
-          )}
+          <div className="commentCard__interactions">
+            <div className="commentCard__nbUpVote">
+              {upVote}
+              {canVote ? (
+                <BiUpvote onClick={upvoteFunction} />
+              ) : (
+                <BiDownvote onClick={downvoteFunction} />
+              )}
+            </div>
+            {creatorId === currentUser?.id && (
+              <button
+                type="button"
+                className="button-delete"
+                onClick={() => setIsPopupOpen(true)}
+              >
+                Delete
+              </button>
+            )}
+          </div>
+        </>
+      ) : (
+        <div className="commentCard__popup">
+          <p>Are you sure you want to delete this comment?</p>
+          <div className="commentCard__popup-buttons">
+            <button
+              type="button"
+              className="button-delete"
+              onClick={() => setIsPopupOpen(false)}
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              className="button-delete"
+              style={{ backgroundColor: "var(--error)" }}
+              onClick={handleDelete}
+            >
+              Delete
+            </button>
+          </div>
         </div>
-        {creatorId === currentUser?.id && (
-          <DeleteCommentButton
-            comment={comment}
-            triggerGetComments={triggerGetComments}
-          />
-        )}
-      </div>
+      )}
     </div>
   );
 }
