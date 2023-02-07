@@ -58,6 +58,7 @@ function TopicCreation({ closePopUp }) {
         className="deadline"
         type="datetime-local"
         ref={refDeadline}
+        required
       />
       <div>
         <div className="topicCreation_description">

@@ -30,6 +30,8 @@ function TopicCard(props) {
     day: "numeric",
     month: "short",
     year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
   };
   const formatedDeadLine = newDeadline.toLocaleTimeString("gb-GB", options);
 

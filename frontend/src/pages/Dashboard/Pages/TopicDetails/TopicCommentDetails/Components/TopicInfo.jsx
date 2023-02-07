@@ -18,6 +18,8 @@ function TopicInfo(props) {
     day: "numeric",
     month: "short",
     year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
   };
   const formatedDeadLine = newDeadline.toLocaleTimeString("gb-GB", options);
 
@@ -43,8 +45,10 @@ function TopicInfo(props) {
         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
       />
       <div className="topicInfo__deadline">
-        <RxLapTimer />
-        <p>{`${formatedDeadLine}`}</p>
+        <p>
+          <RxLapTimer />
+          {` ${formatedDeadLine}`}
+        </p>
       </div>
       <div className="topicInfo__slack">
         {!slackChannelLink ? (

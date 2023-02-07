@@ -4,9 +4,9 @@
 
 .topicInfo {
   color: var(--golden-color);
-  margin: 10px 24px 3rem;
+  margin: 10px 24px 1rem;
   padding: 0.5rem;
-  border-radius: 0 0 var(--radius) var(--radius);
+  border-radius: var(--radius);
   display: flex;
   border: 4px solid var(--medium-background);
   background-color: var(--medium-background);
@@ -47,6 +47,38 @@
   padding: 5px;
   border-radius: 5px;
   margin: 15px;
+}
+
+.ideaCreationCard__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ideaCreationCard__container > .ideaCard__button {
+  background-color: var(--golden-color);
+  color: var(--dark-background);
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 15px;
+}
+
+.ideaCreationCard__container > .ideaCard__button:hover {
+  background-color: var(--small-touch);
+  color: var(--golden-color);
+}
+
+.ideaCreationCard__show {
+  visibility: visible;
+  transition: all;
+  width: 100%;
+}
+
+.ideaCreationCard__hide {
+  visibility: hidden;
+  height: 0;
 }
 
 .ideaCreationCard {
