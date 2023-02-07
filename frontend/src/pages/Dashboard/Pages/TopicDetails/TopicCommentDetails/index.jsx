@@ -13,14 +13,15 @@ function TopicCommentDetails({
   triggerGetIdeas,
   triggerGetTopic,
 }) {
-  const [isClosed, setIsClosed] = useState(false);
+  const [isTopicClosed, setIsTopicClosed] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const currentDate = new Date();
   const newDeadline = new Date(topic.deadline);
 
   useEffect(() => {
     if (currentDate > newDeadline) {
-      setIsClosed(true);
+      setIsTopicClosed(true);
     }
   }, [currentDate, newDeadline]);
 
@@ -40,12 +41,39 @@ function TopicCommentDetails({
         />
       )}
       <div>
-        {!isClosed && (
-          <IdeaCreationCard
-            topicId={topic.id}
-            triggerGetIdeas={triggerGetIdeas}
-          />
-        )}
+        {!isTopicClosed &&
+          (isOpen ? (
+            <div className="ideaCreationCard__container">
+              <button
+                className="ideaCard__button"
+                type="button"
+                onClick={() => setIsOpen(false)}
+              >
+                Close
+              </button>
+              <IdeaCreationCard
+                topicId={topic.id}
+                triggerGetIdeas={triggerGetIdeas}
+                className="ideaCreationCard__show"
+              />
+            </div>
+          ) : (
+            <div className="ideaCreationCard__container">
+              <button
+                className="ideaCard__button"
+                type="button"
+                onClick={() => setIsOpen(true)}
+              >
+                Add an idea
+              </button>
+              <IdeaCreationCard
+                topicId={topic.id}
+                triggerGetIdeas={triggerGetIdeas}
+                setIsOpen={setIsOpen}
+                className="ideaCreationCard__hide"
+              />
+            </div>
+          ))}
       </div>
       <div className="ideaContainer">
         {loadingIdeas && <h2 className="ideaCard__title">LOADING ...</h2>}
@@ -62,7 +90,7 @@ function TopicCommentDetails({
               nbComment={idea.nb_comment}
               canVote={idea.canVote}
               triggerGetIdeas={triggerGetIdeas}
-              isClosed={isClosed}
+              isTopicClosed={isTopicClosed}
             />
           ))
         ) : (

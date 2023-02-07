@@ -16,7 +16,7 @@ function IdeaCard({
   nbComment,
   canVote,
   triggerGetIdeas,
-  isClosed,
+  isTopicClosed,
 }) {
   const { currentUser } = useCurrentUser();
 
@@ -31,7 +31,7 @@ function IdeaCard({
   });
 
   const upvoteFunction = async () => {
-    if (isClosed) return alert("This topic is closed");
+    if (isTopicClosed) return alert("This topic is closed");
 
     await triggerUpvoteIdea();
     triggerGetIdeas();
@@ -39,7 +39,7 @@ function IdeaCard({
   };
 
   const downvoteFunction = async () => {
-    if (isClosed) return alert("This topic is closed");
+    if (isTopicClosed) return alert("This topic is closed");
 
     await triggerDownvoteIdea();
     triggerGetIdeas();
