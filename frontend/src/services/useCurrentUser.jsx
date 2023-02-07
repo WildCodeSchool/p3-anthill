@@ -27,10 +27,10 @@ function useCurrentUser() {
       })
       .then((res) => {
         setCurrentUser(res.data);
-        if (currentUser?.picture) {
+        if (res.data.picture) {
           setCurrentUser((prevState) => ({
             ...prevState,
-            picture: `${URL}/uploads/${currentUser.picture}`,
+            picture: `${URL}/uploads/${res.data.picture}`,
           }));
         } else {
           setCurrentUser((prevState) => ({
