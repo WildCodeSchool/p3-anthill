@@ -14,7 +14,7 @@ function TopicCommentDetails({
   triggerGetTopic,
 }) {
   const [isTopicClosed, setIsTopicClosed] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isIdeaCreationOpen, setIsIdeaCreationOpen] = useState(false);
 
   const currentDate = new Date();
   const newDeadline = new Date(topic.deadline);
@@ -42,12 +42,12 @@ function TopicCommentDetails({
       )}
       <div>
         {!isTopicClosed &&
-          (isOpen ? (
+          (isIdeaCreationOpen ? (
             <div className="ideaCreationCard__container">
               <button
                 className="ideaCard__button"
                 type="button"
-                onClick={() => setIsOpen(false)}
+                onClick={() => setIsIdeaCreationOpen(false)}
               >
                 Close
               </button>
@@ -55,6 +55,7 @@ function TopicCommentDetails({
                 topicId={topic.id}
                 triggerGetIdeas={triggerGetIdeas}
                 className="ideaCreationCard__show"
+                setIsIdeaCreationOpen={setIsIdeaCreationOpen}
               />
             </div>
           ) : (
@@ -62,14 +63,14 @@ function TopicCommentDetails({
               <button
                 className="ideaCard__button"
                 type="button"
-                onClick={() => setIsOpen(true)}
+                onClick={() => setIsIdeaCreationOpen(true)}
               >
                 Add an idea
               </button>
               <IdeaCreationCard
                 topicId={topic.id}
                 triggerGetIdeas={triggerGetIdeas}
-                setIsOpen={setIsOpen}
+                setIsIdeaCreationOpen={setIsIdeaCreationOpen}
                 className="ideaCreationCard__hide"
               />
             </div>
