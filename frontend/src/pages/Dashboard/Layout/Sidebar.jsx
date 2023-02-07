@@ -20,7 +20,7 @@ function Sidebar({ userId, name, photo, pseudo }) {
       text: "Top Topics",
       icon: <TbCrown className="icon" />,
       active: activeButton === 1,
-      path: `/dashboard`, // getCurrentUser
+      path: `/dashboard`,
     },
     {
       id: 2,
