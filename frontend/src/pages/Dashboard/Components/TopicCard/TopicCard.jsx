@@ -30,6 +30,8 @@ function TopicCard(props) {
     day: "numeric",
     month: "short",
     year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
   };
   const formatedDeadLine = newDeadline.toLocaleTimeString("gb-GB", options);
 
@@ -52,22 +54,24 @@ function TopicCard(props) {
       <div>
         <Link to={`/dashboard/topics/${id}`}>
           <h2
-            className={
+            className={`${
               !toggleMode ? "topicCard__title" : "topicCard__title__list"
-            }
+            } ${isClosed && "topicCard__disabled"}`}
           >
             {title}
           </h2>
         </Link>
-        <p
-          className={
-            !toggleMode
-              ? "topicCard__creatorName"
-              : "topicCard__creatorName__list"
-          }
-        >
-          By {creatorName}
-        </p>
+        <Link to={`/dashboard/user/topi${id}`}>
+          <p
+            className={
+              !toggleMode
+                ? "topicCard__creatorName"
+                : "topicCard__creatorName__list"
+            }
+          >
+            by {creatorName}
+          </p>
+        </Link>
       </div>
 
       <p
@@ -86,7 +90,7 @@ function TopicCard(props) {
             !toggleMode ? "topicCard__deadline" : "topicCard__deadline__list"
           }
         >
-          <RxLapTimer />
+          <RxLapTimer className="icon-timer" />
           <p>{`${formatedDeadLine}`}</p>
         </div>
 
@@ -96,7 +100,13 @@ function TopicCard(props) {
         </div>
       </div>
       {isClosed ? (
-        <p className="topicCard__closed">This topic is closed</p>
+        <p
+          className={
+            !toggleMode ? "topicCard__closed" : "topicCard__closed__list"
+          }
+        >
+          This topic is closed
+        </p>
       ) : (
         <p className="topicCard__notClosed">This line is invisible</p>
       )}

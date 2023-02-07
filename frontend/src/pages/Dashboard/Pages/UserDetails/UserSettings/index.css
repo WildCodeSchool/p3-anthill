@@ -69,12 +69,6 @@
   left: 86px;
 }
 
-.changes {
-  text-align: center;
-  color: var(--golden-color);
-  filter: drop-shadow(0 0 0.35rem var(--golden-color));
-}
-
 .image-preview {
   height: 100px;
   margin-bottom: 30px;
@@ -110,7 +104,8 @@
 }
 
 .settings-message {
-  margin: 0 5% 5%;
   font-size: var(--textXS);
   color: var(--light-color);
+  position: absolute;
+  bottom: 20px;
 }

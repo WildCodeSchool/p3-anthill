@@ -2,15 +2,16 @@ import { useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import useFetchLazy from "../../../../../../services/useFetchLazy";
 
-function IdeaCreationCard({ topicId, triggerGetIdeas }) {
+function IdeaCreationCard({ topicId, triggerGetIdeas, className }) {
   const titleRef = useRef();
   const editorRef = useRef();
 
   const {
     trigger: triggerPostIdea,
-    isSuccess,
-    loading,
-    error,
+    data: responsePostIdea,
+    isSuccess: successPostIdea,
+    loading: loadingPostIdea,
+    error: errorPostIdea,
   } = useFetchLazy({
     path: `/topics/${topicId}/ideas`,
     method: "post",
@@ -28,7 +29,7 @@ function IdeaCreationCard({ topicId, triggerGetIdeas }) {
   };
 
   return (
-    <div>
+    <div className={`${className}`}>
       <div className="ideaCreationCard">
         <form className="ideaCreationCard__form" onSubmit={handleSubmit}>
           <div className="inputs">
@@ -76,18 +77,17 @@ function IdeaCreationCard({ topicId, triggerGetIdeas }) {
                 }}
               />
             </div>
-
-            {error && <p>{error.message}</p>}
           </div>
 
           <div className="ideaCreation_Card">
             <button type="submit" id="ideaCreationCard__button">
-              {loading ? "Loading..." : "Add"}
+              {loadingPostIdea ? "Loading..." : "Add"}
             </button>
           </div>
         </form>
       </div>
-      {isSuccess && (
+      {errorPostIdea && <p>{responsePostIdea}</p>}
+      {successPostIdea && (
         <p
           style={{
             textAlign: "center",

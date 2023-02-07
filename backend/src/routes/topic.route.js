@@ -4,11 +4,15 @@ const ideaController = require("../controllers/idea.controller");
 const commentController = require("../controllers/comment.controller");
 // const topicValidator = require("../validators/topic.validator");
 const { verifyToken } = require("../services/middlewares/auth.middleware");
-const { verifyIsClosed } = require("../services/middlewares/topic.middleware");
+const {
+  verifyIsClosed,
+  switchIsClosed,
+} = require("../services/middlewares/topic.middleware");
 
 const topicRouter = new Router();
 
 topicRouter.use(verifyToken); // Authorization middleware
+topicRouter.use(switchIsClosed); // Switch is_closed middleware
 
 topicRouter.get("/", topicController.list);
 topicRouter.get("/card", topicController.listCard);

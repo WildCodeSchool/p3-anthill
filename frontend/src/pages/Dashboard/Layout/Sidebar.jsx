@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { MdAllInclusive } from "react-icons/md";
 import { TbCrown } from "react-icons/tb";
 import { BsPencil } from "react-icons/bs";
-import { GiAnt } from "react-icons/gi";
 import { RiContactsLine } from "react-icons/ri";
 import { FiSettings } from "react-icons/fi";
 
@@ -13,7 +12,7 @@ import SideBarListItems from "../Components/SideBarListItems/SideBarListItems";
 
 import "./Sidebar.css";
 
-function Sidebar({ userId, name, photo }) {
+function Sidebar({ userId, name, photo, pseudo }) {
   const [activeButton, setActiveButton] = useState(null);
   const sideBarList = [
     {
@@ -21,7 +20,7 @@ function Sidebar({ userId, name, photo }) {
       text: "Top Topics",
       icon: <TbCrown className="icon" />,
       active: activeButton === 1,
-      path: `/dashboard`, // getCurrentUser
+      path: `/dashboard`,
     },
     {
       id: 2,
@@ -39,23 +38,16 @@ function Sidebar({ userId, name, photo }) {
     },
     {
       id: 4,
-      text: "Co. Topics",
-      icon: <GiAnt className="icon" />,
-      active: activeButton === 4,
-      path: "/dashboard",
-    },
-    {
-      id: 5,
       text: "Contacts",
       icon: <RiContactsLine className="icon" />,
-      active: activeButton === 5,
+      active: activeButton === 4,
       path: "/dashboard/users",
     },
     {
-      id: 6,
+      id: 5,
       text: "Settings",
       icon: <FiSettings className="icon" />,
-      active: activeButton === 6,
+      active: activeButton === 5,
       path: `/dashboard/users/${userId}/settings`,
     },
   ];
@@ -75,6 +67,7 @@ function Sidebar({ userId, name, photo }) {
           <div className="user-profile">
             <div className="user-name">{name}</div>
             <img src={photo} alt="" className="user-photo" />
+            <div className="user-pseudo">{pseudo}</div>
           </div>
         </div>
         <ul className="sidebar-list">
