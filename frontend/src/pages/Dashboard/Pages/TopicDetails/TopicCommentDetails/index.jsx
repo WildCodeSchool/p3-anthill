@@ -33,7 +33,7 @@ function TopicCommentDetails({
           key={topic.id}
           id={topic.id}
           title={topic.title}
-          creatorName={topic.fullname}
+          creatorPseudo={topic.pseudo}
           description={topic.description}
           deadline={topic.deadline}
           slackChannelLink={topic.slack_channel_link}

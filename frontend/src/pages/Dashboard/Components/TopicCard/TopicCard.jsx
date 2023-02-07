@@ -14,7 +14,7 @@ function TopicCard(props) {
     id,
     creatorId,
     title,
-    creatorName,
+    creatorPseudo,
     description,
     deadline,
     nbIdea,
@@ -69,7 +69,7 @@ function TopicCard(props) {
                 : "topicCard__creatorName__list"
             }
           >
-            by {creatorName}
+            by {creatorPseudo}
           </p>
         </Link>
       </div>
