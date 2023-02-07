@@ -27,10 +27,10 @@ function useCurrentUser() {
       })
       .then((res) => {
         setCurrentUser(res.data);
-        if (res.data.picture) {
+        if (currentUser?.picture) {
           setCurrentUser((prevState) => ({
             ...prevState,
-            picture: `${URL}/uploads/${res.data.picture}`,
+            picture: `${URL}/uploads/${currentUser.picture}`,
           }));
         } else {
           setCurrentUser((prevState) => ({
@@ -38,14 +38,13 @@ function useCurrentUser() {
             picture: `/png/visitor.png`,
           }));
         }
-      })
-      .catch((err) => {
-        setError(err.response);
-        if (err.response.name === "TokenExpiredError") {
-          console.warn("Token expired");
+        if (currentUser?.name === "TokenExpiredError") {
           localStorage.removeItem("currentUser");
           navigate("/login");
         }
+      })
+      .catch((err) => {
+        setError(err.response);
       });
   }, []);
 

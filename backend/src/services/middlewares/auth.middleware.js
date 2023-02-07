@@ -67,7 +67,7 @@ async function verifyToken(req, res, next) {
     next();
   } catch (err) {
     console.error(err);
-    res.status(401).send(err);
+    res.send(err);
   }
 }
 
