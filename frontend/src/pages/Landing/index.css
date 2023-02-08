@@ -34,7 +34,7 @@
 }
 
 .main .slider h1 {
-  font-size: 5vw;
+  font-size: 50px;
   margin: 0;
   padding-bottom: 0.5rem;
   letter-spacing: 0.5rem;
@@ -48,7 +48,7 @@
 }
 
 .main .slider h2 {
-  font-size: 2vw;
+  font-size: 25px;
   letter-spacing: 0.3rem;
   font-family: "ROBOTO", sans-serif;
   font-weight: 300;
@@ -77,4 +77,47 @@
 
 .mockup {
   height: 600px;
+}
+
+.sous-section2 {
+  background-color: var(--medium-background);
+  display: inline-block;
+  width: 100vw;
+  margin-top: 100px;
+}
+
+.sous-section2-text-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light-color);
+  margin: 30px 0;
+}
+
+.sous-section2-text-image > p {
+  margin: auto 40px;
+}
+
+.screen-shot {
+  height: 400px;
+  border-radius: var(--radius);
+}
+
+.sous-section3 {
+  background-color: var(--medium-background);
+  display: inline-block;
+  width: 100vw;
+  margin-top: 100px;
+}
+
+.sous-section3-text-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light-color);
+  margin: 30px 0;
+}
+
+.sous-section3-text-image > p {
+  margin: auto 40px;
 }

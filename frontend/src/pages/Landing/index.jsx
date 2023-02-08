@@ -38,10 +38,38 @@ function Landing() {
         <section className="slider" id="section2">
           <h1>DASHBOARD</h1>
           <h2>introduce the operations</h2>
+          <div className="sous-section2">
+            <div className="sous-section2-text-image">
+              <img
+                src="/png/allTopics.png"
+                alt="screen shot of the site"
+                className="screen-shot"
+              />
+              <p>
+                A simple way to make decisions with your team. <br /> Stay
+                always connected with the rest of your company.
+                <br /> Find new ideas, comment, vote.
+              </p>
+            </div>
+          </div>
         </section>
         <section className="slider" id="section3">
           <h1>FEATURE</h1>
           <h2>framework for Production</h2>
+          <div className="sous-section3">
+            <div className="sous-section3-text-image">
+              <img
+                src="/png/createTopic.png"
+                alt="screen shot of the site"
+                className="screen-shot"
+              />
+              <p>
+                A simple way to make decisions with your team. <br /> Stay
+                always connected with the rest of your company.
+                <br /> Find new ideas, comment, vote.
+              </p>
+            </div>
+          </div>
         </section>
         <section className="slider" id="section4">
           <h1>CUSTOMER</h1>
