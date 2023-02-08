@@ -121,3 +121,22 @@
 .topicCard__notClosed {
   display: none;
 }
+
+.div-delete {
+  display: flex;
+  justify-content: center;
+}
+
+.button-delete {
+  background-color: var(--golden-color);
+  color: var(--dark-background);
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 15px;
+}
+
+.button-delete:hover {
+  background-color: var(--small-touch);
+  color: var(--golden-color);
+}

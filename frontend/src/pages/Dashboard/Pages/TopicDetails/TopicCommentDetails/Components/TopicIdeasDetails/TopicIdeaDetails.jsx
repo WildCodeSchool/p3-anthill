@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import useFetch from "../../../../services/useFetch";
-import useFetchLazy from "../../../../services/useFetchLazy";
+import useFetch from "../../../../../../../services/useFetch";
+import useFetchLazy from "../../../../../../../services/useFetchLazy";
 import CommentCard from "./Components/CommentCard";
 import CommentCreate from "./Components/CommentCreate";
-import "./index.css";
+import "./TopicIdeaDetails.css";
 
-function TopicIdeasDetails() {
-  const { topicId, ideaId } = useParams();
+function TopicIdeasDetails({ ideaId }) {
+  const { topicId } = useParams();
 
   const [isClicked, setIsClicked] = useState(false);
 
@@ -83,7 +83,10 @@ function TopicIdeasDetails() {
           >
             {!isClosed &&
               (isClicked ? (
-                <CommentCreate triggerGetComments={triggerGetComments} />
+                <CommentCreate
+                  triggerGetComments={triggerGetComments}
+                  ideaId={ideaId}
+                />
               ) : (
                 <div id="createComment">+</div>
               ))}

@@ -150,11 +150,12 @@
 .ideaCard {
   color: var(--golden-color);
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: var(--light-background);
   border-radius: var(--radius);
-  height: 110px;
+  min-height: 110px;
   margin: 1.5rem;
   padding: 0.5rem;
   border: 4px solid var(--light-background);
@@ -162,7 +163,15 @@
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
+.ideaCard__open {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .ideaCard__main {
+  flex: 3;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -183,30 +192,51 @@
 }
 
 .ideaCard__description {
+  flex: 5;
   color: var(--light-color);
-  max-width: 50%;
   margin: 10px 0;
   resize: none;
   border: none;
-  width: 500px;
   text-align: center;
   font-size: var(--textS);
 }
 
 .ideaCard__interactions {
+  flex: 2;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: 30px;
+}
+
+.ideaCard__delete {
+  flex: 1;
 }
 
 .ideaCard__nbUpVote {
-  margin: 20px;
-}
-
-.ideaCard__nbComment {
-  margin: 20px;
-}
-
-.ideaCard__nbComment {
+  flex: 1;
   display: flex;
+}
+
+.ideaCard__nbComment {
+  flex: 1;
+  display: flex;
+}
+
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+
+.divider {
+  height: 1px;
+  width: 300px;
+  background-color: var(--light-color);
+}
+
+.popup__open {
+  padding: 15px;
 }
