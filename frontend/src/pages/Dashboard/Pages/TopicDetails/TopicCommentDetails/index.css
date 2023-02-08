@@ -180,6 +180,7 @@
 .ideaCard__creatorName {
   color: var(--light-color);
   margin-top: 15px;
+  font-size: var(--textS);
 }
 
 .ideaCard__description {

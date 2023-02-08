@@ -54,38 +54,41 @@ function TopicIdeasDetails() {
       {(loadingComments || loadingIdea) && <h2>LOADING ...</h2>}
       <div>
         <div className="topicIdeasDetails__title">{idea && idea.title}</div>
+        <button
+          className="topicIdeaDetails__create__comment"
+          onClick={() => {
+            handleClick();
+          }}
+          tabIndex={0}
+          onKeyDown={() => {}}
+          type="button"
+        >
+          {!isClosed &&
+            (isClicked ? (
+              <CommentCreate triggerGetComments={triggerGetComments} />
+            ) : (
+              <div id="createComment__button">Add a comment</div>
+            ))}
+        </button>
         <div className="topicIdeaDetails__comments">
           <div className="topicIdeaDetails__commentsList">
             {comments &&
               comments.map((comment) => (
-                <CommentCard
-                  key={comment.id}
-                  creatorId={comment.creator_id}
-                  id={comment.id}
-                  pseudo={comment.pseudo}
-                  content={comment.content}
-                  upVote={comment.up_vote}
-                  canVote={comment.canVote}
-                  triggerGetComments={triggerGetComments}
-                  comment={comment}
-                  isClosed={isClosed}
-                />
-              ))}
-          </div>
-          <div
-            className="topicIdeaDetails__create__comment"
-            onClick={() => {
-              handleClick();
-            }}
-            tabIndex={0}
-            onKeyDown={() => {}}
-            role="button"
-          >
-            {!isClosed &&
-              (isClicked ? (
-                <CommentCreate triggerGetComments={triggerGetComments} />
-              ) : (
-                <div id="createComment">+</div>
+                <div>
+                  <CommentCard
+                    key={comment.id}
+                    creatorId={comment.creator_id}
+                    id={comment.id}
+                    pseudo={comment.pseudo}
+                    content={comment.content}
+                    upVote={comment.up_vote}
+                    canVote={comment.canVote}
+                    triggerGetComments={triggerGetComments}
+                    comment={comment}
+                    isClosed={isClosed}
+                  />
+                  <article className="topicIdeaDetails__underLine"> </article>
+                </div>
               ))}
           </div>
         </div>
