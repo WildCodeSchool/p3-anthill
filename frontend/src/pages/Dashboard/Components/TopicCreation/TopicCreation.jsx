@@ -62,59 +62,60 @@ function TopicCreation({ closePopUp }) {
       />
       <div>
         <div className="topicCreation_description">
-          <label className="topicCreation_label" htmlFor="description__title">
-            Description
-          </label>
-          <div
-            id="description__title"
-            className="description"
-            name="description"
-            type="text"
-          >
-            <Editor
-              onInit={(evt, editor) => {
-                editorRef.current = editor;
-              }}
-              initialValue=""
-              init={{
-                height: "80%",
-                menubar: false,
-                plugins: [
-                  "advlist",
-                  "autolink",
-                  "link",
-                  "image",
-                  "lists",
-                  "charmap",
-                  "anchor",
-                  "pagebreak",
-                  "searchreplace",
-                  "wordcount",
-                  "visualblocks",
-                  "code",
-                  "fullscreen",
-                  "insertdatetime",
-                  "media",
-                  "table",
-                  "emoticons",
-                  "template",
-                  "codesample",
-                ],
-                toolbar:
-                  "undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify |" +
-                  "bullist numlist outdent indent | link image | print preview media fullscreen | " +
-                  "forecolor backcolor emoticons",
-                content_style:
-                  "body{font-family:Helvetica,Arial,sans-serif; font-size:16px}",
-              }}
-            />
-          </div>
-          <div className="topicCreation_bottom">
-            <GiAnt size={30} />
-            <button className="button-creation" type="submit">
-              Start
-            </button>
-          </div>
+          <Editor
+            onInit={(evt, editor) => {
+              editorRef.current = editor;
+            }}
+            init={{
+              skin_url: "/skins/ui/dark_mode",
+              placeholder: "Description",
+              height: "300",
+              menubar: false,
+              plugins: [
+                "advlist",
+                "autolink",
+                "link",
+                "image",
+                "lists",
+                "charmap",
+                "anchor",
+                "pagebreak",
+                "searchreplace",
+                "wordcount",
+                "visualblocks",
+                "code",
+                "fullscreen",
+                "insertdatetime",
+                "media",
+                "table",
+                "emoticons",
+                "template",
+                "codesample",
+              ],
+              toolbar:
+                "undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify |" +
+                "bullist numlist outdent indent | link image | print preview media fullscreen | " +
+                "forecolor backcolor emoticons",
+              content_style: `
+              code {
+                background-color: #e8e8e8;
+                border-radius: 3px;
+                padding: .1rem .2rem;
+              }
+                body{
+                  font-family:Helvetica,Arial,sans-serif; font-size:14px; background-color:#1f2025; color:white; 
+                }
+	              .mce-content-body[data-mce-placeholder]:not(.mce-visualblocks)::before {
+		              color:#ffffff;
+	              }`,
+            }}
+          />
+        </div>
+        <div className="topicCreation_bottom">
+          <GiAnt size={30} />
+          <button className="button-creation" type="submit">
+            Start
+          </button>
         </div>
       </div>
     </form>
