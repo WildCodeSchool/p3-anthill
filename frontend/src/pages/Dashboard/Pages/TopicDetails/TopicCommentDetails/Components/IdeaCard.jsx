@@ -133,7 +133,6 @@ function IdeaCard({
           </div>
           {isViewCommentOpen && (
             <div className="comments-container">
-              <div className="divider" />
               <TopicIdeasDetails ideaId={id} />
             </div>
           )}

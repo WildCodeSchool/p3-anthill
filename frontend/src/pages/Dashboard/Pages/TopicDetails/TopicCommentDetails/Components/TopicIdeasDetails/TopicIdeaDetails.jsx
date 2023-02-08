@@ -88,7 +88,7 @@ function TopicIdeasDetails({ ideaId }) {
                   ideaId={ideaId}
                 />
               ) : (
-                <div id="createComment">+</div>
+                <div className="add-button">Add a comment</div>
               ))}
           </div>
         </div>

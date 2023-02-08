@@ -1,23 +1,18 @@
 .topicIdeasDetails__main {
   color: var(--light-color);
+  top: 146px;
+  right: 28px;
 }
 
 .topicIdeasDetails__title {
-  width: 100%;
-  color: var(--golden-color);
-  font-size: var(--textL);
-  text-align: center;
+  display: none;
 }
 
 .topicIdeaDetails__comments {
-  background-color: var(--light-background);
-  border-radius: var(--radius);
-  min-height: 50px;
-  margin: 0.5rem 1.5rem;
-  padding: 0.5rem;
-  border: 4px solid var(--light-background);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
-    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+  background-color: var(--medium-background);
+  border-radius: 0 0 20px 20px;
+  padding: 0.5rem 1rem;
+  width: 100%;
 }
 
 .topicIdeaDetails__commentsList {
@@ -36,8 +31,20 @@
 .topicIdeaDetails__create__comment {
   background-color: var(--golden-color);
   color: var(--dark-background);
-  font-weight: 600;
-  padding: 5px 10px;
+
   border-radius: 5px;
   margin: 15px;
+  display: inline-block;
+}
+
+.add-button {
+  border-radius: var(--radius);
+  height: 25px;
+  width: 150px;
+  font-size: 13px;
+  padding: 5px 10px;
+  border: none;
+  background-color: var(--golden-color);
+  color: var(--dark-background);
+  box-shadow: 0 4px 10px 0 rgba(255, 235, 167, 0.2);
 }
