@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { useNavigate } from "react-router-dom";
 import { GiAnt } from "react-icons/gi";
+import { BsPencil } from "react-icons/bs";
+import { RxLapTimer } from "react-icons/rx";
 import useFetchLazy from "../../../../services/useFetchLazy";
 
 import "./TopicCreation.css";
@@ -40,22 +42,20 @@ function TopicCreation({ closePopUp }) {
 
   return (
     <form className="topicCreation_container" onSubmit={submit}>
-      <label className="topicCreation_label" htmlFor="topic__nameTitle">
-        Topic Name
-      </label>
+      <BsPencil className="topicCreation__iconPencil" />
       <input
         id="topic__nameTitle"
-        className="topic__name"
-        placeholder="NAME"
+        className="topic__input"
+        placeholder="Topic Name"
         name="Topic name"
         type="text"
         ref={refTitle}
         required
       />
-      <label htmlFor="deadline">DEADLINE</label>
+      <RxLapTimer className="topicCreation__iconTimer" />
       <input
         id="deadline"
-        className="deadline"
+        className="topic__input"
         type="datetime-local"
         ref={refDeadline}
         required
