@@ -2,10 +2,10 @@ import { useRef } from "react";
 import { useParams } from "react-router-dom";
 import "./CommentCreate.css";
 import { Editor } from "@tinymce/tinymce-react";
-import useFetchLazy from "../../../../../services/useFetchLazy";
+import useFetchLazy from "../../../../../../../../services/useFetchLazy";
 
-function CommentCreate({ triggerGetComments }) {
-  const { topicId, ideaId } = useParams();
+function CommentCreate({ triggerGetComments, ideaId }) {
+  const { topicId } = useParams();
 
   const { trigger: triggerPostComment } = useFetchLazy({
     path: `/topics/${topicId}/ideas/${ideaId}/comments`,
