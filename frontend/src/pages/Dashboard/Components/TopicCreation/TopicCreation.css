@@ -86,3 +86,7 @@
   color: var(--golden-color);
   transition: all 200ms linear;
 }
+
+.mce-content-body p {
+  color: white;
+}

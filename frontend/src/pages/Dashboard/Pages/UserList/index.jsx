@@ -13,7 +13,14 @@ export default function UserList() {
   const { toggleMode } = useContext(ToggleModeContext);
   return (
     <div className="userList">
-      <ToggleModeButtons />
+      <div className="dashboard__header">
+        <div className="dashboard__placeholder" />
+        <h1 className="dashboard__title">Team</h1>
+        <ToggleModeButtons />
+      </div>
+
+      <div className="divider divider__header" />
+
       {loading && <div>LOADING...</div>}
       <div
         className={!toggleMode ? "userList_grid__main" : "userList__list__main"}
