@@ -73,7 +73,7 @@ function TopicCard(props) {
                 {title}
               </h2>
             </Link>
-            <Link to={`/dashboard/user/topi${id}`}>
+            <Link to={`/dashboard/users/${id}`}>
               <p
                 className={
                   !toggleMode

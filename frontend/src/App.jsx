@@ -9,7 +9,6 @@ import UserList from "./pages/Dashboard/Pages/UserList";
 import UserDetails from "./pages/Dashboard/Pages/UserDetails";
 import UserDetailsTopics from "./pages/Dashboard/Pages/UserDetailsTopics";
 import { ToggleModeProvider } from "./contexts/ToggleModeContext";
-import TopicIdeasDetails from "./pages/Dashboard/Pages/TopicIdeasDetails";
 import TopicDetails from "./pages/Dashboard/Pages/TopicDetails/TopicDetails";
 import UserSettings from "./pages/Dashboard/Pages/UserDetails/UserSettings";
 
@@ -25,10 +24,6 @@ function App() {
               <Route index element={<Main />} />
               <Route path="topics" element={<TopicsPage />} />
               <Route path="topics/:topicId" element={<TopicDetails />} />
-              <Route
-                path="topics/:topicId/ideas/:ideaId"
-                element={<TopicIdeasDetails />}
-              />
               <Route path="users" element={<UserList />} />
               <Route path="users/:id" element={<UserDetails />} />
               <Route
