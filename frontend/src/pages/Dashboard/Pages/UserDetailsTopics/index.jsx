@@ -24,7 +24,14 @@ function UserDetailsTopics() {
   }, []);
   return (
     <div>
-      <ToggleModeButtons />
+      <div className="dashboard__header">
+        <div className="dashboard__placeholder" />
+        <h1 className="dashboard__title">My Topics</h1>
+        <ToggleModeButtons />
+      </div>
+
+      <div className="divider divider__header" />
+
       <div
         className={
           !toggleMode

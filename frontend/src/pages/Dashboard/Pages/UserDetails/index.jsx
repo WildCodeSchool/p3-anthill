@@ -17,6 +17,14 @@ function UserDetails() {
 
   return (
     <div className="userDetail">
+      <div className="dashboard__header">
+        <div className="dashboard__placeholder" />
+        <h1 className="dashboard__title">{`${user.fullname}'s Profile`}</h1>
+        <div className="dashboard__placeholder" />
+      </div>
+
+      <div className="divider divider__header" />
+
       <div className="userDetail__card">
         <div className="userDetail__header">
           <div className="userDetail__infos">
