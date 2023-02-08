@@ -62,102 +62,102 @@ function IdeaCard({
     triggerGetIdeas();
   };
 
-  return (
-    <div className="ideaCard">
-      {!isPopupOpen ? (
-        <>
-          <div className="ideaCard__open">
-            <div className="ideaCard__main">
-              <Link to={`ideas/${id}`}>
-                <h3 className="ideaCard__title">{title}</h3>
-              </Link>
-              <div className="ideaCard__creatorName">{creatorName}</div>
-            </div>
-            <div
-              className="ideaCard__description"
-              readOnly
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(description),
-              }}
-            />
-            <div className="ideaCard__interactions">
-              <div className="ideaCard__nbUpVote">
-                <div>{nbUpVotes}</div>
-                {canVote ? (
-                  <div>
-                    <BiUpvote
-                      onClick={upvoteFunction}
-                      style={{
-                        paddingLeft: "5px",
-                      }}
-                    />
-                  </div>
-                ) : (
-                  <div>
-                    <BiDownvote
-                      onClick={downvoteFunction}
-                      style={{
-                        paddingLeft: "5px",
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-              <div className="ideaCard__nbComment">
-                <div>{nbComment}</div>
+  return !isPopupOpen ? (
+    <>
+      <div className="ideaCard">
+        <div className="ideaCard__open">
+          <div className="ideaCard__main">
+            <Link to={`ideas/${id}`}>
+              <h3 className="ideaCard__title">{title}</h3>
+            </Link>
+            <div className="ideaCard__creatorName">{creatorName}</div>
+          </div>
+          <div
+            className="ideaCard__description"
+            readOnly
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(description),
+            }}
+          />
+          <div className="ideaCard__interactions">
+            <div className="ideaCard__nbUpVote">
+              <div>{nbUpVotes}</div>
+              {canVote ? (
                 <div>
-                  <CommentPopover ideaId={id} />
+                  <BiUpvote
+                    onClick={upvoteFunction}
+                    style={{
+                      paddingLeft: "5px",
+                    }}
+                  />
                 </div>
+              ) : (
+                <div>
+                  <BiDownvote
+                    onClick={downvoteFunction}
+                    style={{
+                      paddingLeft: "5px",
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+            <div className="ideaCard__nbComment">
+              <div>{nbComment}</div>
+              <div>
+                <CommentPopover ideaId={id} />
               </div>
             </div>
-            <div className="ideaCard__delete">
-              {creatorId === currentUser?.id && (
-                <button
-                  type="button"
-                  className="button-delete"
-                  onClick={() => setIsPopupOpen(true)}
-                >
-                  Delete
-                </button>
-              )}
+          </div>
+          <div className="ideaCard__delete">
+            {creatorId === currentUser?.id && (
               <button
                 type="button"
                 className="button-delete"
-                onClick={() => setIsViewCommentOpen(!isViewCommentOpen)}
+                onClick={() => setIsPopupOpen(true)}
               >
-                {isViewCommentOpen ? "Hide comments" : "View comments"}
+                Delete
               </button>
-            </div>
-          </div>
-          {isViewCommentOpen && (
-            <div className="comments-container">
-              <div className="divider" />
-              <TopicIdeasDetails ideaId={id} />
-            </div>
-          )}
-        </>
-      ) : (
-        <div className="popup__open">
-          <p>Are you sure you want to delete this idea?</p>
-          <div>
+            )}
             <button
               type="button"
               className="button-delete"
-              onClick={() => setIsPopupOpen(false)}
+              onClick={() => setIsViewCommentOpen(!isViewCommentOpen)}
             >
-              Cancel
-            </button>
-            <button
-              type="button"
-              className="button-delete"
-              style={{ backgroundColor: "var(--error)" }}
-              onClick={handleDelete}
-            >
-              Delete
+              {isViewCommentOpen ? "Hide comments" : "View comments"}
             </button>
           </div>
         </div>
+      </div>
+      {isViewCommentOpen && (
+        <div className="comments-container">
+          <div className="divider" />
+          <TopicIdeasDetails ideaId={id} />
+        </div>
       )}
+    </>
+  ) : (
+    <div className="ideaCard">
+      <div className="popup__open">
+        <p>Are you sure you want to delete this idea?</p>
+        <div>
+          <button
+            type="button"
+            className="button-delete"
+            onClick={() => setIsPopupOpen(false)}
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            className="button-delete"
+            style={{ backgroundColor: "var(--error)" }}
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
