@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import DOMPurify from "isomorphic-dompurify";
 import TopicIdeasDetails from "./TopicIdeasDetails/TopicIdeaDetails";
 import CommentPopover from "./CommentPopover/CommentPopover";
@@ -67,9 +67,7 @@ function IdeaCard({
       <div className="ideaCard">
         <div className="ideaCard__open">
           <div className="ideaCard__main">
-            <Link to={`ideas/${id}`}>
-              <h3 className="ideaCard__title">{title}</h3>
-            </Link>
+            <h3 className="ideaCard__title">{title}</h3>
             <div className="ideaCard__creatorName">{creatorName}</div>
           </div>
           <div
@@ -121,7 +119,7 @@ function IdeaCard({
             )}
             <button
               type="button"
-              className="button-delete"
+              className="button-comments"
               onClick={() => setIsViewCommentOpen(!isViewCommentOpen)}
             >
               {isViewCommentOpen ? "Hide comments" : "View comments"}

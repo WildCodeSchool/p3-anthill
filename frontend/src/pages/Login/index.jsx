@@ -31,7 +31,6 @@ function Login() {
                   <div className="all-container">
                     <h4 className="title-container">Log In</h4>
                     <LoginForm />
-
                     <p className="forgot-text">
                       <a href="#0" className="link">
                         Forgot your password?

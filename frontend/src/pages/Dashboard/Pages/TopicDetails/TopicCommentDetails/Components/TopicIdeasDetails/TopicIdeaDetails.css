@@ -11,8 +11,9 @@
 .topicIdeaDetails__comments {
   background-color: var(--medium-background);
   border-radius: 0 0 20px 20px;
-  padding: 0.5rem 1rem;
+  padding: 0 1rem;
   width: 100%;
+  transition: all 1000ms;
 }
 
 .topicIdeaDetails__commentsList {
@@ -28,23 +29,42 @@
   border-bottom: solid 1px var(--dark-background);
 }
 
+.topicIdeaDetails__create__comment__upper {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .topicIdeaDetails__create__comment {
   background-color: var(--golden-color);
   color: var(--dark-background);
-
-  border-radius: 5px;
+  border-radius: 20px;
   margin: 15px;
   display: inline-block;
+  text-align: center;
+  max-width: 620px;
+}
+
+.topicIdeaDetails__create__comment:hover {
+  background: none;
+  color: var(--golden-color);
 }
 
 .add-button {
-  border-radius: var(--radius);
-  height: 25px;
-  width: 150px;
+  border-radius: 20px;
+  height: 20px;
+  width: 130px;
   font-size: 13px;
   padding: 5px 10px;
   border: none;
   background-color: var(--golden-color);
   color: var(--dark-background);
-  box-shadow: 0 4px 10px 0 rgba(255, 235, 167, 0.2);
+  transition: all 200ms;
+}
+
+.add-button:hover {
+  background: none;
+  color: var(--golden-color);
+  padding: 4px 9px;
+  border: solid 1px var(--golden-color);
+  transition: all 200ms;
 }

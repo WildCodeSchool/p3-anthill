@@ -1,10 +1,10 @@
 .googleBtn {
   background: var(--golden-color);
-  border-radius: var(--radius);
+  border-radius: 20px;
   color: var(--dark-background);
   border: none;
   width: 120px;
-  height: 45px;
+  height: 40px;
   cursor: pointer;
   transition: all 200ms linear;
   font-size: 13px;
@@ -12,7 +12,6 @@
   text-transform: uppercase;
   transition: all 200ms linear;
   letter-spacing: 1px;
-  box-shadow: 0 4px 10px 0 rgba(255, 235, 167, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,13 +21,12 @@
 .googleBtn:focus {
   background-color: var(--small-touch);
   color: var(--golden-color);
-  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
 
 .googleBtn:hover {
-  background-color: var(--small-touch);
+  background: none;
+  border: solid 1px var(--golden-color);
   color: var(--golden-color);
-  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
 
 .googleBtn > * {
@@ -51,16 +49,11 @@
 .googleBtn:focus {
   background-color: var(--small-touch);
   color: var(--golden-color);
-  box-shadow: 0 4px 10px 0 rgba(16, 39, 112, 0.2);
-}
-
-.googleBtn:hover {
-  background-color: var(--small-touch);
 }
 
 .googleBtn:hover > * {
+  background-color: none;
   color: var(--golden-color);
-  box-shadow: 0 4px 10px 0 rgba(16, 39, 112, 0.2);
 }
 
 .googleLogo {

@@ -72,24 +72,26 @@ function TopicIdeasDetails({ ideaId }) {
                 />
               ))}
           </div>
-          <div
-            className="topicIdeaDetails__create__comment"
-            onClick={() => {
-              handleClick();
-            }}
-            tabIndex={0}
-            onKeyDown={() => {}}
-            role="button"
-          >
-            {!isClosed &&
-              (isClicked ? (
-                <CommentCreate
-                  triggerGetComments={triggerGetComments}
-                  ideaId={ideaId}
-                />
-              ) : (
-                <div className="add-button">Add a comment</div>
-              ))}
+          <div className="topicIdeaDetails__create__comment__upper">
+            <div
+              className="topicIdeaDetails__create__comment"
+              onClick={() => {
+                handleClick();
+              }}
+              tabIndex={0}
+              onKeyDown={() => {}}
+              role="button"
+            >
+              {!isClosed &&
+                (isClicked ? (
+                  <CommentCreate
+                    triggerGetComments={triggerGetComments}
+                    ideaId={ideaId}
+                  />
+                ) : (
+                  <div className="add-button">Add a comment</div>
+                ))}
+            </div>
           </div>
         </div>
       </div>

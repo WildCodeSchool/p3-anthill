@@ -46,3 +46,8 @@
   color: var(--golden-color);
   margin: 15px;
 }
+
+.commentCard__nbUpVote:hover {
+  color: var(--small-touch);
+  cursor: pointer;
+}
