@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import scrollController from "./Components/scrollController";
 import NavLanding from "./Components/NavLanding";
 import Footer from "./Components/footer/Footer";
-import mockup from "../../../public/png/mockup.png";
 import "./index.css";
 
 function Landing() {
@@ -23,7 +22,11 @@ function Landing() {
           <h2>About our website</h2>
           <div className="sous-section1">
             <div className="sous-section1-text-image">
-              <img src={mockup} alt="mockup of the site" className="mockup" />
+              <img
+                src="/png/mockup.png"
+                alt="mockup of the site"
+                className="mockup"
+              />
               <p>
                 A simple way to make decisions with your team. <br /> Stay
                 always connected with the rest of your company.

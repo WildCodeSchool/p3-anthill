@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../../assets/Logo/Logo";
 import BackgrdParticles from "../../../assets/BackgrdParticles/BackgrdParticles";
 import "./NavLanding.css";
 
@@ -49,7 +48,7 @@ function NavLanding({ sticky }) {
       <BackgrdParticles />
       <div className="stage">
         <div className="content" ref={stageRef}>
-          <img src={logo} alt="" ref={textRef} className="txt" />
+          <img src="/png/logoDoré.png" alt="" ref={textRef} className="txt" />
         </div>
         <div>
           <h3 className="span loader">
