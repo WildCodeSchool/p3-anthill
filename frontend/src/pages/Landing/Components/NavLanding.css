@@ -76,7 +76,7 @@ a {
   display: flex;
   flex-direction: row;
   bottom: 0;
-  width: 99.37%;
+  width: 100%;
   height: 75px;
   background: var(--dark-background);
   border: 4px solid var(--medium-background);

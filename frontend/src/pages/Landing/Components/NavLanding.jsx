@@ -68,9 +68,6 @@ function NavLanding({ sticky }) {
         <a className="nav-tab" href="#section3">
           FEATURES
         </a>
-        <a className="nav-tab" href="#section4">
-          CUSTOMER
-        </a>
         <a className="nav-tab" href="#section5">
           About Us
         </a>
