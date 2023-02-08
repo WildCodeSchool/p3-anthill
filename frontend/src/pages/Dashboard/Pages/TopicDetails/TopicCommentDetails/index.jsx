@@ -27,6 +27,14 @@ function TopicCommentDetails({
 
   return (
     <div className="ideaCard__page">
+      <div className="dashboard__header">
+        <div className="dashboard__placeholder" />
+        <h1 className="dashboard__title">Topic Details</h1>
+        <div className="dashboard__placeholder" />
+      </div>
+
+      <div className="divider divider__header" />
+
       {loadingTopic && <h2 className="loading">LOADING ...</h2>}
       {topic && (
         <TopicInfo

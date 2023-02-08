@@ -38,7 +38,7 @@ function Sidebar({ userId, name, photo, pseudo }) {
     },
     {
       id: 4,
-      text: "Contacts",
+      text: "Team",
       icon: <RiContactsLine className="icon" />,
       active: activeButton === 4,
       path: "/dashboard/users",

@@ -112,23 +112,21 @@ function IdeaCard({
             </div>
             <div className="ideaCard__delete">
               {creatorId === currentUser?.id && (
-                <>
-                  <button
-                    type="button"
-                    className="button-delete"
-                    onClick={() => setIsPopupOpen(true)}
-                  >
-                    Delete
-                  </button>
-                  <button
-                    type="button"
-                    className="button-delete"
-                    onClick={() => setIsViewCommentOpen(!isViewCommentOpen)}
-                  >
-                    {isViewCommentOpen ? "Hide comments" : "View comments"}
-                  </button>
-                </>
+                <button
+                  type="button"
+                  className="button-delete"
+                  onClick={() => setIsPopupOpen(true)}
+                >
+                  Delete
+                </button>
               )}
+              <button
+                type="button"
+                className="button-delete"
+                onClick={() => setIsViewCommentOpen(!isViewCommentOpen)}
+              >
+                {isViewCommentOpen ? "Hide comments" : "View comments"}
+              </button>
             </div>
           </div>
           {isViewCommentOpen && (
