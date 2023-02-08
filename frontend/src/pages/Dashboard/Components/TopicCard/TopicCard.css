@@ -32,13 +32,18 @@
 .topicCard__creatorName {
   margin: 5% 5% 5% 6%;
   color: var(--light-color);
-  font-size: var(--textS);
+  font-size: var(--textXS);
+}
+
+.topicCard__creatorName:hover {
+  color: var(--small-touch);
 }
 
 .topicCard__description {
   margin: 5% 5% 5% 6%;
   font-size: var(--textS);
   color: var(--light-color);
+  overflow: hidden;
 }
 
 .topicCard__description:hover {
@@ -61,7 +66,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: var(--textS);
+  font-size: var(--textXS);
   color: var(--light-color);
   height: 50px;
 }
@@ -98,8 +103,8 @@
 }
 
 .icon-timer {
-  font-size: var(--textL);
-  margin: 10px;
+  font-size: var(--textM);
+  margin: 10px 10px 10px 0;
 }
 
 .icon-ampule {

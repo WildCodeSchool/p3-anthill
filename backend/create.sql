@@ -105,8 +105,8 @@ CREATE TABLE `user_topic` (
   CONSTRAINT `fk_user_topic_topic` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id`) ON DELETE CASCADE
 );
 
-CREATE VIEW TopicData (id, is_comment_mode, title, creator_id, fullname, description, deadline, is_closed, nb_idea, nb_bubble, slack_channel_link) 
-AS (SELECT t.id, t.is_comment_mode, t.title, u.id, u.fullname, t.description, t.deadline, t.is_closed, count(i.id), count(b.id), t.slack_channel_link
+CREATE VIEW TopicData (id, is_comment_mode, title, creator_id, pseudo, description, deadline, is_closed, nb_idea, nb_bubble, slack_channel_link) 
+AS (SELECT t.id, t.is_comment_mode, t.title, u.id, u.pseudo, t.description, t.deadline, t.is_closed, count(i.id), count(b.id), t.slack_channel_link
   FROM topic AS t 
   LEFT JOIN idea AS i ON i.comment_mode_id = t.id
   LEFT JOIN bubble as b ON b.mindmap_id = t.id 
@@ -156,7 +156,7 @@ AS (SELECT i.id, count(uiu.idea_id) AS nbr_upvotes
 ;
 
 CREATE VIEW IdeaData(id, idea_creator_id, idea_title, idea_description, idea_creator_name, nb_comment, comment_mode_id, nbr_upvotes_idea)
-AS (SELECT i.id, i.creator_id, MIN(i.title), MIN(i.description), MIN(u.fullname), count(c.id), i.comment_mode_id, iu.nbr_upvotes
+AS (SELECT i.id, i.creator_id, MIN(i.title), MIN(i.description), MIN(u.pseudo), count(c.id), i.comment_mode_id, iu.nbr_upvotes
   FROM idea AS i
   LEFT JOIN topic AS t ON t.id = i.comment_mode_id
   LEFT JOIN user AS u ON u.id = i.creator_id

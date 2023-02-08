@@ -14,7 +14,7 @@ function TopicCard(props) {
     id,
     creatorId,
     title,
-    creatorName,
+    creatorPseudo,
     description,
     deadline,
     nbIdea,
@@ -73,7 +73,7 @@ function TopicCard(props) {
                 {title}
               </h2>
             </Link>
-            <Link to={`/dashboard/user/topi${id}`}>
+            <Link to={`/dashboard/users/${id}`}>
               <p
                 className={
                   !toggleMode
@@ -81,7 +81,7 @@ function TopicCard(props) {
                     : "topicCard__creatorName__list"
                 }
               >
-                by {creatorName}
+                by {creatorPseudo}
               </p>
             </Link>
           </div>

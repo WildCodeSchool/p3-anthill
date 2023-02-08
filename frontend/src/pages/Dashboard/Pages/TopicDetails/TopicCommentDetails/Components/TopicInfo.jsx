@@ -6,7 +6,7 @@ function TopicInfo(props) {
   const {
     id,
     title,
-    creatorName,
+    creatorPseudo,
     description,
     deadline,
     slackChannelLink,
@@ -37,7 +37,7 @@ function TopicInfo(props) {
     <div className="topicInfo">
       <div className="topicInfo__left">
         <h2 className="topicInfo__title">{title}</h2>
-        <p className="topicInfo__creatorName">{creatorName}</p>
+        <p className="topicInfo__creatorName">{creatorPseudo}</p>
       </div>
 
       <div
