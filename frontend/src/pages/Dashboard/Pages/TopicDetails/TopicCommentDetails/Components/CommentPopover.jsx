@@ -35,7 +35,7 @@ function CommentPopover({ ideaId }) {
   }
 
   return (
-    <div>
+    <>
       <button
         ref={boxRef}
         className="commentButton"
@@ -54,7 +54,7 @@ function CommentPopover({ ideaId }) {
             <CommentCard id={comment.id} key={comment.id} comment={comment} />
           ))}
       </div>
-    </div>
+    </>
   );
 }
 
