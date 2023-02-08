@@ -38,14 +38,13 @@ function useCurrentUser() {
             picture: `/png/visitor.png`,
           }));
         }
-      })
-      .catch((err) => {
-        setError(err.response);
-        if (err.response.name === "TokenExpiredError") {
-          console.warn("Token expired");
+        if (currentUser?.name === "TokenExpiredError") {
           localStorage.removeItem("currentUser");
           navigate("/login");
         }
+      })
+      .catch((err) => {
+        setError(err.response);
       });
   }, []);
 
