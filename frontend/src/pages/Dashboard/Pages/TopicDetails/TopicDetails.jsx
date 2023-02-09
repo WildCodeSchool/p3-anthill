@@ -26,7 +26,6 @@ function TopicDetails() {
     triggerGetTopic();
     triggerGetIdeas();
   }, []);
-
   if (topic?.is_comment_mode) {
     return (
       <TopicCommentDetails

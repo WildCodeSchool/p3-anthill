@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import useFetchLazy from "../../../../../../services/useFetchLazy";
 
-function IdeaCreationCard({ topicId, triggerGetIdeas }) {
+function IdeaCreationCard({ topicId, triggerGetIdeas, bubbles }) {
   const titleRef = useRef();
   const editorRef = useRef();
 
@@ -22,11 +22,11 @@ function IdeaCreationCard({ topicId, triggerGetIdeas }) {
       title: titleRef.current?.value,
       description: editorRef.current.getContent(),
     });
+    if (bubbles) window.location.reload(false);
     triggerGetIdeas();
     titleRef.current.value = "";
     editorRef.current.setContent("");
   };
-
   return (
     <div>
       <div className="ideaCreationCard">

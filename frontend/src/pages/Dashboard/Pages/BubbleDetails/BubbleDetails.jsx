@@ -1,91 +1,85 @@
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import useFetchLazy from "../../../../services/useFetchLazy";
+import useFetch from "../../../../services/useFetch";
+import IdeaCreationCard from "../TopicDetails/TopicCommentDetails/Components/IdeaCreationCard";
+
 import Graph from "./Graph";
 import "./BubbleDetails.css";
 
 function BubbleDetails() {
-  const data = {
-    nodes: [
-      {
-        id: "a",
-        text: "Quentin hehehefhihih fsfg fdg f g",
-        name: "Quentin",
-        photo: "/ContactPhotos/Quentin.png",
-      },
-      {
-        id: "b",
-        text: "joahnna jejeje",
-      },
-      {
-        id: "c",
-        text: "Audrey jojojojojoj",
-      },
-      {
-        id: "d",
-        text: "Cyril hkdhkhfd",
-      },
-      {
-        id: "e",
-        text: "Huy lolololol",
-      },
-      {
-        id: "f",
-        text: "Kevin alalaoalaoalao",
-      },
-      {
-        id: "g",
-        text: "Kevin alalaoalaoalao",
-      },
-    ],
-    links: [
-      {
-        source: "a",
-        target: "b",
-        name: "Audrey H",
-        photo: "/ContactPhotos/Audrey.png",
-      },
-      {
-        source: "a",
-        target: "c",
-        name: "Cyril",
-        photo: "/ContactPhotos/Cyril.png",
-      },
-      {
-        source: "a",
-        target: "d",
-        name: "Gwenael",
-        photo: "/ContactPhotos/Gwenael.png",
-      },
-      {
-        source: "a",
-        target: "e",
-        name: "Herschel",
-        photo: "/ContactPhotos/Herschel.png",
-      },
-      {
-        source: "a",
-        target: "f",
-        name: "Huy",
-        photo: "/ContactPhotos/Huy.png",
-      },
-      {
-        source: "a",
-        target: "g",
-        name: "Johanna",
-        photo: "/ContactPhotos/Johanna.png",
-      },
-    ],
-  };
+  const currentDate = new Date();
+
+  const { topicId } = useParams();
+
+  const { trigger: triggerGetIdeas } = useFetchLazy({
+    path: `/topics/${topicId}/ideas`,
+    method: "get",
+  });
+
+  const { data: topic } = useFetch({
+    path: `/topics/${topicId}`,
+    method: "get",
+  });
+  const { data: ideas } = useFetch({
+    path: `/topics/${topicId}/ideas`,
+    method: "get",
+  });
+  const { data: userTopic } = useFetch({
+    path: `/users/${{ ...topic }?.creator_id}`,
+    method: "get",
+  });
+  const newDeadline = new Date(topic.deadline);
+  useEffect(() => {
+    triggerGetIdeas();
+  }, []);
+
+  const node = [
+    {
+      id: "a",
+      text: `${topic.description}`.replace(/<\/?p>/g, ""),
+      name: `${{ ...topic }?.title}`,
+      photo: `${{ ...userTopic }.picture}`,
+    },
+  ];
+  ideas.map((ele) =>
+    node.push({
+      id: `${ele.id}`,
+      text: `${ele.idea_description.replace(/<\/?p>/g, "")}`,
+      name: `${ele.idea_title.replace(/<\/?p>/g, "")}`,
+    })
+  );
+
+  const link = [];
+
+  ideas.map((ele) =>
+    link.push({
+      source: "a",
+      target: `${ele.id}`,
+      name: `${ele.idea_creator_name}`,
+    })
+  );
 
   const width = 1200;
 
   const height = 1400;
-  const links = data.links.map((d) => Object.create(d));
-  const nodes = data.nodes.map((d) => Object.create(d));
+  const links = link.map((d) => Object.create(d));
+  const nodes = node.map((d) => Object.create(d));
 
   return (
     <div className="bubbleTeas">
-      <Graph width={width} height={height} links={links} nodes={nodes} />
+      {ideas?.length > 0 && { ...userTopic }.picture !== undefined ? (
+        <Graph width={width} height={height} links={links} nodes={nodes} />
+      ) : null}
       <div className="bb-title">
-        <h1>Bubbles View Mode</h1>
+        {currentDate < newDeadline ? (
+          <IdeaCreationCard
+            topicId={topic.id}
+            triggerGetIdeas={triggerGetIdeas}
+            bubbles
+          />
+        ) : null}
       </div>
     </div>
   );

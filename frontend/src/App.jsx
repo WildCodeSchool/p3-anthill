@@ -26,7 +26,10 @@ function App() {
               <Route index element={<Main />} />
               <Route path="topics" element={<TopicsPage />} />
               <Route path="topics/:topicId" element={<TopicDetails />} />
-              <Route path="topics/bubbles" element={<BubbleDetails />} />
+              <Route
+                path="topics/bubbles/:topicId"
+                element={<BubbleDetails />}
+              />
               <Route
                 path="topics/:topicId/ideas/:ideaId"
                 element={<TopicIdeasDetails />}

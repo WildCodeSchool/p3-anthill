@@ -40,8 +40,8 @@ function Graph({ width, height, links, nodes }) {
       .select(svgRef.current)
       .attr("viewBox", [0, 0, width, height]);
 
-    const nodeWidth = 250;
-    const nodeHeight = 100;
+    const nodeWidth = 260;
+    const nodeHeight = 120;
 
     const link = svg
       .append("g")
@@ -70,7 +70,7 @@ function Graph({ width, height, links, nodes }) {
 
     label
       .append("text")
-      .attr("y", -15)
+      .attr("y", 0)
       .attr("text-anchor", "middle")
       .style("font-weight", "bold")
       .style("font-size", "1rem")
@@ -96,22 +96,24 @@ function Graph({ width, height, links, nodes }) {
     node
       .select("#a")
       .attr("width", nodeWidth)
-      .attr("height", 200)
+      .attr("height", 240)
       .attr("stroke", "#38d6ae");
 
     node
       .append("text")
-      .attr("x", 40)
-      .attr("y", 180)
+      .attr("x", 110)
+      .attr("y", 20)
       .attr("text-anchor", "middle")
+      .style("width", 100)
+      .style("height", 20)
       .style("color", "#ffeba7")
-      .style("font-weight", "bold")
       .style("font-size", "1rem")
       .text((d) => d.name);
+
     node
       .append("image")
-      .attr("x", 185)
-      .attr("y", 140)
+      .attr("x", 220)
+      .attr("y", 220)
       .attr("width", 50)
       .attr("height", 50)
       .attr("xlink:href", (d) => d.photo)
@@ -120,9 +122,9 @@ function Graph({ width, height, links, nodes }) {
     node
       .append("foreignObject")
       .attr("x", "0")
-      .attr("y", "0")
+      .attr("y", "25")
       .attr("width", nodeWidth)
-      .attr("height", nodeHeight)
+      .attr("height", nodeHeight + 60)
       .style("pointer-events", "none")
       .append("xhtml:p")
       .style("width", "100%")

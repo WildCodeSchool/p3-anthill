@@ -24,7 +24,6 @@ function TopicIdeasDetails() {
     path: `/ideas/${ideaId}`,
     method: "get",
   });
-
   const { data: topic } = useFetch({
     path: `/topics/${topicId}`,
     method: "get",

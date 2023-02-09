@@ -111,8 +111,17 @@ function TopicCard(props) {
       {currentUser?.id === creatorId && (
         <DeleteTopicButton triggerGetTopics={triggerGetTopics} topicId={id} />
       )}
-      <div className="btn_delete">
-        <button type="button">Topics Mode</button>
+      <div className="view-modes">
+        <Link to={`/dashboard/topics/${id}`}>
+          <button type="button" className="button-delete">
+            Topics Mode
+          </button>
+        </Link>
+        <Link to={`/dashboard/topics/bubbles/${id}`}>
+          <button type="button" className="button-delete">
+            Bubbles Mode
+          </button>
+        </Link>
       </div>
     </article>
   );

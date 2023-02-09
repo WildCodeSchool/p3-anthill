@@ -23,7 +23,6 @@ function TopicCommentDetails({
       setIsClosed(true);
     }
   }, [currentDate, newDeadline]);
-
   return (
     <div className="ideaCard__page">
       {loadingTopic && <h2 className="loading">LOADING ...</h2>}

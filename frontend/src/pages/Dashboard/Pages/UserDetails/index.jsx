@@ -10,6 +10,7 @@ function UserDetails() {
     path: `/users/${id}/badges`,
     method: "get",
   });
+
   const { data: user, loading: loadingUser } = useFetch({
     path: `/users/${id}`,
     method: "get",
@@ -21,6 +22,7 @@ function UserDetails() {
         <div className="userDetail__header">
           <div className="userDetail__infos">
             <div className="userDetail__names">
+              <img className="userCard__picture" src={user.picture} alt="" />
               <h3 className="userDetail__name">{user.fullname}</h3>
               <p className="userDetail__pseudo">{user.pseudo}</p>
             </div>

@@ -45,7 +45,6 @@ function IdeaCard({
     triggerGetIdeas();
     return null;
   };
-
   return (
     <div className="ideaCard">
       <div className="ideaCard__main">

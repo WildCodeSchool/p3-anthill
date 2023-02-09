@@ -121,3 +121,8 @@
 .topicCard__notClosed {
   display: none;
 }
+
+.view-modes {
+  display: flex;
+  justify-content: space-between;
+}
