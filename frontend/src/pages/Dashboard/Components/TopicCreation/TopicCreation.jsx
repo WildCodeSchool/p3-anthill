@@ -113,7 +113,7 @@ function TopicCreation({ closePopUp }) {
         </div>
         <div className="topicCreation_bottom">
           <GiAnt size={30} />
-          <button className="button-creation" type="submit">
+          <button className="button-slack" type="submit">
             Start
           </button>
         </div>

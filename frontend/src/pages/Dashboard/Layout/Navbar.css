@@ -31,8 +31,9 @@
 }
 
 .add-btn:hover {
-  background-color: var(--golden-color);
-  color: var(--small-touch);
+  background: none;
+  border: solid 1px var(--golden-color);
+  color: var(--golden-color);
 }
 
 .notification {
