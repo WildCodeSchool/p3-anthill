@@ -19,7 +19,7 @@
 
 .topicInfo__creatorName {
   color: var(--light-color);
-  font-size: var(--textS);
+  font-size: small;
 }
 
 .topicInfo__left {
