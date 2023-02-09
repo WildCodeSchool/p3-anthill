@@ -1,6 +1,7 @@
 import { useEffect, useContext } from "react";
 import useFetchLazy from "../../../../services/useFetchLazy";
 import TopicCard from "../../Components/TopicCard/TopicCard";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import ToggleModeButtons from "../../Components/ToggleModeButtons/ToggleModeButtons";
 import ToggleModeContext from "../../../../contexts/ToggleModeContext";
 
@@ -31,6 +32,8 @@ function TopicsList() {
       </div>
 
       <div className="divider divider__header" />
+
+      <SearchBar />
 
       <div className="topicsList">
         {loading && <div>LOADING...</div>}
