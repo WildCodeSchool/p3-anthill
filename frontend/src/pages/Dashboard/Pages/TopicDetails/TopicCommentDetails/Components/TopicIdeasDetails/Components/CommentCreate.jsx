@@ -4,7 +4,7 @@ import "./CommentCreate.css";
 import { Editor } from "@tinymce/tinymce-react";
 import useFetchLazy from "../../../../../../../../services/useFetchLazy";
 
-function CommentCreate({ triggerGetComments, ideaId }) {
+function CommentCreate({ triggerGetComments, ideaId, setIsClicked }) {
   const { topicId } = useParams();
 
   const { trigger: triggerPostComment } = useFetchLazy({
@@ -19,6 +19,7 @@ function CommentCreate({ triggerGetComments, ideaId }) {
       await triggerPostComment({ content: editorRef.current.getContent() });
       triggerGetComments();
       editorRef.current.setContent("");
+      setIsClicked(false);
     }
   }
 
@@ -77,7 +78,7 @@ function CommentCreate({ triggerGetComments, ideaId }) {
                   }`,
             }}
           />
-          <button type="button" className="button-delete" onClick={log}>
+          <button type="button" className="button-send" onClick={log}>
             Send
           </button>
         </form>

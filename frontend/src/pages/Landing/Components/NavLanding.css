@@ -34,16 +34,15 @@
   background-color: var(--golden-color);
   color: var(--dark-background);
   font-size: var(--textS);
-  border-radius: var(--radius);
+  border-radius: 20px;
   font-weight: 600;
   text-transform: uppercase;
-
-  padding: 12px 25px;
-  box-shadow: 0 4px 10px 0 rgba(255, 235, 167, 0.2);
+  padding: 8px 25px;
 }
 
 .btn-login:hover {
-  background-color: var(--small-touch);
+  background: none;
+  border: solid 1px var(--golden-color);
   color: var(--golden-color);
   transition: all 200ms linear;
 }
@@ -76,7 +75,7 @@ a {
   display: flex;
   flex-direction: row;
   bottom: 0;
-  width: 99.37%;
+  width: 100%;
   height: 75px;
   background: var(--dark-background);
   border: 4px solid var(--medium-background);

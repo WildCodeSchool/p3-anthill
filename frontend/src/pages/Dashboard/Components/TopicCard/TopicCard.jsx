@@ -142,7 +142,7 @@ function TopicCard(props) {
         </>
       ) : (
         <>
-          <p style={{ padding: "15px" }}>
+          <p style={{ padding: "15px", fontSize: "18px" }}>
             Are you sure you want to delete this topic?
           </p>
           <div
@@ -159,7 +159,10 @@ function TopicCard(props) {
             <button
               type="button"
               className="button-delete"
-              style={{ backgroundColor: "var(--error)" }}
+              style={{
+                backgroundColor: "var(--error)",
+                color: "var(--light-color)",
+              }}
               onClick={handleDelete}
             >
               Delete

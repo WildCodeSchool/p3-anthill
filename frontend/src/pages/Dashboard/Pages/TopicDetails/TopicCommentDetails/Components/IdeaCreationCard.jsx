@@ -102,7 +102,7 @@ function IdeaCreationCard({
           </div>
 
           <div className="ideaCreation_Card">
-            <button type="submit" id="ideaCreationCard__button">
+            <button type="submit" className="button-slack">
               {loadingPostIdea ? "Loading..." : "Add"}
             </button>
           </div>

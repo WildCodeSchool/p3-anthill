@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import DOMPurify from "isomorphic-dompurify";
+import { FaCommentAlt } from "react-icons/fa";
 import TopicIdeasDetails from "./TopicIdeasDetails/TopicIdeaDetails";
-import CommentPopover from "./CommentPopover/CommentPopover";
 import useFetchLazy from "../../../../../../services/useFetchLazy";
 import useCurrentUser from "../../../../../../services/useCurrentUser";
 
@@ -67,10 +67,8 @@ function IdeaCard({
       <div className="ideaCard">
         <div className="ideaCard__open">
           <div className="ideaCard__main">
-            <Link to={`ideas/${id}`}>
-              <h3 className="ideaCard__title">{title}</h3>
-            </Link>
-            <div className="ideaCard__creatorName">{creatorName}</div>
+            <h3 className="ideaCard__title">{title}</h3>
+            <div className="ideaCard__creatorName">by {creatorName}</div>
           </div>
           <div
             className="ideaCard__description"
@@ -83,7 +81,7 @@ function IdeaCard({
             <div className="ideaCard__nbUpVote">
               <div>{nbUpVotes}</div>
               {canVote ? (
-                <div>
+                <div className="ideaCard__vote">
                   <BiUpvote
                     onClick={upvoteFunction}
                     style={{
@@ -105,7 +103,9 @@ function IdeaCard({
             <div className="ideaCard__nbComment">
               <div>{nbComment}</div>
               <div>
-                <CommentPopover ideaId={id} />
+                <div style={{ padding: "1px 6px" }}>
+                  <FaCommentAlt style={{ fontSize: "1rem" }} />
+                </div>
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@ function IdeaCard({
             )}
             <button
               type="button"
-              className="button-delete"
+              className="button-comments"
               onClick={() => setIsViewCommentOpen(!isViewCommentOpen)}
             >
               {isViewCommentOpen ? "Hide comments" : "View comments"}

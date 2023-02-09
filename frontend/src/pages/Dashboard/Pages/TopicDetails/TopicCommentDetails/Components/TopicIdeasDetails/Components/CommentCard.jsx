@@ -3,8 +3,11 @@ import { useState } from "react";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import DOMPurify from "isomorphic-dompurify";
 import "./CommentCard.css";
+import useFetch from "../../../../../../../../services/useFetch";
 import useFetchLazy from "../../../../../../../../services/useFetchLazy";
 import useCurrentUser from "../../../../../../../../services/useCurrentUser";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 function CommentCard({
   id,
@@ -18,7 +21,14 @@ function CommentCard({
 }) {
   const { id: topicId, ideaId } = useParams();
 
+  const { currentUser } = useCurrentUser();
+
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const { data: creatorData } = useFetch({
+    path: `/users/${creatorId}`,
+    method: "get",
+  });
 
   const { trigger: triggerDownvoteComment } = useFetchLazy({
     path: `/votes/comments/${id}/downvote`,
@@ -34,8 +44,6 @@ function CommentCard({
     path: `/topics/${topicId}/ideas/${ideaId}/comments/${id}`,
     method: "delete",
   });
-
-  const { currentUser } = useCurrentUser();
 
   const upvoteFunction = async () => {
     if (isClosed) return alert("This topic is closed");
@@ -65,7 +73,7 @@ function CommentCard({
           <div className="commentCard__info">
             <div className="commentCard__main">
               <img
-                src={currentUser?.picture}
+                src={`${BACKEND_URL}/uploads/${creatorData?.picture}`}
                 alt="avatar"
                 className="commentCard__avatar"
               />

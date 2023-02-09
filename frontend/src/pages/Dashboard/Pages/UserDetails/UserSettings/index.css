@@ -1,6 +1,5 @@
 .settings-main {
   display: flex;
-  align-items: center;
   justify-content: center;
   min-height: 90vh;
   flex-wrap: wrap;
@@ -10,10 +9,10 @@
 .settings-container {
   color: var(--golden-color);
   border-radius: var(--radius);
-  background-color: var(--medium-background);
+  background-color: var(--light-background);
   width: 500px;
   height: 443px;
-  border: 10px solid var(--medium-background);
+  border: 10px solid var(--light-background);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   display: flex;
@@ -80,12 +79,11 @@
 }
 
 #picture-input::file-selector-button {
-  border-radius: var(--radius);
+  border-radius: 20px;
   height: 30px;
-  width: 170px;
+  width: 150px;
   font-size: 13px;
   font-weight: 600;
-  text-transform: uppercase;
   transition: all 200ms linear;
   letter-spacing: 1px;
   border: none;
@@ -94,7 +92,8 @@
 }
 
 #picture-input::file-selector-button:hover {
-  background-color: var(--small-touch);
+  background: none;
+  border: solid 1px var(--golden-color);
   color: var(--golden-color);
   transition: all 200ms linear;
 }
