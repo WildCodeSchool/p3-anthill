@@ -103,11 +103,16 @@ function TopicCreation({ closePopUp }) {
                 padding: .1rem .2rem;
               }
                 body{
-                  font-family:Helvetica,Arial,sans-serif; font-size:14px; background-color:#1f2025; color:white; 
+                  font-family: "Poppins", sans-serif;
+                  font-size:14px; 
+                  background-color:#1f2025; 
+                  color:#ffffff; 
                 }
 	              .mce-content-body[data-mce-placeholder]:not(.mce-visualblocks)::before {
-		              color:#ffffff;
-	              }`,
+                  color: #a9a9a9;
+                  font-family: "Poppins", sans-serif;
+                  letter-spacing: 0.5px;
+                }`,
             }}
           />
         </div>
