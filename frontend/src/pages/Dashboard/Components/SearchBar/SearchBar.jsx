@@ -25,9 +25,8 @@ function SearchBar() {
           className="searchBar__input"
         />
       </div>
-
       <button type="submit" className="searchBar__button">
-        Search
+        Reset
       </button>
     </form>
   );
