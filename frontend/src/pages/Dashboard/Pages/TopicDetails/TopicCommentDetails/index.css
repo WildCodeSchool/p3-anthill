@@ -183,7 +183,7 @@
 .ideaCard__creatorName {
   color: var(--light-color);
   margin-top: 15px;
-  font-size: var(--textS);
+  font-size: small;
 }
 
 .ideaCard__description {
@@ -212,6 +212,11 @@
 .ideaCard__nbUpVote {
   flex: 1;
   display: flex;
+}
+
+.ideaCard__vote:hover {
+  color: var(--small-touch);
+  cursor: pointer;
 }
 
 .ideaCard__nbComment {

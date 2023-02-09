@@ -68,7 +68,7 @@ function IdeaCard({
         <div className="ideaCard__open">
           <div className="ideaCard__main">
             <h3 className="ideaCard__title">{title}</h3>
-            <div className="ideaCard__creatorName">{creatorName}</div>
+            <div className="ideaCard__creatorName">by {creatorName}</div>
           </div>
           <div
             className="ideaCard__description"
@@ -81,7 +81,7 @@ function IdeaCard({
             <div className="ideaCard__nbUpVote">
               <div>{nbUpVotes}</div>
               {canVote ? (
-                <div>
+                <div className="ideaCard__vote">
                   <BiUpvote
                     onClick={upvoteFunction}
                     style={{

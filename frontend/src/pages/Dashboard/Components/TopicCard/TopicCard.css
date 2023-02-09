@@ -22,7 +22,7 @@
   text-align: center;
   margin: 5% 5% 5% 6%;
   color: var(--golden-color);
-  font-size: var(--textL);
+  font-size: var(--textM);
 }
 
 .topicCard__title:hover {
@@ -32,7 +32,7 @@
 .topicCard__creatorName {
   margin: 5% 5% 5% 6%;
   color: var(--light-color);
-  font-size: var(--textXS);
+  font-size: small;
 }
 
 .topicCard__creatorName:hover {
