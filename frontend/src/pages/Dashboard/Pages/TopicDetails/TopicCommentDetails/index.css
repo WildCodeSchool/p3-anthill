@@ -140,20 +140,6 @@
   align-items: center;
 }
 
-#ideaCreationCard__button {
-  background-color: var(--golden-color);
-  color: var(--dark-background);
-  font-weight: 600;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-}
-
-#ideaCreationCard__button:hover {
-  background-color: var(--small-touch);
-  color: var(--golden-color);
-}
-
 .ideaCard {
   color: var(--golden-color);
   display: flex;
