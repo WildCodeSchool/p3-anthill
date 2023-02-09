@@ -20,20 +20,20 @@ VALUES
   ("description_11", "Mika_comme_le_chanteur", "https://i.postimg.cc/7hnWSGD0/Mickael.png", "email_11@gmail.com", "user_hashedPassword_5", "Mickaël", "user_google_id_11", 1)
 ;
 
-INSERT INTO topic (deadline, description, is_private, creator_id, title, is_closed, is_comment_mode) 
+INSERT INTO topic (deadline, description, is_private, creator_id, title, is_closed, is_comment_mode, slack_channel_link) 
 VALUES 
-  (curdate(), "How should we rename Gwenaël  ?", 0, 1, "Gwenaël Nickname", 1, 1), 
-  (curdate(), "Which day should we fire Johanna ?", 0, 2, "Johanna's departure", 1, 1), 
-  (curdate(), "Which cake for the departure of Johanna", 0, 1, "Johanna's leaving party's cake", 1, 1), 
-  (curdate(), "We all know that we don't drink just one coffee a day. How could the cafe service at Wild Code School be improved?", 0, 3, "Coffee problem", 1, 1), 
-  (curdate(), "Which bar should we go to on Friday nights?", 0, 4, "New bar ?", 1, 1), 
-  (curdate(), "Would you be intereseted in a lan party ? Please respond by a simple 'no' or propose a day and a game", 0, 1, "Lan party ?", 1, 1), 
-  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 1, 0), 
-  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 1, 0), 
-  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 1, 0), 
-  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0), 
-  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0),
-  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0)
+  (curdate(), "How should we rename Gwenaël  ?", 0, 1, "Gwenaël Nickname", 1, 1, "https://app.slack.com/client/T04LP2YJY31/C04NQ3SMPHP"), 
+  (curdate(), "Which day should we fire Johanna ?", 0, 2, "Johanna's departure", 1, 1, NULL), 
+  (curdate(), "Which cake for the departure of Johanna", 0, 1, "Johanna's leaving party's cake", 1, 1, NULL), 
+  (curdate(), "We all know that we don't drink just one coffee a day. How could the cafe service at Wild Code School be improved?", 0, 3, "Coffee problem", 1, 1, "https://app.slack.com/client/T04LP2YJY31/C04NKQWPA6M"), 
+  (curdate(), "Which bar should we go to on Friday nights?", 0, 4, "New bar ?", 1, 1, "https://app.slack.com/client/T04LP2YJY31/C04NMP82LG2"), 
+  (curdate(), "Would you be intereseted in a lan party ? Please respond by a simple 'no' or propose a day and a game", 0, 1, "Lan party ?", 1, 1, NULL), 
+  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 1, 0, NULL), 
+  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 1, 0, NULL), 
+  (curdate(), "Feature incomming", 0, 1, "Mindmap Topic Mode", 1, 0, NULL), 
+  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0, NULL), 
+  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0, NULL),
+  (curdate(), "Feature incomming", 0, 2, "Mindmap Topic Mode", 1, 0, NULL)
 ;
 INSERT INTO bubble (content, mindmap_id, creator_id) 
 VALUES 
