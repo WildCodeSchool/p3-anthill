@@ -34,8 +34,9 @@ function CommentCreate({ triggerGetComments, ideaId, setIsClicked }) {
             onInit={(evt, editor) => {
               editorRef.current = editor;
             }}
-            initialValue=""
             init={{
+              skin_url: "/skins/ui/dark_mode",
+              placeholder: "Description",
               height: "300px",
               menubar: false,
               plugins: [
@@ -63,8 +64,23 @@ function CommentCreate({ triggerGetComments, ideaId, setIsClicked }) {
                 "undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify |" +
                 "bullist numlist outdent indent | link image | print preview media fullscreen | " +
                 "forecolor backcolor emoticons",
-              content_style:
-                "body{font-family:Helvetica,Arial,sans-serif; font-size:16px}",
+              content_style: `
+              code {
+                background-color: #e8e8e8;
+                border-radius: 3px;
+                padding: .1rem .2rem;
+              }
+                body{
+                  font-family: "Poppins", sans-serif;
+                  font-size:14px; 
+                  background-color:#1f2025; 
+                  color:#ffffff; 
+                }
+	              .mce-content-body[data-mce-placeholder]:not(.mce-visualblocks)::before {
+                  color: #a9a9a9;
+                  font-family: "Poppins", sans-serif;
+                  letter-spacing: 0.5px;
+                }`,
             }}
           />
           <button type="button" className="button-send" onClick={log}>
