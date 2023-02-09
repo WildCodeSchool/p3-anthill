@@ -24,7 +24,14 @@ function TopicsList() {
 
   return (
     <div className="topicsContainer">
-      <ToggleModeButtons />
+      <div className="dashboard__header">
+        <div className="dashboard__placeholder" />
+        <h1 className="dashboard__title">All Topics</h1>
+        <ToggleModeButtons />
+      </div>
+
+      <div className="divider divider__header" />
+
       <div className="topicsList">
         {loading && <div>LOADING...</div>}
         <div className={!toggleMode ? "topic_grid__main" : "topic_list__main"}>
@@ -35,7 +42,7 @@ function TopicsList() {
                 id={topic.id}
                 creatorId={topic.creator_id}
                 title={topic.title}
-                creatorName={topic.fullname}
+                creatorPseudo={topic.pseudo}
                 description={topic.description}
                 deadline={topic.deadline}
                 nbIdea={topic.nb_idea}

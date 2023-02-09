@@ -20,7 +20,7 @@ function Sidebar({ userId, name, photo, pseudo }) {
       text: "Top Topics",
       icon: <TbCrown className="icon" />,
       active: activeButton === 1,
-      path: `/dashboard`, // getCurrentUser
+      path: `/dashboard`,
     },
     {
       id: 2,
@@ -38,7 +38,7 @@ function Sidebar({ userId, name, photo, pseudo }) {
     },
     {
       id: 4,
-      text: "Contacts",
+      text: "Team",
       icon: <RiContactsLine className="icon" />,
       active: activeButton === 4,
       path: "/dashboard/users",
@@ -82,7 +82,7 @@ function Sidebar({ userId, name, photo, pseudo }) {
             />
           ))}
         </ul>
-        <Link to="/login" className="signOut-btn">
+        <Link to="/" className="signOut-btn">
           <button type="button" className="signOut-btn" onClick={handleLogout}>
             Log Out
           </button>

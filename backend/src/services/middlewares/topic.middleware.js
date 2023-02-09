@@ -2,6 +2,27 @@ const topicModel = require("../../models/topic.model");
 const ideaModel = require("../../models/idea.model");
 const commentModel = require("../../models/comment.model");
 
+async function switchIsClosed(req, res, next) {
+  try {
+    const topics = await topicModel.getAll();
+    if (!topics) {
+      res.status(404).send("Topic not found");
+      return;
+    }
+    topics.forEach(async (topic) => {
+      const deadline = new Date(topic.deadline);
+      const currentDate = new Date();
+      if (topic.is_closed === 0 && deadline < currentDate) {
+        await topicModel.switchIsClosed(topic);
+      }
+    });
+    next();
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+}
+
 async function verifyIsClosed(req, res, next) {
   try {
     let topic = null;
@@ -52,4 +73,5 @@ async function verifyIsClosed(req, res, next) {
 
 module.exports = {
   verifyIsClosed,
+  switchIsClosed,
 };

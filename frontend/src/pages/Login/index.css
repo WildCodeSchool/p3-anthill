@@ -236,8 +236,8 @@
 }
 
 .btn {
-  border-radius: var(--radius);
-  height: 45px;
+  border-radius: 20px;
+  height: 40px;
   width: 120px;
   font-size: 13px;
   font-weight: 600;
@@ -247,7 +247,6 @@
   border: none;
   background-color: var(--golden-color);
   color: var(--dark-background);
-  box-shadow: 0 4px 10px 0 rgba(255, 235, 167, 0.2);
 }
 
 .btn > * {
@@ -258,7 +257,8 @@
 }
 
 .btn:hover {
-  background-color: var(--small-touch);
+  background: none;
+  border: solid 1px var(--golden-color);
   color: var(--golden-color);
   box-shadow: 0 4px 10px 0 rgba(16, 39, 112, 0.2);
   transition: all 200ms linear;

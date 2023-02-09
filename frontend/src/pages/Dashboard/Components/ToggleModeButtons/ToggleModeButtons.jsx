@@ -16,13 +16,23 @@ function ToggleModeButtons() {
 
   return (
     <div className="toggleMode_main">
-      <button type="button" onClick={changeModeToGrid}>
+      <button
+        type="button"
+        className="toggle-button"
+        onClick={changeModeToGrid}
+      >
         <BsFillGridFill
+          className="toggle-icon"
           color={!toggleMode ? "var(--small-touch)" : "var(--light-color)"}
         />
       </button>
-      <button type="button" onClick={changeModeToList}>
+      <button
+        type="button"
+        className="toggle-button"
+        onClick={changeModeToList}
+      >
         <FaThList
+          className="toggle-icon"
           color={toggleMode ? "var(--small-touch)" : "var(--light-color)"}
         />
       </button>

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import useFetch from "../../../../services/useFetch";
-import useFetchLazy from "../../../../services/useFetchLazy";
+import useFetch from "../../../../../../../services/useFetch";
+import useFetchLazy from "../../../../../../../services/useFetchLazy";
 import CommentCard from "./Components/CommentCard";
 import CommentCreate from "./Components/CommentCreate";
-import "./index.css";
+import "./TopicIdeaDetails.css";
 
-function TopicIdeasDetails() {
-  const { topicId, ideaId } = useParams();
+function TopicIdeasDetails({ ideaId }) {
+  const { topicId } = useParams();
 
   const [isClicked, setIsClicked] = useState(false);
 
@@ -72,21 +72,27 @@ function TopicIdeasDetails() {
                 />
               ))}
           </div>
-          <div
-            className="topicIdeaDetails__create__comment"
-            onClick={() => {
-              handleClick();
-            }}
-            tabIndex={0}
-            onKeyDown={() => {}}
-            role="button"
-          >
-            {!isClosed &&
-              (isClicked ? (
-                <CommentCreate triggerGetComments={triggerGetComments} />
-              ) : (
-                <div id="createComment">+</div>
-              ))}
+          <div className="topicIdeaDetails__create__comment__upper">
+            <div
+              className="topicIdeaDetails__create__comment"
+              onClick={() => {
+                handleClick();
+              }}
+              tabIndex={0}
+              onKeyDown={() => {}}
+              role="button"
+            >
+              {!isClosed &&
+                (isClicked ? (
+                  <CommentCreate
+                    triggerGetComments={triggerGetComments}
+                    ideaId={ideaId}
+                    setIsClicked={setIsClicked}
+                  />
+                ) : (
+                  <div className="add-button">Add a comment</div>
+                ))}
+            </div>
           </div>
         </div>
       </div>

@@ -17,12 +17,27 @@ function UserDetails() {
 
   return (
     <div className="userDetail">
+      <div className="dashboard__header">
+        <div className="dashboard__placeholder" />
+        <h1 className="dashboard__title">{`${user.fullname}'s Profile`}</h1>
+        <div className="dashboard__placeholder" />
+      </div>
+
+      <div className="divider divider__header" />
+
       <div className="userDetail__card">
         <div className="userDetail__header">
           <div className="userDetail__infos">
-            <div className="userDetail__names">
-              <h3 className="userDetail__name">{user.fullname}</h3>
-              <p className="userDetail__pseudo">{user.pseudo}</p>
+            <div className="userDetail__details">
+              <img
+                src={user.picture}
+                alt="profil pic"
+                className="userDetail__picture"
+              />
+              <div>
+                <h3 className="userDetail__name">{user.fullname}</h3>
+                <p className="userDetail__pseudo">{user.pseudo}</p>
+              </div>
             </div>
             <div className="userDetail__greetings">
               <img className="userDetail__mood" alt={user.mood_id} />
@@ -54,11 +69,10 @@ function UserDetails() {
           <p>{user.description}</p>
         </div>
         {loadingUser && <div>LOADING...</div>}
-        <div className="userDetail__contact">
+        <div className="userDetail__topics">
           <Link to="topics">
             <p>Show Topics</p>
           </Link>
-          <p>Slack</p>
         </div>
       </div>
     </div>

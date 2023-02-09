@@ -1,3 +1,13 @@
-.toggleMode_main > * {
+.toggleMode_main {
+  width: 100px;
+}
+
+.toggle-button {
   background-color: var(--dark-background);
+  padding: 10px;
+}
+
+.toggle-icon {
+  width: 30px;
+  height: 30px;
 }

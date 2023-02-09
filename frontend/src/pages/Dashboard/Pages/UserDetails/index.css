@@ -12,70 +12,74 @@
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   margin: 20px;
-  width: 60%;
+  width: 455px;
   padding: 30px;
 }
 
 .userDetail__header {
   display: flex;
+  justify-content: flex-start;
 }
 
-.userDetail__picture {
-  background-color: var(--dark-background);
-  height: 15vh;
-  width: 15vh;
-  border-radius: 100px;
-  margin: 15px 0;
+.userDetail__details {
+  display: flex;
+  align-items: center;
 }
 
-.userDetail__infos {
-  margin-left: 40px;
+.userDetail__details div {
+  margin-left: 1rem;
 }
 
-.userDetail__names > h3 {
+.userDetail__details div > h3 {
   color: var(--golden-color);
 }
 
-.userDetail__names > p {
+.userDetail__details div > p {
   color: var(--light-color);
 }
 
+.userDetail__picture {
+  height: 100px;
+  border-radius: 50%;
+  border-color: var(--golden-color);
+  background-color: var(--light-color);
+}
+
 .userDetail__pseudo {
-  margin-top: 5px;
+  margin-top: 10px;
+  font-size: var(--textS);
 }
 
 .userDetail__description > p {
   color: var(--light-color);
-  text-align: justify;
+  font-size: var(--textS);
+  margin-top: 1rem;
 }
 
-.userDetail__contact {
+.userDetail__topics {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
-.userDetail__contact > a {
+.userDetail__topics > a {
   color: var(--light-color);
+  font-size: var(--textM);
   text-decoration: underline;
 }
 
-.userDetail__contact > a:hover {
+.userDetail__topics > a:hover {
   color: var(--small-touch);
-}
-
-.userDetail__contact > p {
-  color: var(--light-color);
 }
 
 .userDetail__badgesContainer {
   display: flex;
+  gap: 3rem;
 }
 
 .userDetail__badgeUpperContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 10px;
 }
 
 .userDetail__badgeContainer {
@@ -113,12 +117,5 @@
 .userDetail__badgeName {
   color: var(--golden-color);
   font-size: var(--textS);
-}
-
-.userDetail__picture {
-  height: 85px;
-  border-radius: 50%;
-  border: solid;
-  border-color: var(--golden-color);
-  background-color: var(--light-color);
+  margin-top: 5px;
 }

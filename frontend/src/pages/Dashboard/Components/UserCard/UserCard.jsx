@@ -28,15 +28,15 @@ export default function UserCard({ user }) {
           <p className="userCard__pseudo">{user.pseudo}</p>
         </div>
       </div>
-      <div className="userCard__greetings">
-        <img className="userCard__mood" alt={user.mood_id} />
-        <p>{user.nbr_badges} Badges</p>
-      </div>
+
       <div
         className={
           !toggleMode ? "userCard__contactGrid" : "userCard__contactList"
         }
       >
+        <div className="userCard__greetings">
+          <p>{user.nbr_badges} Badges</p>
+        </div>
         <Link to={`/dashboard/users/${user.id}`}>
           <p>Profil</p>
         </Link>

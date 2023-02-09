@@ -22,7 +22,7 @@
   color: var(--golden-color);
   margin-left: 15px;
   width: 260px;
-  font-size: var(--textL);
+  font-size: var(--textM);
 }
 
 .topicCard__title__list:hover {
@@ -32,7 +32,7 @@
 .topicCard__creatorName__list {
   color: var(--light-color);
   margin-left: 15px;
-  font-size: var(--textS);
+  font-size: small;
 }
 
 .topicCard__description__list {
