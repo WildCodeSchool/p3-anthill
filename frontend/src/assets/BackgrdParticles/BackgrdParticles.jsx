@@ -13,7 +13,7 @@ function BackgrdParticles() {
         className="bgr-particles"
         init={particlesInit}
         options={{
-          fpsLimit: 120,
+          fpsLimit: 150,
           interactivity: {
             events: {
               onHover: {
@@ -24,8 +24,8 @@ function BackgrdParticles() {
             },
             modes: {
               repulse: {
-                distance: 300,
-                duration: 1.4,
+                distance: 400,
+                duration: 1.5,
               },
             },
           },
@@ -37,7 +37,7 @@ function BackgrdParticles() {
               color: {
                 value: "#ffeba7",
               },
-              distance: 200,
+              distance: 180,
               enable: true,
               opacity: 0.4,
               width: 1.5,
@@ -49,7 +49,7 @@ function BackgrdParticles() {
                 default: "bounce",
               },
               random: false,
-              speed: 1.5,
+              speed: 1.2,
               straight: false,
             },
             number: {

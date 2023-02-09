@@ -13,25 +13,34 @@ function TopicCommentDetails({
   triggerGetIdeas,
   triggerGetTopic,
 }) {
-  const [isClosed, setIsClosed] = useState(false);
+  const [isTopicClosed, setIsTopicClosed] = useState(false);
+  const [isIdeaCreationOpen, setIsIdeaCreationOpen] = useState(false);
 
   const currentDate = new Date();
   const newDeadline = new Date(topic.deadline);
 
   useEffect(() => {
     if (currentDate > newDeadline) {
-      setIsClosed(true);
+      setIsTopicClosed(true);
     }
   }, [currentDate, newDeadline]);
   return (
     <div className="ideaCard__page">
+      <div className="dashboard__header">
+        <div className="dashboard__placeholder" />
+        <h1 className="dashboard__title">Topic Details</h1>
+        <div className="dashboard__placeholder" />
+      </div>
+
+      <div className="divider divider__header" />
+
       {loadingTopic && <h2 className="loading">LOADING ...</h2>}
       {topic && (
         <TopicInfo
           key={topic.id}
           id={topic.id}
           title={topic.title}
-          creatorName={topic.fullname}
+          creatorPseudo={topic.pseudo}
           description={topic.description}
           deadline={topic.deadline}
           slackChannelLink={topic.slack_channel_link}
@@ -39,12 +48,40 @@ function TopicCommentDetails({
         />
       )}
       <div>
-        {!isClosed && (
-          <IdeaCreationCard
-            topicId={topic.id}
-            triggerGetIdeas={triggerGetIdeas}
-          />
-        )}
+        {!isTopicClosed &&
+          (isIdeaCreationOpen ? (
+            <div className="ideaCreationCard__container">
+              <button
+                className="ideaCard__button"
+                type="button"
+                onClick={() => setIsIdeaCreationOpen(false)}
+              >
+                Close
+              </button>
+              <IdeaCreationCard
+                topicId={topic.id}
+                triggerGetIdeas={triggerGetIdeas}
+                className="ideaCreationCard__show"
+                setIsIdeaCreationOpen={setIsIdeaCreationOpen}
+              />
+            </div>
+          ) : (
+            <div className="ideaCreationCard__container">
+              <button
+                className="ideaCard__button"
+                type="button"
+                onClick={() => setIsIdeaCreationOpen(true)}
+              >
+                Add an idea
+              </button>
+              <IdeaCreationCard
+                topicId={topic.id}
+                triggerGetIdeas={triggerGetIdeas}
+                setIsIdeaCreationOpen={setIsIdeaCreationOpen}
+                className="ideaCreationCard__hide"
+              />
+            </div>
+          ))}
       </div>
       <div className="ideaContainer">
         {loadingIdeas && <h2 className="ideaCard__title">LOADING ...</h2>}
@@ -61,7 +98,7 @@ function TopicCommentDetails({
               nbComment={idea.nb_comment}
               canVote={idea.canVote}
               triggerGetIdeas={triggerGetIdeas}
-              isClosed={isClosed}
+              isTopicClosed={isTopicClosed}
             />
           ))
         ) : (

@@ -65,6 +65,14 @@ function UserSettings() {
 
   return (
     <div className="settings-main">
+      <div className="dashboard__header">
+        <div className="dashboard__placeholder" />
+        <h1 className="dashboard__title">Settings</h1>
+        <div className="dashboard__placeholder" />
+      </div>
+
+      <div className="divider divider__header" />
+
       <form className="settings-container" onSubmit={handleSubmit}>
         <p className="update-title">Update informations</p>
         <div>

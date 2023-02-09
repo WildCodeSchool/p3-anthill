@@ -22,7 +22,7 @@
   text-align: center;
   margin: 5% 5% 5% 6%;
   color: var(--golden-color);
-  font-size: var(--textL);
+  font-size: var(--textM);
 }
 
 .topicCard__title:hover {
@@ -32,22 +32,18 @@
 .topicCard__creatorName {
   margin: 5% 5% 5% 6%;
   color: var(--light-color);
-  font-size: var(--textS);
+  font-size: small;
+}
+
+.topicCard__creatorName:hover {
+  color: var(--small-touch);
 }
 
 .topicCard__description {
   margin: 5% 5% 5% 6%;
   font-size: var(--textS);
   color: var(--light-color);
-}
-
-.topicCard__description:hover {
-  display: flex;
-  align-items: center;
-  text-align: start;
-  font-size: var(--textS);
-  overflow: visible;
-  box-sizing: border-box;
+  word-break: break-word;
 }
 
 .topicCard__bottom {
@@ -61,7 +57,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: var(--textS);
+  font-size: var(--textXS);
   color: var(--light-color);
   height: 50px;
 }
@@ -98,8 +94,8 @@
 }
 
 .icon-timer {
-  font-size: var(--textL);
-  margin: 10px;
+  font-size: var(--textM);
+  margin: 10px 10px 10px 0;
 }
 
 .icon-ampule {
@@ -125,4 +121,23 @@
 .view-modes {
   display: flex;
   justify-content: space-between;
+}
+
+.div-delete {
+  display: flex;
+  justify-content: center;
+}
+
+.button-delete {
+  background: none;
+  color: var(--error);
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 0.5;
+  margin: 15px 0;
+}
+
+.button-delete:hover {
+  opacity: 1;
 }

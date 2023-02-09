@@ -90,6 +90,20 @@ async function updateOnlySlackInfos(id, slackChannelLink) {
   return result.affectedRows;
 }
 
+async function switchIsClosed(topic) {
+  const { id } = topic;
+  const [result] = await db.query(
+    "UPDATE topic SET is_closed = 1 WHERE id = ?",
+    [id]
+  );
+
+  if (result.length === 0) {
+    return null;
+  }
+
+  return result.affectedRows;
+}
+
 async function deleteOne(topicId, userId) {
   const [result1] = await db.query(
     "DELETE FROM topic WHERE id = ? AND creator_id = ?",
@@ -110,6 +124,7 @@ module.exports = {
   getOne,
   insertOne,
   updateOne,
+  switchIsClosed,
   deleteOne,
   getAllTopicsOfOneUser,
   updateOnlySlackInfos,

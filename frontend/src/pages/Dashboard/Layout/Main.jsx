@@ -24,7 +24,19 @@ function Main() {
 
   return (
     <div className="main">
-      <ToggleModeButtons />
+      <div className="dashboard__header">
+        <div className="dashboard__placeholder" />
+        <h1
+          className="dashboard__title"
+          style={{ transform: "none", color: "inherit" }}
+        >
+          Top Topics
+        </h1>
+        <ToggleModeButtons />
+      </div>
+
+      <div className="divider divider__header" />
+
       <h3 className="title-top">Top 3 of the moment</h3>
       {loading && <div>LOADING...</div>}
       <div className={!toggleMode ? "topic_grid__main" : "topic_list__main"}>
@@ -37,7 +49,7 @@ function Main() {
                 id={topic.id}
                 creatorId={topic.creator_id}
                 title={topic.title}
-                creatorName={topic.fullname}
+                creatorPseudo={topic.pseudo}
                 description={topic.description}
                 deadline={topic.deadline}
                 nbIdea={topic.nb_idea}

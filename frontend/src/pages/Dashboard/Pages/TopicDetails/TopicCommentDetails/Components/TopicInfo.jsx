@@ -6,7 +6,7 @@ function TopicInfo(props) {
   const {
     id,
     title,
-    creatorName,
+    creatorPseudo,
     description,
     deadline,
     slackChannelLink,
@@ -18,6 +18,8 @@ function TopicInfo(props) {
     day: "numeric",
     month: "short",
     year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
   };
   const formatedDeadLine = newDeadline.toLocaleTimeString("gb-GB", options);
 
@@ -35,7 +37,7 @@ function TopicInfo(props) {
     <div className="topicInfo">
       <div className="topicInfo__left">
         <h2 className="topicInfo__title">{title}</h2>
-        <p className="topicInfo__creatorName">{creatorName}</p>
+        <p className="topicInfo__creatorName">by {creatorPseudo}</p>
       </div>
 
       <div
@@ -43,29 +45,33 @@ function TopicInfo(props) {
         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
       />
       <div className="topicInfo__deadline">
-        <RxLapTimer />
-        <p>{`${formatedDeadLine}`}</p>
-      </div>
-      {!slackChannelLink ? (
-        <button
-          type="button"
-          className="button-delete"
-          onClick={createSlackChannel}
-        >
-          Create Slack Channel
-        </button>
-      ) : (
         <p>
-          <a
-            className="button-delete"
-            href={slackChannelLink && slackChannelLink}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Join us on the Slack Channel !
-          </a>
+          <RxLapTimer />
+          {` ${formatedDeadLine}`}
         </p>
-      )}
+      </div>
+      <div className="topicInfo__slack">
+        {!slackChannelLink ? (
+          <button
+            type="button"
+            className="button-slack"
+            onClick={createSlackChannel}
+          >
+            Create Slack Channel
+          </button>
+        ) : (
+          <button type="button" className="button-slack">
+            <a
+              className="link-slack"
+              href={slackChannelLink && slackChannelLink}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Join us on the Slack Channel !
+            </a>
+          </button>
+        )}
+      </div>
     </div>
   );
 }

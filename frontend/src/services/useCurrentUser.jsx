@@ -38,9 +38,13 @@ function useCurrentUser() {
             picture: `/png/visitor.png`,
           }));
         }
+        if (currentUser?.name === "TokenExpiredError") {
+          localStorage.removeItem("currentUser");
+          navigate("/login");
+        }
       })
       .catch((err) => {
-        setError(err);
+        setError(err.response);
       });
   }, []);
 

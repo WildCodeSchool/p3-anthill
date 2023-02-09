@@ -4,7 +4,7 @@ import "./Logo.css";
 function Logo() {
   return (
     <div className="logoContainer">
-      <Link to="/dashboard">
+      <Link to="/">
         <img src="/png/logoDoré.png" alt="logo anthill" className="logoLogin" />
       </Link>
     </div>

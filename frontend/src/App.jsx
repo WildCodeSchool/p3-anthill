@@ -9,7 +9,6 @@ import UserList from "./pages/Dashboard/Pages/UserList";
 import UserDetails from "./pages/Dashboard/Pages/UserDetails";
 import UserDetailsTopics from "./pages/Dashboard/Pages/UserDetailsTopics";
 import { ToggleModeProvider } from "./contexts/ToggleModeContext";
-import TopicIdeasDetails from "./pages/Dashboard/Pages/TopicIdeasDetails";
 import TopicDetails from "./pages/Dashboard/Pages/TopicDetails/TopicDetails";
 import BubbleDetails from "./pages/Dashboard/Pages/BubbleDetails/BubbleDetails";
 import UserSettings from "./pages/Dashboard/Pages/UserDetails/UserSettings";

@@ -24,7 +24,14 @@ function UserDetailsTopics() {
   }, []);
   return (
     <div>
-      <ToggleModeButtons />
+      <div className="dashboard__header">
+        <div className="dashboard__placeholder" />
+        <h1 className="dashboard__title">My Topics</h1>
+        <ToggleModeButtons />
+      </div>
+
+      <div className="divider divider__header" />
+
       <div
         className={
           !toggleMode
@@ -39,7 +46,8 @@ function UserDetailsTopics() {
               key={topic.id}
               id={topic.id}
               title={topic.title}
-              creatorName={topic.creator_name}
+              creatorPseudo={topic.pseudo}
+              creatorId={topic.creator_id}
               description={topic.description}
               deadline={topic.deadline}
               nbIdea={topic.nb_idea}
