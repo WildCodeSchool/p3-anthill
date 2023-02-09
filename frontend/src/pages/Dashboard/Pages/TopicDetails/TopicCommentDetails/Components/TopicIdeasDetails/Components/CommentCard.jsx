@@ -99,7 +99,9 @@ function CommentCard({
         </>
       ) : (
         <div className="commentCard__popup">
-          <p>Are you sure you want to delete this comment?</p>
+          <p style={{ fontSize: "18px" }}>
+            Are you sure you want to delete this comment?
+          </p>
           <div className="commentCard__popup-buttons">
             <button
               type="button"
@@ -111,7 +113,10 @@ function CommentCard({
             <button
               type="button"
               className="button-delete"
-              style={{ backgroundColor: "var(--error)" }}
+              style={{
+                backgroundColor: "var(--error)",
+                color: "var(--light-color)",
+              }}
               onClick={handleDelete}
             >
               Delete

@@ -137,8 +137,10 @@ function IdeaCard({
   ) : (
     <div className="ideaCard">
       <div className="popup__open">
-        <p>Are you sure you want to delete this idea?</p>
-        <div>
+        <p style={{ fontSize: "18px" }}>
+          Are you sure you want to delete this idea?
+        </p>
+        <div className="popup__open__buttons">
           <button
             type="button"
             className="button-delete"
@@ -149,7 +151,10 @@ function IdeaCard({
           <button
             type="button"
             className="button-delete"
-            style={{ backgroundColor: "var(--error)" }}
+            style={{
+              backgroundColor: "var(--error)",
+              color: "var(--light-color)",
+            }}
             onClick={handleDelete}
           >
             Delete

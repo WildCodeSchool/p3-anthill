@@ -235,6 +235,11 @@
   padding: 15px;
 }
 
+.popup__open__buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
 .button-comments {
   background-color: var(--golden-color);
   border-radius: 20px;
