@@ -82,7 +82,7 @@ function Sidebar({ userId, name, photo, pseudo }) {
             />
           ))}
         </ul>
-        <Link to="/login" className="signOut-btn">
+        <Link to="/" className="signOut-btn">
           <button type="button" className="signOut-btn" onClick={handleLogout}>
             Log Out
           </button>
