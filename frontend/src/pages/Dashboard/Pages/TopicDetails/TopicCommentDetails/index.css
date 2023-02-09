@@ -40,6 +40,11 @@
   font-size: var(--textS);
 }
 
+.topicInfo__slack {
+  display: flex;
+  align-items: center;
+}
+
 .button-slack {
   background-color: var(--golden-color);
   color: var(--dark-background);
@@ -53,6 +58,11 @@
   color: var(--golden-color);
   padding: 4px 9px;
   border: solid 1px var(--golden-color);
+}
+
+.link-slack {
+  color: inherit;
+  text-decoration: none;
 }
 
 .ideaCreationCard__container {
@@ -122,9 +132,6 @@
   font-size: var(--textM);
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
-
-
-
 
   margin: 0.4rem;
   padding: 13px 20px;
@@ -251,7 +258,7 @@
   padding: 15px;
 }
 
-.ideaCreation__iconPencil{
+.ideaCreation__iconPencil {
   color: var(--golden-color);
   position: relative;
   top: 20%;

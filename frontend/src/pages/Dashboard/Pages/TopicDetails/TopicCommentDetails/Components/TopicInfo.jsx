@@ -60,16 +60,16 @@ function TopicInfo(props) {
             Create Slack Channel
           </button>
         ) : (
-          <p>
+          <button type="button" className="button-slack">
             <a
-              className="button-slack"
+              className="link-slack"
               href={slackChannelLink && slackChannelLink}
               target="_blank"
               rel="noreferrer"
             >
               Join us on the Slack Channel !
             </a>
-          </p>
+          </button>
         )}
       </div>
     </div>
