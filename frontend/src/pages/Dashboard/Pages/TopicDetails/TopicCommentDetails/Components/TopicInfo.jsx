@@ -37,7 +37,7 @@ function TopicInfo(props) {
     <div className="topicInfo">
       <div className="topicInfo__left">
         <h2 className="topicInfo__title">{title}</h2>
-        <p className="topicInfo__creatorName">{creatorPseudo}</p>
+        <p className="topicInfo__creatorName">by {creatorPseudo}</p>
       </div>
 
       <div
