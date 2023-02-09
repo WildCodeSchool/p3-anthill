@@ -22,7 +22,7 @@
   text-align: center;
   margin: 5% 5% 5% 6%;
   color: var(--golden-color);
-  font-size: var(--textL);
+  font-size: var(--textM);
 }
 
 .topicCard__title:hover {
@@ -32,7 +32,7 @@
 .topicCard__creatorName {
   margin: 5% 5% 5% 6%;
   color: var(--light-color);
-  font-size: var(--textXS);
+  font-size: small;
 }
 
 .topicCard__creatorName:hover {
@@ -133,15 +133,15 @@
 }
 
 .button-delete {
-  background-color: var(--golden-color);
-  color: var(--dark-background);
+  background: none;
+  color: var(--error);
   font-weight: 600;
   padding: 5px 10px;
   border-radius: 5px;
-  margin: 15px;
+  opacity: 0.5;
+  margin: 15px 0;
 }
 
 .button-delete:hover {
-  background-color: var(--small-touch);
-  color: var(--golden-color);
+  opacity: 1;
 }

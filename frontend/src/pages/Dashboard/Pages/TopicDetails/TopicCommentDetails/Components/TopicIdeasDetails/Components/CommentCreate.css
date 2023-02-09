@@ -1,23 +1,17 @@
 .commentCreate__main {
   color: var(--light-color);
   background-color: var(--medium-background);
-  padding: 30px 25px;
-  margin: 1.5rem auto;
   border-radius: var(--radius);
-  border: 10px solid var(--medium-background);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
-    inset 5px 5px 15px rgba(0, 0, 0, 0.35);
-  width: 40%;
 }
 
 .commentCreate__form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 300px;
 }
 
 .commentCreate__form > input {
-  width: 95%;
   height: 150px;
   border-radius: var(--radius);
 }
@@ -27,19 +21,19 @@
 }
 
 .button-send {
-  border-radius: 8px;
+  border-radius: 20px;
   border-style: none;
   width: 80px;
-  height: 35px;
-  font-weight: 600;
+  height: 30px;
   margin: 20px 0 10px;
+  padding: 5px 10px;
   background-color: var(--golden-color);
   color: var(--dark-background);
-  text-transform: uppercase;
 }
 
 .button-send:hover {
-  background-color: var(--small-touch);
+  background: none;
   color: var(--golden-color);
-  transition: all 200ms linear;
+  padding: 4px 9px;
+  border: solid 1px var(--golden-color);
 }
