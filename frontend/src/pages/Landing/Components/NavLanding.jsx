@@ -69,7 +69,7 @@ function NavLanding({ sticky }) {
           FEATURES
         </a>
         <a className="nav-tab" href="#section5">
-          About Us
+          ABOUT US
         </a>
         <span className="nav-tab-slider" />
       </nav>

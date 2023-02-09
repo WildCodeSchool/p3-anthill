@@ -87,6 +87,7 @@ function TopicIdeasDetails({ ideaId }) {
                   <CommentCreate
                     triggerGetComments={triggerGetComments}
                     ideaId={ideaId}
+                    setIsClicked={setIsClicked}
                   />
                 ) : (
                   <div className="add-button">Add a comment</div>

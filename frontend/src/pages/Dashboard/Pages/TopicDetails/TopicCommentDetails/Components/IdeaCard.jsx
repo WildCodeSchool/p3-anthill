@@ -2,8 +2,8 @@ import { useState } from "react";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 import DOMPurify from "isomorphic-dompurify";
+import { FaCommentAlt } from "react-icons/fa";
 import TopicIdeasDetails from "./TopicIdeasDetails/TopicIdeaDetails";
-import CommentPopover from "./CommentPopover/CommentPopover";
 import useFetchLazy from "../../../../../../services/useFetchLazy";
 import useCurrentUser from "../../../../../../services/useCurrentUser";
 
@@ -103,7 +103,9 @@ function IdeaCard({
             <div className="ideaCard__nbComment">
               <div>{nbComment}</div>
               <div>
-                <CommentPopover ideaId={id} />
+                <div style={{ padding: "1px 6px" }}>
+                  <FaCommentAlt style={{ fontSize: "1rem" }} />
+                </div>
               </div>
             </div>
           </div>
