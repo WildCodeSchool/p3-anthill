@@ -47,6 +47,7 @@ function UserDetailsTopics() {
               id={topic.id}
               title={topic.title}
               creatorPseudo={topic.pseudo}
+              creatorId={topic.creator_id}
               description={topic.description}
               deadline={topic.deadline}
               nbIdea={topic.nb_idea}
