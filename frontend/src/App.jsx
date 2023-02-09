@@ -29,10 +29,6 @@ function App() {
                 path="topics/bubbles/:topicId"
                 element={<BubbleDetails />}
               />
-              <Route
-                path="topics/:topicId/ideas/:ideaId"
-                element={<TopicIdeasDetails />}
-              />
               <Route path="users" element={<UserList />} />
               <Route path="users/:id" element={<UserDetails />} />
               <Route
