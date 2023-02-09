@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import BackgrdParticles from "../../assets/BackgrdParticles/BackgrdParticles";
 import LoginForm from "./Components/LoginForm";
 import SignUpForm from "./Components/SignUpForm";
@@ -5,6 +7,14 @@ import Logo from "../../assets/Logo/Logo";
 import "./index.css";
 
 function Login() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
+    if (token) {
+      navigate("/dashboard");
+    }
+  }, []);
+
   return (
     <div className="login">
       <BackgrdParticles />
