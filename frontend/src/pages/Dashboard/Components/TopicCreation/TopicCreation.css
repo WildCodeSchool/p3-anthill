@@ -90,13 +90,13 @@
   color: white;
 }
 
-#deadline{
+#deadline {
   color: #a9a9a9;
 }
 
 input::-webkit-calendar-picker-indicator {
   filter: invert(1);
-  opacity: 1
+  opacity: 1;
 }
 
 input::-webkit-calendar-picker-indicator:hover {

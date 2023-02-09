@@ -258,6 +258,11 @@
   padding: 15px;
 }
 
+.popup__open__buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
 .ideaCreation__iconPencil {
   color: var(--golden-color);
   position: relative;
