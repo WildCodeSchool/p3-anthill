@@ -1,5 +1,5 @@
 .ideaCard__page {
-  padding-top: 1px;
+  padding: 1px 0 40px;
 }
 
 .topicInfo {
@@ -29,7 +29,7 @@
 .topicInfo__description {
   color: var(--light-color);
   font-size: var(--textS);
-  margin: 0 10px;
+  margin: auto 40px;
 }
 
 .topicInfo__deadline {
@@ -43,10 +43,16 @@
 .button-slack {
   background-color: var(--golden-color);
   color: var(--dark-background);
-  font-weight: 600;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
   margin: 15px;
+}
+
+.button-slack:hover {
+  background: none;
+  color: var(--golden-color);
+  padding: 4px 9px;
+  border: solid 1px var(--golden-color);
 }
 
 .ideaCreationCard__container {
@@ -59,15 +65,16 @@
 .ideaCreationCard__container > .ideaCard__button {
   background-color: var(--golden-color);
   color: var(--dark-background);
-  font-weight: 600;
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 20px;
   margin: 15px;
 }
 
 .ideaCreationCard__container > .ideaCard__button:hover {
-  background-color: var(--small-touch);
+  background: none;
   color: var(--golden-color);
+  padding: 4px 9px;
+  border: solid 1px var(--golden-color);
 }
 
 .ideaCreationCard__show {
@@ -133,20 +140,6 @@
   align-items: center;
 }
 
-#ideaCreationCard__button {
-  background-color: var(--golden-color);
-  color: var(--dark-background);
-  font-weight: 600;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-}
-
-#ideaCreationCard__button:hover {
-  background-color: var(--small-touch);
-  color: var(--golden-color);
-}
-
 .ideaCard {
   color: var(--golden-color);
   display: flex;
@@ -156,11 +149,12 @@
   background-color: var(--light-background);
   border-radius: var(--radius);
   min-height: 110px;
-  margin: 1.5rem;
+  margin: 1.5rem 1.5rem 0;
   padding: 0.5rem;
   border: 4px solid var(--light-background);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+  position: relative;
 }
 
 .ideaCard__open {
@@ -189,7 +183,7 @@
 .ideaCard__creatorName {
   color: var(--light-color);
   margin-top: 15px;
-  font-size: var(--textS);
+  font-size: small;
 }
 
 .ideaCard__description {
@@ -212,11 +206,17 @@
 
 .ideaCard__delete {
   flex: 1;
+  text-align: center;
 }
 
 .ideaCard__nbUpVote {
   flex: 1;
   display: flex;
+}
+
+.ideaCard__vote:hover {
+  color: var(--small-touch);
+  cursor: pointer;
 }
 
 .ideaCard__nbComment {
@@ -226,18 +226,26 @@
 
 .comments-container {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  margin: 15px;
-}
-
-.divider {
-  height: 1px;
-  width: 300px;
-  background-color: var(--light-color);
+  margin-right: 70px;
 }
 
 .popup__open {
   padding: 15px;
+}
+
+.button-comments {
+  background-color: var(--golden-color);
+  border-radius: 20px;
+  width: 130px;
+  padding: 5px 10px;
+  margin-right: 15px;
+}
+
+.button-comments:hover {
+  background: none;
+  color: var(--golden-color);
+  padding: 4px 9px;
+  border: solid 1px var(--golden-color);
 }

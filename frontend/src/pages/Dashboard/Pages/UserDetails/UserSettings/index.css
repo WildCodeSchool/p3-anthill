@@ -80,12 +80,11 @@
 }
 
 #picture-input::file-selector-button {
-  border-radius: var(--radius);
+  border-radius: 20px;
   height: 30px;
-  width: 170px;
+  width: 150px;
   font-size: 13px;
   font-weight: 600;
-  text-transform: uppercase;
   transition: all 200ms linear;
   letter-spacing: 1px;
   border: none;
@@ -94,7 +93,8 @@
 }
 
 #picture-input::file-selector-button:hover {
-  background-color: var(--small-touch);
+  background: none;
+  border: solid 1px var(--golden-color);
   color: var(--golden-color);
   transition: all 200ms linear;
 }

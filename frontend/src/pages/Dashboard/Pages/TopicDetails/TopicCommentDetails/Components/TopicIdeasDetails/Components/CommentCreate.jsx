@@ -66,7 +66,7 @@ function CommentCreate({ triggerGetComments, ideaId }) {
                 "body{font-family:Helvetica,Arial,sans-serif; font-size:16px}",
             }}
           />
-          <button type="button" className="button-delete" onClick={log}>
+          <button type="button" className="button-send" onClick={log}>
             Send
           </button>
         </form>

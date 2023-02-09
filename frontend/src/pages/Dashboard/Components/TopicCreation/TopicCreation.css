@@ -84,9 +84,8 @@
 .button-creation:hover {
   background-color: var(--small-touch);
   color: var(--golden-color);
-  transition: all 200ms linear;
 }
 
-.mce-content-body p{
+.mce-content-body p {
   color: white;
 }
